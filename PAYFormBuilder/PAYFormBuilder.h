@@ -65,10 +65,16 @@ extern NSInteger const PAYFormBuilderErrorCode;
 /*
  Calls done when last text field is finished by the user. Has to be called inside the buildTable block.
  */
-@property (nonatomic, assign) BOOL finishOnLastField;
+@optional
 @property (nonatomic, assign) BOOL selectFirstField;
-@property (nonatomic, copy) PAYFormValidationBlock validationBlock;
+@property (nonatomic, assign) BOOL finishOnLastField;
 
+@property (nonatomic, copy) PAYFormValidationBlock validationBlock;
+@property (nonatomic, copy) PAYFormTableCompletionBlock completionBlock;
+@property (nonatomic, copy) PAYFormTableSuccessBlock formSuccessBlock;
+@property (nonatomic, copy) PAYFormTableFailBlock formFailBlock;
+
+@required
 - (PAYFormSection *)addSectionWithContentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock;
 - (PAYFormSection *)addSectionWithContentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock labelStyle:(PAYFormTableLabelStyle)style;
 - (PAYFormSection *)addSectionWithHeaderBlock:(void(^)(PAYFormHeader *))headerBlock contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock;
@@ -109,7 +115,6 @@ extern NSInteger const PAYFormBuilderErrorCode;
 
 @protocol PAYValidatableFormCell <NSObject>
 
-@property (nonatomic, assign) PAYFormFieldErrorStylingBlock errorStylingBlock;
 
 - (NSError *)validate;
 

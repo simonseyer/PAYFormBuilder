@@ -15,8 +15,6 @@ NSString *const PAYFormFieldErrorDomain = @"PAYFormFieldErrorDomain";
 
 @implementation PAYFormField
 
-@synthesize errorStylingBlock;
-
 - (NSString *)name {
     return self.section.header.label.text;
 }
@@ -58,8 +56,8 @@ NSString *const PAYFormFieldErrorDomain = @"PAYFormFieldErrorDomain";
 
 - (NSError *)missingError {
     if (!_missingError) {
-        return [PAYFormField validationErrorWithTitle:NSLocalizedStringFromTable(@"errorXIsMissingTitle", @"PAYFormBuilder", nil)
-                                              message:NSLocalizedStringFromTable(@"errorXIsMissingReason", @"PAYFormBuilder", nil)];
+        return [self validationErrorWithTitle:NSLocalizedStringFromTable(@"errorXIsMissingTitle", @"PAYFormBuilder", nil)
+                                      message:NSLocalizedStringFromTable(@"errorXIsMissingReason", @"PAYFormBuilder", nil)];
         //NSLocalizedRecoverySuggestionErrorKey: NSLocalizedStringFromTable(@"errorXIsMissingSuggestion", @"PAYFormBuilder", nil)
     }
     return _missingError;
@@ -87,7 +85,7 @@ NSString *const PAYFormFieldErrorDomain = @"PAYFormFieldErrorDomain";
     return nil;
 }
 
-+ (NSError *)validationErrorWithTitle:(NSString *)title message:(NSString *)message {
+- (NSError *)validationErrorWithTitle:(NSString *)title message:(NSString *)message {
     NSDictionary* userInfo = @{
                                       NSLocalizedDescriptionKey:               title,
                                       NSLocalizedFailureReasonErrorKey:        title,

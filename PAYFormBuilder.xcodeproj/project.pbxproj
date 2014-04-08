@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		37906D4018F43A4F00FC3CC8 /* PAYFormBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 37906D3F18F43A4F00FC3CC8 /* PAYFormBuilder.m */; };
+		37906D5318F4519800FC3CC8 /* NSError+PAYComfort.h in Headers */ = {isa = PBXBuildFile; fileRef = 37906D5118F4519800FC3CC8 /* NSError+PAYComfort.h */; };
+		37906D5418F4519800FC3CC8 /* NSError+PAYComfort.m in Sources */ = {isa = PBXBuildFile; fileRef = 37906D5218F4519800FC3CC8 /* NSError+PAYComfort.m */; };
 		3796518118F2F1350022151B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796518018F2F1350022151B /* Foundation.framework */; };
 		3796518F18F2F1350022151B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796518E18F2F1350022151B /* XCTest.framework */; };
 		3796519018F2F1350022151B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796518018F2F1350022151B /* Foundation.framework */; };
@@ -31,7 +33,6 @@
 		379651E518F2F1650022151B /* PAYFormTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651D318F2F1650022151B /* PAYFormTableView.m */; };
 		379651E618F2F1650022151B /* PAYTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651D518F2F1650022151B /* PAYTextLabel.m */; };
 		379651E818F2F1D10022151B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379651E718F2F1D10022151B /* UIKit.framework */; };
-		379651EE18F2F5C10022151B /* PAYErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651ED18F2F5C10022151B /* PAYErrorHandler.m */; };
 		379651F718F302940022151B /* PAYMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651F618F302940022151B /* PAYMessageInterceptor.m */; };
 		379651FA18F3035A0022151B /* UIColor+PAYHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651F918F3035A0022151B /* UIColor+PAYHex.m */; };
 		DB7B2D818A5E45F0A265E786 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA1C63E5DFA4210863FCCEF /* libPods.a */; };
@@ -62,6 +63,8 @@
 /* Begin PBXFileReference section */
 		37906D3018F431D200FC3CC8 /* PAYFormBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormBuilder.h; sourceTree = "<group>"; };
 		37906D3F18F43A4F00FC3CC8 /* PAYFormBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormBuilder.m; sourceTree = "<group>"; };
+		37906D5118F4519800FC3CC8 /* NSError+PAYComfort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSError+PAYComfort.h"; path = "../../../NSError+PAYComfort.h"; sourceTree = "<group>"; };
+		37906D5218F4519800FC3CC8 /* NSError+PAYComfort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSError+PAYComfort.m"; path = "../../../NSError+PAYComfort.m"; sourceTree = "<group>"; };
 		3796517D18F2F1350022151B /* libPAYFormBuilder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPAYFormBuilder.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3796518018F2F1350022151B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3796518418F2F1350022151B /* PAYFormBuilder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PAYFormBuilder-Prefix.pch"; sourceTree = "<group>"; };
@@ -102,8 +105,6 @@
 		379651D418F2F1650022151B /* PAYTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYTextLabel.h; sourceTree = "<group>"; };
 		379651D518F2F1650022151B /* PAYTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYTextLabel.m; sourceTree = "<group>"; };
 		379651E718F2F1D10022151B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		379651EC18F2F5C10022151B /* PAYErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYErrorHandler.h; sourceTree = "<group>"; };
-		379651ED18F2F5C10022151B /* PAYErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYErrorHandler.m; sourceTree = "<group>"; };
 		379651F518F302940022151B /* PAYMessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYMessageInterceptor.h; sourceTree = "<group>"; };
 		379651F618F302940022151B /* PAYMessageInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYMessageInterceptor.m; sourceTree = "<group>"; };
 		379651F818F3035A0022151B /* UIColor+PAYHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PAYHex.h"; sourceTree = "<group>"; };
@@ -218,8 +219,6 @@
 				379651B518F2F1650022151B /* PAYFormTableViewController.h */,
 				379651B618F2F1650022151B /* PAYFormTableViewController.m */,
 				379651B718F2F1650022151B /* ViewHolder */,
-				379651EC18F2F5C10022151B /* PAYErrorHandler.h */,
-				379651ED18F2F5C10022151B /* PAYErrorHandler.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -277,6 +276,8 @@
 				379651F618F302940022151B /* PAYMessageInterceptor.m */,
 				379651F818F3035A0022151B /* UIColor+PAYHex.h */,
 				379651F918F3035A0022151B /* UIColor+PAYHex.m */,
+				37906D5118F4519800FC3CC8 /* NSError+PAYComfort.h */,
+				37906D5218F4519800FC3CC8 /* NSError+PAYComfort.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -288,6 +289,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37906D5318F4519800FC3CC8 /* NSError+PAYComfort.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,13 +412,13 @@
 			files = (
 				379651DC18F2F1650022151B /* PAYFormMultiLineTextField.m in Sources */,
 				37906D4018F43A4F00FC3CC8 /* PAYFormBuilder.m in Sources */,
-				379651EE18F2F5C10022151B /* PAYErrorHandler.m in Sources */,
 				379651E218F2F1650022151B /* UIView+PAYKeyboardHandling.m in Sources */,
 				379651D818F2F1650022151B /* PAYFormTableViewController.m in Sources */,
 				379651FA18F3035A0022151B /* UIColor+PAYHex.m in Sources */,
 				379651DE18F2F1650022151B /* PAYFormSingleLineTextField.m in Sources */,
 				379651DB18F2F1650022151B /* PAYFormHeader.m in Sources */,
 				379651E018F2F1650022151B /* PAYFormTextField.m in Sources */,
+				37906D5418F4519800FC3CC8 /* NSError+PAYComfort.m in Sources */,
 				379651DD18F2F1650022151B /* PAYFormSection.m in Sources */,
 				379651D618F2F1650022151B /* PAYFormSectionBuilder.m in Sources */,
 				379651D718F2F1650022151B /* PAYFormTableBuilder.m in Sources */,

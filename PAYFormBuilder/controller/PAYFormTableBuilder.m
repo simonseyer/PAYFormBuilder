@@ -20,10 +20,6 @@ const CGFloat PAYFormTableBuilderLabelBottomMargin     = 8.0;
 
 @implementation PAYFormTableBuilder
 
-@synthesize finishOnLastField = _finishOnLastField;
-@synthesize selectFirstField = _selectFirstField;
-@synthesize validationBlock = _validationBlock;
-
 - (id)init {
     self = [super init];
     if (self) {

@@ -30,6 +30,7 @@ typedef enum {
 @property (nonatomic, copy) PAYFormFieldCleanBlock cleanBlock;
 @property (nonatomic, copy) PAYFormFieldValidationBlock validationBlock;
 
+@property (nonatomic, copy) PAYFormFieldErrorStylingBlock errorStylingBlock;
 @property (nonatomic, retain) NSError *missingError;
 @property (nonatomic, assign) BOOL isRequired;
 @property (nonatomic, strong) NSError *error;
@@ -44,6 +45,8 @@ typedef enum {
 
 - (void)jumpToNextField;
 - (BOOL)becomeFirstResponder;
+
+- (NSError *)validationErrorWithTitle:(NSString *)title message:(NSString *)message;
 
 @end
 

@@ -8,6 +8,8 @@
 
 #import "PAYFormTable.h"
 #import "PAYFormField.h"
+#import "NSError+PAYComfort.h"
+#import <BlocksKit+UIKit.h>
 
 
 @implementation PAYFormTable
@@ -35,11 +37,10 @@
         }
     } else {
         if (!self.formFailBlock || !self.formFailBlock(error)) {
-            id formField = error.userInfo[PAYFormBuilderErrorControlKey];
-            if (formField && [formField conformsToProtocol:@protocol(PAYValidatableFormCell)]) {
-                PAYFormFieldErrorStylingBlock errorStylingBlock = ((id<PAYValidatableFormCell>)formField).errorStylingBlock;
+            if (error.formField) {
+                PAYFormFieldErrorStylingBlock errorStylingBlock = error.formField.errorStylingBlock;
                 if (errorStylingBlock) {
-                    errorStylingBlock(formField, error);
+                    errorStylingBlock(error.formField, error);
                 }
             }
         }
@@ -87,6 +88,14 @@ static PAYFormTableFailBlock formFailBlock = nil;
 
 + (void)initialize {
     self.formFailBlock = ^BOOL(NSError *error) {
+        UIAlertView* alertView = [UIAlertView bk_alertViewWithTitle:error.title message:error.message];
+        [alertView addButtonWithTitle:@"OK"];
+        
+        alertView.bk_willDismissBlock = ^(UIAlertView * alertView, NSInteger state) {
+            [error.formField.control becomeFirstResponder];
+        };
+        
+        [alertView show];
         return NO;
     };
 }
