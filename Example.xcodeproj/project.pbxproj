@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		372EF9B218F460E8004D9D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372EF9B118F460E8004D9D78 /* Images.xcassets */; };
 		37783E2F18F4297900C53D54 /* libPAYFormBuilder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37783E2B18F4291200C53D54 /* libPAYFormBuilder.a */; };
 		37906D3818F4349F00FC3CC8 /* Main_Iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37906D3718F4349F00FC3CC8 /* Main_Iphone.storyboard */; };
 		3796520C18F426A00022151B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796520B18F426A00022151B /* Foundation.framework */; };
@@ -15,7 +16,6 @@
 		3796521618F426A00022151B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3796521418F426A00022151B /* InfoPlist.strings */; };
 		3796521818F426A00022151B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3796521718F426A00022151B /* main.m */; };
 		3796521C18F426A00022151B /* PAYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3796521B18F426A00022151B /* PAYAppDelegate.m */; };
-		3796521E18F426A00022151B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3796521D18F426A00022151B /* Images.xcassets */; };
 		3796522518F426A00022151B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796522418F426A00022151B /* XCTest.framework */; };
 		3796522618F426A00022151B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796520B18F426A00022151B /* Foundation.framework */; };
 		3796522718F426A00022151B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796520F18F426A00022151B /* UIKit.framework */; };
@@ -50,8 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		372EF9B118F460E8004D9D78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		37783E2518F4291200C53D54 /* PAYFormBuilder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = PAYFormBuilder.xcodeproj; sourceTree = SOURCE_ROOT; };
 		37906D3718F4349F00FC3CC8 /* Main_Iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_Iphone.storyboard; sourceTree = "<group>"; };
+		37906D5518F4552900FC3CC8 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		3796520818F426A00022151B /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3796520B18F426A00022151B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3796520D18F426A00022151B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -62,7 +64,6 @@
 		3796521918F426A00022151B /* Example-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Example-Prefix.pch"; sourceTree = "<group>"; };
 		3796521A18F426A00022151B /* PAYAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAYAppDelegate.h; sourceTree = "<group>"; };
 		3796521B18F426A00022151B /* PAYAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAYAppDelegate.m; sourceTree = "<group>"; };
-		3796521D18F426A00022151B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3796522318F426A00022151B /* ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3796522418F426A00022151B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		3796524518F427C30022151B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -128,6 +129,7 @@
 		3796520A18F426A00022151B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37906D5518F4552900FC3CC8 /* libPods.a */,
 				3796520B18F426A00022151B /* Foundation.framework */,
 				3796520D18F426A00022151B /* CoreGraphics.framework */,
 				3796520F18F426A00022151B /* UIKit.framework */,
@@ -141,7 +143,7 @@
 			children = (
 				3796521A18F426A00022151B /* PAYAppDelegate.h */,
 				3796521B18F426A00022151B /* PAYAppDelegate.m */,
-				3796521D18F426A00022151B /* Images.xcassets */,
+				372EF9B118F460E8004D9D78 /* Images.xcassets */,
 				3796521218F426A00022151B /* Supporting Files */,
 				3796524B18F427F00022151B /* PAYMainViewController.h */,
 				3796524C18F427F00022151B /* PAYMainViewController.m */,
@@ -271,8 +273,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				372EF9B218F460E8004D9D78 /* Images.xcassets in Resources */,
 				3796521618F426A00022151B /* InfoPlist.strings in Resources */,
-				3796521E18F426A00022151B /* Images.xcassets in Resources */,
 				37906D3818F4349F00FC3CC8 /* Main_Iphone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,6 +422,10 @@
 					"\"$(SRCROOT)/PAYFormBuilder\"/**",
 				);
 				INFOPLIST_FILE = "Example/Example-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -439,6 +445,10 @@
 					"\"$(SRCROOT)/PAYFormBuilder\"/**",
 				);
 				INFOPLIST_FILE = "Example/Example-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
