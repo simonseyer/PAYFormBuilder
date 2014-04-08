@@ -1,0 +1,44 @@
+//
+//  PAYFormTableView.m
+//  paij
+//
+//  Created by Simon Seyer on 07.04.14.
+//  Copyright (c) 2014 redpixtec. GmbH. All rights reserved.
+//
+
+#import "PAYFormTableView.h"
+
+@implementation PAYFormTableView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self initializeVariables];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
+    self = [super initWithFrame:frame style:style];
+    if (self) {
+        [self initializeVariables];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self initializeVariables];
+    }
+    return self;
+}
+
+- (void)initializeVariables {
+    // Apply default style
+    self.backgroundColor     = [UIColor colorFromHex:0xFFF6F6F7];
+    self.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
+    self.sectionFooterHeight = 0.0;
+}
+
+@end

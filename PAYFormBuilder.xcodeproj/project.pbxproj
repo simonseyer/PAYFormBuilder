@@ -1,0 +1,626 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		37906D4018F43A4F00FC3CC8 /* PAYFormBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 37906D3F18F43A4F00FC3CC8 /* PAYFormBuilder.m */; };
+		3796518118F2F1350022151B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796518018F2F1350022151B /* Foundation.framework */; };
+		3796518F18F2F1350022151B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796518E18F2F1350022151B /* XCTest.framework */; };
+		3796519018F2F1350022151B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796518018F2F1350022151B /* Foundation.framework */; };
+		3796519218F2F1350022151B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796519118F2F1350022151B /* UIKit.framework */; };
+		3796519518F2F1350022151B /* libPAYFormBuilder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796517D18F2F1350022151B /* libPAYFormBuilder.a */; };
+		3796519B18F2F1350022151B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3796519918F2F1350022151B /* InfoPlist.strings */; };
+		3796519D18F2F1350022151B /* PAYFormBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3796519C18F2F1350022151B /* PAYFormBuilderTests.m */; };
+		379651D618F2F1650022151B /* PAYFormSectionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651B218F2F1650022151B /* PAYFormSectionBuilder.m */; };
+		379651D718F2F1650022151B /* PAYFormTableBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651B418F2F1650022151B /* PAYFormTableBuilder.m */; };
+		379651D818F2F1650022151B /* PAYFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651B618F2F1650022151B /* PAYFormTableViewController.m */; };
+		379651D918F2F1650022151B /* PAYFormButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651B918F2F1650022151B /* PAYFormButton.m */; };
+		379651DA18F2F1650022151B /* PAYFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651BB18F2F1650022151B /* PAYFormField.m */; };
+		379651DB18F2F1650022151B /* PAYFormHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651BD18F2F1650022151B /* PAYFormHeader.m */; };
+		379651DC18F2F1650022151B /* PAYFormMultiLineTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651BF18F2F1650022151B /* PAYFormMultiLineTextField.m */; };
+		379651DD18F2F1650022151B /* PAYFormSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651C118F2F1650022151B /* PAYFormSection.m */; };
+		379651DE18F2F1650022151B /* PAYFormSingleLineTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651C318F2F1650022151B /* PAYFormSingleLineTextField.m */; };
+		379651DF18F2F1650022151B /* PAYFormTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651C518F2F1650022151B /* PAYFormTable.m */; };
+		379651E018F2F1650022151B /* PAYFormTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651C718F2F1650022151B /* PAYFormTextField.m */; };
+		379651E118F2F1650022151B /* PAYFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651C918F2F1650022151B /* PAYFormView.m */; };
+		379651E218F2F1650022151B /* UIView+PAYKeyboardHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651CD18F2F1650022151B /* UIView+PAYKeyboardHandling.m */; };
+		379651E518F2F1650022151B /* PAYFormTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651D318F2F1650022151B /* PAYFormTableView.m */; };
+		379651E618F2F1650022151B /* PAYTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651D518F2F1650022151B /* PAYTextLabel.m */; };
+		379651E818F2F1D10022151B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379651E718F2F1D10022151B /* UIKit.framework */; };
+		379651EE18F2F5C10022151B /* PAYErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651ED18F2F5C10022151B /* PAYErrorHandler.m */; };
+		379651F718F302940022151B /* PAYMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651F618F302940022151B /* PAYMessageInterceptor.m */; };
+		379651FA18F3035A0022151B /* UIColor+PAYHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651F918F3035A0022151B /* UIColor+PAYHex.m */; };
+		DB7B2D818A5E45F0A265E786 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA1C63E5DFA4210863FCCEF /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3796519318F2F1350022151B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3796517518F2F1350022151B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3796517C18F2F1350022151B;
+			remoteInfo = PAYFormBuilder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3796517B18F2F1350022151B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		37906D3018F431D200FC3CC8 /* PAYFormBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormBuilder.h; sourceTree = "<group>"; };
+		37906D3F18F43A4F00FC3CC8 /* PAYFormBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormBuilder.m; sourceTree = "<group>"; };
+		3796517D18F2F1350022151B /* libPAYFormBuilder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPAYFormBuilder.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3796518018F2F1350022151B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3796518418F2F1350022151B /* PAYFormBuilder-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PAYFormBuilder-Prefix.pch"; sourceTree = "<group>"; };
+		3796518D18F2F1350022151B /* PAYFormBuilderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PAYFormBuilderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3796518E18F2F1350022151B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3796519118F2F1350022151B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		3796519818F2F1350022151B /* PAYFormBuilderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PAYFormBuilderTests-Info.plist"; sourceTree = "<group>"; };
+		3796519A18F2F1350022151B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3796519C18F2F1350022151B /* PAYFormBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAYFormBuilderTests.m; sourceTree = "<group>"; };
+		379651B118F2F1650022151B /* PAYFormSectionBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormSectionBuilder.h; sourceTree = "<group>"; };
+		379651B218F2F1650022151B /* PAYFormSectionBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormSectionBuilder.m; sourceTree = "<group>"; };
+		379651B318F2F1650022151B /* PAYFormTableBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormTableBuilder.h; sourceTree = "<group>"; };
+		379651B418F2F1650022151B /* PAYFormTableBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormTableBuilder.m; sourceTree = "<group>"; };
+		379651B518F2F1650022151B /* PAYFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormTableViewController.h; sourceTree = "<group>"; };
+		379651B618F2F1650022151B /* PAYFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormTableViewController.m; sourceTree = "<group>"; };
+		379651B818F2F1650022151B /* PAYFormButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormButton.h; sourceTree = "<group>"; };
+		379651B918F2F1650022151B /* PAYFormButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormButton.m; sourceTree = "<group>"; };
+		379651BA18F2F1650022151B /* PAYFormField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormField.h; sourceTree = "<group>"; };
+		379651BB18F2F1650022151B /* PAYFormField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormField.m; sourceTree = "<group>"; };
+		379651BC18F2F1650022151B /* PAYFormHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormHeader.h; sourceTree = "<group>"; };
+		379651BD18F2F1650022151B /* PAYFormHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormHeader.m; sourceTree = "<group>"; };
+		379651BE18F2F1650022151B /* PAYFormMultiLineTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormMultiLineTextField.h; sourceTree = "<group>"; };
+		379651BF18F2F1650022151B /* PAYFormMultiLineTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormMultiLineTextField.m; sourceTree = "<group>"; };
+		379651C018F2F1650022151B /* PAYFormSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormSection.h; sourceTree = "<group>"; };
+		379651C118F2F1650022151B /* PAYFormSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormSection.m; sourceTree = "<group>"; };
+		379651C218F2F1650022151B /* PAYFormSingleLineTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormSingleLineTextField.h; sourceTree = "<group>"; };
+		379651C318F2F1650022151B /* PAYFormSingleLineTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormSingleLineTextField.m; sourceTree = "<group>"; };
+		379651C418F2F1650022151B /* PAYFormTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormTable.h; sourceTree = "<group>"; };
+		379651C518F2F1650022151B /* PAYFormTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormTable.m; sourceTree = "<group>"; };
+		379651C618F2F1650022151B /* PAYFormTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormTextField.h; sourceTree = "<group>"; };
+		379651C718F2F1650022151B /* PAYFormTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormTextField.m; sourceTree = "<group>"; };
+		379651C818F2F1650022151B /* PAYFormView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormView.h; sourceTree = "<group>"; };
+		379651C918F2F1650022151B /* PAYFormView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormView.m; sourceTree = "<group>"; };
+		379651CC18F2F1650022151B /* UIView+PAYKeyboardHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PAYKeyboardHandling.h"; sourceTree = "<group>"; };
+		379651CD18F2F1650022151B /* UIView+PAYKeyboardHandling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PAYKeyboardHandling.m"; sourceTree = "<group>"; };
+		379651D218F2F1650022151B /* PAYFormTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormTableView.h; sourceTree = "<group>"; };
+		379651D318F2F1650022151B /* PAYFormTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormTableView.m; sourceTree = "<group>"; };
+		379651D418F2F1650022151B /* PAYTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYTextLabel.h; sourceTree = "<group>"; };
+		379651D518F2F1650022151B /* PAYTextLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYTextLabel.m; sourceTree = "<group>"; };
+		379651E718F2F1D10022151B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		379651EC18F2F5C10022151B /* PAYErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYErrorHandler.h; sourceTree = "<group>"; };
+		379651ED18F2F5C10022151B /* PAYErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYErrorHandler.m; sourceTree = "<group>"; };
+		379651F518F302940022151B /* PAYMessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYMessageInterceptor.h; sourceTree = "<group>"; };
+		379651F618F302940022151B /* PAYMessageInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYMessageInterceptor.m; sourceTree = "<group>"; };
+		379651F818F3035A0022151B /* UIColor+PAYHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PAYHex.h"; sourceTree = "<group>"; };
+		379651F918F3035A0022151B /* UIColor+PAYHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PAYHex.m"; sourceTree = "<group>"; };
+		4CA1C63E5DFA4210863FCCEF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9DFD742FEF24027AAC91EF2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3796517A18F2F1350022151B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				379651E818F2F1D10022151B /* UIKit.framework in Frameworks */,
+				3796518118F2F1350022151B /* Foundation.framework in Frameworks */,
+				DB7B2D818A5E45F0A265E786 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3796518A18F2F1350022151B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3796518F18F2F1350022151B /* XCTest.framework in Frameworks */,
+				3796519218F2F1350022151B /* UIKit.framework in Frameworks */,
+				3796519518F2F1350022151B /* libPAYFormBuilder.a in Frameworks */,
+				3796519018F2F1350022151B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3796517418F2F1350022151B = {
+			isa = PBXGroup;
+			children = (
+				3796518218F2F1350022151B /* PAYFormBuilder */,
+				3796519618F2F1350022151B /* PAYFormBuilderTests */,
+				3796517F18F2F1350022151B /* Frameworks */,
+				3796517E18F2F1350022151B /* Products */,
+				E9DFD742FEF24027AAC91EF2 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		3796517E18F2F1350022151B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3796517D18F2F1350022151B /* libPAYFormBuilder.a */,
+				3796518D18F2F1350022151B /* PAYFormBuilderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3796517F18F2F1350022151B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				379651E718F2F1D10022151B /* UIKit.framework */,
+				3796518018F2F1350022151B /* Foundation.framework */,
+				3796518E18F2F1350022151B /* XCTest.framework */,
+				3796519118F2F1350022151B /* UIKit.framework */,
+				4CA1C63E5DFA4210863FCCEF /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3796518218F2F1350022151B /* PAYFormBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				37906D3018F431D200FC3CC8 /* PAYFormBuilder.h */,
+				37906D3F18F43A4F00FC3CC8 /* PAYFormBuilder.m */,
+				379651AF18F2F1650022151B /* controller */,
+				379651CA18F2F1650022151B /* view */,
+				379651F418F302940022151B /* utils */,
+				3796518318F2F1350022151B /* Supporting Files */,
+			);
+			path = PAYFormBuilder;
+			sourceTree = "<group>";
+		};
+		3796518318F2F1350022151B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3796518418F2F1350022151B /* PAYFormBuilder-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3796519618F2F1350022151B /* PAYFormBuilderTests */ = {
+			isa = PBXGroup;
+			children = (
+				3796519C18F2F1350022151B /* PAYFormBuilderTests.m */,
+				3796519718F2F1350022151B /* Supporting Files */,
+			);
+			path = PAYFormBuilderTests;
+			sourceTree = "<group>";
+		};
+		3796519718F2F1350022151B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3796519818F2F1350022151B /* PAYFormBuilderTests-Info.plist */,
+				3796519918F2F1350022151B /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		379651AF18F2F1650022151B /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				379651B118F2F1650022151B /* PAYFormSectionBuilder.h */,
+				379651B218F2F1650022151B /* PAYFormSectionBuilder.m */,
+				379651B318F2F1650022151B /* PAYFormTableBuilder.h */,
+				379651B418F2F1650022151B /* PAYFormTableBuilder.m */,
+				379651B518F2F1650022151B /* PAYFormTableViewController.h */,
+				379651B618F2F1650022151B /* PAYFormTableViewController.m */,
+				379651B718F2F1650022151B /* ViewHolder */,
+				379651EC18F2F5C10022151B /* PAYErrorHandler.h */,
+				379651ED18F2F5C10022151B /* PAYErrorHandler.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		379651B718F2F1650022151B /* ViewHolder */ = {
+			isa = PBXGroup;
+			children = (
+				379651B818F2F1650022151B /* PAYFormButton.h */,
+				379651B918F2F1650022151B /* PAYFormButton.m */,
+				379651BA18F2F1650022151B /* PAYFormField.h */,
+				379651BB18F2F1650022151B /* PAYFormField.m */,
+				379651BC18F2F1650022151B /* PAYFormHeader.h */,
+				379651BD18F2F1650022151B /* PAYFormHeader.m */,
+				379651BE18F2F1650022151B /* PAYFormMultiLineTextField.h */,
+				379651BF18F2F1650022151B /* PAYFormMultiLineTextField.m */,
+				379651C018F2F1650022151B /* PAYFormSection.h */,
+				379651C118F2F1650022151B /* PAYFormSection.m */,
+				379651C218F2F1650022151B /* PAYFormSingleLineTextField.h */,
+				379651C318F2F1650022151B /* PAYFormSingleLineTextField.m */,
+				379651C418F2F1650022151B /* PAYFormTable.h */,
+				379651C518F2F1650022151B /* PAYFormTable.m */,
+				379651C618F2F1650022151B /* PAYFormTextField.h */,
+				379651C718F2F1650022151B /* PAYFormTextField.m */,
+				379651C818F2F1650022151B /* PAYFormView.h */,
+				379651C918F2F1650022151B /* PAYFormView.m */,
+			);
+			path = ViewHolder;
+			sourceTree = "<group>";
+		};
+		379651CA18F2F1650022151B /* view */ = {
+			isa = PBXGroup;
+			children = (
+				379651CB18F2F1650022151B /* categories */,
+				379651D218F2F1650022151B /* PAYFormTableView.h */,
+				379651D318F2F1650022151B /* PAYFormTableView.m */,
+				379651D418F2F1650022151B /* PAYTextLabel.h */,
+				379651D518F2F1650022151B /* PAYTextLabel.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		379651CB18F2F1650022151B /* categories */ = {
+			isa = PBXGroup;
+			children = (
+				379651CC18F2F1650022151B /* UIView+PAYKeyboardHandling.h */,
+				379651CD18F2F1650022151B /* UIView+PAYKeyboardHandling.m */,
+			);
+			path = categories;
+			sourceTree = "<group>";
+		};
+		379651F418F302940022151B /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				379651F518F302940022151B /* PAYMessageInterceptor.h */,
+				379651F618F302940022151B /* PAYMessageInterceptor.m */,
+				379651F818F3035A0022151B /* UIColor+PAYHex.h */,
+				379651F918F3035A0022151B /* UIColor+PAYHex.m */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		37783E3018F42DB700C53D54 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3796517C18F2F1350022151B /* PAYFormBuilder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 379651A018F2F1350022151B /* Build configuration list for PBXNativeTarget "PAYFormBuilder" */;
+			buildPhases = (
+				498E379C63194778962B0D80 /* Check Pods Manifest.lock */,
+				3796517918F2F1350022151B /* Sources */,
+				3796517A18F2F1350022151B /* Frameworks */,
+				3796517B18F2F1350022151B /* CopyFiles */,
+				CE11EF09E7A9485EB97333AD /* Copy Pods Resources */,
+				37783E3018F42DB700C53D54 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PAYFormBuilder;
+			productName = PAYFormBuilder;
+			productReference = 3796517D18F2F1350022151B /* libPAYFormBuilder.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		3796518C18F2F1350022151B /* PAYFormBuilderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 379651A318F2F1350022151B /* Build configuration list for PBXNativeTarget "PAYFormBuilderTests" */;
+			buildPhases = (
+				3796518918F2F1350022151B /* Sources */,
+				3796518A18F2F1350022151B /* Frameworks */,
+				3796518B18F2F1350022151B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3796519418F2F1350022151B /* PBXTargetDependency */,
+			);
+			name = PAYFormBuilderTests;
+			productName = PAYFormBuilderTests;
+			productReference = 3796518D18F2F1350022151B /* PAYFormBuilderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3796517518F2F1350022151B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Paij;
+			};
+			buildConfigurationList = 3796517818F2F1350022151B /* Build configuration list for PBXProject "PAYFormBuilder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3796517418F2F1350022151B;
+			productRefGroup = 3796517E18F2F1350022151B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3796517C18F2F1350022151B /* PAYFormBuilder */,
+				3796518C18F2F1350022151B /* PAYFormBuilderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3796518B18F2F1350022151B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3796519B18F2F1350022151B /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		498E379C63194778962B0D80 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CE11EF09E7A9485EB97333AD /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3796517918F2F1350022151B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				379651DC18F2F1650022151B /* PAYFormMultiLineTextField.m in Sources */,
+				37906D4018F43A4F00FC3CC8 /* PAYFormBuilder.m in Sources */,
+				379651EE18F2F5C10022151B /* PAYErrorHandler.m in Sources */,
+				379651E218F2F1650022151B /* UIView+PAYKeyboardHandling.m in Sources */,
+				379651D818F2F1650022151B /* PAYFormTableViewController.m in Sources */,
+				379651FA18F3035A0022151B /* UIColor+PAYHex.m in Sources */,
+				379651DE18F2F1650022151B /* PAYFormSingleLineTextField.m in Sources */,
+				379651DB18F2F1650022151B /* PAYFormHeader.m in Sources */,
+				379651E018F2F1650022151B /* PAYFormTextField.m in Sources */,
+				379651DD18F2F1650022151B /* PAYFormSection.m in Sources */,
+				379651D618F2F1650022151B /* PAYFormSectionBuilder.m in Sources */,
+				379651D718F2F1650022151B /* PAYFormTableBuilder.m in Sources */,
+				379651F718F302940022151B /* PAYMessageInterceptor.m in Sources */,
+				379651E118F2F1650022151B /* PAYFormView.m in Sources */,
+				379651E618F2F1650022151B /* PAYTextLabel.m in Sources */,
+				379651DA18F2F1650022151B /* PAYFormField.m in Sources */,
+				379651DF18F2F1650022151B /* PAYFormTable.m in Sources */,
+				379651D918F2F1650022151B /* PAYFormButton.m in Sources */,
+				379651E518F2F1650022151B /* PAYFormTableView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3796518918F2F1350022151B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3796519D18F2F1350022151B /* PAYFormBuilderTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3796519418F2F1350022151B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3796517C18F2F1350022151B /* PAYFormBuilder */;
+			targetProxy = 3796519318F2F1350022151B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3796519918F2F1350022151B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3796519A18F2F1350022151B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3796519E18F2F1350022151B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3796519F18F2F1350022151B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		379651A118F2F1350022151B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9DFD742FEF24027AAC91EF2 /* Pods.xcconfig */;
+			buildSettings = {
+				DSTROOT = /tmp/PAYFormBuilder.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PAYFormBuilder/PAYFormBuilder-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		379651A218F2F1350022151B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9DFD742FEF24027AAC91EF2 /* Pods.xcconfig */;
+			buildSettings = {
+				DSTROOT = /tmp/PAYFormBuilder.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PAYFormBuilder/PAYFormBuilder-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		379651A418F2F1350022151B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PAYFormBuilder/PAYFormBuilder-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "PAYFormBuilderTests/PAYFormBuilderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		379651A518F2F1350022151B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PAYFormBuilder/PAYFormBuilder-Prefix.pch";
+				INFOPLIST_FILE = "PAYFormBuilderTests/PAYFormBuilderTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3796517818F2F1350022151B /* Build configuration list for PBXProject "PAYFormBuilder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3796519E18F2F1350022151B /* Debug */,
+				3796519F18F2F1350022151B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		379651A018F2F1350022151B /* Build configuration list for PBXNativeTarget "PAYFormBuilder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				379651A118F2F1350022151B /* Debug */,
+				379651A218F2F1350022151B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		379651A318F2F1350022151B /* Build configuration list for PBXNativeTarget "PAYFormBuilderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				379651A418F2F1350022151B /* Debug */,
+				379651A518F2F1350022151B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3796517518F2F1350022151B /* Project object */;
+}
