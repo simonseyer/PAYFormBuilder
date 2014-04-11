@@ -9,13 +9,14 @@
 #import "PAYMainViewController.h"
 #import <PAYFormSingleLineTextField.h>
 #import <PAYFormButton.h>
+#import <PAYFormButtonGroup.h>
 
 @interface PAYMainViewController ()
 
 @property (nonatomic, retain) PAYFormSingleLineTextField *streetTextField;
 @property (nonatomic, retain) PAYFormSingleLineTextField *postalCodeTextField;
 @property (nonatomic, retain) PAYFormSingleLineTextField *cityTextField;
-@property (nonatomic, retain) PAYFormSection *countrySection;
+@property (nonatomic, retain) PAYFormButtonGroup *countryButtonGroup;
 
 @end
 
@@ -43,21 +44,13 @@
         }];
         
         [tableBuilder addSectionWithName:@"Country" labelStyle:PAYFormTableLabelStyleSimple contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
-            NSArray *countries = @[@[@"United States", @"usa"], @[@"Germany", @"de"], @[@"Spain", @"es"]];
-            for (NSArray *country in countries) {
-                [sectionBuilder addButtonWithText:country[0] style:PAYFormButtonStyleIconSelection
-                                   selectionBlock:^(PAYFormView *formButton) {
-                                       
-                                       
-                                   }
-                                   configureBlock:^(PAYFormButton *formButton) {
-                                       if ([country[0] isEqualToString:@"United States"]) {
-                                           [formButton requestSelection];
-                                       }
-                                       formButton.iconView.image = [UIImage imageNamed:country[1]];
-                                   }];
-            }
-            
+            self.countryButtonGroup = [sectionBuilder addButtonGroupWithMutliSelection:YES contentBlock:^(id<PAYButtonGroupBuilder> buttonGroupBuilder) {
+                NSArray *countries = @[@[@"United States", @"usa"], @[@"Germany", @"de"], @[@"Spain", @"es"]];
+                for (NSArray *country in countries) {
+                    [buttonGroupBuilder addOption:country[1] withText:country[0]];
+                }
+                [buttonGroupBuilder select:@"usa"];
+            }];
         }];
         
         tableBuilder.finishOnLastField = YES;
