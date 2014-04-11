@@ -13,6 +13,7 @@
 #import "PAYFormView.h"
 #import "PAYFormButtonGroup.h"
 #import "PAYFormButtonGroupBuilder.h"
+#import "PAYFormSwitch.h"
 
 @implementation PAYFormSectionBuilder
 
@@ -147,13 +148,12 @@
     return textView;
 }
 
-- (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormSelectionBlock)selectionBlock {
+- (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock {
     return [self addButtonWithText:text style:style selectionBlock:selectionBlock configureBlock:NULL];
 }
 
-- (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormSelectionBlock)selectionBlock configureBlock:(void(^)(PAYFormButton *))configureBlock {
+- (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock configureBlock:(void(^)(PAYFormButton *))configureBlock {
     UITableViewCell *cell = self.defaultCell;
-    cell.accessoryType    = UITableViewCellAccessoryNone;
     
     if (style == PAYFormButtonStyleDisabledCentered) {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -254,6 +254,42 @@
     }
     
     return buttonGroup;
+}
+
+- (PAYFormSwitch *)addSwitchWithName:(NSString *)name {
+    return [self addSwitchWithName:name configureBlock:nil];
+}
+
+- (PAYFormSwitch *)addSwitchWithName:(NSString *)name configureBlock:(void(^)(PAYFormSwitch *))configureBlock {
+    UILabel *label = [PAYFormSectionBuilder defaultLabelInRect:self.defaultBounds];
+    label.text     = name;
+    
+    CGFloat horizontalSpacing = 14;
+    UISwitch *switchControl   = [UISwitch new];
+    
+    CGRect switchFrame     = switchControl.frame;
+    switchFrame.origin.x   = self.defaultBounds.size.width - switchFrame.size.width - horizontalSpacing;
+    switchFrame.origin.y   = (self.defaultBounds.size.height - switchFrame.size.height) / 2.0f;
+    switchControl.frame    = switchFrame;
+    
+    UITableViewCell *cell = self.defaultCell;
+    [cell addSubview:label];
+    [cell addSubview:switchControl];
+    
+    PAYFormSwitch *formSwitch = [PAYFormSwitch new];
+    formSwitch.section       = self.section;
+    formSwitch.cell          = cell;
+    formSwitch.label         = label;
+    formSwitch.switchControl = switchControl;
+    
+    if (configureBlock) {
+        configureBlock(formSwitch);
+    }
+    
+    [self.section.views addObject:formSwitch];
+    
+    return formSwitch;
+    
 }
 
 - (void)addView:(void(^)(PAYFormView *))configureBlock {

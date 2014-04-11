@@ -15,7 +15,7 @@
 @property (nonatomic, retain) UILabel *titleLabel;
 @property (nonatomic, retain) UIImageView *iconView;
 @property (nonatomic, assign) PAYFormButtonStyle style;
-@property (nonatomic, copy) PAYFormSelectionBlock selectionBlock;
+@property (nonatomic, copy) PAYFormButtonSelectionBlock selectionBlock;
 @property (nonatomic, assign) BOOL selected;
 
 - (void)setEnabled:(BOOL)enabled;

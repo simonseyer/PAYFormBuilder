@@ -39,16 +39,16 @@ typedef enum {
 @class PAYFormButtonGroup;
 @class PAYFormHeader;
 @class PAYFormView;
+@class PAYFormSwitch;
 @protocol PAYTableBuilder;
 @protocol PAYSectionBuilder;
 @protocol PAYButtonGroupBuilder;
 @protocol PAYFormCell;
 
-
 typedef void(^PAYFormTableCompletionBlock)();
 typedef void(^PAYFormSectionCompletionBlock)();
 typedef void(^PAYFormFieldCompletionBlock)();
-typedef void(^PAYFormSelectionBlock)(PAYFormView *);
+typedef void(^PAYFormButtonSelectionBlock)(PAYFormButton *);
 typedef id(^PAYFormFieldFormatBlock)(PAYFormField *, id);
 typedef id(^PAYFormFieldCleanBlock)(PAYFormField *, id);
 typedef void (^PAYFormTableSuccessBlock)();
@@ -100,10 +100,13 @@ typedef enum {
 - (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder;
 - (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock;
 
-- (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormSelectionBlock)selectionBlock;
-- (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormSelectionBlock)selectionBlock configureBlock:(void(^)(PAYFormButton *))configureBlock;
+- (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock;
+- (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock configureBlock:(void(^)(PAYFormButton *))configureBlock;
 
 - (PAYFormButtonGroup *)addButtonGroupWithMutliSelection:(BOOL)multiSelection contentBlock:(void(^)(id<PAYButtonGroupBuilder>))contentBlock;
+
+- (PAYFormSwitch *)addSwitchWithName:(NSString *)name;
+- (PAYFormSwitch *)addSwitchWithName:(NSString *)name configureBlock:(void(^)(PAYFormSwitch *))configureBlock;
 
 - (void)addView:(void(^)(PAYFormView *))configureBlock;
 
@@ -117,7 +120,7 @@ typedef enum {
 @required
 - (PAYFormButton *)addOption:(id)value withText:(NSString *)text;
 - (PAYFormButton *)addOption:(id)value withText:(NSString *)text icon:(UIImage *)icon;
-- (PAYFormButton *)addOption:(id)value withText:(NSString *)text icon:(UIImage *)icon selectionBlock:(PAYFormSelectionBlock)selectionBlock;
+- (PAYFormButton *)addOption:(id)value withText:(NSString *)text icon:(UIImage *)icon selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock;
 
 @end
 

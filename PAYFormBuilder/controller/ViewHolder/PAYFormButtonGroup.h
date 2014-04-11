@@ -18,7 +18,7 @@
 
 @property (nonatomic, retain) NSMutableDictionary *options;
 @property (nonatomic, retain, readonly) NSArray *values;
-@property (nonatomic, retain, readonly) NSArray *value;
+@property (nonatomic, retain, readonly) id value;
 
 - (void)optionStateChanged:(id)option;
 - (void)select:(BOOL)select value:(id)value;

@@ -20,8 +20,8 @@
     return [self addOption:value withText:text icon:icon selectionBlock:nil];
 }
 
-- (PAYFormButton *)addOption:(id)value withText:(NSString *)text icon:(UIImage *)icon selectionBlock:(PAYFormSelectionBlock)selectionBlock {
-    __block PAYFormSelectionBlock selectionBlockForBlock = selectionBlock;
+- (PAYFormButton *)addOption:(id)value withText:(NSString *)text icon:(UIImage *)icon selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock {
+    __block PAYFormButtonSelectionBlock selectionBlockForBlock = selectionBlock;
     __weak PAYFormButtonGroup *blockButtonGroup = self.buttonGroup;
     PAYFormButton *button = [self.sectionBuilder addButtonWithText:text
                                                              style:icon ? PAYFormButtonStyleIconSelection : PAYFormButtonStyleSelection
