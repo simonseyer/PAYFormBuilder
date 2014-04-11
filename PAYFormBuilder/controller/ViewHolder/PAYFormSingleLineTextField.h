@@ -14,7 +14,4 @@
 @property (nonatomic, retain) UITextField *textField;
 @property (nonatomic, weak) id<UITextFieldDelegate> delegate;
 
-+ (PAYFormFieldErrorStylingBlock)errorStylingBlock;
-+ (void)setErrorStylingBlock:(PAYFormFieldErrorStylingBlock)block;
-
 @end

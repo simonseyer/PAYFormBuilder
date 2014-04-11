@@ -19,8 +19,6 @@ typedef enum {
 
 @interface PAYFormField : PAYFormView <PAYValidatableFormCell, UITextFieldDelegate>
 
-- (NSString *)name;
-
 @property (nonatomic, retain) UIView<PAYFormControl> *control;
 
 @property (nonatomic, retain) PAYFormField *nextFormField;
@@ -30,18 +28,14 @@ typedef enum {
 @property (nonatomic, copy) PAYFormFieldCleanBlock cleanBlock;
 @property (nonatomic, copy) PAYFormFieldValidationBlock validationBlock;
 
-@property (nonatomic, copy) PAYFormFieldErrorStylingBlock errorStylingBlock;
-@property (nonatomic, retain) NSError *missingError;
+- (void)styleForError:(NSError *)error;
 @property (nonatomic, assign) BOOL isRequired;
-@property (nonatomic, strong) NSError *error;
 
 - (id)value;
 - (id)cleanedValue;
 - (BOOL)isEmpty;
 
-- (NSError *)doValidate;
 - (NSError *)prevalidate;
-- (void)reset;
 
 - (void)jumpToNextField;
 - (BOOL)becomeFirstResponder;

@@ -7,9 +7,7 @@
 //
 
 #import "PAYFormTextField.h"
-
-
-NSString *const PAYFormTextFieldErrorDomain = @"PAYFormTextFieldErrorDomain";
+#import "NSError+PAYComfort.h"
 
 
 @interface PAYFormTextField ()
@@ -30,18 +28,6 @@ NSString *const PAYFormTextFieldErrorDomain = @"PAYFormTextFieldErrorDomain";
 
 #pragma mark - Custom validation
 
-- (void)reset {
-    [super reset];
-    [self styleViewsForErroneousState:NO];
-}
-
-- (NSError *)validate {
-    [super validate];
-    BOOL hasError = self.error != nil;
-    [self styleViewsForErroneousState:hasError];
-    return self.error;
-}
-
 - (NSError *)prevalidate {
     NSError *error = [super prevalidate];
     if (error) {
@@ -51,20 +37,11 @@ NSString *const PAYFormTextFieldErrorDomain = @"PAYFormTextFieldErrorDomain";
     NSString *cleanedValue = self.cleanedValue;
     
     if (self.maxTextLength > 0 && cleanedValue.length > self.maxTextLength) {
-        return [NSError errorWithDomain:PAYFormTextFieldErrorDomain code:PAYFormTextFieldAboveMaxLength userInfo:@{
-                                                                                                                   
-            NSLocalizedDescriptionKey:             NSLocalizedStringFromTable(@"errorValidationSomethingToLongTitle", @"PAYFormBuilder", nil),
-            NSLocalizedFailureReasonErrorKey:      NSLocalizedStringFromTable(@"errorValidationSomethingToLongReason", @"PAYFormBuilder", nil),
-            NSLocalizedRecoverySuggestionErrorKey: NSLocalizedStringFromTable(@"errorXIsMissingSuggestion", @"PAYFormBuilder", nil),
-        }];
+        return [NSError validationErrorWithCode:PAYFormTextFieldAboveMaxLength control:self];
     }
     
     if (self.minTextLength > 0 && cleanedValue.length < self.minTextLength) {
-        return [NSError errorWithDomain:PAYFormTextFieldErrorDomain code:PAYFormTextFieldBelowMinLength userInfo:@{
-            NSLocalizedDescriptionKey:              NSLocalizedStringFromTable(@"errorValidationSomethingToShortTitle", @"PAYFormBuilder", nil),
-            NSLocalizedFailureReasonErrorKey:       NSLocalizedStringFromTable(@"errorValidationSomethingToShortReason", @"PAYFormBuilder", nil),
-            NSLocalizedRecoverySuggestionErrorKey:  NSLocalizedStringFromTable(@"errorXIsMissingSuggestion", @"PAYFormBuilder", nil),
-        }];
+        return [NSError validationErrorWithCode:PAYFormTextFieldBelowMinLength control:self];
     }
     
     return nil;

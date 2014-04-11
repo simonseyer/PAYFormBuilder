@@ -9,13 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "PAYFormBuilder.h"
 
-@interface PAYFormButtonGroup : NSObject
+@interface PAYFormButtonGroup : NSObject <PAYValidatableFormCell>
 
 @property (nonatomic, weak) PAYFormSection *section;
+
 @property (nonatomic, assign) BOOL multiSelection;
+@property (nonatomic, assign) BOOL isRequired;
 
 @property (nonatomic, retain) NSMutableDictionary *options;
-@property (nonatomic, retain) NSArray *selectedOptions;
+@property (nonatomic, retain, readonly) NSArray *values;
+@property (nonatomic, retain, readonly) NSArray *value;
 
 - (void)optionStateChanged:(id)option;
 - (void)select:(BOOL)select value:(id)value;

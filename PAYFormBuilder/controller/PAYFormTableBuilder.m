@@ -40,19 +40,26 @@ const CGFloat PAYFormTableBuilderLabelBottomMargin     = 8.0;
     return [self addSectionWithContentBlock:contentBlock labelStyle:PAYFormTableLabelStyleEmpty];
 }
 
-- (PAYFormSection *)addSectionWithContentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock labelStyle:(PAYFormTableLabelStyle)style {
+- (PAYFormSection *)addSectionWithContentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock
+                                    labelStyle:(PAYFormTableLabelStyle)style {
     return [self addSectionWithName:nil labelStyle:style headerBlock:NULL contentBlock:contentBlock];
 }
 
-- (PAYFormSection *)addSectionWithHeaderBlock:(void(^)(PAYFormHeader *))headerBlock contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
+- (PAYFormSection *)addSectionWithHeaderBlock:(void(^)(PAYFormHeader *))headerBlock
+                                 contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
     return [self addSectionWithName:nil labelStyle:PAYFormTableLabelStyleEmpty headerBlock:headerBlock contentBlock:contentBlock];
 }
 
-- (PAYFormSection *)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
+- (PAYFormSection *)addSectionWithName:(NSString *)name
+                            labelStyle:(PAYFormTableLabelStyle)style
+                          contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
     return [self addSectionWithName:name labelStyle:style headerBlock:NULL contentBlock:contentBlock];
 }
 
-- (PAYFormSection *)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style headerBlock:(void(^)(PAYFormHeader *))headerBlock contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
+- (PAYFormSection *)addSectionWithName:(NSString *)name
+                            labelStyle:(PAYFormTableLabelStyle)style
+                           headerBlock:(void(^)(PAYFormHeader *))headerBlock
+                          contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
     PAYFormSection *formSection = [PAYFormSection new];
     
     formSection.header = [self headerViewWithStyle:style name:name];
@@ -71,7 +78,8 @@ const CGFloat PAYFormTableBuilderLabelBottomMargin     = 8.0;
     return formSection;
 }
 
-- (PAYFormHeader *)headerViewWithStyle:(PAYFormTableLabelStyle)style name:(NSString *)name {
+- (PAYFormHeader *)headerViewWithStyle:(PAYFormTableLabelStyle)style
+                                  name:(NSString *)name {
     UIView *headerView         = [[UIView alloc] initWithFrame:self.defaultBounds];
     headerView.backgroundColor = UIColor.clearColor;
     

@@ -8,6 +8,7 @@
 
 #import "PAYFormField.h"
 #import "PAYformBuilder.h"
+#import "NSError+PAYComfort.h"
 
 
 NSString *const PAYFormFieldErrorDomain = @"PAYFormFieldErrorDomain";
@@ -54,22 +55,7 @@ NSString *const PAYFormFieldErrorDomain = @"PAYFormFieldErrorDomain";
 
 #pragma mark - Validation
 
-- (NSError *)missingError {
-    if (!_missingError) {
-        return [self validationErrorWithTitle:NSLocalizedStringFromTable(@"errorXIsMissingTitle", @"PAYFormBuilder", nil)
-                                      message:NSLocalizedStringFromTable(@"errorXIsMissingReason", @"PAYFormBuilder", nil)];
-        //NSLocalizedRecoverySuggestionErrorKey: NSLocalizedStringFromTable(@"errorXIsMissingSuggestion", @"PAYFormBuilder", nil)
-    }
-    return _missingError;
-}
-
 - (NSError *)validate {
-    [self reset];
-    self.error = [self doValidate];
-    return self.error;
-}
-
-- (NSError *)doValidate {
     NSError *error = [self prevalidate];
     if (error) {
         return error;
@@ -86,27 +72,14 @@ NSString *const PAYFormFieldErrorDomain = @"PAYFormFieldErrorDomain";
 }
 
 - (NSError *)validationErrorWithTitle:(NSString *)title message:(NSString *)message {
-    NSDictionary* userInfo = @{
-                                      NSLocalizedDescriptionKey:               title,
-                                      NSLocalizedFailureReasonErrorKey:        title,
-                                      NSLocalizedRecoverySuggestionErrorKey:   message,
-                                      PAYFormBuilderErrorControlKey:           self
-    };
-    
-    return [[NSError alloc] initWithDomain:PAYFormBuilderErrorDomain
-                            code:PAYFormBuilderErrorCode
-                        userInfo:userInfo];
+    return [NSError validationErrorWithTitle:title message:message control:self];
 }
 
 - (NSError *)prevalidate {
     if (self.isRequired && self.isEmpty) {
-        return self.missingError;
+        return [NSError validationErrorWithCode:PAYFormMissingErrorCode control:self];
     }
     return nil;
-}
-
-- (void)reset {
-    self.error = nil;
 }
 
 - (id)value {
@@ -119,6 +92,10 @@ NSString *const PAYFormFieldErrorDomain = @"PAYFormFieldErrorDomain";
 
 - (BOOL)isEmpty {
     return NO;
+}
+
+- (void)styleForError:(NSError *)error {
+    
 }
 
 @end

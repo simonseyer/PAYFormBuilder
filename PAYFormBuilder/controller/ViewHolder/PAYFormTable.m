@@ -10,6 +10,7 @@
 #import "PAYFormField.h"
 #import "NSError+PAYComfort.h"
 #import <BlocksKit+UIKit.h>
+#import "PAYFormDefaultErrorHandler.h"
 
 
 @implementation PAYFormTable
@@ -25,6 +26,7 @@
                 [self validate];
             }
         };
+        self.formFailBlock = [PAYFormDefaultErrorHandler failBlock];
     }
     return self;
 }
@@ -36,13 +38,8 @@
             self.formSuccessBlock();
         }
     } else {
-        if (!self.formFailBlock || !self.formFailBlock(error)) {
-            if (error.formField) {
-                PAYFormFieldErrorStylingBlock errorStylingBlock = error.formField.errorStylingBlock;
-                if (errorStylingBlock) {
-                    errorStylingBlock(error.formField, error);
-                }
-            }
+        if ((!self.formFailBlock || !self.formFailBlock(error)) && error.field) {
+            [error.field styleForError:error];
         }
     }
 }
@@ -80,39 +77,6 @@
             previousSection = section;
         }
     }
-}
-
-# pragma mark - Error handling
-
-static PAYFormTableFailBlock formFailBlock = nil;
-
-+ (void)initialize {
-    self.formFailBlock = ^BOOL(NSError *error) {
-        UIAlertView* alertView = [UIAlertView bk_alertViewWithTitle:error.title message:error.message];
-        [alertView addButtonWithTitle:@"OK"];
-        
-        alertView.bk_willDismissBlock = ^(UIAlertView * alertView, NSInteger state) {
-            [error.formField.control becomeFirstResponder];
-        };
-        
-        [alertView show];
-        return NO;
-    };
-}
-
-+ (PAYFormTableFailBlock)formFailBlock {
-    return formFailBlock;
-}
-
-+(void)setFormFailBlock:(PAYFormTableFailBlock)block {
-    formFailBlock = block;
-}
-
-- (PAYFormTableFailBlock)formFailBlock {
-    if (_formFailBlock) {
-        return formFailBlock;
-    }
-    return self.class.formFailBlock;
 }
 
 @end

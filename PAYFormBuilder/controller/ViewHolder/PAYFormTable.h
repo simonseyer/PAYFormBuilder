@@ -23,9 +23,6 @@
 @property (nonatomic, copy) PAYFormTableSuccessBlock formSuccessBlock;
 @property (nonatomic, copy) PAYFormTableFailBlock formFailBlock;
 
-+ (PAYFormTableFailBlock)formFailBlock;
-+ (void)setFormFailBlock:(PAYFormTableFailBlock)block;
-
 - (void)initSectionJumpOrder;
 - (void)validate;
 

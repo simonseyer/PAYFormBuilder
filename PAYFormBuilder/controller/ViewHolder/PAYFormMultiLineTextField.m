@@ -76,35 +76,14 @@ static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
 
 # pragma mark - Error styling
 
-static PAYFormFieldErrorStylingBlock errorStylingBlock = nil;
-
-+ (void)initialize {
-    self.errorStylingBlock =  ^(id formView, NSError *error) {
-        PAYFormMultiLineTextField *textField = formView;
-        if (error) {
-            UIColor *redColor = [UIColor colorFromHex:0xFFFF3B30];
-            textField.textView.textColor = redColor;
-        } else {
-            UIColor *defaultColor = [UIColor colorFromHex:0xFF323232];
-            textField.textView.textColor = defaultColor;
-        }
-    };
-}
-
-
-+ (PAYFormFieldErrorStylingBlock)errorStylingBlock {
-    return errorStylingBlock;
-}
-
-+ (void)setErrorStylingBlock:(PAYFormFieldErrorStylingBlock)block {
-    errorStylingBlock = block;
-}
-
-- (PAYFormFieldErrorStylingBlock)errorStylingBlock {
-    if (super.errorStylingBlock) {
-        return super.errorStylingBlock;
+- (void)styleForError:(NSError *)error {
+    if (error) {
+        UIColor *redColor = [UIColor colorFromHex:0xFFFF3B30];
+        self.textView.textColor = redColor;
+    } else {
+        UIColor *defaultColor = [UIColor colorFromHex:0xFF323232];
+        self.textView.textColor = defaultColor;
     }
-    return self.class.errorStylingBlock;
 }
 
 #pragma mark - UITextFieldDelegate's implementation
@@ -121,9 +100,10 @@ static PAYFormFieldErrorStylingBlock errorStylingBlock = nil;
         NSError *error = [self validate];
         
         // Suppress error with code PAYFormTextFieldBelowMinLength while still entering text
-        if ([error.domain isEqualToString:PAYFormTextFieldErrorDomain] && error.code == PAYFormTextFieldBelowMinLength) {
-            [self reset];
+        if ([error.domain isEqualToString:PAYFormFieldErrorDomain] && error.code == PAYFormTextFieldBelowMinLength) {
+            error = nil;
         }
+        [self styleForError:error];
     }
     
     if (self.formatBlock) {

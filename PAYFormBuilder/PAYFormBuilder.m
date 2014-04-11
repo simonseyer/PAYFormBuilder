@@ -9,7 +9,6 @@
 #import "PAYFormBuilder.h"
 
 
-NSString * const PAYFormBuilderErrorControlKey = @"PAYFormBuilderErrorControlKey";
-NSString * const PAYFormBuilderErrorRecoveryOptionsKey = @"PAYFormBuilderErrorRecoveryOptionsKey";
-NSString * const PAYFormBuilderErrorDomain = @"PAYFormBuilderErrorDomain";
-NSInteger const PAYFormBuilderErrorCode = 1337;
+NSString * const PAYFormErrorControlKey = @"PAYFormBuilderErrorControlKey";
+NSString * const PAYFormErrorRecoveryOptionsKey = @"PAYFormBuilderErrorRecoveryOptionsKey";
+NSString * const PAYFormErrorDomain = @"PAYFormBuilderErrorDomain";

@@ -51,16 +51,20 @@ typedef void(^PAYFormFieldCompletionBlock)();
 typedef void(^PAYFormSelectionBlock)(PAYFormView *);
 typedef id(^PAYFormFieldFormatBlock)(PAYFormField *, id);
 typedef id(^PAYFormFieldCleanBlock)(PAYFormField *, id);
-typedef void(^PAYFormFieldErrorStylingBlock)(id, NSError *);
 typedef void (^PAYFormTableSuccessBlock)();
 typedef BOOL (^PAYFormTableFailBlock)(NSError *error);
 typedef NSError *(^PAYFormFieldValidationBlock)(PAYFormField *);
 typedef NSError *(^PAYFormValidationBlock)();
 
-extern NSString * const PAYFormBuilderErrorControlKey;
-extern NSString * const PAYFormBuilderErrorRecoveryOptionsKey;
-extern NSString * const PAYFormBuilderErrorDomain;
-extern NSInteger const PAYFormBuilderErrorCode;
+extern NSString * const PAYFormErrorControlKey;
+extern NSString * const PAYFormErrorRecoveryOptionsKey;
+extern NSString * const PAYFormErrorDomain;
+typedef enum {
+    PAYFormDefaultErrorCode,
+    PAYFormMissingErrorCode,
+    PAYFormTextFieldAboveMaxLength,
+    PAYFormTextFieldBelowMinLength
+} PAYFormErrorCodes;
 
 @protocol PAYTableBuilder <NSObject>
 
@@ -133,5 +137,7 @@ extern NSInteger const PAYFormBuilderErrorCode;
 
 
 - (NSError *)validate;
+- (void)styleForError:(NSError *)error;
+- (NSString *)name;
 
 @end

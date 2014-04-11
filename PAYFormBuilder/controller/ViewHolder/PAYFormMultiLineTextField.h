@@ -19,7 +19,4 @@
 - (void)adjustSizeToContent;
 - (void)adjustSizeToContentWithMaxHeight:(CGFloat)maxHeight;
 
-+ (PAYFormFieldErrorStylingBlock)errorStylingBlock;
-+ (void)setErrorStylingBlock:(PAYFormFieldErrorStylingBlock)block;
-
 @end

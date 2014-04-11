@@ -8,6 +8,7 @@
 
 #import "PAYFormButtonGroup.h"
 #import "PAYFormButton.h"
+#import "NSError+PAYComfort.h"
 
 @implementation PAYFormButtonGroup {
     NSMutableArray *_selectedOptions;
@@ -22,9 +23,31 @@
     return self;
 }
 
-- (void)optionStateChanged:(id)option {
-    PAYFormButton *formButton = self.options[option];
-    [self select:!formButton.selected value:option];
+- (NSArray *)values {
+    return _selectedOptions;
+}
+
+- (id)value {
+    return self.values.firstObject;
+}
+
+- (void)select:(id)value {
+    [self select:YES value:value];
+}
+
+- (NSError *)validate {
+    if (self.isRequired && _selectedOptions.count == 0) {
+        return [NSError validationErrorWithCode:PAYFormMissingErrorCode control:self];
+    }
+    return nil;
+}
+
+- (void)styleForError:(NSError *)error {
+    
+}
+
+- (NSString *)name {
+    return @"";
 }
 
 - (void)select:(BOOL)select value:(id)value {
@@ -37,24 +60,21 @@
             [_selectedOptions removeObject:value];
         }
     } else {
-        if (self.selectedOption == value) {
+        if (self.value == value) {
             return;
         }
         
-        [self selectButton:NO withValue:self.selectedOption];
-        [_selectedOptions removeObject:self.selectedOption];
+        [self selectButton:NO withValue:self.value];
+        [_selectedOptions removeObject:self.value];
         
         [self selectButton:YES withValue:value];
         [_selectedOptions addObject:value];
     }
 }
 
-- (void)select:(id)value {
-    [self select:YES value:value];
-}
-
-- (id)selectedOption {
-    return _selectedOptions.firstObject;
+- (void)optionStateChanged:(id)option {
+    PAYFormButton *formButton = self.options[option];
+    [self select:!formButton.selected value:option];
 }
 
 - (void)selectButton:(BOOL)select withValue:(id)value {

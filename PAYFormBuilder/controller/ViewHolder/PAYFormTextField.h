@@ -9,14 +9,6 @@
 #import "PAYFormField.h"
 
 
-extern NSString *const PAYFormTextFieldErrorDomain;
-
-typedef enum {
-    PAYFormTextFieldBelowMinLength = 2,
-    PAYFormTextFieldAboveMaxLength = 3,
-} PAYFormTextFieldErrorCodes;
-
-
 @interface PAYFormTextField : PAYFormField
 
 @property (nonatomic, assign) NSUInteger minTextLength;
