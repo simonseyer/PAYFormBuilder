@@ -12,6 +12,7 @@
 #import <PAYFormButtonGroup.h>
 #import <PAYFormMultiLineTextField.h>
 #import <PAYFormDefaultErrorHandler.h>
+#import <PAYFormSwitch.h>
 
 @interface PAYMainViewController ()
 
@@ -19,6 +20,7 @@
 @property (nonatomic, retain) PAYFormSingleLineTextField *postalCodeTextField;
 @property (nonatomic, retain) PAYFormSingleLineTextField *cityTextField;
 @property (nonatomic, retain) PAYFormButtonGroup *countryButtonGroup;
+@property (nonatomic, retain) PAYFormSwitch *formSwitch;
 
 @end
 
@@ -56,6 +58,10 @@
                 [buttonGroupBuilder select:@"usa"];
             }];
             [self.countryButtonGroup select:YES value:@"usa"];
+            
+            self.formSwitch = [sectionBuilder addSwitchWithName:@"Test" configureBlock:^(PAYFormSwitch *formSwitch) {
+                formSwitch.isRequired = YES;
+            }];
         }];
         
         
@@ -64,6 +70,7 @@
         tableBuilder.selectFirstField = YES;
         tableBuilder.formSuccessBlock = ^{
             NSLog(@"%@", self.countryButtonGroup.values);
+            NSLog(@"%@", self.formSwitch.value ? @"YES" : @"NO");
             [self performSegueWithIdentifier:@"next" sender:self];
         };
     }];
