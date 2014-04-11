@@ -10,6 +10,8 @@
 #import <PAYFormSingleLineTextField.h>
 #import <PAYFormButton.h>
 #import <PAYFormButtonGroup.h>
+#import <PAYFormMultiLineTextField.h>
+#import <PAYFormDefaultErrorHandler.h>
 
 @interface PAYMainViewController ()
 
@@ -24,6 +26,8 @@
 
 
 - (void)loadStructure {
+    [PAYFormDefaultErrorHandler setTitle:@"Missing" message:@"Field %@ is missing" forErrorCode:PAYFormMissingErrorCode];
+    
     [self buildTableWithBlock:^(id<PAYTableBuilder> tableBuilder){
         [tableBuilder addSectionWithName:@"Adress" labelStyle:PAYFormTableLabelStyleSimple contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
             
@@ -51,11 +55,15 @@
                 }
                 [buttonGroupBuilder select:@"usa"];
             }];
+            [self.countryButtonGroup select:YES value:@"usa"];
         }];
+        
+        
         
         tableBuilder.finishOnLastField = YES;
         tableBuilder.selectFirstField = YES;
         tableBuilder.formSuccessBlock = ^{
+            NSLog(@"%@", self.countryButtonGroup.values);
             [self performSegueWithIdentifier:@"next" sender:self];
         };
     }];
