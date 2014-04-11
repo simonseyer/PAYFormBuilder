@@ -19,6 +19,5 @@
 @property (nonatomic, assign) BOOL selected;
 
 - (void)setEnabled:(BOOL)enabled;
-- (void)requestSelection;
 
 @end

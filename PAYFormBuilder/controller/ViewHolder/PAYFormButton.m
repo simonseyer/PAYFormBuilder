@@ -33,10 +33,6 @@
     }
 }
 
-- (void)requestSelection {
-    self.section.selectedButton = self;
-}
-
 - (void)setSelected:(BOOL)selected {
     _selected = selected;
     if (selected) {

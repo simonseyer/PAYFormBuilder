@@ -19,8 +19,7 @@
 
 @property (nonatomic, retain) PAYFormHeader *header;
 @property (nonatomic, retain) NSMutableArray *views;
-@property (nonatomic, retain) NSMutableArray *selectionButtonList;
-@property (nonatomic, retain) PAYFormButton *selectedButton;
+@property (nonatomic, retain) NSMutableArray *attachedObjects;
 
 @property (nonatomic, weak) PAYFormField *firstFormField;
 @property (nonatomic, copy) PAYFormSectionCompletionBlock completionBlock;

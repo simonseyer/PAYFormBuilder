@@ -36,10 +36,12 @@ typedef enum {
 @class PAYFormSingleLineTextField;
 @class PAYFormMultiLineTextField;
 @class PAYFormButton;
+@class PAYFormButtonGroup;
 @class PAYFormHeader;
 @class PAYFormView;
 @protocol PAYTableBuilder;
 @protocol PAYSectionBuilder;
+@protocol PAYButtonGroupBuilder;
 @protocol PAYFormCell;
 
 
@@ -97,7 +99,21 @@ extern NSInteger const PAYFormBuilderErrorCode;
 - (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormSelectionBlock)selectionBlock;
 - (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormSelectionBlock)selectionBlock configureBlock:(void(^)(PAYFormButton *))configureBlock;
 
+- (PAYFormButtonGroup *)addButtonGroupWithMutliSelection:(BOOL)multiSelection contentBlock:(void(^)(id<PAYButtonGroupBuilder>))contentBlock;
+
 - (void)addView:(void(^)(PAYFormView *))configureBlock;
+
+@end
+
+@protocol PAYButtonGroupBuilder <NSObject>
+
+@optional
+- (void)select:(id)value;
+
+@required
+- (PAYFormButton *)addOption:(id)value withText:(NSString *)text;
+- (PAYFormButton *)addOption:(id)value withText:(NSString *)text icon:(UIImage *)icon;
+- (PAYFormButton *)addOption:(id)value withText:(NSString *)text icon:(UIImage *)icon selectionBlock:(PAYFormSelectionBlock)selectionBlock;
 
 @end
 

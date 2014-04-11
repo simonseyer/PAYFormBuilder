@@ -17,7 +17,7 @@
     self = [super init];
     if (self) {
         self.views = [NSMutableArray new];
-        self.selectionButtonList = [NSMutableArray new];
+        self.attachedObjects = [NSMutableArray new];
     }
     return self;
 }
@@ -77,26 +77,6 @@
             if (error) {
                 return error;
             }
-        }
-    }
-    return nil;
-}
-
-#pragma mark - Selection logic
-
-- (void)setSelectedButton:(PAYFormButton *)selectedButton {
-    if (selectedButton.style == PAYFormButtonStyleSelection || selectedButton.style == PAYFormButtonStyleIconSelection) {
-        for (PAYFormButton *formButton in self.selectionButtonList) {
-            formButton.selected = NO;
-        }
-        selectedButton.selected = YES;
-    }
-}
-
-- (PAYFormButton *)selectdButton {
-    for (PAYFormButton *formButton in self.selectionButtonList) {
-        if(formButton.selected){
-            return formButton;
         }
     }
     return nil;

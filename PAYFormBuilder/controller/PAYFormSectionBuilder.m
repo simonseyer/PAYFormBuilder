@@ -11,7 +11,8 @@
 #import "PAYFormMultiLineTextField.h"
 #import "PAYFormButton.h"
 #import "PAYFormView.h"
-
+#import "PAYFormButtonGroup.h"
+#import "PAYFormButtonGroupBuilder.h"
 
 @implementation PAYFormSectionBuilder
 
@@ -228,19 +229,7 @@
         formButton.enabled = NO;
     }
     
-    if (style == PAYFormButtonStyleSelection || style == PAYFormButtonStyleIconSelection){
-        [self.section.selectionButtonList addObject:formButton];
-        
-        __block PAYFormSelectionBlock selectionBlockForBlock = selectionBlock;
-        formButton.selectionBlock = ^(PAYFormView *formView){
-            PAYFormButton *touchedFormButton = (PAYFormButton *)formView;
-            formView.section.selectedButton = touchedFormButton;
-            
-            selectionBlockForBlock(formView);
-        };
-    } else {
-        formButton.selectionBlock = selectionBlock;
-    }
+    formButton.selectionBlock = selectionBlock;
     
     if (configureBlock){
         configureBlock(formButton);
@@ -249,6 +238,22 @@
     [self.section.views addObject:formButton];
     
     return formButton;
+}
+
+- (PAYFormButtonGroup *)addButtonGroupWithMutliSelection:(BOOL)multiSelection contentBlock:(void(^)(id<PAYButtonGroupBuilder>))contentBlock {
+    PAYFormButtonGroup *buttonGroup = [PAYFormButtonGroup new];
+    buttonGroup.section = self.section;
+    buttonGroup.multiSelection = multiSelection;
+    [self.section.attachedObjects addObject:buttonGroup];
+    
+    if (contentBlock) {
+        PAYFormButtonGroupBuilder *buttonGroupBuilder = [PAYFormButtonGroupBuilder new];
+        buttonGroupBuilder.buttonGroup = buttonGroup;
+        buttonGroupBuilder.sectionBuilder = self;
+        contentBlock(buttonGroupBuilder);
+    }
+    
+    return buttonGroup;
 }
 
 - (void)addView:(void(^)(PAYFormView *))configureBlock {
