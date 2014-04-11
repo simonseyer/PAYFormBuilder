@@ -14,4 +14,8 @@
 @property (nonatomic, retain) UITextField *textField;
 @property (nonatomic, weak) id<UITextFieldDelegate> delegate;
 
+@property (nonatomic, assign) BOOL expanding;
+@property (nonatomic, assign) CGRect defaultFrame;
+@property (nonatomic, assign) CGRect expandedFrame;
+
 @end

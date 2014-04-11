@@ -154,4 +154,42 @@
     return YES;
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if (self.expanding) {
+        [self expandTextfield:YES];
+    }
+    
+    // Forward message
+    if (_messageInterceptor.receiver && [_messageInterceptor.receiver respondsToSelector:_cmd]) {
+        return [_messageInterceptor.receiver textFieldShouldBeginEditing:textField];
+    }
+    
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    if (self.expanding) {
+        [self expandTextfield:NO];
+    }
+    
+    // Forward message
+    if (_messageInterceptor.receiver && [_messageInterceptor.receiver respondsToSelector:_cmd]) {
+        return [_messageInterceptor.receiver textFieldShouldEndEditing:textField];
+    }
+    
+    return YES;
+}
+
+- (void)expandTextfield:(BOOL)expand {
+    [UIView animateWithDuration:0.5f
+                          delay:0.0f
+         usingSpringWithDamping:500.0f
+          initialSpringVelocity:0.0f
+                        options:(UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveLinear)
+                     animations:^{
+                         self.textField.frame = expand ? self.expandedFrame : self.defaultFrame;
+                         self.label.alpha     = expand ? 0 : 1;
+                     } completion:nil];
+}
+
 @end

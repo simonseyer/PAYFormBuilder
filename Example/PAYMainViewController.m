@@ -36,6 +36,7 @@
             self.streetTextField = [sectionBuilder addFieldWithName:@"Street" placeholder:@"your street"
                                                      configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                          formField.isRequired = YES;
+                                                         formField.expanding  = YES;
                                                      }];
             
             self.postalCodeTextField = [sectionBuilder addFieldWithName:@"Postal code" placeholder:@"your postal code"

@@ -73,15 +73,20 @@
     fieldFrame.size.width = self.defaultBounds.size.width - fieldFrame.origin.x - horizontalSpacing;
     textField.frame       = fieldFrame;
     
+    CGRect expandedFieldFrame = label.frame;
+    expandedFieldFrame.size.width = self.defaultBounds.size.width - expandedFieldFrame.origin.x - horizontalSpacing;
+    
     UITableViewCell *cell = self.defaultCell;
     [cell addSubview:label];
     [cell addSubview:textField];
     
     PAYFormSingleLineTextField *formField = [PAYFormSingleLineTextField new];
-    formField.section      = self.section;
-    formField.cell         = cell;
-    formField.label        = label;
-    formField.textField    = textField;
+    formField.section       = self.section;
+    formField.cell          = cell;
+    formField.label         = label;
+    formField.textField     = textField;
+    formField.defaultFrame  = textField.frame;
+    formField.expandedFrame = expandedFieldFrame;
     
     if (configureBlock) {
         configureBlock(formField);
