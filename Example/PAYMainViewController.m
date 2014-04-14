@@ -13,6 +13,7 @@
 #import <PAYFormMultiLineTextField.h>
 #import <PAYFormDefaultErrorHandler.h>
 #import <PAYFormSwitch.h>
+#import <PAYFormView+PAYFormDefaultErrorHandler.h>
 
 @interface PAYMainViewController ()
 
@@ -28,7 +29,8 @@
 
 
 - (void)loadStructure {
-    [PAYFormDefaultErrorHandler setTitle:@"Missing" message:@"Field %@ is missing" forErrorCode:PAYFormMissingErrorCode];
+    [PAYFormDefaultErrorHandler setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"Missing" message:@"Field %@ is missing"]
+                                   forErrorCode:PAYFormMissingErrorCode];
     
     [self buildTableWithBlock:^(id<PAYTableBuilder> tableBuilder){
         [tableBuilder addSectionWithName:@"Adress" labelStyle:PAYFormTableLabelStyleSimple contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
@@ -62,6 +64,9 @@
             
             self.formSwitch = [sectionBuilder addSwitchWithName:@"Test" configureBlock:^(PAYFormSwitch *formSwitch) {
                 formSwitch.isRequired = YES;
+                
+                [formSwitch setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"Accept AGB" message:@"Please accept the AGB to continue"]
+                               forErrorCode:PAYFormMissingErrorCode];
             }];
         }];
         
