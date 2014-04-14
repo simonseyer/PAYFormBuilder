@@ -10,6 +10,9 @@
 #import "PAYMessageInterceptor.h"
 
 
+static const NSUInteger RPFormSingleLineTextFieldDefaultMaxTextLength = 255;
+static const NSUInteger RPFormSingleLineTextFieldPasswordMaxTextLength = 128;
+
 
 @interface PAYFormSingleLineTextField () <UITextFieldDelegate>
 
@@ -25,6 +28,7 @@
     self = [super init];
     if (self) {
         _messageInterceptor = [[PAYMessageInterceptor alloc] initWithMiddleMan:self];
+        self.maxTextLength = RPFormSingleLineTextFieldDefaultMaxTextLength;
     }
     return self;
 }
@@ -102,6 +106,15 @@
         self.textField.textColor = defaultColor;
         self.label.textColor     = defaultColor;
     }
+}
+
+- (void)activateSecureInput {
+    self.maxTextLength = RPFormSingleLineTextFieldPasswordMaxTextLength;
+    
+    self.textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    self.textField.autocorrectionType     = UITextAutocorrectionTypeNo;
+    self.textField.spellCheckingType      = UITextSpellCheckingTypeNo;
+    self.textField.secureTextEntry        = YES;
 }
 
 #pragma mark - UITextFieldDelegate's implementation

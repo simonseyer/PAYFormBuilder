@@ -18,4 +18,6 @@
 @property (nonatomic, assign) CGRect defaultFrame;
 @property (nonatomic, assign) CGRect expandedFrame;
 
+- (void)activateSecureInput;
+
 @end
