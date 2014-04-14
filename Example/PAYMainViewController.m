@@ -33,6 +33,19 @@
                                    forErrorCode:PAYFormMissingErrorCode];
     
     [self buildTableWithBlock:^(id<PAYTableBuilder> tableBuilder){
+        [tableBuilder addSectionWithName:nil labelStyle:PAYFormTableLabelStyleNone contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+            
+            [sectionBuilder addFieldWithName:@"Username" placeholder:@"your username"
+                                                     configureBlock:^(PAYFormSingleLineTextField *formField) {
+                                                         formField.isRequired = YES;
+                                                     }];
+            
+            [sectionBuilder addFieldWithName:@"Password" placeholder:@"your password"
+                                                         configureBlock:^(PAYFormSingleLineTextField *formField) {
+                                                             [formField activateSecureInput];
+                                                         }];
+        }];
+        
         [tableBuilder addSectionWithName:@"Adress" labelStyle:PAYFormTableLabelStyleSimple contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
             
             self.streetTextField = [sectionBuilder addFieldWithName:@"Street" placeholder:@"your street"
