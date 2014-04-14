@@ -9,22 +9,31 @@
 #import <Foundation/Foundation.h>
 #import "PAYFormBuilder.h"
 
+
+typedef NSString *(^PAYFormErrorMessageBlock)(id<PAYValidatableFormCell> formCell);
+
+
 @interface PAYFormErrorMessage : NSObject
 
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *message;
+@property (nonatomic, assign) PAYFormErrorMessageBlock titleBlock;
+@property (nonatomic, assign) PAYFormErrorMessageBlock messageBlock;
 
 + (instancetype)errorMessageWithTitle:(NSString *)title message:(NSString *)message;
 + (instancetype)errorMessageWithError:(NSError *)error;
++ (instancetype)errorMessageWithTitleBlock:(PAYFormErrorMessageBlock)titleBlock messageBlock:(PAYFormErrorMessageBlock)messageBlock;
+
+- (NSString *)titleForField:(id<PAYValidatableFormCell>)field;
+- (NSString *)messageForField:(id<PAYValidatableFormCell>)field;
 
 @end
 
-typedef PAYFormErrorMessage *(^PAYFormErrorMessageBlock)(id<PAYValidatableFormCell> formCell);
+
 
 @interface PAYFormDefaultErrorHandler : NSObject
 
-+ (void)setTitle:(NSString *)title message:(NSString *)message forErrorCode:(NSUInteger)code;
-+ (void)setErrorMessageBlock:(PAYFormErrorMessageBlock)messageBlock forErrorCode:(NSUInteger)code;
++ (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code;
 + (PAYFormTableFailBlock)failBlock;
 
 @end

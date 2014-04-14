@@ -10,6 +10,7 @@
 #import <BlocksKit+UIKit.h>
 #import "NSError+PAYComfort.h"
 #import "PAYFormField.h"
+#import "PAYFormView+PAYFormDefaultErrorHandler.h"
 
 @implementation PAYFormErrorMessage
 
@@ -27,14 +28,31 @@
     return [self errorMessageWithTitle:error.title message:error.message];
 }
 
-- (void)replacePlaceholder:(NSString *)replaceString {
-    if ([self.title rangeOfString:@"%@"].location != NSNotFound) {
-        self.title = [NSString stringWithFormat:self.title, replaceString];
++ (instancetype)errorMessageWithTitleBlock:(PAYFormErrorMessageBlock)titleBlock messageBlock:(PAYFormErrorMessageBlock)messageBlock {
+    PAYFormErrorMessage *errorMessage = [PAYFormErrorMessage new];
+    errorMessage.titleBlock = titleBlock;
+    errorMessage.messageBlock = messageBlock;
+    return errorMessage;
+}
+
+- (NSString *)titleForField:(id<PAYValidatableFormCell>)field {
+    if (self.titleBlock) {
+        self.title = self.titleBlock(field);
     }
-    
-    if ([self.message rangeOfString:@"%@"].location != NSNotFound) {
-        self.message = [NSString stringWithFormat:self.message, replaceString];
+    if (field && [self.title rangeOfString:@"%@"].location != NSNotFound) {
+        return [NSString stringWithFormat:self.title, field.name];
     }
+    return self.title;
+}
+
+- (NSString *)messageForField:(id<PAYValidatableFormCell>)field {
+    if (self.messageBlock) {
+        self.message = self.messageBlock(field);
+    }
+    if (field && [self.message rangeOfString:@"%@"].location != NSNotFound) {
+        return [NSString stringWithFormat:self.message, field.name];
+    }
+    return self.message;
 }
 
 @end
@@ -42,17 +60,13 @@
 
 @implementation PAYFormDefaultErrorHandler
 
-static NSMutableDictionary *texts;
+static NSMutableDictionary *errorMessages;
 + (void)initialize {
-    texts = [NSMutableDictionary new];
+    errorMessages = [NSMutableDictionary new];
 }
 
-+ (void)setTitle:(NSString *)title message:(NSString *)message forErrorCode:(NSUInteger)code {
-    [texts setObject:[PAYFormErrorMessage errorMessageWithTitle:title message:message] forKey:[NSNumber numberWithInt:code]];
-}
-
-+ (void)setErrorMessageBlock:(PAYFormErrorMessageBlock)messageBlock forErrorCode:(NSUInteger)code {
-    [texts setObject:messageBlock forKey:[NSNumber numberWithInt:code]];
++ (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code {
+    [errorMessages setObject:errorMessage forKey:[NSNumber numberWithInt:code]];
 }
 
 + (PAYFormTableFailBlock)failBlock {
@@ -60,16 +74,14 @@ static NSMutableDictionary *texts;
         
         PAYFormErrorMessage *errorMessage = [PAYFormErrorMessage errorMessageWithError:error];
         if (!errorMessage) {
-            id predefinedText = [texts objectForKey:[NSNumber numberWithInt:error.code]];
-            if ([predefinedText isKindOfClass:PAYFormErrorMessage.class]){
-                errorMessage = predefinedText;
-            } else {
-                errorMessage = ((PAYFormErrorMessageBlock)predefinedText)(error.field);
-            }
+            errorMessage = [error.field errorMessageForErrorCode:error.code];
         }
-        [errorMessage replacePlaceholder:error.field.name];
+        if (!errorMessage) {
+            errorMessage = [errorMessages objectForKey:[NSNumber numberWithInt:error.code]];
+        }
         
-        UIAlertView* alertView = [UIAlertView bk_alertViewWithTitle:errorMessage.title message:errorMessage.message];
+        UIAlertView* alertView = [UIAlertView bk_alertViewWithTitle:[errorMessage titleForField:error.field]
+                                                            message:[errorMessage messageForField:error.field]];
         [alertView addButtonWithTitle:@"OK"];
         
         alertView.bk_willDismissBlock = ^(UIAlertView * alertView, NSInteger state) {
