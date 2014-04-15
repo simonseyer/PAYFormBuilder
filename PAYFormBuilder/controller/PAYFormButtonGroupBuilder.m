@@ -12,24 +12,31 @@
 
 @implementation PAYFormButtonGroupBuilder
 
-- (PAYFormButton *)addOption:(id)value withText:(NSString *)text {
+- (PAYFormButton *)addOption:(id)value
+                    withText:(NSString *)text {
     return [self addOption:value withText:text icon:nil selectionBlock:nil];
 }
 
-- (PAYFormButton *)addOption:(id)value withText:(NSString *)text icon:(UIImage *)icon {
+- (PAYFormButton *)addOption:(id)value
+                    withText:(NSString *)text
+                        icon:(UIImage *)icon {
     return [self addOption:value withText:text icon:icon selectionBlock:nil];
 }
 
-- (PAYFormButton *)addOption:(id)value withText:(NSString *)text icon:(UIImage *)icon selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock {
+- (PAYFormButton *)addOption:(id)value
+                    withText:(NSString *)text
+                        icon:(UIImage *)icon
+              selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock {
     __block PAYFormButtonSelectionBlock selectionBlockForBlock = selectionBlock;
     __weak PAYFormButtonGroup *blockButtonGroup = self.buttonGroup;
+    PAYFormButtonStyle style = icon ? PAYFormButtonStyleIconSelection : PAYFormButtonStyleSelection;
     PAYFormButton *button = [self.sectionBuilder addButtonWithText:text
-                                                             style:icon ? PAYFormButtonStyleIconSelection : PAYFormButtonStyleSelection
-                                                    selectionBlock:^(PAYFormView *formView) {
+                                                             style:style
+                                                    selectionBlock:^(PAYFormButton *formButton) {
                                                         __strong PAYFormButtonGroup *buttonGroup = blockButtonGroup;
                                                         [buttonGroup optionStateChanged:value];
                                                         if (selectionBlockForBlock) {
-                                                            selectionBlockForBlock(formView);
+                                                            selectionBlockForBlock(formButton);
                                                         }
     }
                                                     configureBlock:^(PAYFormButton *formButton) {

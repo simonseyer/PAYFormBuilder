@@ -8,6 +8,7 @@
 
 #import "PAYFormMultiLineTextField.h"
 #import "PAYMessageInterceptor.h"
+#import <SZTextView/SZTextView.h>
 
 
 static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
@@ -78,11 +79,9 @@ static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
 
 - (void)styleForError:(NSError *)error {
     if (error) {
-        UIColor *redColor = [UIColor colorFromHex:0xFFFF3B30];
-        self.textView.textColor = redColor;
+        self.textView.textColor = self.defaultErrorColor;
     } else {
-        UIColor *defaultColor = [UIColor colorFromHex:0xFF323232];
-        self.textView.textColor = defaultColor;
+        self.textView.textColor = self.defaultTextColor;
     }
 }
 

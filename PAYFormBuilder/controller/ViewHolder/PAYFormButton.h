@@ -18,6 +18,4 @@
 @property (nonatomic, copy) PAYFormButtonSelectionBlock selectionBlock;
 @property (nonatomic, assign) BOOL selected;
 
-- (void)setEnabled:(BOOL)enabled;
-
 @end

@@ -98,13 +98,11 @@ static const NSUInteger RPFormSingleLineTextFieldPasswordMaxTextLength = 128;
 
 - (void)styleForError:(NSError *)error {
     if (error) {
-        UIColor *redColor = [UIColor colorFromHex:0xFFFF3B30];
-        self.textField.textColor = redColor;
-        self.label.textColor     = redColor;
+        self.textField.textColor = self.defaultErrorColor;
+        self.label.textColor     = self.defaultErrorColor;
     } else {
-        UIColor *defaultColor = [UIColor colorFromHex:0xFF323232];
-        self.textField.textColor = defaultColor;
-        self.label.textColor     = defaultColor;
+        self.textField.textColor = self.defaultTextColor;
+        self.label.textColor     = self.defaultTextColor;
     }
 }
 

@@ -12,18 +12,16 @@
 #import "PAYFormHeader.h"
 #import "PAYTextLabel.h"
 
-
-const CGFloat PAYFormTableBuilderLabelStyleNoneHeight  = 32.0;
-const CGFloat PAYFormTableBuilderLabelStyleEmptyHeight = 36.0;
-const CGFloat PAYFormTableBuilderLabelBottomMargin     = 8.0;
-
-
 @implementation PAYFormTableBuilder
 
 - (id)init {
     self = [super init];
     if (self) {
         self.table = [PAYFormTable new];
+        
+        self.labelStyleNoneDefaultHeight = 32.0f;
+        self.labelStylEmptyDefaultHeight = 36.0f;
+        self.labelDefaultBottomMargin    = 8.0f;
     }
     return self;
 }
@@ -47,7 +45,10 @@ const CGFloat PAYFormTableBuilderLabelBottomMargin     = 8.0;
 
 - (PAYFormSection *)addSectionWithHeaderBlock:(void(^)(PAYFormHeader *))headerBlock
                                  contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
-    return [self addSectionWithName:nil labelStyle:PAYFormTableLabelStyleEmpty headerBlock:headerBlock contentBlock:contentBlock];
+    return [self addSectionWithName:nil
+                         labelStyle:PAYFormTableLabelStyleEmpty
+                        headerBlock:headerBlock
+                       contentBlock:contentBlock];
 }
 
 - (PAYFormSection *)addSectionWithName:(NSString *)name
@@ -86,9 +87,9 @@ const CGFloat PAYFormTableBuilderLabelBottomMargin     = 8.0;
     PAYTextLabel *textLabel = nil;
     CGRect headerRect = headerView.frame;
     if (style == PAYFormTableLabelStyleNone) {
-        headerRect.size.height = PAYFormTableBuilderLabelStyleNoneHeight;
+        headerRect.size.height = self.labelStyleNoneDefaultHeight;
     } else if (style == PAYFormTableLabelStyleEmpty) {
-        headerRect.size.height = PAYFormTableBuilderLabelStyleEmptyHeight;
+        headerRect.size.height = self.labelStylEmptyDefaultHeight;
     } else {
         textLabel       = [[PAYTextLabel alloc] initWithFrame:self.defaultBounds];
         textLabel.style = style;
@@ -96,7 +97,7 @@ const CGFloat PAYFormTableBuilderLabelBottomMargin     = 8.0;
         [textLabel sizeToFit];
         [headerView addSubview:textLabel];
         
-        headerRect.size.height = CGRectGetMaxY(textLabel.frame) + PAYFormTableBuilderLabelBottomMargin;
+        headerRect.size.height = CGRectGetMaxY(textLabel.frame) + self.labelDefaultBottomMargin;
     }
     headerView.frame       = headerRect;
 

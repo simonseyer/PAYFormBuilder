@@ -37,7 +37,8 @@
 
 - (NSError *)validate {
     if (self.isRequired && _selectedOptions.count == 0) {
-        return [NSError validationErrorWithCode:PAYFormMissingErrorCode control:self];
+        return [NSError validationErrorWithCode:PAYFormMissingErrorCode
+                                        control:self];
     }
     return nil;
 }

@@ -15,11 +15,9 @@
 
 -(void)styleForError:(NSError *)error {
     if (error) {
-        UIColor *redColor = [UIColor colorFromHex:0xFFFF3B30];
-        self.label.textColor = redColor;
+        self.label.textColor = self.defaultErrorColor;
     } else {
-        UIColor *defaultColor = [UIColor colorFromHex:0xFF323232];
-        self.label.textColor = defaultColor;
+        self.label.textColor = self.defaultTextColor;
     }
 }
 

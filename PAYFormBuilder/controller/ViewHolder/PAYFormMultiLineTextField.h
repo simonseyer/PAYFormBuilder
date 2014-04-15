@@ -8,10 +8,11 @@
 
 #import "PAYFormTextField.h"
 
+@class SZTextView;
 
 @interface PAYFormMultiLineTextField : PAYFormTextField
 
-@property (nonatomic, retain) UITextView *textView;
+@property (nonatomic, retain) SZTextView *textView;
 @property (nonatomic, weak) id<UITextViewDelegate> delegate;
 
 @property (nonatomic, assign) CGFloat defaultHeight;

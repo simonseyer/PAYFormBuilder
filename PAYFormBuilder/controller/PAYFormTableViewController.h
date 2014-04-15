@@ -12,13 +12,14 @@
 
 @interface PAYFormTableViewController : UITableViewController
 
+@property (nonatomic, assign) CGFloat defaultRowHeight    UI_APPEARANCE_SELECTOR;
+@property (nonatomic, assign) CGFloat defaultFooterHeight UI_APPEARANCE_SELECTOR;
+
+
 @property (nonatomic, retain) PAYFormTable *table;
 
-
-- (void)buildTableWithBlock:(void (^)(id<PAYTableBuilder>))block;
-
 - (void)initForm;
-- (void)loadStructure;
+- (void)loadStructure:(id<PAYTableBuilder>)tableBuilder;
 - (void)reloadStructure;
 - (IBAction)onDone:(id)sender;
 
