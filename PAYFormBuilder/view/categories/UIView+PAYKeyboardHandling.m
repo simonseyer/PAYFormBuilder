@@ -1,9 +1,9 @@
 //
 //  UIView+PAYKeyboardHandling.m
-//  paij
+//  PAYFormBuilder
 //
 //  Created by Stephan Michels on 21.03.13.
-//  Copyright (c) 2013 redpixtec. GmbH. All rights reserved.
+//  Copyright (c) 2014 Paij. All rights reserved.
 //
 
 #import "UIView+PAYKeyboardHandling.h"

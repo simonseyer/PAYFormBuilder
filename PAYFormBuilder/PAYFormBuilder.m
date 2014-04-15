@@ -1,9 +1,9 @@
 //
 //  PAYFormView.m
-//  paij
+//  PAYFormBuilder
 //
 //  Created by Simon Seyer on 05.11.13.
-//  Copyright (c) 2013 redpixtec. GmbH. All rights reserved.
+//  Copyright (c) 2014 Paij. All rights reserved.
 //
 
 #import "PAYFormBuilder.h"

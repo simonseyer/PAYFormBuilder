@@ -1,9 +1,9 @@
 //
 //  PAYFormTable.m
-//  paij
+//  PAYFormBuilder
 //
 //  Created by Marius Rackwitz on 18.11.13.
-//  Copyright (c) 2013 redpixtec. GmbH. All rights reserved.
+//  Copyright (c) 2014 Paij. All rights reserved.
 //
 
 #import "PAYFormTable.h"

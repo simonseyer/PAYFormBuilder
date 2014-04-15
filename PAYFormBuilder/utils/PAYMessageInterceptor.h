@@ -3,7 +3,7 @@
 //  MRProgress
 //
 //  Created by Marius Rackwitz on 10.10.13.
-//  Copyright (c) 2013 Marius Rackwitz. All rights reserved.
+//  Copyright (c) 2014 Paij. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
