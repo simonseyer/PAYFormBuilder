@@ -69,6 +69,15 @@ static NSMutableDictionary *errorMessages;
     [errorMessages setObject:errorMessage forKey:[NSNumber numberWithInt:code]];
 }
 
+static NSString *buttonText;
++ (void)setButtonText:(NSString *)text {
+    buttonText = text;
+}
+
++ (NSString *)buttonText {
+    return buttonText;
+}
+
 + (PAYFormTableFailBlock)failBlock {
     return ^BOOL(NSError *error) {
         
@@ -82,7 +91,7 @@ static NSMutableDictionary *errorMessages;
         
         UIAlertView* alertView = [UIAlertView bk_alertViewWithTitle:[errorMessage titleForField:error.field]
                                                             message:[errorMessage messageForField:error.field]];
-        [alertView addButtonWithTitle:@"OK"];
+        [alertView addButtonWithTitle:buttonText];
         
         alertView.bk_willDismissBlock = ^(UIAlertView * alertView, NSInteger state) {
             if ([error.field isKindOfClass:PAYFormField.class]) {

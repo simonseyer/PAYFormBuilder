@@ -36,4 +36,7 @@ typedef NSString *(^PAYFormErrorMessageBlock)(id<PAYValidatableFormCell> formCel
 + (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code;
 + (PAYFormTableFailBlock)failBlock;
 
++ (void)setButtonText:(NSString *)text;
++ (NSString *)buttonText;
+
 @end
