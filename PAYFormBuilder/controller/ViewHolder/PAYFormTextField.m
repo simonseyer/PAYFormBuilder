@@ -37,11 +37,11 @@
     NSString *cleanedValue = self.cleanedValue;
     
     if (self.maxTextLength > 0 && cleanedValue.length > self.maxTextLength) {
-        return [NSError validationErrorWithCode:PAYFormTextFieldAboveMaxLength control:self];
+        return [NSError validationErrorWithCode:PAYFormTextFieldAboveMaxLengthErrorCode control:self];
     }
     
     if (self.minTextLength > 0 && cleanedValue.length < self.minTextLength) {
-        return [NSError validationErrorWithCode:PAYFormTextFieldBelowMinLength control:self];
+        return [NSError validationErrorWithCode:PAYFormTextFieldBelowMinLengthErrorCode control:self];
     }
     
     return nil;

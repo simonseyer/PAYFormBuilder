@@ -129,7 +129,7 @@ static const NSUInteger RPFormSingleLineTextFieldPasswordMaxTextLength = 128;
         NSError *error = [self validate];
         
         // Suppress error with code PAYFormTextFieldBelowMinLength while still entering text
-        if ([error.domain isEqualToString:PAYFormFieldErrorDomain] && error.code == PAYFormTextFieldBelowMinLength) {
+        if ([error.domain isEqualToString:PAYFormFieldErrorDomain] && error.code == PAYFormTextFieldBelowMinLengthErrorCode) {
             error = nil;
         }
         [self styleForError:error];

@@ -62,8 +62,8 @@ extern NSString * const PAYFormErrorDomain;
 typedef enum {
     PAYFormDefaultErrorCode,
     PAYFormMissingErrorCode,
-    PAYFormTextFieldAboveMaxLength,
-    PAYFormTextFieldBelowMinLength
+    PAYFormTextFieldAboveMaxLengthErrorCode,
+    PAYFormTextFieldBelowMinLengthErrorCode
 } PAYFormErrorCodes;
 
 @protocol PAYTableBuilder <NSObject>
