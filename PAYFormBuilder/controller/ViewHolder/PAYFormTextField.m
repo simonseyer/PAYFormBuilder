@@ -68,7 +68,12 @@
     return ^(PAYFormField *field, NSString *text){
         NSMutableArray* numberGroups = [NSMutableArray new];
         int groupSize=0, groupIndex=0;
+        text = [text stringByReplacingOccurrencesOfString:separator withString:@""];
         for (int i=0; i<text.length; i+=groupSize) {
+            if (groupIndex + 1 == groupSizes.count) {
+                [numberGroups addObject:[text substringWithRange:NSMakeRange(i, text.length-i)]];
+                break;
+            }
             groupSize = [groupSizes[groupIndex++] intValue];
             [numberGroups addObject:[text substringWithRange:NSMakeRange(i, MIN(groupSize, text.length-i))]];
         }
