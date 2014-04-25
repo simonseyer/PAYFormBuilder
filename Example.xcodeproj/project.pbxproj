@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		370BE0A0190A9E9900954747 /* PAYControlsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370BE09F190A9E9900954747 /* PAYControlsViewController.m */; };
+		370BE0A5190AADD900954747 /* PAYFieldsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370BE0A4190AADD900954747 /* PAYFieldsViewController.m */; };
+		370BE0A8190AB4EF00954747 /* PAYSectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370BE0A7190AB4EF00954747 /* PAYSectionsViewController.m */; };
+		370BE0AB190AB82200954747 /* PAYValidationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370BE0AA190AB82200954747 /* PAYValidationsViewController.m */; };
+		370BE0AE190AB85A00954747 /* PAYCustomizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370BE0AD190AB85A00954747 /* PAYCustomizationViewController.m */; };
 		372EF9B218F460E8004D9D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372EF9B118F460E8004D9D78 /* Images.xcassets */; };
 		37783E2F18F4297900C53D54 /* libPAYFormBuilder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37783E2B18F4291200C53D54 /* libPAYFormBuilder.a */; };
 		37906D3818F4349F00FC3CC8 /* Main_Iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37906D3718F4349F00FC3CC8 /* Main_Iphone.storyboard */; };
@@ -50,6 +55,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		370BE09E190A9E9900954747 /* PAYControlsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYControlsViewController.h; sourceTree = "<group>"; };
+		370BE09F190A9E9900954747 /* PAYControlsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYControlsViewController.m; sourceTree = "<group>"; };
+		370BE0A3190AADD900954747 /* PAYFieldsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFieldsViewController.h; sourceTree = "<group>"; };
+		370BE0A4190AADD900954747 /* PAYFieldsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFieldsViewController.m; sourceTree = "<group>"; };
+		370BE0A6190AB4EF00954747 /* PAYSectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYSectionsViewController.h; sourceTree = "<group>"; };
+		370BE0A7190AB4EF00954747 /* PAYSectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYSectionsViewController.m; sourceTree = "<group>"; };
+		370BE0A9190AB82200954747 /* PAYValidationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYValidationsViewController.h; sourceTree = "<group>"; };
+		370BE0AA190AB82200954747 /* PAYValidationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYValidationsViewController.m; sourceTree = "<group>"; };
+		370BE0AC190AB85A00954747 /* PAYCustomizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYCustomizationViewController.h; sourceTree = "<group>"; };
+		370BE0AD190AB85A00954747 /* PAYCustomizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYCustomizationViewController.m; sourceTree = "<group>"; };
 		372EF9B118F460E8004D9D78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		37783E2518F4291200C53D54 /* PAYFormBuilder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = PAYFormBuilder.xcodeproj; sourceTree = SOURCE_ROOT; };
 		37906D3718F4349F00FC3CC8 /* Main_Iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_Iphone.storyboard; sourceTree = "<group>"; };
@@ -149,6 +164,16 @@
 				3796524C18F427F00022151B /* PAYMainViewController.m */,
 				37906D3718F4349F00FC3CC8 /* Main_Iphone.storyboard */,
 				37783E2518F4291200C53D54 /* PAYFormBuilder.xcodeproj */,
+				370BE09E190A9E9900954747 /* PAYControlsViewController.h */,
+				370BE09F190A9E9900954747 /* PAYControlsViewController.m */,
+				370BE0A3190AADD900954747 /* PAYFieldsViewController.h */,
+				370BE0A4190AADD900954747 /* PAYFieldsViewController.m */,
+				370BE0A6190AB4EF00954747 /* PAYSectionsViewController.h */,
+				370BE0A7190AB4EF00954747 /* PAYSectionsViewController.m */,
+				370BE0A9190AB82200954747 /* PAYValidationsViewController.h */,
+				370BE0AA190AB82200954747 /* PAYValidationsViewController.m */,
+				370BE0AC190AB85A00954747 /* PAYCustomizationViewController.h */,
+				370BE0AD190AB85A00954747 /* PAYCustomizationViewController.m */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -296,8 +321,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3796521818F426A00022151B /* main.m in Sources */,
+				370BE0AB190AB82200954747 /* PAYValidationsViewController.m in Sources */,
+				370BE0AE190AB85A00954747 /* PAYCustomizationViewController.m in Sources */,
+				370BE0A0190A9E9900954747 /* PAYControlsViewController.m in Sources */,
 				3796521C18F426A00022151B /* PAYAppDelegate.m in Sources */,
+				370BE0A5190AADD900954747 /* PAYFieldsViewController.m in Sources */,
 				3796524D18F427F00022151B /* PAYMainViewController.m in Sources */,
+				370BE0A8190AB4EF00954747 /* PAYSectionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

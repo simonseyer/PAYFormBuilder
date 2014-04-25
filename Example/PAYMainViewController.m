@@ -29,9 +29,7 @@
 
 
 - (void)loadStructure:(id<PAYTableBuilder>)tableBuilder {
-    [PAYFormDefaultErrorHandler setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"Missing"
-                                                                                   message:@"Field %@ is missing"]
-                                   forErrorCode:PAYFormMissingErrorCode];
+    
     
     [tableBuilder addSectionWithName:nil
                           labelStyle:PAYFormTableLabelStyleNone
