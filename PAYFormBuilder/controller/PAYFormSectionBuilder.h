@@ -22,11 +22,11 @@
 @property (nonatomic, assign) CGFloat       defaultLeftIconMargin           UI_APPEARANCE_SELECTOR;
 @property (nonatomic, assign) NSUInteger    defaultFontSize                 UI_APPEARANCE_SELECTOR;
 @property (nonatomic, assign) NSUInteger    defaultTextViewLineCount        UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) UIColor      *defaultTextColor                UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) UIColor      *defaultPlaceholderColor         UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) UIColor      *defaultButtonPrimaryTextColor   UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) UIColor      *defaultButtonHilightTextColor   UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) UIColor      *defaultButtonDisabledTextColor  UI_APPEARANCE_SELECTOR;
+@property (nonatomic, retain) UIColor      *defaultTextColor                UI_APPEARANCE_SELECTOR;
+@property (nonatomic, retain) UIColor      *defaultPlaceholderColor         UI_APPEARANCE_SELECTOR;
+@property (nonatomic, retain) UIColor      *defaultButtonPrimaryTextColor   UI_APPEARANCE_SELECTOR;
+@property (nonatomic, retain) UIColor      *defaultButtonHilightTextColor   UI_APPEARANCE_SELECTOR;
+@property (nonatomic, retain) UIColor      *defaultButtonDisabledTextColor  UI_APPEARANCE_SELECTOR;
 
 
 @property (nonatomic, retain) PAYFormSection *section;

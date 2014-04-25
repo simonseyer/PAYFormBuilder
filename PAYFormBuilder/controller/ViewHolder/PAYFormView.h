@@ -13,8 +13,8 @@
 
 @interface PAYFormView : NSObject<PAYFormRow>
 
-@property (nonatomic, assign) UIColor *defaultErrorColor UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) UIColor *defaultTextColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, retain) UIColor *defaultErrorColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, retain) UIColor *defaultTextColor UI_APPEARANCE_SELECTOR;
 
 @property (nonatomic, retain) UITableViewCell *cell;
 @property (nonatomic, weak) PAYFormSection *section;
