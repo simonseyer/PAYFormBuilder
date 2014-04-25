@@ -35,12 +35,16 @@
 }
 
 - (PAYFormSection *)addSectionWithContentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
-    return [self addSectionWithContentBlock:contentBlock labelStyle:PAYFormTableLabelStyleEmpty];
+    return [self addSectionWithLabelStyle:PAYFormTableLabelStyleEmpty
+                             contentBlock:contentBlock];
 }
 
-- (PAYFormSection *)addSectionWithContentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock
-                                    labelStyle:(PAYFormTableLabelStyle)style {
-    return [self addSectionWithName:nil labelStyle:style headerBlock:NULL contentBlock:contentBlock];
+- (PAYFormSection *)addSectionWithLabelStyle:(PAYFormTableLabelStyle)style
+                                contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
+    return [self addSectionWithName:nil
+                         labelStyle:style
+                        headerBlock:nil
+                       contentBlock:contentBlock];
 }
 
 - (PAYFormSection *)addSectionWithHeaderBlock:(void(^)(PAYFormHeader *))headerBlock
@@ -52,9 +56,19 @@
 }
 
 - (PAYFormSection *)addSectionWithName:(NSString *)name
+                          contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
+    return [self addSectionWithName:name
+                         labelStyle:PAYFormTableLabelStyleSimple
+                       contentBlock:contentBlock];
+}
+
+- (PAYFormSection *)addSectionWithName:(NSString *)name
                             labelStyle:(PAYFormTableLabelStyle)style
                           contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
-    return [self addSectionWithName:name labelStyle:style headerBlock:NULL contentBlock:contentBlock];
+    return [self addSectionWithName:name
+                         labelStyle:style
+                        headerBlock:nil
+                       contentBlock:contentBlock];
 }
 
 - (PAYFormSection *)addSectionWithName:(NSString *)name
