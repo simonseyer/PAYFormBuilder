@@ -169,6 +169,18 @@
 
 - (PAYFormButton *)addButtonWithText:(NSString *)text
                                style:(PAYFormButtonStyle)style
+                                icon:(UIImage *)icon
+                      selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock {
+    return [self addButtonWithText:text
+                             style:style
+                    selectionBlock:selectionBlock
+                    configureBlock:^(PAYFormButton *formButton) {
+                        formButton.iconView.image = icon;
+    }];
+}
+
+- (PAYFormButton *)addButtonWithText:(NSString *)text
+                               style:(PAYFormButtonStyle)style
                       selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock
                       configureBlock:(void(^)(PAYFormButton *))configureBlock {
     UITableViewCell *cell = self.defaultCell;
