@@ -36,7 +36,7 @@
         self.defaultTextViewLineCount       = 3;
         self.defaultTextColor               = [UIColor colorFromHex:0xFF323232];
         self.defaultPlaceholderColor        = [UIColor colorFromHex:0xFFCACACA];
-        self.defaultButtonPrimaryTextColor  = [UIColor colorFromHex:0xFFCACACA];
+        self.defaultButtonPrimaryTextColor  = [UIColor colorFromHex:0xFF214889];
         self.defaultButtonHilightTextColor  = [UIColor colorFromHex:0xFFE87E18];
         self.defaultButtonDisabledTextColor = [UIColor colorFromHex:0xFF898989];
     }
