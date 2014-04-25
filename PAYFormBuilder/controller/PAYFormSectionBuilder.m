@@ -306,6 +306,11 @@
     switchFrame.origin.y   = (self.defaultBounds.size.height - switchFrame.size.height) / 2.0f;
     switchControl.frame    = switchFrame;
     
+    CGRect labelFrame = label.frame;
+    labelFrame.size.width  = switchFrame.origin.x;
+    labelFrame.size.width -= labelFrame.origin.x + self.defaultHorzMargin;
+    label.frame = labelFrame;
+    
     UITableViewCell *cell = self.defaultCell;
     [cell addSubview:label];
     [cell addSubview:switchControl];
