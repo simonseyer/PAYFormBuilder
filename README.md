@@ -211,6 +211,32 @@ To create a registration form is common task in app development, so it is here u
 @end
 ```
 
+Installation
+------------
+
+### Cocoapods
+
+[CocoaPods](http://www.cocoapods.org) is the recommended way to add PAYFormBuilder to your project.
+
+1. Add a pod entry for PAYFormBuilder to your *Podfile* `pod 'PAYFormBuilder'`.
+2. Install the pod(s) by running `pod install`.
+3. Include PAYFormBuilder wherever you need it with `#import "PAYFormBuilder.h"`.
+
+
+### Source files
+
+1. Add the repository as a git submodule to your git-tracked project.
+2. Drag and drop the **PAYFormBuilder** directory from the archive in your project navigator. Make sure to select *Copy items* when asked if you extracted the code archive outside of your project.
+3. Include PAYFormBuilder wherever you need any component with `#import "PAYFormBuilder.h"`.
+
+
+### Static library
+
+1. Drag and drop **PAYFormBuilder.xcodeproj** in your project navigator.
+2. Select your target and go to the *Build Phases* tab. In the *Link Binary With Libraries* section select the add button. On the sheet find and add libPAYFormBuilder.a.
+3. Add Target **PAYFormBuilder** to your *Target Dependencies* list.
+4. `import <PAYFormBuilder/PAYFormBuilder.h>` whereever you want to use the components. You could add it to your Prefix header file, if you want.
+
 Requirements
 ------------
 * iOS 7
@@ -218,8 +244,3 @@ Requirements
 * BlocksKit
 * libextobjc
 * SZTextView
-
-Installation
-------------
-ToDo
-
