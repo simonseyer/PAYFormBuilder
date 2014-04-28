@@ -1,0 +1,134 @@
+//
+//  PAYMainViewController.m
+//  Example
+//
+//  Created by Simon Seyer on 08.04.14.
+//  Copyright (c) 2014 Paij. All rights reserved.
+//
+
+#import "PAYRegistrationFormViewController.h"
+#import "PAYFormSingleLineTextField.h"
+#import "PAYFormButton.h"
+#import "PAYFormButtonGroup.h"
+#import "PAYFormMultiLineTextField.h"
+#import "PAYFormDefaultErrorHandler.h"
+#import "PAYFormSwitch.h"
+#import "PAYFormView+PAYFormDefaultErrorHandler.h"
+#import "NSError+PAYComfort.h"
+
+@interface PAYRegistrationFormViewController ()
+
+
+@property (nonatomic, retain) PAYFormSingleLineTextField *userNameField;
+@property (nonatomic, retain) PAYFormSingleLineTextField *passwordField1;
+@property (nonatomic, retain) PAYFormSingleLineTextField *passwordField2;
+
+@property (nonatomic, retain) PAYFormSingleLineTextField *streetTextField;
+@property (nonatomic, retain) PAYFormSingleLineTextField *postalCodeTextField;
+@property (nonatomic, retain) PAYFormSingleLineTextField *cityTextField;
+
+@property (nonatomic, retain) PAYFormButtonGroup *countryButtonGroup;
+@property (nonatomic, retain) PAYFormSwitch *formSwitch;
+
+@end
+
+@implementation PAYRegistrationFormViewController
+
+
+- (void)loadStructure:(id<PAYTableBuilder>)tableBuilder {
+    
+    
+    [tableBuilder addSectionWithName:nil
+                          labelStyle:PAYFormTableLabelStyleNone
+                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+        self.userNameField = [sectionBuilder addFieldWithName:@"Username" placeholder:@"your username"
+                                               configureBlock:^(PAYFormSingleLineTextField *formField) {
+                                                   formField.isRequired = YES;
+                                                   formField.minTextLength = 4;
+                                               }];
+        
+        self.passwordField1 = [sectionBuilder addFieldWithName:@"Password" placeholder:@"your password"
+                                                configureBlock:^(PAYFormSingleLineTextField *formField) {
+                                                    [formField activateSecureInput];
+                                                }];
+        self.passwordField2 = [sectionBuilder addFieldWithName:@"Password 2" placeholder:@"repeat your password"
+                                                configureBlock:^(PAYFormSingleLineTextField *formField) {
+                                                    [formField activateSecureInput];
+                                                }];
+    }];
+    
+    [tableBuilder addSectionWithName:@"Country"
+                          labelStyle:PAYFormTableLabelStyleSimple
+                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                            self.countryButtonGroup = [sectionBuilder addButtonGroupWithMutliSelection:YES
+                                contentBlock:^(id<PAYButtonGroupBuilder> buttonGroupBuilder) {
+                                    NSArray *countries = @[@[@"United States", @"usa"], @[@"Germany", @"de"], @[@"Spain", @"es"]];
+                                    for (NSArray *country in countries) {
+                                        [buttonGroupBuilder addOption:country[1] withText:country[0] icon:[UIImage imageNamed:country[1]]];
+                                    }
+                                    [buttonGroupBuilder select:@"usa"];
+                                }];
+                            [self.countryButtonGroup select:YES value:@"usa"];
+                        }];
+    
+    [tableBuilder addSectionWithName:@"Address"
+                          labelStyle:PAYFormTableLabelStyleSimple
+                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+        self.streetTextField = [sectionBuilder addFieldWithName:@"Street" placeholder:@"your street"
+                                                 configureBlock:^(PAYFormSingleLineTextField *formField) {
+                                                     formField.isRequired = YES;
+                                                     formField.expanding  = YES;
+                                                 }];
+        
+        self.postalCodeTextField = [sectionBuilder addFieldWithName:@"Postal code" placeholder:@"your postal code"
+                                                     configureBlock:^(PAYFormSingleLineTextField *formField) {
+                                                         formField.isRequired = YES;
+                                                         formField.cleanBlock = ^id(PAYFormField *formField, id value) {
+                                                             NSString *strValue = value;
+                                                             return [strValue stringByReplacingOccurrencesOfString:@" " withString:@""];
+                                                         };
+                                                     }];
+        self.cityTextField = [sectionBuilder addFieldWithName:@"City" placeholder:@"your city"
+                                               configureBlock:^(PAYFormSingleLineTextField *formField) {
+                                                   formField.isRequired = YES;
+                                               }];
+    }];
+    
+   
+    
+    [tableBuilder addSectionWithName:@"Terms and Conditions" contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+        self.formSwitch = [sectionBuilder addSwitchWithName:@"Accept"
+                                             configureBlock:^(PAYFormSwitch *formSwitch) {
+                                                 formSwitch.isRequired = YES;
+                                                 
+                                                 [formSwitch setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"Accept"
+                                                                                                                message:@"Please accept the terms and conditions to continue"]
+                                                                forErrorCode:PAYFormMissingErrorCode];
+                                             }];
+    }];
+    
+    tableBuilder.finishOnLastField = YES;
+    tableBuilder.selectFirstField = YES;
+    
+    tableBuilder.validationBlock =  ^NSError *{
+        if (![self.passwordField1.value isEqualToString:self.passwordField2.value]) {
+            return [NSError validationErrorWithTitle:@"Password wrong" message:@"Please enter the same password again" control:self.passwordField2];
+        }
+        return nil;
+    };
+    
+    tableBuilder.formSuccessBlock = ^{
+        NSString *msg = [NSString stringWithFormat:@"Well done, %@. Here your cleaned postal code: %@",
+                         self.userNameField.value, self.postalCodeTextField.cleanedValue];
+        
+        UIAlertView *alertView  = [[UIAlertView alloc]initWithTitle:@"Success"
+                                                            message:msg
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles: nil];
+        [alertView show];
+    };
+}
+
+
+@end

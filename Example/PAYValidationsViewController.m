@@ -17,6 +17,8 @@
 @implementation PAYValidationsViewController
 
 - (void)loadStructure:(id<PAYTableBuilder>)tableBuilder {
+    // See PAYAppDelegate for default error messages
+    
     [tableBuilder addSectionWithName:nil
                           labelStyle:PAYFormTableLabelStyleNone
                         contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
@@ -25,7 +27,7 @@
                                                   formField.isRequired = YES;
                                               }];
                             
-                            [sectionBuilder addFieldWithName:@"Min/Max length" placeholder:@"xxx[xxx]"
+                            [sectionBuilder addFieldWithName:@"Min/Max" placeholder:@"xxx[xxx]"
                                               configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                   formField.minTextLength = 3;
                                                   formField.maxTextLength = 6;
@@ -34,15 +36,16 @@
                             [sectionBuilder addSwitchWithName:@"Required" configureBlock:^(PAYFormSwitch *formSwitch) {
                                 formSwitch.isRequired = YES;
                             }];
-                            [sectionBuilder addFieldWithName:@"Number" placeholder:@"only numbers allowd"
+                            [sectionBuilder addFieldWithName:@"Number" placeholder:@"only numbers allowed"
                                               configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                   formField.validationBlock = ^NSError *(PAYFormField *formField){
-                                                      NSScanner* scan = [NSScanner scannerWithString:formField.value];
-                                                      if ([scan scanInt:nil]) {
+                                                      NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+                                                      NSNumber *number = [formatter numberFromString:formField.value];
+                                                      if (!!number) {
                                                           return nil;
                                                       } else {
                                                           return [formField validationErrorWithTitle:@"No integer"
-                                                                                             message:@"Please enter an integer to field %@"];
+                                                                                             message:@"Please enter an integer to field %@."];
                                                       }
                                                   };
                                               }];
@@ -53,9 +56,8 @@
                             }];
                         }];
     
-    tableBuilder.selectFirstField = YES;
-    tableBuilder.finishOnLastField = YES;
     tableBuilder.validationBlock =  ^NSError *{
+        // Here you could add a validation for the complete form
         return nil;
     };
     tableBuilder.formSuccessBlock = ^{

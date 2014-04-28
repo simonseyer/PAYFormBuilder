@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller - Root View Controller-->
+        <!--Registration Form View Controller - Registration form-->
         <scene sceneID="WDI-cE-zd3">
             <objects>
-                <tableViewController id="Fp3-F7-d6m" customClass="PAYMainViewController" sceneMemberID="viewController">
+                <tableViewController id="Fp3-F7-d6m" customClass="PAYRegistrationFormViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="1wK-Hc-8c0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -17,7 +17,7 @@
                             <outlet property="delegate" destination="Fp3-F7-d6m" id="UHP-Kl-lvV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="HXX-bf-cv2">
+                    <navigationItem key="navigationItem" title="Registration form" id="HXX-bf-cv2">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="y1d-0l-jik">
                             <connections>
                                 <action selector="onDone:" destination="Fp3-F7-d6m" id="ynE-38-T0p"/>
@@ -41,7 +41,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Parts" id="fmb-sq-B7j">
+                            <tableViewSection headerTitle="Features" id="fmb-sq-B7j">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="KEV-OD-Jey" style="IBUITableViewCellStyleDefault" id="5Yx-cS-oeF">
                                         <rect key="frame" x="0.0" y="119" width="320" height="44"/>

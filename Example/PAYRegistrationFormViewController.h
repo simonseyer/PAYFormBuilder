@@ -10,6 +10,6 @@
 #import "PAYFormBuilder.h"
 #import "controller/PAYFormTableViewController.h"
 
-@interface PAYMainViewController : PAYFormTableViewController
+@interface PAYRegistrationFormViewController : PAYFormTableViewController
 
 @end

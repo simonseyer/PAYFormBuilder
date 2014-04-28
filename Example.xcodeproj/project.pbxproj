@@ -27,7 +27,7 @@
 		3796524818F427C30022151B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3796524418F427C30022151B /* InfoPlist.strings */; };
 		3796524918F427C30022151B /* ExampleTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3796524618F427C30022151B /* ExampleTests-Info.plist */; };
 		3796524A18F427C30022151B /* ExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3796524718F427C30022151B /* ExampleTests.m */; };
-		3796524D18F427F00022151B /* PAYMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3796524C18F427F00022151B /* PAYMainViewController.m */; };
+		3796524D18F427F00022151B /* PAYRegistrationFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3796524C18F427F00022151B /* PAYRegistrationFormViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,8 +84,8 @@
 		3796524518F427C30022151B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3796524618F427C30022151B /* ExampleTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ExampleTests-Info.plist"; sourceTree = "<group>"; };
 		3796524718F427C30022151B /* ExampleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleTests.m; sourceTree = "<group>"; };
-		3796524B18F427F00022151B /* PAYMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYMainViewController.h; sourceTree = "<group>"; };
-		3796524C18F427F00022151B /* PAYMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYMainViewController.m; sourceTree = "<group>"; };
+		3796524B18F427F00022151B /* PAYRegistrationFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYRegistrationFormViewController.h; sourceTree = "<group>"; };
+		3796524C18F427F00022151B /* PAYRegistrationFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYRegistrationFormViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +113,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		370BE0AF190E72AA00954747 /* features */ = {
+			isa = PBXGroup;
+			children = (
+				370BE09E190A9E9900954747 /* PAYControlsViewController.h */,
+				370BE09F190A9E9900954747 /* PAYControlsViewController.m */,
+				370BE0A3190AADD900954747 /* PAYFieldsViewController.h */,
+				370BE0A4190AADD900954747 /* PAYFieldsViewController.m */,
+				370BE0A6190AB4EF00954747 /* PAYSectionsViewController.h */,
+				370BE0A7190AB4EF00954747 /* PAYSectionsViewController.m */,
+				370BE0A9190AB82200954747 /* PAYValidationsViewController.h */,
+				370BE0AA190AB82200954747 /* PAYValidationsViewController.m */,
+				370BE0AC190AB85A00954747 /* PAYCustomizationViewController.h */,
+				370BE0AD190AB85A00954747 /* PAYCustomizationViewController.m */,
+			);
+			name = features;
+			sourceTree = "<group>";
+		};
+		370BE0B0190E72B800954747 /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				3796524B18F427F00022151B /* PAYRegistrationFormViewController.h */,
+				3796524C18F427F00022151B /* PAYRegistrationFormViewController.m */,
+			);
+			name = examples;
+			sourceTree = "<group>";
+		};
 		37783E2618F4291200C53D54 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +170,7 @@
 		3796520A18F426A00022151B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				37783E2518F4291200C53D54 /* PAYFormBuilder.xcodeproj */,
 				37906D5518F4552900FC3CC8 /* libPods.a */,
 				3796520B18F426A00022151B /* Foundation.framework */,
 				3796520D18F426A00022151B /* CoreGraphics.framework */,
@@ -158,22 +185,11 @@
 			children = (
 				3796521A18F426A00022151B /* PAYAppDelegate.h */,
 				3796521B18F426A00022151B /* PAYAppDelegate.m */,
+				37906D3718F4349F00FC3CC8 /* Main_Iphone.storyboard */,
+				370BE0AF190E72AA00954747 /* features */,
+				370BE0B0190E72B800954747 /* examples */,
 				372EF9B118F460E8004D9D78 /* Images.xcassets */,
 				3796521218F426A00022151B /* Supporting Files */,
-				3796524B18F427F00022151B /* PAYMainViewController.h */,
-				3796524C18F427F00022151B /* PAYMainViewController.m */,
-				37906D3718F4349F00FC3CC8 /* Main_Iphone.storyboard */,
-				37783E2518F4291200C53D54 /* PAYFormBuilder.xcodeproj */,
-				370BE09E190A9E9900954747 /* PAYControlsViewController.h */,
-				370BE09F190A9E9900954747 /* PAYControlsViewController.m */,
-				370BE0A3190AADD900954747 /* PAYFieldsViewController.h */,
-				370BE0A4190AADD900954747 /* PAYFieldsViewController.m */,
-				370BE0A6190AB4EF00954747 /* PAYSectionsViewController.h */,
-				370BE0A7190AB4EF00954747 /* PAYSectionsViewController.m */,
-				370BE0A9190AB82200954747 /* PAYValidationsViewController.h */,
-				370BE0AA190AB82200954747 /* PAYValidationsViewController.m */,
-				370BE0AC190AB85A00954747 /* PAYCustomizationViewController.h */,
-				370BE0AD190AB85A00954747 /* PAYCustomizationViewController.m */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -326,7 +342,7 @@
 				370BE0A0190A9E9900954747 /* PAYControlsViewController.m in Sources */,
 				3796521C18F426A00022151B /* PAYAppDelegate.m in Sources */,
 				370BE0A5190AADD900954747 /* PAYFieldsViewController.m in Sources */,
-				3796524D18F427F00022151B /* PAYMainViewController.m in Sources */,
+				3796524D18F427F00022151B /* PAYRegistrationFormViewController.m in Sources */,
 				370BE0A8190AB4EF00954747 /* PAYSectionsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
