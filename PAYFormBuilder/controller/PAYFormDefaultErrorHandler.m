@@ -66,7 +66,7 @@ static NSMutableDictionary *errorMessages;
 }
 
 + (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code {
-    [errorMessages setObject:errorMessage forKey:[NSNumber numberWithInt:code]];
+    [errorMessages setObject:errorMessage forKey:[NSNumber numberWithUnsignedLong:code]];
 }
 
 static NSString *buttonText;
@@ -80,13 +80,15 @@ static NSString *buttonText;
 
 + (PAYFormTableFailBlock)failBlock {
     return ^BOOL(NSError *error) {
+        NSAssert(buttonText, @"The button text of the default error handler has to be set, when it is used to show error messages");
         
         PAYFormErrorMessage *errorMessage = [PAYFormErrorMessage errorMessageWithError:error];
         if (!errorMessage) {
             errorMessage = [error.field errorMessageForErrorCode:error.code];
+            // TODO: ask parents
         }
         if (!errorMessage) {
-            errorMessage = [errorMessages objectForKey:[NSNumber numberWithInt:error.code]];
+            errorMessage = [errorMessages objectForKey:[NSNumber numberWithUnsignedLong:error.code]];
         }
         
         UIAlertView* alertView = [UIAlertView bk_alertViewWithTitle:[errorMessage titleForField:error.field]

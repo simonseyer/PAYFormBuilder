@@ -19,15 +19,23 @@ static char classErrorMessages;
         errorMessages = [NSMutableDictionary new];
         objc_setAssociatedObject(self.class, &classErrorMessages, errorMessages, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
-    [errorMessages setObject:errorMessage forKey:[NSNumber numberWithInt:code]];
+    [errorMessages setObject:errorMessage forKey:[NSNumber numberWithUnsignedLong:code]];
 }
 
 + (PAYFormErrorMessage *)classErrorMessageForErrorCode:(NSUInteger)code {
-    NSMutableDictionary *errorMessages = objc_getAssociatedObject(self.class, &classErrorMessages);
+    // This category could be used on all subclasses of PAYFormView. So it has to be checked,
+    // if one of the super classes of the current class has an error message for the error,
+    // if the current class could not offer one.
+    Class curClass = self.class;
+    NSMutableDictionary *errorMessages = nil;
+    while (!errorMessages && [curClass isSubclassOfClass:PAYFormView.class]) {
+        errorMessages = objc_getAssociatedObject(curClass, &classErrorMessages);
+        curClass = curClass.superclass;
+    }
     if (!errorMessages) {
         return  nil;
     }
-    return [errorMessages objectForKey:[NSNumber numberWithInt:code]];
+    return [errorMessages objectForKey:[NSNumber numberWithUnsignedLong:code]];
 }
 
 - (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code {
@@ -36,7 +44,7 @@ static char classErrorMessages;
         errorMessages = [NSMutableDictionary new];
         objc_setAssociatedObject(self, &fieldErrorMessages, errorMessages, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
-    [errorMessages setObject:errorMessage forKey:[NSNumber numberWithInt:code]];
+    [errorMessages setObject:errorMessage forKey:[NSNumber numberWithUnsignedLong:code]];
 }
 
 - (PAYFormErrorMessage *)fieldErrorMessageForErrorCode:(NSUInteger)code {
@@ -44,7 +52,7 @@ static char classErrorMessages;
     if (!errorMessages) {
         return  nil;
     }
-    return [errorMessages objectForKey:[NSNumber numberWithInt:code]];
+    return [errorMessages objectForKey:[NSNumber numberWithUnsignedLong:code]];
 }
 
 - (PAYFormErrorMessage *)errorMessageForErrorCode:(NSUInteger)code {
