@@ -11,14 +11,19 @@
 
 @implementation PAYFormView
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         self.defaultErrorColor = [UIColor colorFromHex:0xFFFF3B30];
         self.defaultTextColor  = [UIColor colorFromHex:0xFF323232];
     }
     return self;
+}
+
+- (BOOL)becomeFirstResponder {
+    [[NSNotificationCenter defaultCenter]postNotificationName:PAYFormRowFocusRequestNotification object:self.cell];
+    // Refuse first responder status, as no concrete replacement implementation was preferred.
+    return NO;
 }
 
 @end

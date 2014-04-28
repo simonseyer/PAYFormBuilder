@@ -12,3 +12,5 @@
 NSString * const PAYFormErrorControlKey = @"PAYFormBuilderErrorControlKey";
 NSString * const PAYFormErrorRecoveryOptionsKey = @"PAYFormBuilderErrorRecoveryOptionsKey";
 NSString * const PAYFormErrorDomain = @"PAYFormBuilderErrorDomain";
+
+NSString * const PAYFormRowFocusRequestNotification = @"PAYFormRowFocusRequestNotification";

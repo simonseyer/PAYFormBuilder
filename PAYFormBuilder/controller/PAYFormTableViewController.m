@@ -39,10 +39,21 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(handleFormRowFocusRequest:)
+                                                name:PAYFormRowFocusRequestNotification
+                                              object:nil];
+    
     if (self.table.selectFirstField) {
         PAYFormSection *firstSection = self.table.sections.firstObject;
         [firstSection.firstFormField becomeFirstResponder];
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 - (void)loadStructure {
@@ -129,6 +140,15 @@
     PAYFormSection *section = [self.table.sections objectAtIndex:indexPath.section];
     id<PAYFormRow> formRow = [section.views objectAtIndex:indexPath.row];
     return formRow;
+}
+
+- (void)handleFormRowFocusRequest:(NSNotification *)notfication {
+    [self scrollToCell:notfication.object];
+}
+     
+- (void)scrollToCell:(UITableViewCell *)cell {
+    NSIndexPath *scrollIndexPath = [self.tableView indexPathForRowAtPoint:cell.center];
+    [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 
 

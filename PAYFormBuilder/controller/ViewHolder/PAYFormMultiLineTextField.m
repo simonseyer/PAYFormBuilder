@@ -36,6 +36,7 @@ static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
 }
 
 - (BOOL)becomeFirstResponder {
+    [super becomeFirstResponder];
     return [self.textView becomeFirstResponder];
 }
 

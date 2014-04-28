@@ -38,7 +38,6 @@ typedef enum {
 - (NSError *)prevalidate;
 
 - (void)jumpToNextField;
-- (BOOL)becomeFirstResponder;
 
 - (NSError *)validationErrorWithTitle:(NSString *)title message:(NSString *)message;
 

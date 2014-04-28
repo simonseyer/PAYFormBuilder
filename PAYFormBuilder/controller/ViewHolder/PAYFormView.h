@@ -19,4 +19,6 @@
 @property (nonatomic, retain) UITableViewCell *cell;
 @property (nonatomic, weak) PAYFormSection *section;
 
+- (BOOL)becomeFirstResponder;
+
 @end

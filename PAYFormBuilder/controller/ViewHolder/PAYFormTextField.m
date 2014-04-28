@@ -21,11 +21,6 @@
 }
 
 
-#pragma mark - Style text field
-
-- (void)styleViewsForErroneousState:(BOOL)hasError {
-}
-
 #pragma mark - Custom validation
 
 - (NSError *)prevalidate {

@@ -66,6 +66,8 @@ typedef enum {
     PAYFormTextFieldBelowMinLengthErrorCode
 } PAYFormErrorCodes;
 
+extern NSString * const PAYFormRowFocusRequestNotification;
+
 @protocol PAYTableBuilder <NSObject>
 
 /*

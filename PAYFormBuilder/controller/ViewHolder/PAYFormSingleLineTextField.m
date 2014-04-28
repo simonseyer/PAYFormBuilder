@@ -42,6 +42,7 @@ static const NSUInteger RPFormSingleLineTextFieldPasswordMaxTextLength = 128;
 }
 
 - (BOOL)becomeFirstResponder {
+    [super becomeFirstResponder];
     return [self.textField becomeFirstResponder];
 }
 

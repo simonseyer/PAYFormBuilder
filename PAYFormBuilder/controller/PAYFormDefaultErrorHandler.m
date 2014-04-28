@@ -97,7 +97,7 @@ static NSString *buttonText;
         
         alertView.bk_willDismissBlock = ^(UIAlertView * alertView, NSInteger state) {
             if ([error.field isKindOfClass:PAYFormField.class]) {
-                [((PAYFormField *)error.field).control becomeFirstResponder];
+                [((PAYFormField *)error.field) becomeFirstResponder];
             }
         };
         

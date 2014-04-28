@@ -29,11 +29,6 @@ NSString *const PAYFormFieldErrorDomain = @"PAYFormFieldErrorDomain";
     return _cleanBlock;
 }
 
-- (BOOL)becomeFirstResponder {
-    // Refuse first responder status, as no concrete replacement implementation was preferred.
-    return NO;
-}
-
 #pragma mark - Field jump implementation
 
 - (UIView<PAYFormControl> *)nextEnabledControl {
