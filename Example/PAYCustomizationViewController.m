@@ -66,7 +66,6 @@
     PAYTextLabel *tableHeaderLabel = [[PAYTextLabel alloc]initWithFrame:self.view.frame];
     tableHeaderLabel.style = PAYFormTableLabelStyleDescriptionWide;
     tableHeaderLabel.text = @"You could still use the table view header and footer view as normal. You could use the PAYTextLabel to easily apply a default style. You have to call sizeToFit manually after you set all parameters.";
-    [tableHeaderLabel sizeToFit];
     
     UIView *headerView = [UIView new];
     headerView.frame = CGRectMake(0, 0, self.view.frame.size.width, CGRectGetMaxY(tableHeaderLabel.frame));

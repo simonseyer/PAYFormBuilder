@@ -14,4 +14,17 @@
 
 @property (nonatomic, assign) PAYFormTableLabelStyle style;
 
+@property (nonatomic, assign) UIEdgeInsets simpleStyleInsets          UI_APPEARANCE_SELECTOR;
+@property (nonatomic, assign) UIEdgeInsets descriptionStyleInsets     UI_APPEARANCE_SELECTOR;
+@property (nonatomic, assign) UIEdgeInsets wideDescriptionStyleInsets UI_APPEARANCE_SELECTOR;
+
+@property (nonatomic, assign) CGFloat simpleStyleFontSize      UI_APPEARANCE_SELECTOR;
+@property (nonatomic, assign) CGFloat descriptionStyleFontSize UI_APPEARANCE_SELECTOR;
+
+@property (nonatomic, assign) CGFloat descriptionStyleKerning     UI_APPEARANCE_SELECTOR;
+@property (nonatomic, assign) CGFloat descriptionStyleLineSpacing UI_APPEARANCE_SELECTOR;
+
+@property (nonatomic, retain) UIColor *simpleStyleTextColor      UI_APPEARANCE_SELECTOR;
+@property (nonatomic, retain) UIColor *descriptionStyleTextColor UI_APPEARANCE_SELECTOR;
+
 @end

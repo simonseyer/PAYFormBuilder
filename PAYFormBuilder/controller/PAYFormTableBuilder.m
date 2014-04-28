@@ -21,7 +21,6 @@
         
         self.labelStyleNoneDefaultHeight = 32.0f;
         self.labelStylEmptyDefaultHeight = 36.0f;
-        self.labelDefaultBottomMargin    = 8.0f;
     }
     return self;
 }
@@ -108,10 +107,9 @@
         textLabel       = [[PAYTextLabel alloc] initWithFrame:self.defaultBounds];
         textLabel.style = style;
         textLabel.text  = name;
-        [textLabel sizeToFit];
         [headerView addSubview:textLabel];
         
-        headerRect.size.height = CGRectGetMaxY(textLabel.frame) + self.labelDefaultBottomMargin;
+        headerRect.size.height = CGRectGetMaxY(textLabel.frame);
     }
     headerView.frame       = headerRect;
 

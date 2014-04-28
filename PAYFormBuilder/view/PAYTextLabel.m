@@ -32,35 +32,34 @@
     self.numberOfLines = 0;
     self.adjustsFontSizeToFitWidth = NO;
     self.lineBreakMode = NSLineBreakByWordWrapping;
+    
+    self.simpleStyleInsets          = UIEdgeInsetsMake(32, 15, 8, 0);
+    self.descriptionStyleInsets     = UIEdgeInsetsMake(36, 21, 8, 21);
+    self.wideDescriptionStyleInsets = UIEdgeInsetsMake(36, 21, 8, 36);
+    
+    self.simpleStyleFontSize      = 14;
+    self.descriptionStyleFontSize = 13;
+    
+    self.descriptionStyleKerning     = 0.15f;
+    self.descriptionStyleLineSpacing = 4.0f;
+    
+    self.simpleStyleTextColor       = [UIColor colorFromHex:0xFF6D6D72];
+    self.descriptionStyleTextColor  = [UIColor colorFromHex:0xFF6A6A6A];
 }
 
 - (void)setStyle:(PAYFormTableLabelStyle)style {
     _style = style;
-    
-    CGRect textFrame = self.frame;
-    switch (self.style) {
-        case PAYFormTableLabelStyleDescription:
-        case PAYFormTableLabelStyleDescriptionWide:
-            textFrame.origin.x = (style == PAYFormTableLabelStyleDescription) ? 40 : 21;
-            textFrame.origin.y = 36;
-            
-            self.textColor = [UIColor colorFromHex:0xFF6A6A6A];
-            break;
-        case PAYFormTableLabelStyleSimple: {
-            textFrame.origin = CGPointMake(15, 32);
-            self.textColor = [UIColor colorFromHex:0xFF6D6D72];
-            break;
-        }
-        default:
-            break;
-    }
-    self.frame = textFrame;
-    
-    self.attributedText = self.attributedText;
+    [self updateAttributedText];
 }
+
+# pragma mark - text handling
 
 - (void)setText:(NSString *)text {
     self.attributedText = text ? [[NSAttributedString alloc] initWithString:text] : nil;
+}
+
+- (NSString *)text {
+    return self.attributedText.string;
 }
 
 - (void)setAttributedText:(NSAttributedString *)attributedText {
@@ -69,27 +68,29 @@
         if (self.style == PAYFormTableLabelStyleSimple) {
             attrText = [[NSMutableAttributedString alloc] initWithString:attributedText.string.uppercaseString];
         } else {
-            attrText = [[NSMutableAttributedString alloc] initWithAttributedString:attributedText];
+            attrText =  attributedText.mutableCopy;
         }
-        NSInteger strLength = [attrText length];
+        NSRange strRange = NSMakeRange(0, attrText.length);
         
         switch (self.style) {
             case PAYFormTableLabelStyleDescription:
             case PAYFormTableLabelStyleDescriptionWide: {
                 NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-                style.lineSpacing              = 4;
+                style.lineSpacing              = self.descriptionStyleLineSpacing;
                 style.alignment                = NSTextAlignmentCenter;
                 
-                UIFont *font = [UIFont fontWithName:self.font.fontName size:13];
+                UIFont *font = [UIFont fontWithName:self.font.fontName size:self.descriptionStyleFontSize];
                 
-                [attrText addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, strLength)];
-                [attrText addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, strLength)];
-                [attrText addAttribute:NSKernAttributeName value:@0.15 range:NSMakeRange(0, strLength)];
+                [attrText addAttribute:NSParagraphStyleAttributeName value:style range:strRange];
+                [attrText addAttribute:NSFontAttributeName value:font range:strRange];
+                [attrText addAttribute:NSKernAttributeName value:@(self.descriptionStyleKerning) range:strRange];
+                [attrText addAttribute:NSForegroundColorAttributeName value:self.descriptionStyleTextColor range:strRange];
                 break;
             }
             case PAYFormTableLabelStyleSimple: {
-                UIFont *font = [UIFont fontWithName:self.font.fontName size:14];
-                [attrText addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, strLength)];
+                UIFont *font = [UIFont fontWithName:self.font.fontName size:self.simpleStyleFontSize];
+                [attrText addAttribute:NSFontAttributeName value:font range:strRange];
+                [attrText addAttribute:NSForegroundColorAttributeName value:self.simpleStyleTextColor range:strRange];
                 break;
             }
             default:
@@ -98,46 +99,46 @@
     }
     
     super.attributedText = attrText;
+    [self sizeToFit];
+}
+
+- (void)updateAttributedText {
+    self.text = self.attributedText.string;
+}
+
+#pragma mark - positioning
+
+- (UIEdgeInsets)textInsets {
+    switch (self.style) {
+        case PAYFormTableLabelStyleDescription:
+            return self.descriptionStyleInsets;
+        case PAYFormTableLabelStyleDescriptionWide:
+            return self.wideDescriptionStyleInsets;
+        case PAYFormTableLabelStyleSimple:
+            return self.simpleStyleInsets;
+        default:
+            return (UIEdgeInsets){0, 0, 0, 0};
+    }
+}
+
+- (void)drawTextInRect:(CGRect)rect {
+    [super drawTextInRect:UIEdgeInsetsInsetRect(rect, self.textInsets)];
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
-    CGSize textSize;
-    switch (self.style) {
-        case PAYFormTableLabelStyleDescription:
-        case PAYFormTableLabelStyleDescriptionWide:
-            textSize.width = size.width - (2 * self.frame.origin.x);
-            break;
-        case PAYFormTableLabelStyleSimple:
-            textSize.width = size.width - self.frame.origin.x;
-            break;
-        default:
-            break;
-    }
-    textSize.height = [self preferredHeightForWidth:textSize.width];
-    
-    return textSize;
-}
-
-- (CGSize)preferredSize {
-    return [self.text sizeWithAttributes: @{NSFontAttributeName: self.font}];
+    UIEdgeInsets insets = self.textInsets;
+    CGFloat textWidth = size.width - insets.left - insets.right;
+    size.height = [self preferredHeightForWidth:textWidth] + insets.top + insets.bottom;
+    return size;
 }
 
 - (CGSize)preferredSizeConstrainedToSize:(CGSize)constrainedSize {
     NSStringDrawingContext *context         = [NSStringDrawingContext new];
     context.minimumScaleFactor              = 10 / self.font.pointSize;
     
-    CGSize rectSize;
-    if (self.attributedText) {
-        rectSize = [self.attributedText boundingRectWithSize:constrainedSize
-                                                     options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-                                                     context:context].size;
-    } else {
-        NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
-        paragraphStyle.lineBreakMode            = self.lineBreakMode;
-        NSDictionary *attributes                = @{NSFontAttributeName : self.font,NSParagraphStyleAttributeName : paragraphStyle};
-        
-        rectSize = [self.text boundingRectWithSize:constrainedSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:context].size;
-    }
+    CGSize rectSize = [self.attributedText boundingRectWithSize:constrainedSize
+                                                        options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+                                                        context:context].size;
     rectSize.height = ceil(rectSize.height);
     rectSize.width  = ceil(rectSize.width);
     
