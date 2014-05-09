@@ -93,13 +93,9 @@ static NSString *buttonText;
         
         UIAlertView* alertView = [UIAlertView bk_alertViewWithTitle:[errorMessage titleForField:error.field]
                                                             message:[errorMessage messageForField:error.field]];
-        [alertView addButtonWithTitle:buttonText];
-        
-        alertView.bk_willDismissBlock = ^(UIAlertView * alertView, NSInteger state) {
-            if ([error.field isKindOfClass:PAYFormField.class]) {
-                [((PAYFormField *)error.field) becomeFirstResponder];
-            }
-        };
+        [alertView bk_addButtonWithTitle:buttonText handler:^{
+            [error.field becomeFirstResponder];
+        }];
         
         [alertView show];
         return NO;
