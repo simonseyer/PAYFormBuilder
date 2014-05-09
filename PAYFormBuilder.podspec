@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
                    * **Easy syntax** - with the block syntax your code is well structured and easy to understand
 				   * **Predefined Styles** - get a seamless iOS 7 feeling without writing one line of styling code
 				   * **Validation** - use validation handling and error message management out of the box
-				   * **Customizable** - change many defaults with UIAppearence or configure each element individually 
+				   * **Customizable** - change many defaults with UIAppearance or configure each element individually 
 				   * **Example app** - get an overview over all posibilities of the lib and see how to get the best out of it
                    DESC
   s.homepage     = "https://github.com/redpeppix-gmbh-co-kg/PAYFormBuilder"
