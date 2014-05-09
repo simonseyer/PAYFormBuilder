@@ -136,9 +136,19 @@
     NSStringDrawingContext *context         = [NSStringDrawingContext new];
     context.minimumScaleFactor              = 10 / self.font.pointSize;
     
-    CGSize rectSize = [self.attributedText boundingRectWithSize:constrainedSize
-                                                        options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-                                                        context:context].size;
+    CGSize rectSize;
+    if (self.attributedText) {
+        rectSize = [self.attributedText boundingRectWithSize:constrainedSize
+                                                     options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+                                                     context:context].size;
+    } else {
+        NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+        paragraphStyle.lineBreakMode            = self.lineBreakMode;
+        NSDictionary *attributes                = @{NSFontAttributeName : self.font,NSParagraphStyleAttributeName : paragraphStyle};
+        
+        rectSize = [self.text boundingRectWithSize:constrainedSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:context].size;
+    }
+    
     rectSize.height = ceil(rectSize.height);
     rectSize.width  = ceil(rectSize.width);
     

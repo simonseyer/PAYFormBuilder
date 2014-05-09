@@ -27,4 +27,7 @@
 @property (nonatomic, retain) UIColor *simpleStyleTextColor      UI_APPEARANCE_SELECTOR;
 @property (nonatomic, retain) UIColor *descriptionStyleTextColor UI_APPEARANCE_SELECTOR;
 
+
+- (CGFloat)preferredHeightForWidth:(CGFloat)width;
+
 @end
