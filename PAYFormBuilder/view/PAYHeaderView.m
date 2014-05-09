@@ -28,48 +28,47 @@
 
 - (void)initializeVars {
     self.iconView = [UIImageView new];
-    
-    self.titleLabel = [PAYTextLabel new];
-    self.titleLabel.adjustsFontSizeToFitWidth = NO;
-    self.titleLabel.textColor                 = UIColor.blackColor;
-    
-    self.subTitleLabel = [PAYTextLabel new];
-    self.subTitleLabel.adjustsFontSizeToFitWidth = NO;
-    self.subTitleLabel.textColor                 = self.tintColor;
+    self.titleLabel = [[PAYTextLabel alloc]initWithFrame:self.frame];
+    self.titleLabel.style = PAYFormTableLabelStyleHeaderTitle;
+    self.subTitleLabel = [[PAYTextLabel alloc]initWithFrame:self.frame];
+    self.subTitleLabel.style = PAYFormTableLabelStyleHeaderSubTitle;
     
     [self addSubview:self.titleLabel];
     [self addSubview:self.subTitleLabel];
     [self addSubview:self.iconView];
+    
+    self.iconTopMargin = 32;
+    self.titleTopMargin = 21;
+    self.subTitleTopMargin = 14;
+    
+    self.tintColor = [UIColor colorFromHex:0xFF008D79];
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    {
+    if (self.iconImage) {
         CGSize iconImageSize = self.iconView.image.size;
-        self.iconView.frame = CGRectMake((self.frame.size.width - iconImageSize.width) / 2, 32,
+        self.iconView.frame = CGRectMake((self.frame.size.width - iconImageSize.width) / 2, self.iconTopMargin,
                                          iconImageSize.width, iconImageSize.height);
+    } else {
+        self.iconView.frame = CGRectZero;
     }
     
-    {
-        if (self.titleLabel.text) {
-            CGRect labelRect         = CGRectMake(0, CGRectGetMaxY(self.iconView.frame) + 21, self.frame.size.width, 0);
-            self.titleLabel.frame    = labelRect;
-            [self.titleLabel sizeToFit];
-        } else {
-            self.titleLabel.frame = CGRectZero;
-        }
+    if (self.titleLabel.text) {
+        self.titleLabel.frame = CGRectMake(0, CGRectGetMaxY(self.iconView.frame) + self.titleTopMargin,
+                                           self.frame.size.width, 0);
+        [self.titleLabel sizeToFit];
+    } else {
+        self.titleLabel.frame = CGRectZero;
     }
     
-    {
-        if (self.subTitleLabel.text) {
-            CGRect labelRect            = self.subTitleLabel.frame;
-            labelRect.origin.y          = CGRectGetMaxY(self.titleLabel.frame) + 14;
-            labelRect.size.height       = [self.subTitleLabel preferredHeightForWidth:labelRect.size.width];
-            self.subTitleLabel.frame    = labelRect;
-        } else {
-            self.subTitleLabel.frame = CGRectZero;
-        }
+    if (self.subTitleLabel.text) {
+        self.subTitleLabel.frame = CGRectMake(0, CGRectGetMaxY(self.titleLabel.frame) + self.subTitleTopMargin,
+                                              self.frame.size.width, 0);
+        [self.titleLabel sizeToFit];
+    } else {
+        self.subTitleLabel.frame = CGRectZero;
     }
 }
 
@@ -97,39 +96,16 @@
 
 - (void)setTitle:(NSString *)title {
     _title = title;
-    
-    NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:title];
-    
-    NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
-    style.alignment                = NSTextAlignmentCenter;
-    UIFont *font                   = [UIFont fontWithName:RPDefaultLightFontName size:24];
-    
-    NSInteger strLength = [attrText length];
-    [attrText addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, strLength)];
-    [attrText addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, strLength)];
-    [attrText addAttribute:NSKernAttributeName value:@1.05f range:NSMakeRange(0, strLength)];
-    
-    self.titleLabel.attributedText = attrText;
-    [self layoutIfNeeded];
+    self.titleLabel.text = title;
 }
 
 - (void)setSubTitle:(NSString *)subTitle {
     _subTitle = subTitle;
-    
-    NSMutableAttributedString *attrText = [[NSMutableAttributedString alloc] initWithString:subTitle];
-    
-    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    style.alignment                = NSTextAlignmentCenter;
-    UIFont *font                   = [UIFont fontWithName:RPDefaultFontName size:13];
-    
-    NSInteger strLength = [attrText length];
-    
-    [attrText addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, strLength)];
-    [attrText addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, strLength)];
-    [attrText addAttribute:NSKernAttributeName value:@1.15 range:NSMakeRange(0, strLength)];
-    
-    self.subTitleLabel.attributedText = attrText;
-    [self layoutIfNeeded];
+    self.subTitleLabel.text = subTitle;
+}
+
+- (void)tintColorDidChange {
+    self.subTitleLabel.tintColor = self.tintColor;
 }
 
 @end

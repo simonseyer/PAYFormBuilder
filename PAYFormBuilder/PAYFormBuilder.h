@@ -13,6 +13,8 @@ typedef enum {
     PAYFormTableLabelStyleSimple,
     PAYFormTableLabelStyleDescription,
     PAYFormTableLabelStyleDescriptionWide,
+    PAYFormTableLabelStyleHeaderTitle,
+    PAYFormTableLabelStyleHeaderSubTitle,
     PAYFormTableLabelStyleEmpty,
     PAYFormTableLabelStyleNone
 } PAYFormTableLabelStyle;

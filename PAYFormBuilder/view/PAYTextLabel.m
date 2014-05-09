@@ -39,8 +39,14 @@
     
     self.simpleStyleFontSize      = 14;
     self.descriptionStyleFontSize = 13;
+    self.headerTitleStyleFontSize = 24;
+    self.headerSubTitleStyleFontSize = 13;
     
     self.descriptionStyleKerning     = 0.15f;
+    self.headerTitleStyleKerning    = 1.05f;
+    self.headerSubTitleStyleKerning = 1.15f;
+    
+    
     self.descriptionStyleLineSpacing = 4.0f;
     
     self.simpleStyleTextColor       = [UIColor colorFromHex:0xFF6D6D72];
@@ -93,6 +99,20 @@
                 [attrText addAttribute:NSForegroundColorAttributeName value:self.simpleStyleTextColor range:strRange];
                 break;
             }
+            case PAYFormTableLabelStyleHeaderTitle:
+            case PAYFormTableLabelStyleHeaderSubTitle: {
+                NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+                style.alignment                = NSTextAlignmentCenter;
+                
+                NSUInteger size = PAYFormTableLabelStyleHeaderSubTitle ? self.headerSubTitleStyleFontSize : self.headerTitleStyleFontSize;
+                NSUInteger kern = PAYFormTableLabelStyleHeaderSubTitle ? self.headerSubTitleStyleKerning : self.headerTitleStyleKerning;
+                UIFont *font = [UIFont fontWithName:self.font.fontName size:size];
+                
+                [attrText addAttribute:NSParagraphStyleAttributeName value:style range:strRange];
+                [attrText addAttribute:NSFontAttributeName value:font range:strRange];
+                [attrText addAttribute:NSKernAttributeName value:@(kern) range:strRange];
+                break;
+            }
             default:
                 break;
         }
@@ -117,7 +137,7 @@
         case PAYFormTableLabelStyleSimple:
             return self.simpleStyleInsets;
         default:
-            return (UIEdgeInsets){0, 0, 0, 0};
+            return UIEdgeInsetsZero;
     }
 }
 
