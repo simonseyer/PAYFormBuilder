@@ -70,17 +70,18 @@
 }
 
 - (NSError *)validate {
+    NSError *error;
     for (id<PAYFormRow> row in self.views) {
         if ([row conformsToProtocol:@protocol(PAYValidatableFormCell)]) {
             id<PAYValidatableFormCell> validatableCell = (id<PAYValidatableFormCell>)row;
             [validatableCell styleForError:nil];
-            NSError *error = [validatableCell validate];
-            if (error) {
-                return error;
+            NSError *fieldError = [validatableCell validate];
+            if (!error && fieldError) {
+                error = fieldError;
             }
         }
     }
-    return nil;
+    return error;
 }
 
 @end
