@@ -66,7 +66,7 @@
     if (self.subTitleLabel.text) {
         self.subTitleLabel.frame = CGRectMake(0, CGRectGetMaxY(self.titleLabel.frame) + self.subTitleTopMargin,
                                               self.frame.size.width, 0);
-        [self.titleLabel sizeToFit];
+        [self.subTitleLabel sizeToFit];
     } else {
         self.subTitleLabel.frame = CGRectZero;
     }
@@ -91,21 +91,23 @@
     _iconImage = iconImage;
     
     self.iconView.image = iconImage;
-    [self layoutIfNeeded];
+    [self sizeToFit];
 }
 
 - (void)setTitle:(NSString *)title {
     _title = title;
     self.titleLabel.text = title;
+    [self sizeToFit];
 }
 
 - (void)setSubTitle:(NSString *)subTitle {
     _subTitle = subTitle;
     self.subTitleLabel.text = subTitle;
+    [self sizeToFit];
 }
 
 - (void)tintColorDidChange {
-    self.subTitleLabel.tintColor = self.tintColor;
+    self.subTitleLabel.textColor = self.tintColor;
 }
 
 @end
