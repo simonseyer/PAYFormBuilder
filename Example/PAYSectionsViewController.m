@@ -7,6 +7,7 @@
 //
 
 #import "PAYSectionsViewController.h"
+#import "PAYHeaderView.h"
 
 @interface PAYSectionsViewController ()
 
@@ -16,7 +17,7 @@
 
 - (void)loadStructure:(id<PAYTableBuilder>)tableBuilder {
     [tableBuilder addSectionWithContentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
-        [sectionBuilder addButtonWithText:@"Section without label style empty"
+        [sectionBuilder addButtonWithText:@"Section with label style empty"
                                     style:PAYFormButtonStyleDisabledCentered
                            selectionBlock:nil];
     }];
@@ -43,6 +44,11 @@
                           labelStyle:PAYFormTableLabelStyleDescriptionWide
                         contentBlock:nil];
     
+    PAYHeaderView *header = [[PAYHeaderView alloc]initWithFrame:self.view.frame];
+    header.iconImage = [UIImage imageNamed:@"header"];
+    header.title = @"Test";
+    header.subTitle = @"Dies ist ein Test";
+    self.tableView.tableHeaderView = header;
 }
 
 @end
