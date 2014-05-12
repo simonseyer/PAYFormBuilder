@@ -31,9 +31,19 @@
         PAYFormTextField *textField = (PAYFormTextField *)formCell;
         return [NSString stringWithFormat:@"Content of field %%@ is to short. Please enter a minimum of %i characters", textField.minTextLength];
     }]
-                                   forErrorCode:PAYFormTextFieldBelowMinLengthErrorCode];
-    [PAYFormSwitch setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"Missing"
-                                                                      message:@"Please check %@"]
+                         forErrorCode:PAYFormTextFieldBelowMinLengthErrorCode];
+    [PAYFormTextField setErrorMessage:[PAYFormErrorMessage errorMessageWithTitleBlock:^NSString *(id<PAYValidatableFormCell> formCell) {
+        return @"To long";
+    } messageBlock:^NSString *(id<PAYValidatableFormCell> formCell) {
+        PAYFormTextField *textField = (PAYFormTextField *)formCell;
+        return [NSString stringWithFormat:@"Content of field %%@ is to long. Please enter a maximum of %i characters", textField.maxTextLength];
+    }]
+                         forErrorCode:PAYFormTextFieldAboveMaxLengthErrorCode];
+    
+    [PAYFormField setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"No integer" message:@"Please enter an integer to field %@."]
+                     forErrorCode:PAYFormIntegerValidationErrorCode];
+    
+    [PAYFormSwitch setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"Missing" message:@"Please check %@"]
                       forErrorCode:PAYFormMissingErrorCode];
     
     return YES;

@@ -9,6 +9,7 @@
 #import "PAYValidationsViewController.h"
 #import "PAYFormSingleLineTextField.h"
 #import "PAYFormSwitch.h"
+#import "PAYValidation.h"
 
 @interface PAYValidationsViewController ()
 
@@ -25,6 +26,8 @@
                             [sectionBuilder addFieldWithName:@"Required" placeholder:@"needs to be filled"
                                               configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                   formField.isRequired = YES;
+                                                  formField.textField.accessibilityLabel = @"requiredField";
+                                                  formField.textField.isAccessibilityElement = YES;
                                               }];
                             
                             [sectionBuilder addFieldWithName:@"Min/Max" placeholder:@"xxx[xxx]"
@@ -32,22 +35,19 @@
                                                   formField.minTextLength = 3;
                                                   formField.maxTextLength = 6;
                                                   formField.mayExceedMaxLength = YES;
+                                                  formField.textField.accessibilityLabel = @"minMaxField";
+                                                  formField.textField.isAccessibilityElement = YES;
                                               }];
                             [sectionBuilder addSwitchWithName:@"Required" configureBlock:^(PAYFormSwitch *formSwitch) {
                                 formSwitch.isRequired = YES;
+                                formSwitch.switchControl.accessibilityLabel = @"requiredSwitch";
+                                formSwitch.switchControl.isAccessibilityElement = YES;
                             }];
                             [sectionBuilder addFieldWithName:@"Number" placeholder:@"only numbers allowed"
                                               configureBlock:^(PAYFormSingleLineTextField *formField) {
-                                                  formField.validationBlock = ^NSError *(PAYFormField *formField){
-                                                      NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-                                                      NSNumber *number = [formatter numberFromString:formField.value];
-                                                      if (!!number) {
-                                                          return nil;
-                                                      } else {
-                                                          return [formField validationErrorWithTitle:@"No integer"
-                                                                                             message:@"Please enter an integer to field %@."];
-                                                      }
-                                                  };
+                                                  formField.validationBlock = PAYValidation.integerValidationBlock;
+                                                  formField.textField.accessibilityLabel = @"integerValidationField";
+                                                  formField.textField.isAccessibilityElement = YES;
                                               }];
                             [sectionBuilder addButtonWithText:@"Done"
                                                         style:PAYFormButtonStylePrimaryCentered
