@@ -27,15 +27,15 @@ static char classErrorMessages;
     // if one of the super classes of the current class has an error message for the error,
     // if the current class could not offer one.
     Class curClass = self.class;
-    NSMutableDictionary *errorMessages = nil;
-    while (!errorMessages && [curClass isSubclassOfClass:PAYFormView.class]) {
-        errorMessages = objc_getAssociatedObject(curClass, &classErrorMessages);
+    PAYFormErrorMessage *errorMessage = nil;
+    while (!errorMessage && [curClass isSubclassOfClass:PAYFormView.class]) {
+        NSMutableDictionary *errorMessages = objc_getAssociatedObject(curClass, &classErrorMessages);
+        if (errorMessages) {
+            errorMessage = [errorMessages objectForKey:[NSNumber numberWithUnsignedLong:code]];
+        }
         curClass = curClass.superclass;
     }
-    if (!errorMessages) {
-        return  nil;
-    }
-    return [errorMessages objectForKey:[NSNumber numberWithUnsignedLong:code]];
+    return errorMessage;
 }
 
 - (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code {

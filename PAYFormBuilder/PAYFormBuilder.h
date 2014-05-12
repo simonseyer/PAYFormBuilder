@@ -65,7 +65,8 @@ typedef enum {
     PAYFormDefaultErrorCode,
     PAYFormMissingErrorCode,
     PAYFormTextFieldAboveMaxLengthErrorCode,
-    PAYFormTextFieldBelowMinLengthErrorCode
+    PAYFormTextFieldBelowMinLengthErrorCode,
+    PAYFormIntegerValidationErrorCode
 } PAYFormErrorCodes;
 
 extern NSString * const PAYFormRowFocusRequestNotification;

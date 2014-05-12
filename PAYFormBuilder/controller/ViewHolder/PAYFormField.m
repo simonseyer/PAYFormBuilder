@@ -70,6 +70,10 @@ NSString *const PAYFormFieldErrorDomain = @"PAYFormFieldErrorDomain";
     return [NSError validationErrorWithTitle:title message:message control:self];
 }
 
+- (NSError *)validationErrorWithCode:(NSUInteger)code {
+    return [NSError validationErrorWithCode:code control:self];
+}
+
 - (NSError *)prevalidate {
     if (self.isRequired && self.isEmpty) {
         return [NSError validationErrorWithCode:PAYFormMissingErrorCode control:self];

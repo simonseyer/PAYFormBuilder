@@ -40,6 +40,7 @@ typedef enum {
 - (void)jumpToNextField;
 
 - (NSError *)validationErrorWithTitle:(NSString *)title message:(NSString *)message;
+- (NSError *)validationErrorWithCode:(NSUInteger)code;
 
 @end
 
