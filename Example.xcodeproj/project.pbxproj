@@ -13,7 +13,10 @@
 		370BE0AB190AB82200954747 /* PAYValidationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370BE0AA190AB82200954747 /* PAYValidationsViewController.m */; };
 		370BE0AE190AB85A00954747 /* PAYCustomizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370BE0AD190AB85A00954747 /* PAYCustomizationViewController.m */; };
 		372EF9B218F460E8004D9D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372EF9B118F460E8004D9D78 /* Images.xcassets */; };
+		373805FF1925043000F20161 /* libPods-ExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 373805FE1925043000F20161 /* libPods-ExampleTests.a */; };
+		373806011925043E00F20161 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 373806001925043E00F20161 /* SenTestingKit.framework */; };
 		37783E2F18F4297900C53D54 /* libPAYFormBuilder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37783E2B18F4291200C53D54 /* libPAYFormBuilder.a */; };
+		3786EC39191D21E400EC1FBB /* PAYValidationsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786EC38191D21E400EC1FBB /* PAYValidationsTest.m */; };
 		37906D3818F4349F00FC3CC8 /* Main_Iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37906D3718F4349F00FC3CC8 /* Main_Iphone.storyboard */; };
 		3796520C18F426A00022151B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796520B18F426A00022151B /* Foundation.framework */; };
 		3796520E18F426A00022151B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796520D18F426A00022151B /* CoreGraphics.framework */; };
@@ -21,12 +24,9 @@
 		3796521618F426A00022151B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3796521418F426A00022151B /* InfoPlist.strings */; };
 		3796521818F426A00022151B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3796521718F426A00022151B /* main.m */; };
 		3796521C18F426A00022151B /* PAYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3796521B18F426A00022151B /* PAYAppDelegate.m */; };
-		3796522518F426A00022151B /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796522418F426A00022151B /* XCTest.framework */; };
 		3796522618F426A00022151B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796520B18F426A00022151B /* Foundation.framework */; };
 		3796522718F426A00022151B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796520F18F426A00022151B /* UIKit.framework */; };
 		3796524818F427C30022151B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3796524418F427C30022151B /* InfoPlist.strings */; };
-		3796524918F427C30022151B /* ExampleTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3796524618F427C30022151B /* ExampleTests-Info.plist */; };
-		3796524A18F427C30022151B /* ExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3796524718F427C30022151B /* ExampleTests.m */; };
 		3796524D18F427F00022151B /* PAYRegistrationFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3796524C18F427F00022151B /* PAYRegistrationFormViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C544E62BC734A128C338E8F /* Pods-ExampleTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleTests.xcconfig"; path = "Pods/Pods-ExampleTests.xcconfig"; sourceTree = "<group>"; };
+		2F603E676964460584CBE982 /* libPods-ExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		370BE09E190A9E9900954747 /* PAYControlsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYControlsViewController.h; sourceTree = "<group>"; };
 		370BE09F190A9E9900954747 /* PAYControlsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYControlsViewController.m; sourceTree = "<group>"; };
 		370BE0A3190AADD900954747 /* PAYFieldsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFieldsViewController.h; sourceTree = "<group>"; };
@@ -66,7 +68,11 @@
 		370BE0AC190AB85A00954747 /* PAYCustomizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYCustomizationViewController.h; sourceTree = "<group>"; };
 		370BE0AD190AB85A00954747 /* PAYCustomizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYCustomizationViewController.m; sourceTree = "<group>"; };
 		372EF9B118F460E8004D9D78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		373805FE1925043000F20161 /* libPods-ExampleTests.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ExampleTests.a"; path = "Pods/build/Debug-iphoneos/libPods-ExampleTests.a"; sourceTree = "<group>"; };
+		373806001925043E00F20161 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		37783E2518F4291200C53D54 /* PAYFormBuilder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = PAYFormBuilder.xcodeproj; sourceTree = SOURCE_ROOT; };
+		3786EC37191D21E400EC1FBB /* PAYValidationsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYValidationsTest.h; sourceTree = "<group>"; };
+		3786EC38191D21E400EC1FBB /* PAYValidationsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYValidationsTest.m; sourceTree = "<group>"; };
 		37906D3718F4349F00FC3CC8 /* Main_Iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_Iphone.storyboard; sourceTree = "<group>"; };
 		37906D5518F4552900FC3CC8 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		3796520818F426A00022151B /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,11 +85,10 @@
 		3796521918F426A00022151B /* Example-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Example-Prefix.pch"; sourceTree = "<group>"; };
 		3796521A18F426A00022151B /* PAYAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAYAppDelegate.h; sourceTree = "<group>"; };
 		3796521B18F426A00022151B /* PAYAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAYAppDelegate.m; sourceTree = "<group>"; };
-		3796522318F426A00022151B /* ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3796522318F426A00022151B /* ExampleTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3796522418F426A00022151B /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		3796524518F427C30022151B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3796524618F427C30022151B /* ExampleTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ExampleTests-Info.plist"; sourceTree = "<group>"; };
-		3796524718F427C30022151B /* ExampleTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleTests.m; sourceTree = "<group>"; };
 		3796524B18F427F00022151B /* PAYRegistrationFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYRegistrationFormViewController.h; sourceTree = "<group>"; };
 		3796524C18F427F00022151B /* PAYRegistrationFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYRegistrationFormViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,7 +109,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3796522518F426A00022151B /* XCTest.framework in Frameworks */,
+				373806011925043E00F20161 /* SenTestingKit.framework in Frameworks */,
+				373805FF1925043000F20161 /* libPods-ExampleTests.a in Frameworks */,
 				3796522718F426A00022151B /* UIKit.framework in Frameworks */,
 				3796522618F426A00022151B /* Foundation.framework in Frameworks */,
 			);
@@ -155,6 +161,7 @@
 				3796524318F427C30022151B /* ExampleTests */,
 				3796520A18F426A00022151B /* Frameworks */,
 				3796520918F426A00022151B /* Products */,
+				1C544E62BC734A128C338E8F /* Pods-ExampleTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				3796520818F426A00022151B /* Example.app */,
-				3796522318F426A00022151B /* ExampleTests.xctest */,
+				3796522318F426A00022151B /* ExampleTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,12 +177,15 @@
 		3796520A18F426A00022151B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				373806001925043E00F20161 /* SenTestingKit.framework */,
+				373805FE1925043000F20161 /* libPods-ExampleTests.a */,
 				37783E2518F4291200C53D54 /* PAYFormBuilder.xcodeproj */,
 				37906D5518F4552900FC3CC8 /* libPods.a */,
 				3796520B18F426A00022151B /* Foundation.framework */,
 				3796520D18F426A00022151B /* CoreGraphics.framework */,
 				3796520F18F426A00022151B /* UIKit.framework */,
 				3796522418F426A00022151B /* XCTest.framework */,
+				2F603E676964460584CBE982 /* libPods-ExampleTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -210,7 +220,8 @@
 			children = (
 				3796524418F427C30022151B /* InfoPlist.strings */,
 				3796524618F427C30022151B /* ExampleTests-Info.plist */,
-				3796524718F427C30022151B /* ExampleTests.m */,
+				3786EC37191D21E400EC1FBB /* PAYValidationsTest.h */,
+				3786EC38191D21E400EC1FBB /* PAYValidationsTest.m */,
 			);
 			path = ExampleTests;
 			sourceTree = "<group>";
@@ -239,9 +250,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3796523718F426A00022151B /* Build configuration list for PBXNativeTarget "ExampleTests" */;
 			buildPhases = (
+				C6D7685B1C334AE8B91040B7 /* Check Pods Manifest.lock */,
 				3796521F18F426A00022151B /* Sources */,
 				3796522018F426A00022151B /* Frameworks */,
 				3796522118F426A00022151B /* Resources */,
+				4516F5A2B49441CAB49DF5FF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,7 +263,7 @@
 			);
 			name = ExampleTests;
 			productName = ExampleTests;
-			productReference = 3796522318F426A00022151B /* ExampleTests.xctest */;
+			productReference = 3796522318F426A00022151B /* ExampleTests.octest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -325,11 +338,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				3796524818F427C30022151B /* InfoPlist.strings in Resources */,
-				3796524918F427C30022151B /* ExampleTests-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4516F5A2B49441CAB49DF5FF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-ExampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C6D7685B1C334AE8B91040B7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3796520418F426A00022151B /* Sources */ = {
@@ -351,7 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3796524A18F427C30022151B /* ExampleTests.m in Sources */,
+				3786EC39191D21E400EC1FBB /* PAYValidationsTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +542,7 @@
 		};
 		3796523818F426A00022151B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C544E62BC734A128C338E8F /* Pods-ExampleTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -512,14 +558,25 @@
 				);
 				INFOPLIST_FILE = "ExampleTests/ExampleTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					MessageUI,
+					"-framework",
+					XCTest,
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
 		3796523918F426A00022151B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C544E62BC734A128C338E8F /* Pods-ExampleTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -531,9 +588,19 @@
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
 				INFOPLIST_FILE = "ExampleTests/ExampleTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-framework",
+					CoreGraphics,
+					"-framework",
+					MessageUI,
+					"-framework",
+					XCTest,
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
+				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

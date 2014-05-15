@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3709CE621920DFAB0077BAFF /* PAYValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3709CE601920DFAB0077BAFF /* PAYValidation.h */; };
+		3709CE631920DFAB0077BAFF /* PAYValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3709CE611920DFAB0077BAFF /* PAYValidation.m */; };
 		375DAD70190F052600F4A41D /* PAYHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 375DAD6E190F052600F4A41D /* PAYHeaderView.h */; };
 		375DAD71190F052600F4A41D /* PAYHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 375DAD6F190F052600F4A41D /* PAYHeaderView.m */; };
 		37906D4018F43A4F00FC3CC8 /* PAYFormBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 37906D3F18F43A4F00FC3CC8 /* PAYFormBuilder.m */; };
@@ -73,6 +75,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3709CE601920DFAB0077BAFF /* PAYValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYValidation.h; sourceTree = "<group>"; };
+		3709CE611920DFAB0077BAFF /* PAYValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYValidation.m; sourceTree = "<group>"; };
 		375DAD6E190F052600F4A41D /* PAYHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYHeaderView.h; sourceTree = "<group>"; };
 		375DAD6F190F052600F4A41D /* PAYHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYHeaderView.m; sourceTree = "<group>"; };
 		37906D3018F431D200FC3CC8 /* PAYFormBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormBuilder.h; sourceTree = "<group>"; };
@@ -306,6 +310,8 @@
 				379651F918F3035A0022151B /* UIColor+PAYHex.m */,
 				37AF362418FC37F900848D49 /* NSError+PAYComfort.h */,
 				37AF362318FC37F900848D49 /* NSError+PAYComfort.m */,
+				3709CE601920DFAB0077BAFF /* PAYValidation.h */,
+				3709CE611920DFAB0077BAFF /* PAYValidation.m */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -319,6 +325,7 @@
 			files = (
 				37AF34B018F84BE100848D49 /* PAYFormDefaultErrorHandler.h in Headers */,
 				37AF362618FC37F900848D49 /* NSError+PAYComfort.h in Headers */,
+				3709CE621920DFAB0077BAFF /* PAYValidation.h in Headers */,
 				37AF34AC18F81ADE00848D49 /* PAYFormButtonGroupBuilder.h in Headers */,
 				375DAD70190F052600F4A41D /* PAYHeaderView.h in Headers */,
 				37AF34B418F8560300848D49 /* PAYFormSwitch.h in Headers */,
@@ -447,6 +454,7 @@
 				379651DC18F2F1650022151B /* PAYFormMultiLineTextField.m in Sources */,
 				37906D4018F43A4F00FC3CC8 /* PAYFormBuilder.m in Sources */,
 				379651E218F2F1650022151B /* UIView+PAYKeyboardHandling.m in Sources */,
+				3709CE631920DFAB0077BAFF /* PAYValidation.m in Sources */,
 				379651D818F2F1650022151B /* PAYFormTableViewController.m in Sources */,
 				37AF34AD18F81ADE00848D49 /* PAYFormButtonGroupBuilder.m in Sources */,
 				379651FA18F3035A0022151B /* UIColor+PAYHex.m in Sources */,
