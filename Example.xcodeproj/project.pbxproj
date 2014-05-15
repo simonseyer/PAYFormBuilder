@@ -28,6 +28,8 @@
 		3796522718F426A00022151B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796520F18F426A00022151B /* UIKit.framework */; };
 		3796524818F427C30022151B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3796524418F427C30022151B /* InfoPlist.strings */; };
 		3796524D18F427F00022151B /* PAYRegistrationFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3796524C18F427F00022151B /* PAYRegistrationFormViewController.m */; };
+		37F82F9B192512E000087781 /* PAYRegistrationFormTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F82F9A192512E000087781 /* PAYRegistrationFormTest.m */; };
+		37F82FA0192518C600087781 /* KIFTestCase+PAYComfort.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F82F9F192518C600087781 /* KIFTestCase+PAYComfort.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,10 @@
 		3796524618F427C30022151B /* ExampleTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ExampleTests-Info.plist"; sourceTree = "<group>"; };
 		3796524B18F427F00022151B /* PAYRegistrationFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYRegistrationFormViewController.h; sourceTree = "<group>"; };
 		3796524C18F427F00022151B /* PAYRegistrationFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYRegistrationFormViewController.m; sourceTree = "<group>"; };
+		37F82F99192512E000087781 /* PAYRegistrationFormTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYRegistrationFormTest.h; sourceTree = "<group>"; };
+		37F82F9A192512E000087781 /* PAYRegistrationFormTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYRegistrationFormTest.m; sourceTree = "<group>"; };
+		37F82F9E192518C600087781 /* KIFTestCase+PAYComfort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestCase+PAYComfort.h"; sourceTree = "<group>"; };
+		37F82F9F192518C600087781 /* KIFTestCase+PAYComfort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestCase+PAYComfort.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +228,10 @@
 				3796524618F427C30022151B /* ExampleTests-Info.plist */,
 				3786EC37191D21E400EC1FBB /* PAYValidationsTest.h */,
 				3786EC38191D21E400EC1FBB /* PAYValidationsTest.m */,
+				37F82F99192512E000087781 /* PAYRegistrationFormTest.h */,
+				37F82F9A192512E000087781 /* PAYRegistrationFormTest.m */,
+				37F82F9E192518C600087781 /* KIFTestCase+PAYComfort.h */,
+				37F82F9F192518C600087781 /* KIFTestCase+PAYComfort.m */,
 			);
 			path = ExampleTests;
 			sourceTree = "<group>";
@@ -397,6 +407,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3786EC39191D21E400EC1FBB /* PAYValidationsTest.m in Sources */,
+				37F82FA0192518C600087781 /* KIFTestCase+PAYComfort.m in Sources */,
+				37F82F9B192512E000087781 /* PAYRegistrationFormTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

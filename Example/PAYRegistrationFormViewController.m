@@ -45,22 +45,28 @@
                                                configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                    formField.isRequired = YES;
                                                    formField.minTextLength = 4;
+                                                   formField.textField.accessibilityLabel = @"usernameField";
+                                                   formField.textField.isAccessibilityElement = YES;
                                                }];
         
         self.passwordField1 = [sectionBuilder addFieldWithName:@"Password" placeholder:@"your password"
                                                 configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                     [formField activateSecureInput];
+                                                    formField.textField.accessibilityLabel = @"passwordField";
+                                                    formField.textField.isAccessibilityElement = YES;
                                                 }];
         self.passwordField2 = [sectionBuilder addFieldWithName:@"Password 2" placeholder:@"repeat your password"
                                                 configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                     [formField activateSecureInput];
+                                                    formField.textField.accessibilityLabel = @"password2Field";
+                                                    formField.textField.isAccessibilityElement = YES;
                                                 }];
     }];
     
     [tableBuilder addSectionWithName:@"Country"
                           labelStyle:PAYFormTableLabelStyleSimple
                         contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
-                            self.countryButtonGroup = [sectionBuilder addButtonGroupWithMutliSelection:YES
+                            self.countryButtonGroup = [sectionBuilder addButtonGroupWithMutliSelection:NO
                                 contentBlock:^(id<PAYButtonGroupBuilder> buttonGroupBuilder) {
                                     NSArray *countries = @[@[@"United States", @"usa"], @[@"Germany", @"de"], @[@"Spain", @"es"]];
                                     for (NSArray *country in countries) {
@@ -78,6 +84,8 @@
                                                  configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                      formField.isRequired = YES;
                                                      formField.expanding  = YES;
+                                                     formField.textField.accessibilityLabel = @"streetField";
+                                                     formField.textField.isAccessibilityElement = YES;
                                                  }];
         
         self.postalCodeTextField = [sectionBuilder addFieldWithName:@"Postal code" placeholder:@"your postal code"
@@ -87,10 +95,14 @@
                                                              NSString *strValue = value;
                                                              return [strValue stringByReplacingOccurrencesOfString:@" " withString:@""];
                                                          };
+                                                         formField.textField.accessibilityLabel = @"postalCodeField";
+                                                         formField.textField.isAccessibilityElement = YES;
                                                      }];
         self.cityTextField = [sectionBuilder addFieldWithName:@"City" placeholder:@"your city"
                                                configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                    formField.isRequired = YES;
+                                                   formField.textField.accessibilityLabel = @"cityField";
+                                                   formField.textField.isAccessibilityElement = YES;
                                                }];
     }];
     
@@ -104,6 +116,8 @@
                                                  [formSwitch setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"Accept"
                                                                                                                 message:@"Please accept the terms and conditions to continue"]
                                                                 forErrorCode:PAYFormMissingErrorCode];
+                                                 formSwitch.switchControl.accessibilityLabel = @"termsSwitch";
+                                                 formSwitch.switchControl.isAccessibilityElement = YES;
                                              }];
     }];
     
@@ -118,8 +132,8 @@
     };
     
     tableBuilder.formSuccessBlock = ^{
-        NSString *msg = [NSString stringWithFormat:@"Well done, %@. Here your cleaned postal code: %@",
-                         self.userNameField.value, self.postalCodeTextField.cleanedValue];
+        NSString *msg = [NSString stringWithFormat:@"Well done, %@. Here your cleaned postal code: %@. Country code: %@",
+                         self.userNameField.value, self.postalCodeTextField.cleanedValue, self.countryButtonGroup.value];
         
         UIAlertView *alertView  = [[UIAlertView alloc]initWithTitle:@"Success"
                                                             message:msg

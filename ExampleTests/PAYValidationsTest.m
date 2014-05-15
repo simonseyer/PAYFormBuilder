@@ -8,7 +8,7 @@
 
 #import "PAYValidationsTest.h"
 #import <KIF/KIF.h>
-#import <KIF/UIAccessibilityElement-KIFAdditions.h>
+#import "KIFTestCase+PAYComfort.h"
 
 @implementation PAYValidationsTest
 
@@ -22,6 +22,11 @@
     [super beforeAll];
     
     [tester tapViewWithAccessibilityLabel:@"Validation"];
+}
+
+- (void)afterAll {
+    [super afterAll];
+    [tester tapViewWithAccessibilityLabel:@"Back"];
 }
 
 - (void)test_A_requiredFieldFail {
@@ -112,11 +117,6 @@
     } else {
         [tester tapViewWithAccessibilityLabel:@"Ok"];
     }
-}
-
-- (BOOL)findViewWithLabel:(NSString*)label {
-    UIView *view = nil;
-    return [UIAccessibilityElement accessibilityElement:NULL view:&view withLabel:label value:nil traits:UIAccessibilityTraitNone tappable:NO error:nil];
 }
 
 @end
