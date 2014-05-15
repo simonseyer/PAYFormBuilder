@@ -7,6 +7,7 @@
 //
 
 #import "PAYHeaderView.h"
+#import "UIColor+PAYHex.h"
 
 @implementation PAYHeaderView
 

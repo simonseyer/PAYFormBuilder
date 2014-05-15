@@ -7,6 +7,7 @@
 //
 
 #import "PAYFormTableView.h"
+#import "UIColor+PAYHex.h"
 
 @implementation PAYFormTableView
 

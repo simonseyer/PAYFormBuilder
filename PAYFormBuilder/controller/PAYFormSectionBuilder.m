@@ -14,6 +14,7 @@
 #import "PAYFormButtonGroup.h"
 #import "PAYFormButtonGroupBuilder.h"
 #import "PAYFormSwitch.h"
+#import "UIColor+PAYHex.h"
 
 @implementation PAYFormSectionBuilder
 

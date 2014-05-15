@@ -10,6 +10,4 @@
 
     #import <BlocksKit/BlocksKit.h>
     #import <libextobjc/extobjc.h>
-
-    #import "utils/UIColor+PAYHex.h"
 #endif
