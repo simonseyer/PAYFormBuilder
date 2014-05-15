@@ -22,6 +22,7 @@ Pod::Spec.new do |s|
   s.source_files   = 'PAYFormBuilder/**/*.{h,m}'
   s.ios.frameworks = "UIKit"
   s.requires_arc   = true
+  s.prefix_header_file = "PAYFormBuilder-Prefix.pch"
   s.dependency 'BlocksKit', '~> 2'
   s.dependency 'libextobjc',   '~> 0.4'
   s.dependency 'SZTextView',   '~> 1.1'
