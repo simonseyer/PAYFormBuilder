@@ -42,6 +42,7 @@ typedef enum {
 @class PAYFormHeader;
 @class PAYFormView;
 @class PAYFormSwitch;
+@class SZTextView;
 @protocol PAYTableBuilder;
 @protocol PAYSectionBuilder;
 @protocol PAYButtonGroupBuilder;
@@ -116,6 +117,10 @@ extern NSString * const PAYFormRowFocusRequestNotification;
 - (PAYFormSwitch *)addSwitchWithName:(NSString *)name configureBlock:(void(^)(PAYFormSwitch *))configureBlock;
 
 - (void)addView:(void(^)(PAYFormView *))configureBlock;
+
+- (UILabel *)defaultLabelInRect:(CGRect)defaultBounds;
+- (UITextField *)defaultTextField;
+- (SZTextView *)defaultTextView;
 
 @end
 

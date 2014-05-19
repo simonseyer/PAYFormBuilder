@@ -34,8 +34,4 @@
 
 - (id)initWithFormSection:(PAYFormSection *)section defaultCellBounds:(CGRect)defaultBounds;
 
-- (UILabel *)defaultLabelInRect:(CGRect)defaultBounds;
-- (UITextField *)defaultTextField;
-- (SZTextView *)defaultTextView;
-
 @end
