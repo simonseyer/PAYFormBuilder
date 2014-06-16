@@ -1,6 +1,6 @@
 platform :ios, '7.0'
 xcodeproj 'PAYFormBuilder.xcodeproj'
-workspace 'PAYFromBuilder.xcworkspace'
+workspace 'PAYFormBuilder.xcworkspace'
 
 pod 'BlocksKit',    '~> 2'
 pod 'libextobjc',   '~> 0.4'
