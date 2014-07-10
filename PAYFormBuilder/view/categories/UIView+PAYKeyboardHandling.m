@@ -45,8 +45,8 @@
     return objc_getAssociatedObject(self, @selector(tapToEndEditingDelegate));
 }
 
-- (void)setTapToEndEditingDelegate:(PAYTapToEndEditingDelegate *)tapToEndEditingDelegateValue {
-    objc_setAssociatedObject(self, @selector(tapToEndEditingDelegateKey), tapToEndEditingDelegateValue, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setTapToEndEditingDelegate:(PAYTapToEndEditingDelegate *)tapToEndEditingDelegate {
+    objc_setAssociatedObject(self, @selector(tapToEndEditingDelegate), tapToEndEditingDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (void)enableTapToEndEditing {
