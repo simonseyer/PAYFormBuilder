@@ -4,4 +4,5 @@ before_install:
 language: objective-c
 
 xcode_workspace: PAYFormBuilder.xcworkspace
-xcode_scheme: ExampleTests
+xcode_scheme: Example
+xcode_sdk: iphonesimulator
