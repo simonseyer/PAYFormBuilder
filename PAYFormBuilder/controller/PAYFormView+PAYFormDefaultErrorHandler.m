@@ -10,14 +10,29 @@
 
 @implementation PAYFormView (PAYFormDefaultErrorHandler)
 
-static char fieldErrorMessages;
-static char classErrorMessages;
+
++ (NSMutableDictionary *)classErrorMessages {
+    return objc_getAssociatedObject(self.class, @selector(classErrorMessages));
+}
+
++ (void)setClassErrorMessages:(NSMutableDictionary *)errorMessages {
+    objc_setAssociatedObject(self.class, @selector(classErrorMessages), errorMessages, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSMutableDictionary *)fieldErrorMessages {
+    return objc_getAssociatedObject(self.class, @selector(fieldErrorMessages));
+}
+
+- (void)setFieldErrorMessages:(NSMutableDictionary *)errorMessages {
+    objc_setAssociatedObject(self.class, @selector(fieldErrorMessages), errorMessages, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 
 + (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code {
-    NSMutableDictionary *errorMessages = objc_getAssociatedObject(self.class, &classErrorMessages);
+    NSMutableDictionary *errorMessages = self.classErrorMessages;
     if (!errorMessages) {
         errorMessages = [NSMutableDictionary new];
-        objc_setAssociatedObject(self.class, &classErrorMessages, errorMessages, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        self.classErrorMessages = errorMessages;
     }
     [errorMessages setObject:errorMessage forKey:[NSNumber numberWithUnsignedLong:code]];
 }
@@ -29,7 +44,7 @@ static char classErrorMessages;
     Class curClass = self.class;
     PAYFormErrorMessage *errorMessage = nil;
     while (!errorMessage && [curClass isSubclassOfClass:PAYFormView.class]) {
-        NSMutableDictionary *errorMessages = objc_getAssociatedObject(curClass, &classErrorMessages);
+        NSMutableDictionary *errorMessages = self.classErrorMessages;
         if (errorMessages) {
             errorMessage = [errorMessages objectForKey:[NSNumber numberWithUnsignedLong:code]];
         }
@@ -39,16 +54,16 @@ static char classErrorMessages;
 }
 
 - (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code {
-    NSMutableDictionary *errorMessages = objc_getAssociatedObject(self, &fieldErrorMessages);
+    NSMutableDictionary *errorMessages = self.fieldErrorMessages;
     if (!errorMessages) {
         errorMessages = [NSMutableDictionary new];
-        objc_setAssociatedObject(self, &fieldErrorMessages, errorMessages, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        self.fieldErrorMessages = errorMessages;
     }
     [errorMessages setObject:errorMessage forKey:[NSNumber numberWithUnsignedLong:code]];
 }
 
 - (PAYFormErrorMessage *)fieldErrorMessageForErrorCode:(NSUInteger)code {
-    NSMutableDictionary *errorMessages = objc_getAssociatedObject(self, &fieldErrorMessages);
+    NSMutableDictionary *errorMessages = self.fieldErrorMessages;
     if (!errorMessages) {
         return  nil;
     }
