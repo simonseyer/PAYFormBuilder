@@ -7,9 +7,7 @@
 //
 
 #import "PAYValidationsViewController.h"
-#import "PAYFormSingleLineTextField.h"
-#import "PAYFormSwitch.h"
-#import "PAYValidation.h"
+
 
 @interface PAYValidationsViewController ()
 

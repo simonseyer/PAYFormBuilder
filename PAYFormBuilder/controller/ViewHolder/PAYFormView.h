@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PAYFormBuilder.h"
 #import "PAYFormSection.h"
+#import "PAYFormRow.h"
 
 
 @interface PAYFormView : NSObject<PAYFormRow>

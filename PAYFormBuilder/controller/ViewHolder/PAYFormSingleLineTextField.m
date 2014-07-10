@@ -8,6 +8,7 @@
 
 #import "PAYFormSingleLineTextField.h"
 #import "PAYMessageInterceptor.h"
+#import "PAYErrorCodes.h"
 
 
 static const NSUInteger RPFormSingleLineTextFieldDefaultMaxTextLength = 255;

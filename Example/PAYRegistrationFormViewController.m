@@ -7,14 +7,6 @@
 //
 
 #import "PAYRegistrationFormViewController.h"
-#import "PAYFormSingleLineTextField.h"
-#import "PAYFormButton.h"
-#import "PAYFormButtonGroup.h"
-#import "PAYFormMultiLineTextField.h"
-#import "PAYFormDefaultErrorHandler.h"
-#import "PAYFormSwitch.h"
-#import "PAYFormView+PAYFormDefaultErrorHandler.h"
-#import "NSError+PAYComfort.h"
 
 @interface PAYRegistrationFormViewController ()
 

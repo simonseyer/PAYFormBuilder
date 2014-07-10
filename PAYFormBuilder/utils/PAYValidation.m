@@ -8,6 +8,7 @@
 
 #import "PAYValidation.h"
 #import "PAYFormField.h"
+#import "PAYErrorCodes.h"
 
 @implementation PAYValidation
 

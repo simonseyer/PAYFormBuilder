@@ -11,6 +11,9 @@
 #import "PAYFormHeader.h"
 
 
+typedef void(^PAYFormSectionCompletionBlock)();
+
+
 @class PAYFormField;
 @class PAYFormButton;
 

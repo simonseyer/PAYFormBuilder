@@ -8,6 +8,7 @@
 
 #import "PAYFormSwitch.h"
 #import "NSError+PAYComfort.h"
+#import "PAYErrorCodes.h"
 
 
 @implementation PAYFormSwitch

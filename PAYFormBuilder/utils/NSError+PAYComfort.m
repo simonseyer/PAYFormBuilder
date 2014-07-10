@@ -7,7 +7,7 @@
 //
 
 #import "NSError+PAYComfort.h"
-#import "PAYFormBuilder.h"
+#import "PAYErrorCodes.h"
 
 @implementation NSError (PAYComfort)
 

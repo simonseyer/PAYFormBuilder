@@ -7,10 +7,6 @@
 //
 
 #import "PAYAppDelegate.h"
-#import "PAYFormDefaultErrorHandler.h"
-#import "PAYFormSwitch.h"
-#import "PAYFormView+PAYFormDefaultErrorHandler.h"
-#import "PAYFormTextField.h"
 
 @implementation PAYAppDelegate
 

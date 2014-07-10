@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PAYFormSection.h"
+#import "PAYSectionBuilder.h"
 #import <SZTextView/SZTextView.h>
 
 @interface PAYFormSectionBuilder : NSObject <PAYSectionBuilder>

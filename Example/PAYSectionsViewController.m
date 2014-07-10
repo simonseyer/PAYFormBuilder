@@ -7,7 +7,6 @@
 //
 
 #import "PAYSectionsViewController.h"
-#import "PAYHeaderView.h"
 
 @interface PAYSectionsViewController ()
 

@@ -9,6 +9,7 @@
 #import "PAYFormButtonGroupBuilder.h"
 #import "PAYFormButtonGroup.h"
 #import "PAYFormButton.h"
+#import "PAYSectionBuilder.h"
 
 @implementation PAYFormButtonGroupBuilder
 

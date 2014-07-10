@@ -1,16 +1,13 @@
 //
-//  PAYFormView.m
+//  PAYErrorCodes.m
 //  PAYFormBuilder
 //
-//  Created by Simon Seyer on 05.11.13.
+//  Created by Simon Seyer on 10.07.14.
 //  Copyright (c) 2014 Paij. All rights reserved.
 //
 
-#import "PAYFormBuilder.h"
-
+#import "PAYErrorCodes.h"
 
 NSString * const PAYFormErrorControlKey = @"PAYFormBuilderErrorControlKey";
 NSString * const PAYFormErrorRecoveryOptionsKey = @"PAYFormBuilderErrorRecoveryOptionsKey";
 NSString * const PAYFormErrorDomain = @"PAYFormBuilderErrorDomain";
-
-NSString * const PAYFormRowFocusRequestNotification = @"PAYFormRowFocusRequestNotification";

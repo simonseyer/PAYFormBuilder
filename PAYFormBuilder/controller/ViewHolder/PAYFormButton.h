@@ -9,6 +9,19 @@
 #import <Foundation/Foundation.h>
 #import "PAYFormView.h"
 
+typedef void(^PAYFormButtonSelectionBlock)(PAYFormButton *);
+typedef enum {
+    PAYFormButtonStyleCentered,
+    PAYFormButtonStylePrimaryCentered,
+    PAYFormButtonStyleHilightedCentered,
+    PAYFormButtonStyleDisabledCentered,
+    PAYFormButtonStyleDisclosure,
+    PAYFormButtonStyleIconDisclosure,
+    PAYFormButtonStyleSelection,
+    PAYFormButtonStyleIconSelection,
+    PAYFormButtonStyleEmpty
+} PAYFormButtonStyle;
+
 
 @interface PAYFormButton : PAYFormView
 

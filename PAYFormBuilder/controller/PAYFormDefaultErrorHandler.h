@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PAYFormBuilder.h"
+#import "PAYFormTable.h"
 
+@protocol PAYValidatableFormCell;
 
 typedef NSString *(^PAYFormErrorMessageBlock)(id<PAYValidatableFormCell> formCell);
 

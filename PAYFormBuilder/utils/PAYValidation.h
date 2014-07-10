@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PAYFormBuilder.h"
+#import "PAYFormField.h"
 
 @interface PAYValidation : NSObject
 

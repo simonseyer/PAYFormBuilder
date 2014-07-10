@@ -7,10 +7,6 @@
 //
 
 #import "PAYCustomizationViewController.h"
-#import "PAYFormButton.h"
-#import "UIColor+PAYHex.h"
-#import "PAYFormSingleLineTextField.h"
-#import "PAYTextLabel.h"
 
 @interface PAYCustomizationViewController ()
 

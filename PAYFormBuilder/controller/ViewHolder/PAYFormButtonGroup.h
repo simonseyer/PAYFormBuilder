@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PAYFormBuilder.h"
+#import "PAYValidatableFormCell.h"
+
+@class PAYFormSection;
 
 @interface PAYFormButtonGroup : NSObject <PAYValidatableFormCell>
 

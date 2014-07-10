@@ -7,7 +7,17 @@
 //
 
 #import "PAYTextLabel.h"
-#import "PAYFormBuilder.h"
+
+
+typedef enum {
+    PAYFormTableLabelStyleSimple,
+    PAYFormTableLabelStyleDescription,
+    PAYFormTableLabelStyleDescriptionWide,
+    PAYFormTableLabelStyleHeaderTitle,
+    PAYFormTableLabelStyleHeaderSubTitle,
+    PAYFormTableLabelStyleEmpty,
+    PAYFormTableLabelStyleNone
+} PAYFormTableLabelStyle;
 
 
 @interface PAYTextLabel : UILabel

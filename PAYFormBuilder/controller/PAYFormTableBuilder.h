@@ -7,9 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PAYFormTable.h"
-#import "PAYFormBuilder.h"
-
+#import "PAYTableBuilder.h"
 
 @interface PAYFormTableBuilder : NSObject<PAYTableBuilder>
 

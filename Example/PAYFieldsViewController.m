@@ -7,7 +7,6 @@
 //
 
 #import "PAYFieldsViewController.h"
-#import "PAYFormSingleLineTextField.h"
 
 @interface PAYFieldsViewController ()
 

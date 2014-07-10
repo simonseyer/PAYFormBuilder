@@ -9,6 +9,7 @@
 #import "PAYFormButtonGroup.h"
 #import "PAYFormButton.h"
 #import "NSError+PAYComfort.h"
+#import "PAYErrorCodes.h"
 
 @implementation PAYFormButtonGroup {
     NSMutableArray *_selectedOptions;

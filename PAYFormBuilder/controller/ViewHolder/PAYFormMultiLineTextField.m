@@ -9,6 +9,7 @@
 #import "PAYFormMultiLineTextField.h"
 #import "PAYMessageInterceptor.h"
 #import <SZTextView/SZTextView.h>
+#import "PAYErrorCodes.h"
 
 
 static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;

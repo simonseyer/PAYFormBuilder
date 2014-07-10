@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PAYFormBuilder.h"
+#import "PAYButtonGroupBuilder.h"
+
+@protocol PAYSectionBuilder;
+@class PAYFormButtonGroup;
 
 @interface PAYFormButtonGroupBuilder : NSObject <PAYButtonGroupBuilder>
 

@@ -7,6 +7,7 @@
 //
 
 #import "PAYFormView.h"
+#import "PAYValidatableFormCell.h"
 
 @interface PAYFormSwitch : PAYFormView <PAYValidatableFormCell>
 

@@ -7,7 +7,6 @@
 //
 
 #import "PAYControlsViewController.h"
-#import "PayFormButton.h"
 
 @interface PAYControlsViewController ()
 

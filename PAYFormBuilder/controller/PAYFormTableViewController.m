@@ -12,6 +12,7 @@
 #import "PAYFormTableBuilder.h"
 #import "PAYFormField.h"
 #import "PAYFormTableView.h"
+#import "PAYNotifications.h"
 
 
 @implementation PAYFormTableViewController

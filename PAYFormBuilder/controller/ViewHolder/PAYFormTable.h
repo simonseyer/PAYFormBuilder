@@ -7,8 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PAYFormBuilder.h"
 #import "PAYFormSection.h"
+#import "PAYValidation.h"
+
+
+typedef NSError *(^PAYFormValidationBlock)();
+typedef void(^PAYFormTableCompletionBlock)();
+typedef void (^PAYFormTableSuccessBlock)();
+typedef BOOL (^PAYFormTableFailBlock)(NSError *error);
 
 
 @interface PAYFormTable : NSObject

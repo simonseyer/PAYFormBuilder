@@ -8,6 +8,7 @@
 
 #import "PAYFormTextField.h"
 #import "NSError+PAYComfort.h"
+#import "PAYErrorCodes.h"
 
 
 @interface PAYFormTextField ()

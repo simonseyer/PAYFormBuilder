@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PAYFormBuilder.h"
 
+@protocol PAYTableBuilder;
+
+@class PAYFormTable;
 
 @interface PAYFormTableViewController : UITableViewController
 
