@@ -203,7 +203,7 @@
     
     UILabel *titleLabel;
     if (style != PAYFormButtonStyleEmpty) {
-        titleLabel = [UILabel new];
+        titleLabel      = [UILabel new];
         titleLabel.text = text;
         titleLabel.font = [UIFont fontWithName:titleLabel.font.fontName
                                           size:self.defaultFontSize];
@@ -283,7 +283,7 @@
     
     if (contentBlock) {
         PAYFormButtonGroupBuilder *buttonGroupBuilder = [PAYFormButtonGroupBuilder new];
-        buttonGroupBuilder.buttonGroup = buttonGroup;
+        buttonGroupBuilder.buttonGroup    = buttonGroup;
         buttonGroupBuilder.sectionBuilder = self;
         contentBlock(buttonGroupBuilder);
     }

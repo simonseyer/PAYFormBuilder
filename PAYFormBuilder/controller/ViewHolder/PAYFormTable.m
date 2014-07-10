@@ -26,7 +26,7 @@
                 [self validate];
             }
         };
-        self.formFailBlock = [PAYFormDefaultErrorHandler failBlock];
+        self.formFailBlock = PAYFormDefaultErrorHandler.failBlock;
     }
     return self;
 }

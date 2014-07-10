@@ -66,7 +66,7 @@ static NSMutableDictionary *errorMessages;
 }
 
 + (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code {
-    [errorMessages setObject:errorMessage forKey:[NSNumber numberWithUnsignedLong:code]];
+    errorMessages[@(code)] = errorMessage;
 }
 
 static NSString *buttonText;
@@ -85,10 +85,9 @@ static NSString *buttonText;
         PAYFormErrorMessage *errorMessage = [PAYFormErrorMessage errorMessageWithError:error];
         if (!errorMessage) {
             errorMessage = [error.field errorMessageForErrorCode:error.code];
-            // TODO: ask parents
         }
         if (!errorMessage) {
-            errorMessage = [errorMessages objectForKey:[NSNumber numberWithUnsignedLong:error.code]];
+            errorMessage = errorMessages[@(error.code)];
         }
         
         UIAlertView* alertView = [UIAlertView bk_alertViewWithTitle:[errorMessage titleForField:error.field]

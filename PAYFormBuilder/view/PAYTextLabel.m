@@ -153,8 +153,8 @@
 }
 
 - (CGSize)preferredSizeConstrainedToSize:(CGSize)constrainedSize {
-    NSStringDrawingContext *context         = [NSStringDrawingContext new];
-    context.minimumScaleFactor              = 10 / self.font.pointSize;
+    NSStringDrawingContext *context = [NSStringDrawingContext new];
+    context.minimumScaleFactor      = 10 / self.font.pointSize;
     
     CGSize rectSize;
     if (self.attributedText) {

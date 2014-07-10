@@ -41,14 +41,12 @@
 
 @implementation UIView (PAYKeyboardHandling)
 
-static char tapToEndEditingDelegateKey;
-
-- (void)setTapToEndEditingDelegate:(PAYTapToEndEditingDelegate *)tapToEndEditingDelegate {
-    objc_setAssociatedObject(self, &tapToEndEditingDelegateKey, tapToEndEditingDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (PAYTapToEndEditingDelegate *)tapToEndEditingDelegate {
+    return objc_getAssociatedObject(self, @selector(tapToEndEditingDelegate));
 }
 
-- (PAYTapToEndEditingDelegate *)tapToEndEditingDelegate {
-    return objc_getAssociatedObject(self, &tapToEndEditingDelegateKey);
+- (void)setTapToEndEditingDelegate:(PAYTapToEndEditingDelegate *)tapToEndEditingDelegateValue {
+    objc_setAssociatedObject(self, @selector(tapToEndEditingDelegateKey), tapToEndEditingDelegateValue, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (void)enableTapToEndEditing {

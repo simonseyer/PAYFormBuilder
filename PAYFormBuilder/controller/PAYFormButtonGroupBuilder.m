@@ -45,7 +45,7 @@
                                                             formButton.iconView.image = icon;
                                                         }
     }];
-    [self.buttonGroup.options setObject:button forKey:value];
+    self.buttonGroup.options[value] = button;
     return button;
 }
 

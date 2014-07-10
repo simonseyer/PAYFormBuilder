@@ -64,7 +64,7 @@
 
 - (PAYFormField *)firstFormField {
     if (!_firstFormField) {
-        _firstFormField = [self findFirstFormField];
+        _firstFormField = self.findFirstFormField;
     }
     return _firstFormField;
 }

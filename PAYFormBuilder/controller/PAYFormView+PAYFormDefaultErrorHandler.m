@@ -34,7 +34,7 @@
         errorMessages = [NSMutableDictionary new];
         self.classErrorMessages = errorMessages;
     }
-    [errorMessages setObject:errorMessage forKey:[NSNumber numberWithUnsignedLong:code]];
+    errorMessages[@(code)] = errorMessage;
 }
 
 + (PAYFormErrorMessage *)classErrorMessageForErrorCode:(NSUInteger)code {
@@ -46,7 +46,7 @@
     while (!errorMessage && [curClass isSubclassOfClass:PAYFormView.class]) {
         NSMutableDictionary *errorMessages = self.classErrorMessages;
         if (errorMessages) {
-            errorMessage = [errorMessages objectForKey:[NSNumber numberWithUnsignedLong:code]];
+            errorMessage = errorMessages[@(code)];
         }
         curClass = curClass.superclass;
     }
@@ -59,7 +59,7 @@
         errorMessages = [NSMutableDictionary new];
         self.fieldErrorMessages = errorMessages;
     }
-    [errorMessages setObject:errorMessage forKey:[NSNumber numberWithUnsignedLong:code]];
+    errorMessages[@(code)] = errorMessage;
 }
 
 - (PAYFormErrorMessage *)fieldErrorMessageForErrorCode:(NSUInteger)code {
@@ -67,7 +67,7 @@
     if (!errorMessages) {
         return  nil;
     }
-    return [errorMessages objectForKey:[NSNumber numberWithUnsignedLong:code]];
+    return errorMessages[@(code)];
 }
 
 - (PAYFormErrorMessage *)errorMessageForErrorCode:(NSUInteger)code {
