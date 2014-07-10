@@ -92,5 +92,8 @@ NSString *const PAYFormFieldErrorDomain = @"PAYFormFieldErrorDomain";
     return NO;
 }
 
+- (void)styleForError:(NSError *)error {
+    
+}
 
 @end
