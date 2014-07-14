@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PAYFormBuilder.h"
 
 @interface PAYRegistrationFormViewController : PAYFormTableViewController
 
