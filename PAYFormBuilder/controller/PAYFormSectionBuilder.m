@@ -274,7 +274,6 @@
 - (PAYFormButtonGroup *)addButtonGroupWithMutliSelection:(BOOL)multiSelection
                                             contentBlock:(void(^)(id<PAYButtonGroupBuilder>))contentBlock {
     PAYFormButtonGroup *buttonGroup = [PAYFormButtonGroup new];
-    buttonGroup.section = self.section;
     buttonGroup.multiSelection = multiSelection;
     [self.section.attachedObjects addObject:buttonGroup];
     

@@ -9,7 +9,7 @@
 #import "PAYFormTextField.h"
 
 /**
- *  A form view with a single line textfield
+ *  A form view with a singleline textfield
  */
 @interface PAYFormSingleLineTextField : PAYFormTextField
 

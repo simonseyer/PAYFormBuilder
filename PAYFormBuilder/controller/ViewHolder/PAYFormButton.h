@@ -22,13 +22,34 @@ typedef enum {
     PAYFormButtonStyleEmpty
 } PAYFormButtonStyle;
 
-
+/**
+ *  A form view with a button
+ */
 @interface PAYFormButton : PAYFormView
 
+/**
+ *  The title label
+ */
 @property (nonatomic, retain) UILabel *titleLabel;
+
+/**
+ *  The icon
+ */
 @property (nonatomic, retain) UIImageView *iconView;
+
+/**
+ *  The style
+ */
 @property (nonatomic, assign) PAYFormButtonStyle style;
+
+/**
+ *  A block that is called when the user tapped on the button
+ */
 @property (nonatomic, copy) PAYFormButtonSelectionBlock selectionBlock;
+
+/**
+ *  True, if the button is in selected state, false otherwise
+ */
 @property (nonatomic, assign) BOOL selected;
 
 @end

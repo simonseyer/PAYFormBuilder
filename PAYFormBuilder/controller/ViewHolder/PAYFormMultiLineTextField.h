@@ -10,14 +10,37 @@
 
 @class SZTextView;
 
+
+/**
+ *  A form view with a multiline textfield
+ */
 @interface PAYFormMultiLineTextField : PAYFormTextField
 
+/**
+ *  The text view component
+ */
 @property (nonatomic, retain) SZTextView *textView;
+
+/**
+ *  A text view delegate that is attached to the textview
+ */
 @property (nonatomic, weak) id<UITextViewDelegate> delegate;
 
+/**
+ *  The default height of the text field
+ */
 @property (nonatomic, assign) CGFloat defaultHeight;
 
+/**
+ *  Adjusts the height of the text view to the content height
+ */
 - (void)adjustSizeToContent;
+
+/**
+ *  Adjusts the height of the text view to the content height
+ *
+ *  @param maxHeight the maximum height of the text view
+ */
 - (void)adjustSizeToContentWithMaxHeight:(CGFloat)maxHeight;
 
 @end

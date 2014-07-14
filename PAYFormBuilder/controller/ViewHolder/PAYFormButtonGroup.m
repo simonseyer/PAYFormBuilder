@@ -11,6 +11,14 @@
 #import "NSError+PAYComfort.h"
 #import "PAYErrorCodes.h"
 
+
+@interface PAYFormButtonGroup ()
+
+@property (nonatomic, retain) NSMutableDictionary *options;
+
+@end
+
+
 @implementation PAYFormButtonGroup {
     NSMutableArray *_selectedOptions;
 }
@@ -50,6 +58,10 @@
 
 - (NSString *)name {
     return @"";
+}
+
+- (void)addButton:(PAYFormButton *)button forValue:(id)value {
+    self.options[value] = button;
 }
 
 - (void)select:(BOOL)select value:(id)value {
