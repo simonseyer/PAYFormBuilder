@@ -1,4 +1,4 @@
-![](Images/AppIcon.png) PAYFormBuilder
+![](Images/AppIcon.png) PAYFormBuilder ![image](https://magnum.travis-ci.com/redpeppix-gmbh-co-kg/PAYFormBuilder.svg?token=UAwBhHcJg3f4aE5AT2Vs)
 ==============
 The FormBuilder is a library to create generic iOS 7 screens the easy way. With it's block based syntax and wide possibilities for customization it's fun to create forms.
 
@@ -19,7 +19,7 @@ Usage
 In order to create a form screen, you have to inherit from the PAYFormTableViewController and implement the `loadStructure:` method. All of your configuration should take place in this method.
 
 ```
-#import "PAYFormTableViewController.h"
+#import "PAYFormBuilder.h"
 
 @interface YourViewController : PAYFormTableViewController
 
@@ -59,7 +59,7 @@ With the `sectionBuilder` you have a factory object to create a variety of diffe
 * button groups (list of connected buttons)
 * switches
 
-But there is also a generic `addView:` method where you get an empty `PAYFormView` which only holds a table view cell, you could configure on your own. Please note, that for all row types there are factory methods where you could pass a `configureBlock`, so you could always change them the way you like.
+But there is also a generic `addView:` method where you get an empty `PAYFormView` which only holds a table view cell you could configure on your own. Please note, that for all row types there are factory methods where you could pass a `configureBlock`, so you could always change them the way you like.
 
 Example
 -------
@@ -70,7 +70,6 @@ To create a registration form is common task in app development, so it is here u
 ```
 #import <UIKit/UIKit.h>
 #import "PAYFormBuilder.h"
-#import "controller/PAYFormTableViewController.h"
 
 @interface PAYRegistrationFormViewController : PAYFormTableViewController
 
@@ -79,14 +78,6 @@ To create a registration form is common task in app development, so it is here u
 
 ```
 #import "PAYRegistrationFormViewController.h"
-#import "PAYFormSingleLineTextField.h"
-#import "PAYFormButton.h"
-#import "PAYFormButtonGroup.h"
-#import "PAYFormMultiLineTextField.h"
-#import "PAYFormDefaultErrorHandler.h"
-#import "PAYFormSwitch.h"
-#import "PAYFormView+PAYFormDefaultErrorHandler.h"
-#import "NSError+PAYComfort.h"
 
 @interface PAYRegistrationFormViewController ()
 
@@ -120,7 +111,8 @@ To create a registration form is common task in app development, so it is here u
                                                 configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                     [formField activateSecureInput];
                                                 }];
-        self.passwordField2 = [sectionBuilder addFieldWithName:@"Password 2" placeholder:@"repeat your password"
+        self.passwordField2 = [sectionBuilder addFieldWithName:@"Password 2" 
+                                                   placeholder:@"repeat your password"
                                                 configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                     [formField activateSecureInput];
                                                 }];
@@ -129,17 +121,17 @@ To create a registration form is common task in app development, so it is here u
     [tableBuilder addSectionWithName:@"Country"
                           labelStyle:PAYFormTableLabelStyleSimple
                         contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
-                            self.countryButtonGroup = [sectionBuilder addButtonGroupWithMutliSelection:YES
+                            self.countryButtonGroup = [sectionBuilder addButtonGroupWithMutliSelection:NO
                                 contentBlock:^(id<PAYButtonGroupBuilder> buttonGroupBuilder) {
                                     NSArray *countries = @[
-                                    	@[@"United States", @"usa"], 
-                                    	@[@"Germany", @"de"], 
-                                    	@[@"Spain", @"es"]
+                                    		@[@"United States", @"usa"], 
+                                    		@[@"Germany", @"de"], 
+                                    		@[@"Spain", @"es"]
                                     ];
                                     for (NSArray *country in countries) {
                                         [buttonGroupBuilder addOption:country[1] 
-                                        		             withText:country[0] 
-                                        		                 icon:[UIImage imageNamed:country[1]]];
+                                        		              withText:country[0] 
+                                        		                  icon:[UIImage imageNamed:country[1]]];
                                     }
                                     [buttonGroupBuilder select:@"usa"];
                                 }];
@@ -155,7 +147,8 @@ To create a registration form is common task in app development, so it is here u
                                                      formField.expanding  = YES;
                                                  }];
         
-        self.postalCodeTextField = [sectionBuilder addFieldWithName:@"Postal code" placeholder:@"your postal code"
+        self.postalCodeTextField = [sectionBuilder addFieldWithName:@"Postal code" 
+                                                        placeholder:@"your postal code"
                                                      configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                          formField.isRequired = YES;
                                                          formField.cleanBlock = ^id(PAYFormField *formField, id value) {
@@ -172,14 +165,16 @@ To create a registration form is common task in app development, so it is here u
     
    
     
-    [tableBuilder addSectionWithName:@"Terms and Conditions" contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+    [tableBuilder addSectionWithName:@"Terms and Conditions" 
+                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
         self.formSwitch = [sectionBuilder addSwitchWithName:@"Accept"
                                              configureBlock:^(PAYFormSwitch *formSwitch) {
-                                                 formSwitch.isRequired = YES;
+        	formSwitch.isRequired = YES;
+                                                 
+           [formSwitch setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"Accept"
+                                                                          message:@"Please accept the terms and conditions to continue"]
+                          forErrorCode:PAYFormMissingErrorCode];
                                              }];
-        [self.formSwitch setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"Accept"
-                                                                            message:@"Please accept the terms and conditions to continue"]
-                            forErrorCode:PAYFormMissingErrorCode];
     }];
     
     tableBuilder.finishOnLastField = YES;
@@ -188,15 +183,15 @@ To create a registration form is common task in app development, so it is here u
     tableBuilder.validationBlock =  ^NSError *{
         if (![self.passwordField1.value isEqualToString:self.passwordField2.value]) {
             return [NSError validationErrorWithTitle:@"Password wrong" 
-            								 message:@"Please enter the same password again" 
-            								 control:self.passwordField2];
+                                             message:@"Please enter the same password again" 
+                                             control:self.passwordField2];
         }
         return nil;
     };
     
     tableBuilder.formSuccessBlock = ^{
-        NSString *msg = [NSString stringWithFormat:@"Well done, %@. Here your cleaned postal code: %@",
-                         self.userNameField.value, self.postalCodeTextField.cleanedValue];
+        NSString *msg = [NSString stringWithFormat:@"Well done, %@. Here your cleaned postal code: %@. Country code: %@",
+                         self.userNameField.value, self.postalCodeTextField.cleanedValue, self.countryButtonGroup.value];
         
         UIAlertView *alertView  = [[UIAlertView alloc]initWithTitle:@"Success"
                                                             message:msg
