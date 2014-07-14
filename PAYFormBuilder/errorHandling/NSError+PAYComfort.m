@@ -39,7 +39,7 @@
     return self.localizedRecoverySuggestion;
 }
 
-- (PAYFormView<PAYValidatableFormCell> *)field {
+- (id<PAYValidatableFormCell>)field {
     if ([self.userInfo[PAYFormErrorControlKey] conformsToProtocol:@protocol(PAYValidatableFormCell)]) {
         return self.userInfo[PAYFormErrorControlKey];
     }

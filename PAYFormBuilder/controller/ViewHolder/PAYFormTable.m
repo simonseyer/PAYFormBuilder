@@ -8,9 +8,11 @@
 
 #import "PAYFormTable.h"
 #import "PAYFormField.h"
+#import "PAYFormView_protected.h"
 #import "NSError+PAYComfort.h"
 #import <BlocksKit+UIKit.h>
 #import "PAYFormDefaultErrorHandler.h"
+#import "PAYFormDefaultErrorHandler_protected.h"
 
 
 @implementation PAYFormTable

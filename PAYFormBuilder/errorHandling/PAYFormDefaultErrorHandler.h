@@ -9,35 +9,26 @@
 #import <Foundation/Foundation.h>
 #import "PAYFormTable.h"
 
-@protocol PAYValidatableFormCell;
+@class PAYFormErrorMessage;
 
-typedef NSString *(^PAYFormErrorMessageBlock)(id<PAYValidatableFormCell> formCell);
-
-
-@interface PAYFormErrorMessage : NSObject
-
-@property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSString *message;
-@property (nonatomic, assign) PAYFormErrorMessageBlock titleBlock;
-@property (nonatomic, assign) PAYFormErrorMessageBlock messageBlock;
-
-+ (instancetype)errorMessageWithTitle:(NSString *)title message:(NSString *)message;
-+ (instancetype)errorMessageWithError:(NSError *)error;
-+ (instancetype)errorMessageWithTitleBlock:(PAYFormErrorMessageBlock)titleBlock messageBlock:(PAYFormErrorMessageBlock)messageBlock;
-
-- (NSString *)titleForField:(id<PAYValidatableFormCell>)field;
-- (NSString *)messageForField:(id<PAYValidatableFormCell>)field;
-
-@end
-
-
-
+/**
+ *  An error handler that displays dialogs for errors.
+ */
 @interface PAYFormDefaultErrorHandler : NSObject
 
+/**
+ *  Define an error message that sould be shown when an error with the error code occur
+ *
+ *  @param errorMessage the error message
+ *  @param code         the code of the errro
+ */
 + (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code;
-+ (PAYFormTableFailBlock)failBlock;
 
+/**
+ *  Set the text of the button that is used to hide the dialog
+ *
+ *  @param text the text
+ */
 + (void)setButtonText:(NSString *)text;
-+ (NSString *)buttonText;
 
 @end

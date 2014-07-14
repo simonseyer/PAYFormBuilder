@@ -22,6 +22,8 @@
 #import "PAYFormSwitch.h"
 #import "PAYFormHeader.h"
 
+#import "PAYFormDefaultErrorHandler.h"
+#import "PAYFormErrorMessage.h"
 #import "PAYFormView+PAYFormDefaultErrorHandler.h"
 #import "PAYErrorCodes.h"
 #import "NSError+PAYComfort.h"

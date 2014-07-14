@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "PAYValidatableFormCell.h"
 
-@class PAYFormView;
-
 /**
  *  Comfort methods to create and access NSError
  */
@@ -56,6 +54,6 @@
  *
  *  @return the control view or nil, if there is no related control view
  */
-- (PAYFormView<PAYValidatableFormCell> *)field;
+- (id<PAYValidatableFormCell>)field;
 
 @end
