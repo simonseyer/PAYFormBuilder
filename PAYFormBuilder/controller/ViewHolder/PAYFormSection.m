@@ -75,7 +75,7 @@
 
 - (NSError *)validate {
     NSError *error;
-    for (id<PAYFormRow> row in self.views) {
+    for (id<PAYFormRow> row in [self.views arrayByAddingObjectsFromArray:self.attachedObjects]) {
         if ([row conformsToProtocol:@protocol(PAYValidatableFormCell)]) {
             id<PAYValidatableFormCell> validatableCell = (id<PAYValidatableFormCell>)row;
             [validatableCell styleForError:nil];
@@ -86,20 +86,6 @@
         }
     }
     return error;
-}
-
-- (NSString *)name {
-    return self.header.label.text;
-}
-
-- (void)setName:(NSString *)name {
-    _name = name;
-    self.header.label.text = name;
-}
-
--(void)setHeader:(PAYFormHeader *)header {
-    header.label.text = self.name;
-    _header = header;
 }
 
 @end

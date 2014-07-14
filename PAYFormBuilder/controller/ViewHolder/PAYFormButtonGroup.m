@@ -57,10 +57,6 @@
     
 }
 
-- (NSString *)name {
-    return @"";
-}
-
 - (void)addButton:(PAYFormButton *)button forValue:(id)value {
     self.options[value] = button;
 }
