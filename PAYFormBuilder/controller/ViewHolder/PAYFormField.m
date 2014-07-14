@@ -10,8 +10,6 @@
 #import "NSError+PAYComfort.h"
 #import "PAYErrorCodes.h"
 
-NSString *const PAYFormFieldErrorDomain = @"PAYFormFieldErrorDomain";
-
 
 @implementation PAYFormField
 

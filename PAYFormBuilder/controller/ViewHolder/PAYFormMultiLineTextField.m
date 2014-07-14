@@ -101,7 +101,7 @@ static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
         NSError *error = [self validate];
         
         // Suppress error with code PAYFormTextFieldBelowMinLength while still entering text
-        if ([error.domain isEqualToString:PAYFormFieldErrorDomain] && error.code == PAYFormTextFieldBelowMinLengthErrorCode) {
+        if ([error.domain isEqualToString:PAYFormErrorDomain] && error.code == PAYFormTextFieldBelowMinLengthErrorCode) {
             error = nil;
         }
         [self styleForError:error];
