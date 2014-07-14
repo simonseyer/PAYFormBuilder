@@ -79,14 +79,14 @@
 		3709CE601920DFAB0077BAFF /* PAYValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYValidation.h; sourceTree = "<group>"; };
 		3709CE611920DFAB0077BAFF /* PAYValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYValidation.m; sourceTree = "<group>"; };
 		3740425A196EE85300CEAC20 /* PAYButtonGroupBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAYButtonGroupBuilder.h; sourceTree = "<group>"; };
-		3740425B196EE85300CEAC20 /* PAYFormRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAYFormRow.h; sourceTree = "<group>"; };
-		3740425C196EEA0700CEAC20 /* PAYValidatableFormCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAYValidatableFormCell.h; sourceTree = "<group>"; };
+		3740425B196EE85300CEAC20 /* PAYFormRow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PAYFormRow.h; path = ../protocols/PAYFormRow.h; sourceTree = "<group>"; };
+		3740425C196EEA0700CEAC20 /* PAYValidatableFormCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PAYValidatableFormCell.h; path = ../protocols/PAYValidatableFormCell.h; sourceTree = "<group>"; };
 		3740425D196EEA6100CEAC20 /* PAYTableBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAYTableBuilder.h; sourceTree = "<group>"; };
 		3740425E196EEA8300CEAC20 /* PAYSectionBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAYSectionBuilder.h; sourceTree = "<group>"; };
 		3740425F196EEBCA00CEAC20 /* PAYErrorCodes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAYErrorCodes.h; sourceTree = "<group>"; };
-		37404260196EEEEA00CEAC20 /* PAYNotifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAYNotifications.h; sourceTree = "<group>"; };
+		37404260196EEEEA00CEAC20 /* PAYNotifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PAYNotifications.h; path = ../protocols/PAYNotifications.h; sourceTree = "<group>"; };
 		37404261196EF4B400CEAC20 /* PAYErrorCodes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYErrorCodes.m; sourceTree = "<group>"; };
-		37404263196EF4F200CEAC20 /* PAYNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYNotifications.m; sourceTree = "<group>"; };
+		37404263196EF4F200CEAC20 /* PAYNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PAYNotifications.m; path = ../protocols/PAYNotifications.m; sourceTree = "<group>"; };
 		375DAD6E190F052600F4A41D /* PAYHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYHeaderView.h; sourceTree = "<group>"; };
 		375DAD6F190F052600F4A41D /* PAYHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYHeaderView.m; sourceTree = "<group>"; };
 		37906D3018F431D200FC3CC8 /* PAYFormBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormBuilder.h; sourceTree = "<group>"; };
@@ -178,17 +178,24 @@
 		37404259196EE85300CEAC20 /* protocols */ = {
 			isa = PBXGroup;
 			children = (
-				3740425A196EE85300CEAC20 /* PAYButtonGroupBuilder.h */,
-				3740425B196EE85300CEAC20 /* PAYFormRow.h */,
-				3740425C196EEA0700CEAC20 /* PAYValidatableFormCell.h */,
 				3740425D196EEA6100CEAC20 /* PAYTableBuilder.h */,
 				3740425E196EEA8300CEAC20 /* PAYSectionBuilder.h */,
+				3740425A196EE85300CEAC20 /* PAYButtonGroupBuilder.h */,
 				3740425F196EEBCA00CEAC20 /* PAYErrorCodes.h */,
 				37404261196EF4B400CEAC20 /* PAYErrorCodes.m */,
+			);
+			path = protocols;
+			sourceTree = "<group>";
+		};
+		3767E36B1973F16000E45440 /* private_protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3740425B196EE85300CEAC20 /* PAYFormRow.h */,
+				3740425C196EEA0700CEAC20 /* PAYValidatableFormCell.h */,
 				37404260196EEEEA00CEAC20 /* PAYNotifications.h */,
 				37404263196EF4F200CEAC20 /* PAYNotifications.m */,
 			);
-			path = protocols;
+			path = private_protocols;
 			sourceTree = "<group>";
 		};
 		3796517418F2F1350022151B = {
@@ -226,8 +233,9 @@
 		3796518218F2F1350022151B /* PAYFormBuilder */ = {
 			isa = PBXGroup;
 			children = (
-				37404259196EE85300CEAC20 /* protocols */,
 				37906D3018F431D200FC3CC8 /* PAYFormBuilder.h */,
+				37404259196EE85300CEAC20 /* protocols */,
+				3767E36B1973F16000E45440 /* private_protocols */,
 				379651AF18F2F1650022151B /* controller */,
 				379651CA18F2F1650022151B /* view */,
 				379651F418F302940022151B /* utils */,
