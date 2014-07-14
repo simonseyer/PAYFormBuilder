@@ -117,7 +117,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     id<PAYFormRow> formRow = [self formRowForIndexPath:indexPath];
-    return formRow.cell;
+    return formRow.view;
 }
 
 
@@ -138,7 +138,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIView *fieldView = [self formRowForIndexPath:indexPath].cell;
+    UIView *fieldView = [self formRowForIndexPath:indexPath].view;
     return fieldView.frame.size.height;
 }
 

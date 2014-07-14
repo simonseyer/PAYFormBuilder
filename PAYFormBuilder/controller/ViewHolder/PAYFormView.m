@@ -23,7 +23,7 @@
 }
 
 - (BOOL)becomeFirstResponder {
-    [[NSNotificationCenter defaultCenter]postNotificationName:PAYFormRowFocusRequestNotification object:self.cell];
+    [[NSNotificationCenter defaultCenter]postNotificationName:PAYFormRowFocusRequestNotification object:self.view];
     // Refuse first responder status, as no concrete replacement implementation was preferred.
     return NO;
 }

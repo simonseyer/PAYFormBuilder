@@ -84,7 +84,7 @@
     [cell addSubview:textField];
     
     PAYFormSingleLineTextField *formField = [PAYFormSingleLineTextField new];
-    formField.cell          = cell;
+    formField.view          = cell;
     formField.label         = label;
     formField.textField     = textField;
     formField.defaultFrame  = textField.frame;
@@ -140,7 +140,7 @@
     [cell addSubview:textView];
 
     PAYFormMultiLineTextField *formField = [PAYFormMultiLineTextField new];
-    formField.cell     = cell;
+    formField.view     = cell;
     formField.textView = textView;
     
     if(configureBlock){
@@ -256,7 +256,7 @@
     }
     
     PAYFormButton *formButton  = [PAYFormButton new];
-    formButton.cell           = cell;
+    formButton.view           = cell;
     formButton.titleLabel     = titleLabel;
     formButton.style          = style;
     formButton.iconView       = iconView;
@@ -315,7 +315,7 @@
     [cell addSubview:switchControl];
     
     PAYFormSwitch *formSwitch = [PAYFormSwitch new];
-    formSwitch.cell          = cell;
+    formSwitch.view          = cell;
     formSwitch.label         = label;
     formSwitch.switchControl = switchControl;
     
@@ -331,7 +331,7 @@
 
 - (void)addView:(void(^)(PAYFormView *))configureBlock {
     PAYFormView *formView = [PAYFormView new];
-    formView.cell        = self.defaultCell;
+    formView.view        = self.defaultCell;
     
     if (configureBlock) {
         configureBlock(formView);

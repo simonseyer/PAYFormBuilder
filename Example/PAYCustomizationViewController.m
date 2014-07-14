@@ -21,18 +21,18 @@
                                                         style:PAYFormButtonStyleEmpty
                                                selectionBlock:nil
                                                configureBlock:^(PAYFormButton *formButton) {
-                                                   CGRect frame = CGRectInset(formButton.cell.frame, 40, 0);
+                                                   CGRect frame = CGRectInset(formButton.view.frame, 40, 0);
                                                    
                                                    UILabel *label1 = [[UILabel alloc]initWithFrame:frame];
                                                    label1.text = @"Custom button";
                                                    label1.textColor = [UIColor colorFromHex:0xB8E62E];
-                                                   [formButton.cell addSubview:label1];
+                                                   [formButton.view addSubview:label1];
                                                    
                                                    UILabel *label2 = [[UILabel alloc]initWithFrame:frame];
                                                    label2.text = @"empty style";
                                                    label2.textColor = [UIColor colorFromHex:0xFF6600];
                                                    label2.textAlignment = NSTextAlignmentRight;
-                                                   [formButton.cell addSubview:label2];
+                                                   [formButton.view addSubview:label2];
                                                }];
                         }];
     [tableBuilder addSectionWithName:@"For all row types you could add in the section builder, there is at least one method which exepts a configureBlock. In this block different holder objects are passed, which contains the cell, elements of the row and often some usefull configuration options. All parameters of a row could be changed this way."

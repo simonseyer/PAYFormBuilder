@@ -181,7 +181,7 @@
  *  Add a generic view that could be used to display custom views.
  *
  *  @param configureBlock a block that gets the preconfigurred PAYFormView and
- *                        could modify it's parameters. The custom content has to be added to the cell view.
+ *                        could modify it's parameters. The custom content has to be added to the view property.
  */
 - (void)addView:(void(^)(PAYFormView *))configureBlock;
 

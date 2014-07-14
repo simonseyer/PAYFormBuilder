@@ -25,9 +25,9 @@
 - (void)setSelected:(BOOL)selected {
     _selected = selected;
     if (selected) {
-        self.cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        self.view.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
-        self.cell.accessoryType = UITableViewCellAccessoryNone;
+        self.view.accessoryType = UITableViewCellAccessoryNone;
     }
 }
 

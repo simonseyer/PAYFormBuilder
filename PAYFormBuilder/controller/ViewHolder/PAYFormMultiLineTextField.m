@@ -137,9 +137,9 @@ static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
     }
     self.textView.frame = textViewRect;
     
-    CGRect cellRect = self.cell.frame;
+    CGRect cellRect = self.view.frame;
     cellRect.size.height = textViewRect.size.height;
-    self.cell.frame = cellRect;
+    self.view.frame = cellRect;
 }
 
 @end

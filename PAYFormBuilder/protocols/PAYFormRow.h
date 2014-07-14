@@ -10,7 +10,7 @@
 
 @protocol PAYFormRow <NSObject>
 
-- (UITableViewCell *)cell;
+- (UITableViewCell *)view;
 
 
 @optional
