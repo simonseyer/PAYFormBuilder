@@ -18,8 +18,7 @@
 - (void)loadStructure:(id<PAYTableBuilder>)tableBuilder {
     // See PAYAppDelegate for default error messages
     
-    [tableBuilder addSectionWithName:nil
-                          labelStyle:PAYFormTableLabelStyleNone
+    [tableBuilder addSectionWithLabelStyle:PAYFormTableLabelStyleNone
                         contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
                             [sectionBuilder addFieldWithName:@"Required" placeholder:@"needs to be filled"
                                               configureBlock:^(PAYFormSingleLineTextField *formField) {
@@ -47,12 +46,24 @@
                                                   formField.textField.accessibilityLabel = @"integerValidationField";
                                                   formField.textField.isAccessibilityElement = YES;
                                               }];
-                            [sectionBuilder addButtonWithText:@"Done"
-                                                        style:PAYFormButtonStylePrimaryCentered
-                                               selectionBlock:^(PAYFormButton *formButton) {
-                                                   [self onDone:formButton];
-                            }];
+                            
                         }];
+    [tableBuilder addSectionWithName:@"Required button group" contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+        [sectionBuilder addButtonGroupWithMultiSelection:NO contentBlock:^(id<PAYButtonGroupBuilder> groupBuilder) {
+            PAYFormButton *button0 = [groupBuilder addOption:@0 withText:@"Option 1"];
+            button0.accessibilityLabel = @"option1";
+            button0.isAccessibilityElement = YES;
+            [groupBuilder addOption:@1 withText:@"Option 2"];
+            groupBuilder.isRequired = YES;
+        }];
+    }];
+    [tableBuilder addSectionWithLabelStyle:PAYFormTableLabelStyleNone contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+        [sectionBuilder addButtonWithText:@"Done"
+                                    style:PAYFormButtonStylePrimaryCentered
+                           selectionBlock:^(PAYFormButton *formButton) {
+                               [self onDone:formButton];
+                           }];
+    }];
     
     tableBuilder.validationBlock =  ^NSError *{
         // Here you could add a validation for the complete form

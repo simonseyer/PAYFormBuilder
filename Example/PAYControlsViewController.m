@@ -54,7 +54,7 @@
     
     [tableBuilder addSectionWithName:@"Single selection button group"
                         contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
-                            [sectionBuilder addButtonGroupWithMutliSelection:NO
+                            [sectionBuilder addButtonGroupWithMultiSelection:NO
                                                                 contentBlock:^(id<PAYButtonGroupBuilder> buttonGroupBuilder) {
                                                                     for (NSArray *country in countries) {
                                                                         [buttonGroupBuilder addOption:country[1]
@@ -67,7 +67,7 @@
     
     [tableBuilder addSectionWithName:@"Multi selection button group"
                         contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
-                            [sectionBuilder addButtonGroupWithMutliSelection:YES
+                            [sectionBuilder addButtonGroupWithMultiSelection:YES
                                                                 contentBlock:^(id<PAYButtonGroupBuilder> buttonGroupBuilder) {
                                                                     for (NSArray *country in countries) {
                                                                         [buttonGroupBuilder addOption:country[1]

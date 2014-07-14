@@ -58,7 +58,7 @@
     [tableBuilder addSectionWithName:@"Country"
                           labelStyle:PAYFormTableLabelStyleSimple
                         contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
-                            self.countryButtonGroup = [sectionBuilder addButtonGroupWithMutliSelection:NO
+                            self.countryButtonGroup = [sectionBuilder addButtonGroupWithMultiSelection:NO
                                 contentBlock:^(id<PAYButtonGroupBuilder> buttonGroupBuilder) {
                                     NSArray *countries = @[@[@"United States", @"usa"], @[@"Germany", @"de"], @[@"Spain", @"es"]];
                                     for (NSArray *country in countries) {
