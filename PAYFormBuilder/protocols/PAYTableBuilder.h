@@ -52,6 +52,8 @@
 
 @required
 
+#pragma mark - Add sections
+
 /**
  *  Add a new section to the table. The section is displayed without a section header.
  *  The PAYFormTableLabelStyleEmpty is used as label style (determines the section height).
