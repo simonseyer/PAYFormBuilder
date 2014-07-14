@@ -7,6 +7,7 @@
 //
 
 #import "PAYFormField.h"
+#import "PAYFormField_protected.h"
 #import "NSError+PAYComfort.h"
 #import "PAYErrorCodes.h"
 

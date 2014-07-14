@@ -16,12 +16,12 @@
 /**
  *  The label that is display in front of the textfield
  */
-@property (nonatomic, retain) UILabel *label;
+@property (nonatomic, retain, readonly) UILabel *label;
 
 /**
  *  The textfield component
  */
-@property (nonatomic, retain) UITextField *textField;
+@property (nonatomic, retain, readonly) UITextField *textField;
 
 /**
  *  A text field delegate that is attached to the textfield
@@ -34,16 +34,6 @@
  *  When false, it stays the sames size on focus.
  */
 @property (nonatomic, assign) BOOL expanding;
-
-/**
- *  The default frame of the control
- */
-@property (nonatomic, assign) CGRect defaultFrame;
-
-/**
- *  The frame, when the textfield is expanded
- */
-@property (nonatomic, assign) CGRect expandedFrame;
 
 /**
  *  Enables the secure input mode. Use this, 

@@ -10,6 +10,7 @@
 #import "PAYFormSection.h"
 #import "PAYFormSectionBuilder.h"
 #import "PAYFormHeader.h"
+#import "PAYFormHeader_protected.h"
 #import "PAYTextLabel.h"
 
 @implementation PAYFormTableBuilder

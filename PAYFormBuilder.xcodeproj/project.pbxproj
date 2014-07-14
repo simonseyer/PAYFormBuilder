@@ -38,6 +38,8 @@
 		379651E818F2F1D10022151B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379651E718F2F1D10022151B /* UIKit.framework */; };
 		379651F718F302940022151B /* PAYMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651F618F302940022151B /* PAYMessageInterceptor.m */; };
 		379651FA18F3035A0022151B /* UIColor+PAYHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651F918F3035A0022151B /* UIColor+PAYHex.m */; };
+		37A73CE71974363800381DC9 /* PAYFormView+PAYFormDefaultErrorHandlerProtected.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A73CE51974363800381DC9 /* PAYFormView+PAYFormDefaultErrorHandlerProtected.h */; };
+		37A73CE81974363800381DC9 /* PAYFormView+PAYFormDefaultErrorHandlerProtected.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73CE61974363800381DC9 /* PAYFormView+PAYFormDefaultErrorHandlerProtected.m */; };
 		37AF34A818F8175B00848D49 /* PAYFormButtonGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = 37AF34A618F8175B00848D49 /* PAYFormButtonGroup.h */; };
 		37AF34A918F8175B00848D49 /* PAYFormButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AF34A718F8175B00848D49 /* PAYFormButtonGroup.m */; };
 		37AF34AC18F81ADE00848D49 /* PAYFormButtonGroupBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 37AF34AA18F81ADE00848D49 /* PAYFormButtonGroupBuilder.h */; };
@@ -89,6 +91,8 @@
 		37404263196EF4F200CEAC20 /* PAYNotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PAYNotifications.m; path = ../protocols/PAYNotifications.m; sourceTree = "<group>"; };
 		375DAD6E190F052600F4A41D /* PAYHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYHeaderView.h; sourceTree = "<group>"; };
 		375DAD6F190F052600F4A41D /* PAYHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYHeaderView.m; sourceTree = "<group>"; };
+		3767E3701974334700E45440 /* PAYFormView_protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAYFormView_protected.h; sourceTree = "<group>"; };
+		3767E3711974339F00E45440 /* PAYFormField_protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAYFormField_protected.h; sourceTree = "<group>"; };
 		37906D3018F431D200FC3CC8 /* PAYFormBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormBuilder.h; sourceTree = "<group>"; };
 		3796517D18F2F1350022151B /* libPAYFormBuilder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPAYFormBuilder.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3796518018F2F1350022151B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -134,6 +138,14 @@
 		379651F618F302940022151B /* PAYMessageInterceptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYMessageInterceptor.m; sourceTree = "<group>"; };
 		379651F818F3035A0022151B /* UIColor+PAYHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+PAYHex.h"; sourceTree = "<group>"; };
 		379651F918F3035A0022151B /* UIColor+PAYHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+PAYHex.m"; sourceTree = "<group>"; };
+		37A73CE2197434A200381DC9 /* PAYFormSingleLineTextField_protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAYFormSingleLineTextField_protected.h; sourceTree = "<group>"; };
+		37A73CE3197434E600381DC9 /* PAYFormMultiLineTextField_protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAYFormMultiLineTextField_protected.h; sourceTree = "<group>"; };
+		37A73CE4197435C100381DC9 /* PAYFormButtonGroup_protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAYFormButtonGroup_protected.h; sourceTree = "<group>"; };
+		37A73CE51974363800381DC9 /* PAYFormView+PAYFormDefaultErrorHandlerProtected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PAYFormView+PAYFormDefaultErrorHandlerProtected.h"; sourceTree = "<group>"; };
+		37A73CE61974363800381DC9 /* PAYFormView+PAYFormDefaultErrorHandlerProtected.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PAYFormView+PAYFormDefaultErrorHandlerProtected.m"; sourceTree = "<group>"; };
+		37A73CE91974389700381DC9 /* PAYFormButton_protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAYFormButton_protected.h; sourceTree = "<group>"; };
+		37A73CEA197438C900381DC9 /* PAYFormSwitch_protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAYFormSwitch_protected.h; sourceTree = "<group>"; };
+		37A73CEB1974390100381DC9 /* PAYFormHeader_protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAYFormHeader_protected.h; sourceTree = "<group>"; };
 		37AF34A618F8175B00848D49 /* PAYFormButtonGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormButtonGroup.h; sourceTree = "<group>"; };
 		37AF34A718F8175B00848D49 /* PAYFormButtonGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormButtonGroup.m; sourceTree = "<group>"; };
 		37AF34AA18F81ADE00848D49 /* PAYFormButtonGroupBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormButtonGroupBuilder.h; sourceTree = "<group>"; };
@@ -286,6 +298,8 @@
 				379651B718F2F1650022151B /* ViewHolder */,
 				37AF363418FC44B900848D49 /* PAYFormView+PAYFormDefaultErrorHandler.h */,
 				37AF363518FC44B900848D49 /* PAYFormView+PAYFormDefaultErrorHandler.m */,
+				37A73CE51974363800381DC9 /* PAYFormView+PAYFormDefaultErrorHandlerProtected.h */,
+				37A73CE61974363800381DC9 /* PAYFormView+PAYFormDefaultErrorHandlerProtected.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -298,22 +312,30 @@
 				379651C018F2F1650022151B /* PAYFormSection.h */,
 				379651C118F2F1650022151B /* PAYFormSection.m */,
 				379651C818F2F1650022151B /* PAYFormView.h */,
+				3767E3701974334700E45440 /* PAYFormView_protected.h */,
 				379651C918F2F1650022151B /* PAYFormView.m */,
 				379651BA18F2F1650022151B /* PAYFormField.h */,
+				3767E3711974339F00E45440 /* PAYFormField_protected.h */,
 				379651BB18F2F1650022151B /* PAYFormField.m */,
 				379651C618F2F1650022151B /* PAYFormTextField.h */,
 				379651C718F2F1650022151B /* PAYFormTextField.m */,
 				379651C218F2F1650022151B /* PAYFormSingleLineTextField.h */,
+				37A73CE2197434A200381DC9 /* PAYFormSingleLineTextField_protected.h */,
 				379651C318F2F1650022151B /* PAYFormSingleLineTextField.m */,
 				379651BE18F2F1650022151B /* PAYFormMultiLineTextField.h */,
+				37A73CE3197434E600381DC9 /* PAYFormMultiLineTextField_protected.h */,
 				379651BF18F2F1650022151B /* PAYFormMultiLineTextField.m */,
 				379651B818F2F1650022151B /* PAYFormButton.h */,
+				37A73CE91974389700381DC9 /* PAYFormButton_protected.h */,
 				379651B918F2F1650022151B /* PAYFormButton.m */,
 				37AF34A618F8175B00848D49 /* PAYFormButtonGroup.h */,
+				37A73CE4197435C100381DC9 /* PAYFormButtonGroup_protected.h */,
 				37AF34A718F8175B00848D49 /* PAYFormButtonGroup.m */,
 				37AF34B218F8560300848D49 /* PAYFormSwitch.h */,
+				37A73CEA197438C900381DC9 /* PAYFormSwitch_protected.h */,
 				37AF34B318F8560300848D49 /* PAYFormSwitch.m */,
 				379651BC18F2F1650022151B /* PAYFormHeader.h */,
+				37A73CEB1974390100381DC9 /* PAYFormHeader_protected.h */,
 				379651BD18F2F1650022151B /* PAYFormHeader.m */,
 			);
 			path = ViewHolder;
@@ -361,6 +383,7 @@
 				3709CE621920DFAB0077BAFF /* PAYValidation.h in Headers */,
 				37AF34AC18F81ADE00848D49 /* PAYFormButtonGroupBuilder.h in Headers */,
 				375DAD70190F052600F4A41D /* PAYHeaderView.h in Headers */,
+				37A73CE71974363800381DC9 /* PAYFormView+PAYFormDefaultErrorHandlerProtected.h in Headers */,
 				37AF34B418F8560300848D49 /* PAYFormSwitch.h in Headers */,
 				37AF34A818F8175B00848D49 /* PAYFormButtonGroup.h in Headers */,
 				37AF363618FC44B900848D49 /* PAYFormView+PAYFormDefaultErrorHandler.h in Headers */,
@@ -505,6 +528,7 @@
 				379651F718F302940022151B /* PAYMessageInterceptor.m in Sources */,
 				379651E118F2F1650022151B /* PAYFormView.m in Sources */,
 				37AF363718FC44B900848D49 /* PAYFormView+PAYFormDefaultErrorHandler.m in Sources */,
+				37A73CE81974363800381DC9 /* PAYFormView+PAYFormDefaultErrorHandlerProtected.m in Sources */,
 				379651E618F2F1650022151B /* PAYTextLabel.m in Sources */,
 				379651DA18F2F1650022151B /* PAYFormField.m in Sources */,
 				37404262196EF4B400CEAC20 /* PAYErrorCodes.m in Sources */,

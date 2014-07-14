@@ -7,6 +7,7 @@
 //
 
 #import "PAYFormView.h"
+#import "PAYFormView_protected.h"
 #import "UIColor+PAYHex.h"
 #import "PAYNotifications.h"
 

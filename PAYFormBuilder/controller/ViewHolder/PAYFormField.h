@@ -28,17 +28,7 @@ typedef NSError *(^PAYFormFieldValidationBlock)(PAYFormField *);
 /**
  *  The control that is embedded in this view
  */
-@property (nonatomic, retain) UIView<PAYFormControl> *control;
-
-/**
- *  The following form field in the tab chain
- */
-@property (nonatomic, retain) PAYFormField *nextFormField;
-
-/**
- *  A completion block that is used internally to trigger the jumping between the fields.
- */
-@property (nonatomic, copy) PAYFormFieldCompletionBlock completionBlock;
+@property (nonatomic, retain, readonly) UIView<PAYFormControl> *control;
 
 /**
  *  An optional format block that is used to format the value the user entered
@@ -69,13 +59,6 @@ typedef NSError *(^PAYFormFieldValidationBlock)(PAYFormField *);
 @property (nonatomic, assign, getter=isEnabled) BOOL enabled;
 
 /**
- *  Style component appropriate for the errror.
- *
- *  @param error the error the control should by styled for
- */
-- (void)styleForError:(NSError *)error;
-
-/**
  *  Get the value the user entered
  *
  *  @return the entered value
@@ -95,20 +78,6 @@ typedef NSError *(^PAYFormFieldValidationBlock)(PAYFormField *);
  *  @return true, if the control has no value, false otherwise
  */
 - (BOOL)isEmpty;
-
-/**
- *  Uses the integrated validators (for example isRequired) to check
- *  the validity of the field
- *
- *  @return an error, when the field is not valid, nil otherwise
- */
-- (NSError *)prevalidate;
-
-/**
- *  Triggers the jumping to the next control. If the next control is not
- *  focusable (for example a switch) the next focusable control is focused.
- */
-- (void)jumpToNextField;
 
 /**
  *  Create a validation error for this field with a title and a message

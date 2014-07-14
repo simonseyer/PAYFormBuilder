@@ -17,12 +17,12 @@
 /**
  *  The label, that is displayed in front of the switch
  */
-@property (nonatomic, retain) UILabel *label;
+@property (nonatomic, retain, readonly) UILabel *label;
 
 /**
  *  The switch control
  */
-@property (nonatomic, retain) UISwitch *switchControl;
+@property (nonatomic, retain, readonly) UISwitch *switchControl;
 
 /**
  *  Validates, that the control is selected

@@ -39,22 +39,6 @@
 @property (nonatomic, retain, readonly) id value;
 
 /**
- *  Add a button that is associated with a value.
- *
- *  @param button the button to add
- *  @param value  the value that corresponds to the button
- */
-- (void)addButton:(PAYFormButton *)button forValue:(id)value;
-
-/**
- *  This method is called by the different buttons of the group,
- *  when they are tapped by the user
- *
- *  @param value the value of the button
- */
-- (void)optionStateChanged:(id)value;
-
-/**
  *  Selects or unselectes a value
  *
  *  @param select true, if the value/button should be selected, false otherwise

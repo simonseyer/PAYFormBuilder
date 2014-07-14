@@ -30,16 +30,4 @@
  */
 - (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code;
 
-/**
- *  Get an error message for a code. Error messages on the object are preferred
- *  to error messages on the class and error messages on more specialized classes
- *  are preferred to error messages on more abstract classes.
- *
- *  @param code the code of the error
- *
- *  @return the error message corresponding to the code or nil, 
- *          if there was no error message found
- */
-- (PAYFormErrorMessage *)errorMessageForErrorCode:(NSUInteger)code;
-
 @end

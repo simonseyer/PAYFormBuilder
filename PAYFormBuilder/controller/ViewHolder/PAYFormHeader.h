@@ -16,11 +16,11 @@
 /**
  *  The view, that is visible in the header
  */
-@property (nonatomic, retain) UIView *view;
+@property (nonatomic, retain, readonly) UIView *view;
 
 /**
  *  The label, that contains the name of the section
  */
-@property (nonatomic, retain) UILabel *label;
+@property (nonatomic, retain, readonly) UILabel *label;
 
 @end

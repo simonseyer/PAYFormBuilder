@@ -7,6 +7,7 @@
 //
 
 #import "PAYFormButton.h"
+#import "PAYFormButton_protected.h"
 
 
 @interface PAYFormButton ()

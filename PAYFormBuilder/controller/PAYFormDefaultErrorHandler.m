@@ -10,7 +10,9 @@
 #import <BlocksKit+UIKit.h>
 #import "NSError+PAYComfort.h"
 #import "PAYFormField.h"
-#import "PAYFormView+PAYFormDefaultErrorHandler.h"
+#import "PAYFormView+PAYFormDefaultErrorHandlerProtected.h"
+#import "PAYFormView_protected.h"
+
 
 @implementation PAYFormErrorMessage
 

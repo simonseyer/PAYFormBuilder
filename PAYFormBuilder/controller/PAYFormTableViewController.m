@@ -13,6 +13,7 @@
 #import "PAYFormField.h"
 #import "PAYFormTableView.h"
 #import "PAYNotifications.h"
+#import "PAYFormView_protected.h"
 
 
 @interface PAYFormTableViewController ()

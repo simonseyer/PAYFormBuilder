@@ -8,14 +8,20 @@
 
 #import "PAYFormSectionBuilder.h"
 #import "PAYFormSingleLineTextField.h"
+#import "PAYFormSingleLineTextField_protected.h"
 #import "PAYFormMultiLineTextField.h"
+#import "PAYFormMultiLineTextField_protected.h"
 #import "PAYFormButton.h"
+#import "PAYFormButton_protected.h"
 #import "PAYFormView.h"
 #import "PAYFormButtonGroup.h"
 #import "PAYFormButtonGroupBuilder.h"
 #import "PAYFormSwitch.h"
+#import "PAYFormSwitch_protected.h"
 #import "UIColor+PAYHex.h"
 #import "PAYButtonGroupBuilder.h"
+#import "PAYFormView_protected.h"
+
 
 @implementation PAYFormSectionBuilder
 

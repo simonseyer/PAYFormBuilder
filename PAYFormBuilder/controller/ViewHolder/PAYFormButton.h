@@ -30,17 +30,17 @@ typedef enum {
 /**
  *  The title label
  */
-@property (nonatomic, retain) UILabel *titleLabel;
+@property (nonatomic, retain, readonly) UILabel *titleLabel;
 
 /**
  *  The icon
  */
-@property (nonatomic, retain) UIImageView *iconView;
+@property (nonatomic, retain, readonly) UIImageView *iconView;
 
 /**
  *  The style
  */
-@property (nonatomic, assign) PAYFormButtonStyle style;
+@property (nonatomic, assign, readonly) PAYFormButtonStyle style;
 
 /**
  *  A block that is called when the user tapped on the button

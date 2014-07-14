@@ -7,6 +7,7 @@
 //
 
 #import "PAYFormHeader.h"
+#import "PAYFormHeader_protected.h"
 
 
 @implementation PAYFormHeader

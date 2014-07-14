@@ -19,17 +19,12 @@
 /**
  *  The text view component
  */
-@property (nonatomic, retain) SZTextView *textView;
+@property (nonatomic, retain, readonly) SZTextView *textView;
 
 /**
  *  A text view delegate that is attached to the textview
  */
 @property (nonatomic, weak) id<UITextViewDelegate> delegate;
-
-/**
- *  The default height of the text field
- */
-@property (nonatomic, assign) CGFloat defaultHeight;
 
 /**
  *  Adjusts the height of the text view to the content height

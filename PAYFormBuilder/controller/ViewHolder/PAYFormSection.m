@@ -9,6 +9,8 @@
 #import "PAYFormSection.h"
 #import "PAYFormField.h"
 #import "PAYFormButton.h"
+#import "PAYFormView_protected.h"
+#import "PAYFormField_protected.h"
 
 
 @implementation PAYFormSection

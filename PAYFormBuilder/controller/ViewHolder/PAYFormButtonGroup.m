@@ -7,6 +7,7 @@
 //
 
 #import "PAYFormButtonGroup.h"
+#import "PAYFormButtonGroup_protected.h"
 #import "PAYFormButton.h"
 #import "NSError+PAYComfort.h"
 #import "PAYErrorCodes.h"
