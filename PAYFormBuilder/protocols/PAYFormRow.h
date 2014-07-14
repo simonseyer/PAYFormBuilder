@@ -11,7 +11,7 @@
 @protocol PAYFormRow <NSObject>
 
 - (UITableViewCell *)cell;
-- (PAYFormSection *)section;
+
 
 @optional
 - (void)didSelectRow;

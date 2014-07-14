@@ -16,7 +16,7 @@ NSString *const PAYFormFieldErrorDomain = @"PAYFormFieldErrorDomain";
 @implementation PAYFormField
 
 - (NSString *)name {
-    return self.section.header.label.text;
+    return @"";
 }
 
 - (PAYFormFieldCleanBlock)cleanBlock {
