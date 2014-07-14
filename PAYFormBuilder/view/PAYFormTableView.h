@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  A table view that applies some default parameters
+ */
 @interface PAYFormTableView : UITableView
 
 @end

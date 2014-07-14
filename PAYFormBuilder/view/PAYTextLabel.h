@@ -20,8 +20,14 @@ typedef enum {
 } PAYFormTableLabelStyle;
 
 
+/**
+ *  A text label that changes it's appearence based on a style.
+ */
 @interface PAYTextLabel : UILabel
 
+/**
+ *  The style of the text label
+ */
 @property (nonatomic, assign) PAYFormTableLabelStyle style;
 
 @property (nonatomic, assign) UIEdgeInsets simpleStyleInsets          UI_APPEARANCE_SELECTOR;
@@ -42,7 +48,13 @@ typedef enum {
 @property (nonatomic, retain) UIColor *simpleStyleTextColor      UI_APPEARANCE_SELECTOR;
 @property (nonatomic, retain) UIColor *descriptionStyleTextColor UI_APPEARANCE_SELECTOR;
 
-
+/**
+ *  The preferred height based on the given width and the content.
+ *
+ *  @param width the maximum width
+ *
+ *  @return the preferred height
+ */
 - (CGFloat)preferredHeightForWidth:(CGFloat)width;
 
 @end
