@@ -18,10 +18,6 @@
 
 @implementation PAYFormTextField
 
-- (void)setEnabled:(BOOL)enabled {
-}
-
-
 #pragma mark - Custom validation
 
 - (NSError *)prevalidate {

@@ -27,7 +27,7 @@
     for (id row in self.views.reverseObjectEnumerator) {
         if ([row isKindOfClass:PAYFormField.class]) {
             PAYFormField *formField = row;
-            if (formField.control.isEnabled) {
+            if (formField.isEnabled) {
                 if (!previousField) {
                     @weakify(self);
                     formField.completionBlock = ^{
@@ -54,7 +54,7 @@
     for (id row in self.views) {
         if ([row isKindOfClass:PAYFormField.class]) {
             PAYFormField *formField = (PAYFormField *)row;
-            if (formField.control.isEnabled) {
+            if (formField.isEnabled) {
                 return row;
             }
         }

@@ -96,6 +96,10 @@ static const NSUInteger RPFormSingleLineTextFieldPasswordMaxTextLength = 128;
     }
 }
 
+- (BOOL)isEnabled {
+    return self.textField.enabled;
+}
+
 # pragma mark - Error styling
 
 - (void)styleForError:(NSError *)error {

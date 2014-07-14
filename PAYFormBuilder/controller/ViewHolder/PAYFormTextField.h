@@ -22,6 +22,5 @@
 
 - (PAYFormFieldFormatBlock)formatBlockWithGroupSizes:(NSArray *)groupSizes separator:(NSString *)separator;
 
-- (void)setEnabled:(BOOL)enabled;
 
 @end

@@ -33,7 +33,7 @@
 }
 
 - (UIView<PAYFormControl> *)ownOrNextEnabledControl {
-    if (self.control.isEnabled) {
+    if (self.isEnabled) {
         return self.control;
     } else {
         return self.nextEnabledControl;

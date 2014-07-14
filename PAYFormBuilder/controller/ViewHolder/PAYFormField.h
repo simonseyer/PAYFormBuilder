@@ -64,6 +64,11 @@ typedef NSError *(^PAYFormFieldValidationBlock)(PAYFormField *);
 @property (nonatomic, assign) BOOL isRequired;
 
 /**
+ *  Specifies if the control is enabled
+ */
+@property (nonatomic, assign, getter=isEnabled) BOOL enabled;
+
+/**
  *  Style component appropriate for the errror.
  *
  *  @param error the error the control should by styled for
@@ -123,19 +128,5 @@ typedef NSError *(^PAYFormFieldValidationBlock)(PAYFormField *);
  *  @return an error that for example could be returned in a validation block
  */
 - (NSError *)validationErrorWithCode:(NSUInteger)code;
-
-@end
-
-/**
- *  A control that could be enabled or disabled
- */
-@protocol PAYFormControl <NSObject>
-
-/**
- *  Get the state
- *
- *  @return true, if the control is enabled, false otherwise
- */
-- (BOOL)isEnabled;
 
 @end

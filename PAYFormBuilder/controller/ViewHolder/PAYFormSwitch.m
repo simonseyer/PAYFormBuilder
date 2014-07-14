@@ -41,4 +41,12 @@
     self.switchControl.on = value;
 }
 
+- (void)setEnabled:(BOOL)enabled {
+    self.switchControl.enabled = enabled;
+}
+
+- (BOOL)isEnabled {
+    return self.switchControl.enabled;
+}
+
 @end

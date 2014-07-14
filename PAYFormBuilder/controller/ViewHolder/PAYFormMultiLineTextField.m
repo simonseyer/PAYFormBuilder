@@ -77,6 +77,10 @@ static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
     self.textView.editable = enabled;
 }
 
+- (BOOL)isEnabled {
+    return self.textView.editable;
+}
+
 # pragma mark - Error styling
 
 - (void)styleForError:(NSError *)error {
