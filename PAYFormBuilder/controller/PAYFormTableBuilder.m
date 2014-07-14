@@ -33,47 +33,47 @@
     return self;
 }
 
-- (PAYFormSection *)addSectionWithContentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
-    return [self addSectionWithLabelStyle:PAYFormTableLabelStyleEmpty
-                             contentBlock:contentBlock];
+- (void)addSectionWithContentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
+    [self addSectionWithLabelStyle:PAYFormTableLabelStyleEmpty
+                      contentBlock:contentBlock];
 }
 
-- (PAYFormSection *)addSectionWithLabelStyle:(PAYFormTableLabelStyle)style
-                                contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
-    return [self addSectionWithName:nil
-                         labelStyle:style
-                        headerBlock:nil
-                       contentBlock:contentBlock];
+- (void)addSectionWithLabelStyle:(PAYFormTableLabelStyle)style
+                    contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
+    [self addSectionWithName:nil
+                  labelStyle:style
+                 headerBlock:nil
+                contentBlock:contentBlock];
 }
 
-- (PAYFormSection *)addSectionWithHeaderBlock:(void(^)(PAYFormHeader *))headerBlock
-                                 contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
-    return [self addSectionWithName:nil
-                         labelStyle:PAYFormTableLabelStyleEmpty
-                        headerBlock:headerBlock
-                       contentBlock:contentBlock];
+- (void)addSectionWithHeaderBlock:(void(^)(PAYFormHeader *))headerBlock
+                     contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
+    [self addSectionWithName:nil
+                  labelStyle:PAYFormTableLabelStyleEmpty
+                 headerBlock:headerBlock
+                contentBlock:contentBlock];
 }
 
-- (PAYFormSection *)addSectionWithName:(NSString *)name
-                          contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
-    return [self addSectionWithName:name
-                         labelStyle:PAYFormTableLabelStyleSimple
-                       contentBlock:contentBlock];
+- (void)addSectionWithName:(NSString *)name
+              contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
+    [self addSectionWithName:name
+                  labelStyle:PAYFormTableLabelStyleSimple
+                contentBlock:contentBlock];
 }
 
-- (PAYFormSection *)addSectionWithName:(NSString *)name
-                            labelStyle:(PAYFormTableLabelStyle)style
-                          contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
-    return [self addSectionWithName:name
-                         labelStyle:style
-                        headerBlock:nil
-                       contentBlock:contentBlock];
+- (void)addSectionWithName:(NSString *)name
+                labelStyle:(PAYFormTableLabelStyle)style
+              contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
+    [self addSectionWithName:name
+                  labelStyle:style
+                 headerBlock:nil
+                contentBlock:contentBlock];
 }
 
-- (PAYFormSection *)addSectionWithName:(NSString *)name
-                            labelStyle:(PAYFormTableLabelStyle)style
-                           headerBlock:(void(^)(PAYFormHeader *))headerBlock
-                          contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
+- (void)addSectionWithName:(NSString *)name
+                labelStyle:(PAYFormTableLabelStyle)style
+               headerBlock:(void(^)(PAYFormHeader *))headerBlock
+              contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
     PAYFormSection *formSection = [PAYFormSection new];
     
     formSection.header = [self headerViewWithStyle:style name:name];
@@ -83,13 +83,11 @@
     
     if (contentBlock) {
         PAYFormSectionBuilder *builder = [[PAYFormSectionBuilder alloc] initWithFormSection:formSection
-                                                                        defaultCellBounds:self.defaultBounds];
+                                                                          defaultCellBounds:self.defaultBounds];
         contentBlock(builder);
     }
     
     [self.table.sections addObject:formSection];
-    
-    return formSection;
 }
 
 - (PAYFormHeader *)headerViewWithStyle:(PAYFormTableLabelStyle)style
