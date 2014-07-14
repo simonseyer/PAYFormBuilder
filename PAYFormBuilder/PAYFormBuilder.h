@@ -24,7 +24,7 @@
 #import "PAYFormMultiLineTextField.h"
 
 
-#import "PAYFormDefaultErrorHandler.h"
+
 #import "PAYFormView+PAYFormDefaultErrorHandler.h"
 #import "PAYErrorCodes.h"
 #import "NSError+PAYComfort.h"
