@@ -23,7 +23,7 @@
 #import "PAYFormSingleLineTextField.h"
 #import "PAYFormMultiLineTextField.h"
 
-
+#import "PAYFormTableViewController.h"
 
 #import "PAYFormView+PAYFormDefaultErrorHandler.h"
 #import "PAYErrorCodes.h"
