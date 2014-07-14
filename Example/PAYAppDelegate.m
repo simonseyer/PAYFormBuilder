@@ -21,17 +21,17 @@
     [PAYFormDefaultErrorHandler setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"To long"
                                                                                    message:@"Content of field %@ is to long"]
                                    forErrorCode:PAYFormTextFieldAboveMaxLengthErrorCode];
-    [PAYFormTextField setErrorMessage:[PAYFormErrorMessage errorMessageWithTitleBlock:^NSString *(id<PAYValidatableFormCell> formCell) {
+    [PAYFormTextField setErrorMessage:[PAYFormErrorMessage errorMessageWithTitleBlock:^NSString *(id formView) {
         return @"To short";
-    } messageBlock:^NSString *(id<PAYValidatableFormCell> formCell) {
-        PAYFormTextField *textField = (PAYFormTextField *)formCell;
+    } messageBlock:^NSString *(id formView) {
+        PAYFormTextField *textField = (PAYFormTextField *)formView;
         return [NSString stringWithFormat:@"Content of field %%@ is to short. Please enter a minimum of %tu characters", textField.minTextLength];
     }]
                          forErrorCode:PAYFormTextFieldBelowMinLengthErrorCode];
-    [PAYFormTextField setErrorMessage:[PAYFormErrorMessage errorMessageWithTitleBlock:^NSString *(id<PAYValidatableFormCell> formCell) {
+    [PAYFormTextField setErrorMessage:[PAYFormErrorMessage errorMessageWithTitleBlock:^NSString *(id formView) {
         return @"To long";
-    } messageBlock:^NSString *(id<PAYValidatableFormCell> formCell) {
-        PAYFormTextField *textField = (PAYFormTextField *)formCell;
+    } messageBlock:^NSString *(id formView) {
+        PAYFormTextField *textField = (PAYFormTextField *)formView;
         return [NSString stringWithFormat:@"Content of field %%@ is to long. Please enter a maximum of %tu characters", textField.maxTextLength];
     }]
                          forErrorCode:PAYFormTextFieldAboveMaxLengthErrorCode];

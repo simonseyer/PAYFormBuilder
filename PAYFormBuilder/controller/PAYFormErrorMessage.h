@@ -10,7 +10,7 @@
 
 @protocol PAYValidatableFormCell;
 
-typedef NSString *(^PAYFormErrorMessageBlock)(id<PAYValidatableFormCell> formCell);
+typedef NSString *(^PAYFormErrorMessageBlock)(id formView);
 
 /**
  *  An error message
