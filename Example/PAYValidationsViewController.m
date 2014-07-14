@@ -57,6 +57,13 @@
             groupBuilder.isRequired = YES;
         }];
     }];
+    [tableBuilder addSectionWithName:@"Required text view" contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+        [sectionBuilder addTextViewWithPlaceholder:@"Required" configureBlock:^(PAYFormMultiLineTextField *textField) {
+            textField.required = YES;
+            textField.view.accessibilityLabel = @"textView";
+            textField.view.isAccessibilityElement = YES;
+        }];
+    }];
     [tableBuilder addSectionWithLabelStyle:PAYFormTableLabelStyleNone contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
         [sectionBuilder addButtonWithText:@"Done"
                                     style:PAYFormButtonStylePrimaryCentered
