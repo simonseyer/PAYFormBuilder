@@ -99,7 +99,6 @@
 
 - (void)test_H_intValidationFail {
     [tester enterText:@"abc" intoViewWithAccessibilityLabel:@"integerValidationField"];
-    [tester tapViewWithAccessibilityLabel:@"Done"]; // for keyboard
     [tester tapViewWithAccessibilityLabel:@"Done"];
     if ([self findViewWithLabel:@"No integer"] && [self findViewWithLabel:@"Please enter an integer to field Number."]) {
         [tester tapViewWithAccessibilityLabel:@"Ok"];
@@ -108,15 +107,32 @@
     }
 }
 
-- (void)test_I_intValidationFail {
+- (void)test_I_intValidationSuccess {
     [tester clearTextFromAndThenEnterText:@"123" intoViewWithAccessibilityLabel:@"integerValidationField"];
-    [tester tapViewWithAccessibilityLabel:@"Done"]; // for keyboard
     [tester tapViewWithAccessibilityLabel:@"Done"];
     if ([self findViewWithLabel:@"No integer"] && [self findViewWithLabel:@"Please enter an integer to field Number."]) {
         [tester fail];
     } else {
         [tester tapViewWithAccessibilityLabel:@"Ok"];
     }
+}
+
+- (void)test_J_requiredButtonGroupFail {
+    [tester tapViewWithAccessibilityLabel:@"Done"];
+    if ([self findViewWithLabel:@"Missing"] && [self findViewWithLabel:@"Field Required button group is missing"]) {
+        [tester tapViewWithAccessibilityLabel:@"Ok"];
+    } else {
+        [tester fail];
+    }
+}
+
+- (void)test_K_requiredButtonGroupSuccess {
+    [tester tapViewWithAccessibilityLabel:@"option1"];
+    [tester tapViewWithAccessibilityLabel:@"Done"];
+    if ([self findViewWithLabel:@"Missing"] && [self findViewWithLabel:@"Field Required button group is missing"]) {
+        [tester fail];
+    }
+    [tester tapViewWithAccessibilityLabel:@"Ok"];
 }
 
 @end

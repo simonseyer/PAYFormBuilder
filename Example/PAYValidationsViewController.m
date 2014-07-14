@@ -51,8 +51,8 @@
     [tableBuilder addSectionWithName:@"Required button group" contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
         [sectionBuilder addButtonGroupWithMultiSelection:NO contentBlock:^(id<PAYButtonGroupBuilder> groupBuilder) {
             PAYFormButton *button0 = [groupBuilder addOption:@0 withText:@"Option 1"];
-            button0.accessibilityLabel = @"option1";
-            button0.isAccessibilityElement = YES;
+            button0.view.accessibilityLabel = @"option1";
+            button0.view.isAccessibilityElement = YES;
             [groupBuilder addOption:@1 withText:@"Option 2"];
             groupBuilder.isRequired = YES;
         }];

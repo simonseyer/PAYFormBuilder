@@ -26,6 +26,11 @@
  */
 - (void)select:(id)value;
 
+/**
+ *  Activates the validation for a required option
+ */
+@property (nonatomic, assign) BOOL isRequired;
+
 @required
 
 /**
