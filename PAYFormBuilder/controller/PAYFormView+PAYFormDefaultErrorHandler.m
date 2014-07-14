@@ -20,11 +20,11 @@
 }
 
 - (NSMutableDictionary *)fieldErrorMessages {
-    return objc_getAssociatedObject(self.class, @selector(fieldErrorMessages));
+    return objc_getAssociatedObject(self, @selector(fieldErrorMessages));
 }
 
 - (void)setFieldErrorMessages:(NSMutableDictionary *)errorMessages {
-    objc_setAssociatedObject(self.class, @selector(fieldErrorMessages), errorMessages, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(fieldErrorMessages), errorMessages, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 
@@ -44,7 +44,7 @@
     Class curClass = self.class;
     PAYFormErrorMessage *errorMessage = nil;
     while (!errorMessage && [curClass isSubclassOfClass:PAYFormView.class]) {
-        NSMutableDictionary *errorMessages = self.classErrorMessages;
+        NSMutableDictionary *errorMessages = curClass.classErrorMessages;
         if (errorMessages) {
             errorMessage = errorMessages[@(code)];
         }
