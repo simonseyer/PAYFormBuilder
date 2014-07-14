@@ -18,9 +18,14 @@
 @interface PAYFormButtonGroup : NSObject <PAYValidatableFormCell>
 
 /**
+ *  The name of the group
+ */
+@property (nonatomic, assign) NSString *name;
+
+/**
  *  True, if multiple buttons could be selected at once
  */
-@property (nonatomic, assign) BOOL multiSelection;
+@property (nonatomic, assign, readonly) BOOL multiSelection;
 
 /**
  *  Validates that at least one button is selected

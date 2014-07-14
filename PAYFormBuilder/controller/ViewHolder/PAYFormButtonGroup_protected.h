@@ -11,6 +11,11 @@
 @interface PAYFormButtonGroup ()
 
 /**
+ *  True, if multiple buttons could be selected at once
+ */
+@property (nonatomic, assign) BOOL multiSelection;
+
+/**
  *  Add a button that is associated with a value.
  *
  *  @param button the button to add

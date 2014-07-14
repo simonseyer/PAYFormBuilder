@@ -76,8 +76,8 @@
                headerBlock:(void(^)(PAYFormHeader *))headerBlock
               contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
     PAYFormSection *formSection = [PAYFormSection new];
-    
-    formSection.header = [self headerViewWithStyle:style name:name];
+    formSection.name = name;
+    formSection.header = [self headerViewWithStyle:style];
     if (headerBlock) {
         headerBlock(formSection.header);
     }
@@ -91,8 +91,7 @@
     [self.table.sections addObject:formSection];
 }
 
-- (PAYFormHeader *)headerViewWithStyle:(PAYFormTableLabelStyle)style
-                                  name:(NSString *)name {
+- (PAYFormHeader *)headerViewWithStyle:(PAYFormTableLabelStyle)style{
     UIView *headerView         = [[UIView alloc] initWithFrame:self.defaultBounds];
     headerView.backgroundColor = UIColor.clearColor;
     
@@ -105,7 +104,6 @@
     } else {
         textLabel       = [[PAYTextLabel alloc] initWithFrame:self.defaultBounds];
         textLabel.style = style;
-        textLabel.text  = name;
         [headerView addSubview:textLabel];
         
         headerRect.size.height = CGRectGetMaxY(textLabel.frame);

@@ -15,6 +15,7 @@
 #import "PAYFormButton_protected.h"
 #import "PAYFormView.h"
 #import "PAYFormButtonGroup.h"
+#import "PAYFormButtonGroup_protected.h"
 #import "PAYFormButtonGroupBuilder.h"
 #import "PAYFormSwitch.h"
 #import "PAYFormSwitch_protected.h"
@@ -277,10 +278,11 @@
     return formButton;
 }
 
-- (PAYFormButtonGroup *)addButtonGroupWithMutliSelection:(BOOL)multiSelection
+- (PAYFormButtonGroup *)addButtonGroupWithMultiSelection:(BOOL)multiSelection
                                             contentBlock:(void(^)(id<PAYButtonGroupBuilder>))contentBlock {
     PAYFormButtonGroup *buttonGroup = [PAYFormButtonGroup new];
     buttonGroup.multiSelection = multiSelection;
+    buttonGroup.name = self.section.name;
     [self.section.attachedObjects addObject:buttonGroup];
     
     if (contentBlock) {

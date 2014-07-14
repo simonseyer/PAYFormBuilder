@@ -20,6 +20,7 @@ typedef void(^PAYFormSectionCompletionBlock)();
 
 @interface PAYFormSection : NSObject
 
+@property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) PAYFormHeader *header;
 @property (nonatomic, retain) NSMutableArray *views;
 @property (nonatomic, retain) NSMutableArray *attachedObjects;

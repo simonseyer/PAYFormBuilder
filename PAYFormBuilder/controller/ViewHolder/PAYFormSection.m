@@ -15,6 +15,8 @@
 
 @implementation PAYFormSection
 
+@synthesize name = _name;
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -84,6 +86,20 @@
         }
     }
     return error;
+}
+
+- (NSString *)name {
+    return self.header.label.text;
+}
+
+- (void)setName:(NSString *)name {
+    _name = name;
+    self.header.label.text = name;
+}
+
+-(void)setHeader:(PAYFormHeader *)header {
+    header.label.text = self.name;
+    _header = header;
 }
 
 @end

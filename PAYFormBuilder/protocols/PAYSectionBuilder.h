@@ -142,7 +142,8 @@
 - (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock configureBlock:(void(^)(PAYFormButton *))configureBlock;
 
 /**
- *  Add button-group that could be used as single- or multi-selection list.
+ *  Add button-group that could be used as single- or multi-selection list. 
+ *  For the name of the group the name of the section is used.
  *
  *  @param multiSelection true, if multiple buttons could be selected at one time.
  *  @param contentBlock   the block to configure the content of the button group.
@@ -150,7 +151,7 @@
  *
  *  @return the model object of the button group. I's for example used to get the values the user selected
  */
-- (PAYFormButtonGroup *)addButtonGroupWithMutliSelection:(BOOL)multiSelection contentBlock:(void(^)(id<PAYButtonGroupBuilder>))contentBlock;
+- (PAYFormButtonGroup *)addButtonGroupWithMultiSelection:(BOOL)multiSelection contentBlock:(void(^)(id<PAYButtonGroupBuilder>))contentBlock;
 
 #pragma mark - Add switches
 
