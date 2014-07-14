@@ -10,7 +10,7 @@
 
 
 /**
- *  Used to create a group of buttons
+ *  Used to create a group of buttons that could be used a selection list
  */
 @protocol PAYButtonGroupBuilder <NSObject>
 
