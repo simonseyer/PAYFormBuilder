@@ -135,4 +135,22 @@
     [tester tapViewWithAccessibilityLabel:@"Ok"];
 }
 
+- (void)test_L_requiredTextViewFail {
+    [tester tapViewWithAccessibilityLabel:@"Done"];
+    if ([self findViewWithLabel:@"Missing"] && [self findViewWithLabel:@"Field Required text view is missing"]) {
+        [tester tapViewWithAccessibilityLabel:@"Ok"];
+    } else {
+        [tester fail];
+    }
+}
+
+- (void)test_M_requiredTextViewSuccess {
+    [tester clearTextFromAndThenEnterText:@"abcasdasd" intoViewWithAccessibilityLabel:@"textView"];
+    [tester tapViewWithAccessibilityLabel:@"Done"];
+    if ([self findViewWithLabel:@"Missing"] && [self findViewWithLabel:@"Field Required text view is missing"]) {
+        [tester fail];
+    }
+    [tester tapViewWithAccessibilityLabel:@"Ok"];
+}
+
 @end

@@ -149,6 +149,7 @@
     PAYFormMultiLineTextField *formField = [PAYFormMultiLineTextField new];
     formField.view     = cell;
     formField.textView = textView;
+    formField.name     = self.section.name;
     
     if(configureBlock){
         configureBlock(formField);

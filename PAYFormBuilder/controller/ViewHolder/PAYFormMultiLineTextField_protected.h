@@ -20,4 +20,6 @@
  */
 @property (nonatomic, assign) CGFloat defaultHeight;
 
+@property (nonatomic, retain) NSString *name;
+
 @end
