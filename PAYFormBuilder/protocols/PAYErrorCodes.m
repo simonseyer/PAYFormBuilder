@@ -9,5 +9,4 @@
 #import "PAYErrorCodes.h"
 
 NSString * const PAYFormErrorControlKey = @"PAYFormBuilderErrorControlKey";
-NSString * const PAYFormErrorRecoveryOptionsKey = @"PAYFormBuilderErrorRecoveryOptionsKey";
 NSString * const PAYFormErrorDomain = @"PAYFormBuilderErrorDomain";
