@@ -8,9 +8,6 @@
 
 #import "PAYFormTextField.h"
 
-@class SZTextView;
-
-
 /**
  *  A form view with a multiline textfield
  */
@@ -19,7 +16,7 @@
 /**
  *  The text view component
  */
-@property (nonatomic, retain, readonly) SZTextView *textView;
+@property (nonatomic, retain, readonly) UITextView *textView;
 
 /**
  *  A text view delegate that is attached to the textview

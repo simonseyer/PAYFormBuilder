@@ -13,7 +13,7 @@
 /**
  *  The text view component
  */
-@property (nonatomic, retain) SZTextView *textView;
+@property (nonatomic, retain) UITextView *textView;
 
 /**
  *  The default height of the text field
