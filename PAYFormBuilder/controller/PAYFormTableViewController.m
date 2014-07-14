@@ -15,6 +15,13 @@
 #import "PAYNotifications.h"
 
 
+@interface PAYFormTableViewController ()
+
+@property (nonatomic, retain) PAYFormTable *table;
+
+@end
+
+
 @implementation PAYFormTableViewController
 
 - (void)loadView {

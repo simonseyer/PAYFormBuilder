@@ -28,11 +28,6 @@
 @property (nonatomic, assign) CGFloat defaultFooterHeight UI_APPEARANCE_SELECTOR;
 
 /**
- *  The model object of the form table
- */
-@property (nonatomic, retain) PAYFormTable *table;
-
-/**
  *  This method could be overriden by the subclass to configure the form table view controller. 
  *  For example a custom footer could be set. This is method is only called once after the view 
  *  controller is set up and before loadStructure is called.
