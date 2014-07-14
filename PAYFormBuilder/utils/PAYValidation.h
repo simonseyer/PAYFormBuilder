@@ -9,8 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "PAYFormField.h"
 
+/**
+ *  A collection of validators
+ */
 @interface PAYValidation : NSObject
 
+/**
+ *  Get an validator that validates for integer values
+ *
+ *  @return the validation block
+ */
 + (PAYFormFieldValidationBlock)integerValidationBlock;
 
 @end
