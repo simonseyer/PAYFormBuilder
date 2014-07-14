@@ -22,7 +22,7 @@
                         contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
                             [sectionBuilder addFieldWithName:@"Required" placeholder:@"needs to be filled"
                                               configureBlock:^(PAYFormSingleLineTextField *formField) {
-                                                  formField.isRequired = YES;
+                                                  formField.required = YES;
                                                   formField.textField.accessibilityLabel = @"requiredField";
                                                   formField.textField.isAccessibilityElement = YES;
                                               }];

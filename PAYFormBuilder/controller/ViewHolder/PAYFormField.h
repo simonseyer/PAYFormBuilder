@@ -51,7 +51,7 @@ typedef NSError *(^PAYFormFieldValidationBlock)(PAYFormField *);
 /**
  *  Validates, that the control has a value
  */
-@property (nonatomic, assign) BOOL isRequired;
+@property (nonatomic, assign, getter=isRequired) BOOL required;
 
 /**
  *  Specifies if the control is enabled

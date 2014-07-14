@@ -35,7 +35,7 @@
                         contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
         self.userNameField = [sectionBuilder addFieldWithName:@"Username" placeholder:@"your username"
                                                configureBlock:^(PAYFormSingleLineTextField *formField) {
-                                                   formField.isRequired = YES;
+                                                   formField.required = YES;
                                                    formField.minTextLength = 4;
                                                    formField.textField.accessibilityLabel = @"usernameField";
                                                    formField.textField.isAccessibilityElement = YES;
@@ -74,7 +74,7 @@
                         contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
         self.streetTextField = [sectionBuilder addFieldWithName:@"Street" placeholder:@"your street"
                                                  configureBlock:^(PAYFormSingleLineTextField *formField) {
-                                                     formField.isRequired = YES;
+                                                     formField.required = YES;
                                                      formField.expanding  = YES;
                                                      formField.textField.accessibilityLabel = @"streetField";
                                                      formField.textField.isAccessibilityElement = YES;
@@ -82,7 +82,7 @@
         
         self.postalCodeTextField = [sectionBuilder addFieldWithName:@"Postal code" placeholder:@"your postal code"
                                                      configureBlock:^(PAYFormSingleLineTextField *formField) {
-                                                         formField.isRequired = YES;
+                                                         formField.required = YES;
                                                          formField.cleanBlock = ^id(PAYFormField *formField, id value) {
                                                              NSString *strValue = value;
                                                              return [strValue stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -92,7 +92,7 @@
                                                      }];
         self.cityTextField = [sectionBuilder addFieldWithName:@"City" placeholder:@"your city"
                                                configureBlock:^(PAYFormSingleLineTextField *formField) {
-                                                   formField.isRequired = YES;
+                                                   formField.required = YES;
                                                    formField.textField.accessibilityLabel = @"cityField";
                                                    formField.textField.isAccessibilityElement = YES;
                                                }];
