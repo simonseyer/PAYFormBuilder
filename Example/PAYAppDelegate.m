@@ -25,14 +25,14 @@
         return @"To short";
     } messageBlock:^NSString *(id<PAYValidatableFormCell> formCell) {
         PAYFormTextField *textField = (PAYFormTextField *)formCell;
-        return [NSString stringWithFormat:@"Content of field %%@ is to short. Please enter a minimum of %i characters", textField.minTextLength];
+        return [NSString stringWithFormat:@"Content of field %%@ is to short. Please enter a minimum of %tu characters", textField.minTextLength];
     }]
                          forErrorCode:PAYFormTextFieldBelowMinLengthErrorCode];
     [PAYFormTextField setErrorMessage:[PAYFormErrorMessage errorMessageWithTitleBlock:^NSString *(id<PAYValidatableFormCell> formCell) {
         return @"To long";
     } messageBlock:^NSString *(id<PAYValidatableFormCell> formCell) {
         PAYFormTextField *textField = (PAYFormTextField *)formCell;
-        return [NSString stringWithFormat:@"Content of field %%@ is to long. Please enter a maximum of %i characters", textField.maxTextLength];
+        return [NSString stringWithFormat:@"Content of field %%@ is to long. Please enter a maximum of %tu characters", textField.maxTextLength];
     }]
                          forErrorCode:PAYFormTextFieldAboveMaxLengthErrorCode];
     

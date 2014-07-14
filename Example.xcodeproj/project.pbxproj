@@ -573,10 +573,7 @@
 					"\"$(SRCROOT)/PAYFormBuilder\"/**",
 				);
 				INFOPLIST_FILE = "ExampleTests/ExampleTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
@@ -610,10 +607,7 @@
 					"\"$(SRCROOT)/PAYFormBuilder\"/**",
 				);
 				INFOPLIST_FILE = "ExampleTests/ExampleTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
