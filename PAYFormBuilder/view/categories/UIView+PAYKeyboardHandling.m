@@ -9,6 +9,7 @@
 #import "UIView+PAYKeyboardHandling_protected.h"
 #import <objc/runtime.h>
 #import <BlocksKit/BlocksKit+UIKit.h>
+#import <libextobjc/extobjc.h>
 
 
 @interface PAYTapToEndEditingDelegate : NSObject <UIGestureRecognizerDelegate>

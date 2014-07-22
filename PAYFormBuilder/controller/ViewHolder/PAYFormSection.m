@@ -11,6 +11,7 @@
 #import "PAYFormButton.h"
 #import "PAYFormView_protected.h"
 #import "PAYFormField_protected.h"
+#import <libextobjc/extobjc.h>
 
 
 @implementation PAYFormSection

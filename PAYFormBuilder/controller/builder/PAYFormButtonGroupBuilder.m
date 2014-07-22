@@ -11,6 +11,7 @@
 #import "PAYFormButtonGroup.h"
 #import "PAYFormButton.h"
 #import "PAYFormSectionBuilder.h"
+#import <BlocksKit/BlocksKit.h>
 
 @implementation PAYFormButtonGroupBuilder
 
@@ -50,6 +51,10 @@
     }];
     [self.buttonGroup addButton:button forValue:value];
     return button;
+}
+
+- (void)select:(id)value {
+    [self.buttonGroup select:value];
 }
 
 - (id)forwardingTargetForSelector:(SEL)aSelector {
