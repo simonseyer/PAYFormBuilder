@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PAYSectionBuilder.h"
+#import "PAYFormSectionBuilder.h"
 #import "PAYFormSection.h"
 #import "PAYTextLabel.h"
 #import "PAYFormTable.h"
@@ -15,10 +15,7 @@
 /**
  *  Builder class to create the sections of a form table.
  */
-@protocol PAYTableBuilder <NSObject>
-
-
-@optional
+@interface PAYFormTableBuilder : NSObject
 
 /**
  *  If the first textfield should be selected, when the form becomes visisble
@@ -50,7 +47,10 @@
  */
 @property (nonatomic, copy) PAYFormTableFailBlock formFailBlock;
 
-@required
+#pragma mark - Default styles
+
+@property (nonatomic, assign) CGFloat labelStyleNoneDefaultHeight UI_APPEARANCE_SELECTOR;
+@property (nonatomic, assign) CGFloat labelStylEmptyDefaultHeight UI_APPEARANCE_SELECTOR;
 
 #pragma mark - Add sections
 
@@ -61,7 +61,7 @@
  *  @param contentBlock the block to configure the content of the section.
  *                      A SectionBuilder is passed to accomplish this.
  */
-- (void)addSectionWithContentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock;
+- (void)addSectionWithContentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock;
 
 /**
  *  Add a new section to the table without a section header label but with a custom section label style.
@@ -71,7 +71,7 @@
  *  @param contentBlock the block to configure the content of the section.
  *                      A SectionBuilder is passed to accomplish this.
  */
-- (void)addSectionWithLabelStyle:(PAYFormTableLabelStyle)style contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock;
+- (void)addSectionWithLabelStyle:(PAYFormTableLabelStyle)style contentBlock:(void(^)( PAYFormSectionBuilder *))contentBlock;
 
 /**
  *  Add a new section to the table with a custom header.
@@ -81,7 +81,7 @@
  *  @param contentBlock the block to configure the content of the section.
  *                      A SectionBuilder is passed to accomplish this.
  */
-- (void)addSectionWithHeaderBlock:(void(^)(PAYFormHeader *))headerBlock contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock;
+- (void)addSectionWithHeaderBlock:(void(^)(PAYFormHeader *))headerBlock contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock;
 
 /**
  *  Add a new section to the table with a section header label and the default label style PAYFormTableLabelStyleSimple.
@@ -90,7 +90,7 @@
  *  @param contentBlock the block to configure the content of the section.
  *                      A SectionBuilder is passed to accomplish this.
  */
-- (void)addSectionWithName:(NSString *)name contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock;
+- (void)addSectionWithName:(NSString *)name contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock;
 
 /**
  *  Add a new section to the table with a section header label and a custom label style.
@@ -100,7 +100,7 @@
  *  @param contentBlock the block to configure the content of the section.
  *                      A SectionBuilder is passed to accomplish this.
  */
-- (void)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock;
+- (void)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock;
 
 /**
  *  Add a new section to the table with a section header label, a custom label style as default and a custom header.
@@ -113,6 +113,6 @@
  *  @param contentBlock the block to configure the content of the section.
  *                      A SectionBuilder is passed to accomplish this.
  */
-- (void)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style headerBlock:(void(^)(PAYFormHeader *))headerBlock contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock;
+- (void)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style headerBlock:(void(^)(PAYFormHeader *))headerBlock contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock;
 
 @end

@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PAYButtonGroupBuilder.h"
+#import "PAYFormButtonGroupBuilder.h"
 
-@protocol PAYSectionBuilder;
+@class PAYFormSectionBuilder;
 @class PAYFormButtonGroup;
 
-@interface PAYFormButtonGroupBuilder : NSObject <PAYButtonGroupBuilder>
+@interface PAYFormButtonGroupBuilder ()
 
 @property (nonatomic, retain) PAYFormButtonGroup *buttonGroup;
-@property (nonatomic, retain) id<PAYSectionBuilder> sectionBuilder;
+@property (nonatomic, retain) PAYFormSectionBuilder *sectionBuilder;
 
 @end

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Paij. All rights reserved.
 //
 
-#import "UIView+PAYKeyboardHandling.h"
+#import "UIView+PAYKeyboardHandling_protected.h"
 #import <objc/runtime.h>
 #import <BlocksKit/BlocksKit+UIKit.h>
 

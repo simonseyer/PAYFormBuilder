@@ -7,13 +7,22 @@
 //
 
 #import "PAYFormTableBuilder.h"
+#import "PAYFormTableBuilder_protected.h"
 #import "PAYFormSection.h"
 #import "PAYFormSectionBuilder.h"
+#import "PAYFormSectionBuilder_protected.h"
 #import "PAYFormHeader.h"
 #import "PAYFormHeader_protected.h"
 #import "PAYTextLabel.h"
 
 @implementation PAYFormTableBuilder
+
+@dynamic selectFirstField;
+@dynamic finishOnLastField;
+@dynamic validationBlock;
+@dynamic formSuccessBlock;
+@dynamic formFailBlock;
+
 
 - (id)init {
     self = [super init];
@@ -34,13 +43,13 @@
     return self;
 }
 
-- (void)addSectionWithContentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
+- (void)addSectionWithContentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock {
     [self addSectionWithLabelStyle:PAYFormTableLabelStyleEmpty
                       contentBlock:contentBlock];
 }
 
 - (void)addSectionWithLabelStyle:(PAYFormTableLabelStyle)style
-                    contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
+                    contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock {
     [self addSectionWithName:nil
                   labelStyle:style
                  headerBlock:nil
@@ -48,7 +57,7 @@
 }
 
 - (void)addSectionWithHeaderBlock:(void(^)(PAYFormHeader *))headerBlock
-                     contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
+                     contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock {
     [self addSectionWithName:nil
                   labelStyle:PAYFormTableLabelStyleEmpty
                  headerBlock:headerBlock
@@ -56,7 +65,7 @@
 }
 
 - (void)addSectionWithName:(NSString *)name
-              contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
+              contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock {
     [self addSectionWithName:name
                   labelStyle:PAYFormTableLabelStyleSimple
                 contentBlock:contentBlock];
@@ -64,7 +73,7 @@
 
 - (void)addSectionWithName:(NSString *)name
                 labelStyle:(PAYFormTableLabelStyle)style
-              contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
+              contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock {
     [self addSectionWithName:name
                   labelStyle:style
                  headerBlock:nil
@@ -74,7 +83,7 @@
 - (void)addSectionWithName:(NSString *)name
                 labelStyle:(PAYFormTableLabelStyle)style
                headerBlock:(void(^)(PAYFormHeader *))headerBlock
-              contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock {
+              contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock {
     PAYFormSection *formSection = [PAYFormSection new];
     formSection.name = name;
     formSection.header = [self headerViewWithStyle:style name:name];

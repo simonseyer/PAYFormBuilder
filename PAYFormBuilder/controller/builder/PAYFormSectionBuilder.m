@@ -7,6 +7,7 @@
 //
 
 #import "PAYFormSectionBuilder.h"
+#import "PAYFormSectionBuilder_protected.h"
 #import "PAYFormSingleLineTextField.h"
 #import "PAYFormSingleLineTextField_protected.h"
 #import "PAYFormMultiLineTextField.h"
@@ -16,13 +17,13 @@
 #import "PAYFormView.h"
 #import "PAYFormButtonGroup.h"
 #import "PAYFormButtonGroup_protected.h"
-#import "PAYFormButtonGroupBuilder.h"
+#import "PAYFormButtonGroupBuilder_protected.h"
 #import "PAYFormSwitch.h"
 #import "PAYFormSwitch_protected.h"
 #import "UIColor+PAYHex.h"
-#import "PAYButtonGroupBuilder.h"
+#import "PAYFormButtonGroupBuilder.h"
 #import "PAYFormView_protected.h"
-
+#import <SZTextView/SZTextView.h>
 
 @implementation PAYFormSectionBuilder
 
@@ -280,7 +281,7 @@
 }
 
 - (PAYFormButtonGroup *)addButtonGroupWithMultiSelection:(BOOL)multiSelection
-                                            contentBlock:(void(^)(id<PAYButtonGroupBuilder>))contentBlock {
+                                            contentBlock:(void(^)(PAYFormButtonGroupBuilder *))contentBlock {
     PAYFormButtonGroup *buttonGroup = [PAYFormButtonGroup new];
     buttonGroup.multiSelection = multiSelection;
     buttonGroup.name = self.section.name;

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Paij. All rights reserved.
 //
 
-#import "PAYMessageInterceptor.h"
+#import "PAYMessageInterceptor_protected.h"
 
 
 @implementation PAYMessageInterceptor

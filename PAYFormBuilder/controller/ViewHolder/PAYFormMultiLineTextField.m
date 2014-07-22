@@ -8,7 +8,7 @@
 
 #import "PAYFormMultiLineTextField.h"
 #import "PAYFormMultiLineTextField_protected.h"
-#import "PAYMessageInterceptor.h"
+#import "PAYMessageInterceptor_protected.h"
 #import "PAYErrorCodes.h"
 #import "PAYFormView_protected.h"
 #import "PAYFormField_protected.h"

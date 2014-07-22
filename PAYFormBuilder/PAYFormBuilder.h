@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "PAYTableBuilder.h"
-#import "PAYSectionBuilder.h"
-#import "PAYButtonGroupBuilder.h"
+#import "PAYFormTableBuilder.h"
+#import "PAYFormSectionBuilder.h"
+#import "PAYFormButtonGroupBuilder.h"
 
 #import "PAYFormTableViewController.h"
 

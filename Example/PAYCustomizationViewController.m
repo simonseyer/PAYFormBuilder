@@ -14,9 +14,9 @@
 
 @implementation PAYCustomizationViewController
 
-- (void)loadStructure:(id<PAYTableBuilder>)tableBuilder {
+- (void)loadStructure:(PAYFormTableBuilder *)tableBuilder {
     [tableBuilder addSectionWithName:@"Buttons"
-                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                        contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
                             [sectionBuilder addButtonWithText:nil
                                                         style:PAYFormButtonStyleEmpty
                                                selectionBlock:nil
@@ -37,7 +37,7 @@
                         }];
     [tableBuilder addSectionWithName:@"For all row types you could add in the section builder, there is at least one method which exepts a configureBlock. In this block different holder objects are passed, which contains the cell, elements of the row and often some usefull configuration options. All parameters of a row could be changed this way."
                           labelStyle:PAYFormTableLabelStyleDescriptionWide
-                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                        contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         [sectionBuilder addFieldWithName:@"Custom"
                         placeholder:@"field with background"
                         configureBlock:^(PAYFormSingleLineTextField *formField) {
@@ -49,7 +49,7 @@
                           labelStyle:PAYFormTableLabelStyleDescription
                          headerBlock:^(PAYFormHeader *formHeader) {
                              formHeader.label.textColor = [UIColor colorFromHex:0x0357AB];
-                         } contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                         } contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         [sectionBuilder addButtonWithText:@"Section header with blue text"
                                     style:PAYFormButtonStyleDisabledCentered
                            selectionBlock:nil];

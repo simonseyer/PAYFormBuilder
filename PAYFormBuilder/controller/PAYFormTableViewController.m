@@ -7,9 +7,9 @@
 //
 
 #import "PAYFormTableViewController.h"
-#import "UIView+PAYKeyboardHandling.h"
+#import "UIView+PAYKeyboardHandling_protected.h"
 #import "PAYFormTable.h"
-#import "PAYFormTableBuilder.h"
+#import "PAYFormTableBuilder_protected.h"
 #import "PAYFormField.h"
 #import "PAYFormTableView.h"
 #import "PAYNotifications.h"
@@ -96,7 +96,7 @@
     // Empty stub implementation.
 }
 
-- (void)loadStructure:(id<PAYTableBuilder>)tableBuilder {
+- (void)loadStructure:(PAYFormTableBuilder *)tableBuilder {
     // Empty stub implementation.
 }
 

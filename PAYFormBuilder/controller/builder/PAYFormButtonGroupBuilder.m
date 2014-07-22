@@ -6,13 +6,15 @@
 //  Copyright (c) 2014 Paij. All rights reserved.
 //
 
-#import "PAYFormButtonGroupBuilder.h"
+#import "PAYFormButtonGroupBuilder_protected.h"
+#import "PAYFormButtonGroup_protected.h"
 #import "PAYFormButtonGroup.h"
 #import "PAYFormButton.h"
-#import "PAYSectionBuilder.h"
-#import "PAYFormButtonGroup_protected.h"
+#import "PAYFormSectionBuilder.h"
 
 @implementation PAYFormButtonGroupBuilder
+
+@dynamic isRequired;
 
 - (PAYFormButton *)addOption:(id)value
                     withText:(NSString *)text {

@@ -15,17 +15,17 @@
 @implementation PAYFieldsViewController
 
 
-- (void)loadStructure:(id<PAYTableBuilder>)tableBuilder {
+- (void)loadStructure:(PAYFormTableBuilder *)tableBuilder {
 
     [tableBuilder addSectionWithName:@"Simple fields"
-                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                        contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
                             [sectionBuilder addFieldWithName:@"Simple field" placeholder:@"placeholder"];
                             [sectionBuilder addFieldWithPlaceholder:@"Full size field"];
                             [sectionBuilder addTextViewWithPlaceholder:@"Text view with placeholder"];
                         }];
     
     [tableBuilder addSectionWithName:@"Advanced fields"
-                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                        contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
                             [sectionBuilder addFieldWithName:@"Expanding"
                                                  placeholder:@"placeholder"
                                               configureBlock:^(PAYFormSingleLineTextField *formField) {

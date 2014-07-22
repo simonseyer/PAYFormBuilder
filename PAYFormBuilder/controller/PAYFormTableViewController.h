@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol PAYTableBuilder;
+@class PAYFormTableBuilder;
 @class PAYFormTable;
 
 /**
@@ -41,7 +41,7 @@
  *
  *  @param tableBuilder the builder class to create the form
  */
-- (void)loadStructure:(id<PAYTableBuilder>)tableBuilder;
+- (void)loadStructure:(PAYFormTableBuilder *)tableBuilder;
 
 /**
  *  Clears the complete form and calls loadStructure again.

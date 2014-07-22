@@ -15,11 +15,11 @@
 
 @implementation PAYValidationsViewController
 
-- (void)loadStructure:(id<PAYTableBuilder>)tableBuilder {
+- (void)loadStructure:(PAYFormTableBuilder *)tableBuilder {
     // See PAYAppDelegate for default error messages
     
     [tableBuilder addSectionWithLabelStyle:PAYFormTableLabelStyleNone
-                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                        contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
                             [sectionBuilder addFieldWithName:@"Required" placeholder:@"needs to be filled"
                                               configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                   formField.required = YES;
@@ -48,8 +48,8 @@
                                               }];
                             
                         }];
-    [tableBuilder addSectionWithName:@"Required button group" contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
-        [sectionBuilder addButtonGroupWithMultiSelection:NO contentBlock:^(id<PAYButtonGroupBuilder> groupBuilder) {
+    [tableBuilder addSectionWithName:@"Required button group" contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
+        [sectionBuilder addButtonGroupWithMultiSelection:NO contentBlock:^(PAYFormButtonGroupBuilder *groupBuilder) {
             PAYFormButton *button0 = [groupBuilder addOption:@0 withText:@"Option 1"];
             button0.view.accessibilityLabel = @"option1";
             button0.view.isAccessibilityElement = YES;
@@ -57,14 +57,14 @@
             groupBuilder.isRequired = YES;
         }];
     }];
-    [tableBuilder addSectionWithName:@"Required text view" contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+    [tableBuilder addSectionWithName:@"Required text view" contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         [sectionBuilder addTextViewWithPlaceholder:@"Required" configureBlock:^(PAYFormMultiLineTextField *textField) {
             textField.required = YES;
             textField.textView.accessibilityLabel = @"textView";
             textField.textView.isAccessibilityElement = YES;
         }];
     }];
-    [tableBuilder addSectionWithLabelStyle:PAYFormTableLabelStyleNone contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+    [tableBuilder addSectionWithLabelStyle:PAYFormTableLabelStyleNone contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         [sectionBuilder addButtonWithText:@"Done"
                                     style:PAYFormButtonStylePrimaryCentered
                            selectionBlock:^(PAYFormButton *formButton) {

@@ -15,10 +15,10 @@
 @implementation PAYControlsViewController
 
 
-- (void)loadStructure:(id<PAYTableBuilder>)tableBuilder {
+- (void)loadStructure:(PAYFormTableBuilder *)tableBuilder {
     
     [tableBuilder addSectionWithName:@"Simple buttons"
-                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                        contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
                             [sectionBuilder addButtonWithText:@"Button style centered"
                                                         style:PAYFormButtonStyleCentered
                                                selectionBlock:nil];
@@ -53,9 +53,9 @@
     NSArray *countries = @[@[@"United States", @"usa"], @[@"Germany", @"de"], @[@"Spain", @"es"]];
     
     [tableBuilder addSectionWithName:@"Single selection button group"
-                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                        contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
                             [sectionBuilder addButtonGroupWithMultiSelection:NO
-                                                                contentBlock:^(id<PAYButtonGroupBuilder> buttonGroupBuilder) {
+                                                                contentBlock:^(PAYFormButtonGroupBuilder *buttonGroupBuilder) {
                                                                     for (NSArray *country in countries) {
                                                                         [buttonGroupBuilder addOption:country[1]
                                                                                              withText:country[0]
@@ -66,9 +66,9 @@
                         }];
     
     [tableBuilder addSectionWithName:@"Multi selection button group"
-                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                        contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
                             [sectionBuilder addButtonGroupWithMultiSelection:YES
-                                                                contentBlock:^(id<PAYButtonGroupBuilder> buttonGroupBuilder) {
+                                                                contentBlock:^(PAYFormButtonGroupBuilder *buttonGroupBuilder) {
                                                                     for (NSArray *country in countries) {
                                                                         [buttonGroupBuilder addOption:country[1]
                                                                                              withText:country[0]];
@@ -79,7 +79,7 @@
     
     [tableBuilder addSectionWithName:@"Switch"
                           labelStyle:PAYFormTableLabelStyleSimple
-                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                        contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
                             [sectionBuilder addSwitchWithName:@"Switch with label"];
                         }];
 

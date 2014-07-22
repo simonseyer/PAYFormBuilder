@@ -29,4 +29,8 @@
     return NO;
 }
 
+- (void)didSelectRow {
+    // Stub
+}
+
 @end

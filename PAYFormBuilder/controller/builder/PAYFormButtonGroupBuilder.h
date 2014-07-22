@@ -12,15 +12,10 @@
 /**
  *  Used to create a group of buttons that could be used a selection list
  */
-@protocol PAYButtonGroupBuilder <NSObject>
-
-@optional
+@interface PAYFormButtonGroupBuilder : NSObject
 
 /**
  *  Select one option/button of the button group.
- *
- *  This method is usually implemented but marked as optional,
- *  so it could be forwarded without an default implementation.
  *
  *  @param value the value, that was associated with the option
  */
@@ -30,8 +25,6 @@
  *  Activates the validation for a required option
  */
 @property (nonatomic, assign) BOOL isRequired;
-
-@required
 
 /**
  *  Add an option with a value and a label text. For each option

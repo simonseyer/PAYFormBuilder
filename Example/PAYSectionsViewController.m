@@ -14,22 +14,22 @@
 
 @implementation PAYSectionsViewController
 
-- (void)loadStructure:(id<PAYTableBuilder>)tableBuilder {
-    [tableBuilder addSectionWithContentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+- (void)loadStructure:(PAYFormTableBuilder *)tableBuilder {
+    [tableBuilder addSectionWithContentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         [sectionBuilder addButtonWithText:@"Section with label style empty"
                                     style:PAYFormButtonStyleDisabledCentered
                            selectionBlock:nil];
     }];
     
     [tableBuilder addSectionWithLabelStyle:PAYFormTableLabelStyleNone
-                              contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                              contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         [sectionBuilder addButtonWithText:@"Section with label style none"
                                     style:PAYFormButtonStyleDisabledCentered
                            selectionBlock:nil];
     }];
     
     [tableBuilder addSectionWithName:@"Label style simple (default)"
-                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                        contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         [sectionBuilder addButtonWithText:@"Section with label style simple"
                                     style:PAYFormButtonStyleDisabledCentered
                            selectionBlock:nil];

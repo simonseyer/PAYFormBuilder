@@ -27,12 +27,12 @@
 @implementation PAYRegistrationFormViewController
 
 
-- (void)loadStructure:(id<PAYTableBuilder>)tableBuilder {
+- (void)loadStructure:(PAYFormTableBuilder *)tableBuilder {
     
     
     [tableBuilder addSectionWithName:nil
                           labelStyle:PAYFormTableLabelStyleNone
-                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                        contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         self.userNameField = [sectionBuilder addFieldWithName:@"Username" placeholder:@"your username"
                                                configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                    formField.required = YES;
@@ -57,9 +57,9 @@
     
     [tableBuilder addSectionWithName:@"Country"
                           labelStyle:PAYFormTableLabelStyleSimple
-                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                        contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
                             self.countryButtonGroup = [sectionBuilder addButtonGroupWithMultiSelection:NO
-                                contentBlock:^(id<PAYButtonGroupBuilder> buttonGroupBuilder) {
+                                contentBlock:^(PAYFormButtonGroupBuilder *buttonGroupBuilder) {
                                     NSArray *countries = @[@[@"United States", @"usa"], @[@"Germany", @"de"], @[@"Spain", @"es"]];
                                     for (NSArray *country in countries) {
                                         [buttonGroupBuilder addOption:country[1] withText:country[0] icon:[UIImage imageNamed:country[1]]];
@@ -71,7 +71,7 @@
     
     [tableBuilder addSectionWithName:@"Address"
                           labelStyle:PAYFormTableLabelStyleSimple
-                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                        contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         self.streetTextField = [sectionBuilder addFieldWithName:@"Street" placeholder:@"your street"
                                                  configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                      formField.required = YES;
@@ -100,7 +100,7 @@
     
    
     
-    [tableBuilder addSectionWithName:@"Terms and Conditions" contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+    [tableBuilder addSectionWithName:@"Terms and Conditions" contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         self.formSwitch = [sectionBuilder addSwitchWithName:@"Accept"
                                              configureBlock:^(PAYFormSwitch *formSwitch) {
                                                  formSwitch.isRequired = YES;

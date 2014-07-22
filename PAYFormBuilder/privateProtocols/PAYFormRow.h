@@ -12,8 +12,6 @@
 
 - (UITableViewCell *)view;
 
-
-@optional
 - (void)didSelectRow;
 
 @end

@@ -7,12 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PAYTableBuilder.h"
+#import "PAYFormTableBuilder.h"
 
-@interface PAYFormTableBuilder : NSObject<PAYTableBuilder>
-
-@property (nonatomic, assign) CGFloat labelStyleNoneDefaultHeight UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat labelStylEmptyDefaultHeight UI_APPEARANCE_SELECTOR;
+@interface PAYFormTableBuilder ()
 
 @property (nonatomic, retain) PAYFormTable *table;
 @property (nonatomic, assign) CGRect defaultBounds;
