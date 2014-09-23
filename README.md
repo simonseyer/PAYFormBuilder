@@ -1,6 +1,6 @@
 ![](Images/AppIcon.png) PAYFormBuilder ![image](https://magnum.travis-ci.com/redpeppix-gmbh-co-kg/PAYFormBuilder.svg?token=UAwBhHcJg3f4aE5AT2Vs)
 ==============
-The FormBuilder is a library to create generic iOS 7 screens the easy way. With it's block based syntax and wide possibilities for customization it's fun to create forms.
+The FormBuilder is a library to create generic iOS 7/8 screens the easy way. With it's block based syntax and wide possibilities for customization it's fun to create forms.
 
 [![](Images/thumb/controls.png)](Images/controls.png)
 [![](Images/thumb/controls2.png)](Images/controls2.png)
@@ -9,7 +9,7 @@ The FormBuilder is a library to create generic iOS 7 screens the easy way. With 
 Features
 --------
 * **Easy syntax** - with the block syntax your code is well structured and easy to understand
-* **Predefined Styles** - get a seamless iOS 7 feeling without writing one line of styling code
+* **Predefined Styles** - get a seamless iOS 7/8 feeling without writing one line of styling code
 * **Validation** - use validation handling and error message management out of the box
 * **Customizable** - change many defaults with UIAppearance or configure each element individually 
 * **Example app** - get an overview over all posibilities of the lib and see how to get the best out of it
@@ -249,7 +249,7 @@ Installation
 
 Requirements
 ------------
-* iOS 7
+* iOS 7+
 * ARC
 * BlocksKit
 * libextobjc
