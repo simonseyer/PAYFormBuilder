@@ -65,7 +65,7 @@ With the `tableBuilder` you are able to add sections to the form and do some for
  						  contentBlock:(void(^)(PAYFormSectionBuilder *)contentBlock
 ``` 
 
-The most important parameter is the `contentBlock` which is defined as `^(id<PAYSectionBuilder> sectionBuilder)`. In this block, you are able to add fields, buttons and more (see row section).
+The most important parameter is the `contentBlock` which is defined as `^(PAYFormSectionBuilder *sectionBuilder)`. In this block, you are able to add fields, buttons and more (see row section).
 
 ### Rows
 With the `sectionBuilder` you have a factory object to create a variety of different row types. There are predefined methods to create:
@@ -154,7 +154,7 @@ To create a registration form is common task in app development, so it is here u
                           labelStyle:PAYFormTableLabelStyleSimple
                         contentBlock:^(PAYFormSectionBuilder *sectionBuilder) {
                             self.countryButtonGroup = [sectionBuilder addButtonGroupWithMutliSelection:NO
-                                contentBlock:^(id<PAYButtonGroupBuilder> buttonGroupBuilder) {
+                                contentBlock:^(PAYFormButtonGroupBuilder *^buttonGroupBuilder) {
                                     NSArray *countries = @[
                                     		@[@"United States", @"usa"], 
                                     		@[@"Germany", @"de"], 
