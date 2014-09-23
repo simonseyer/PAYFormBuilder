@@ -17,8 +17,8 @@ Features
 Structure
 ---------
 This short overview of the structure written in objective-c-pseudo-code should give you an idear, how to work with FormBuilder.
-```obj-c
-@class YourTableViewController: PAYFormTableViewController
+```
+@class YourTableViewController : PAYFormTableViewController
 
 - loadStructure: tableBuilder {
   [tableBuilder addSection:^(sectionBuilder){
@@ -48,7 +48,7 @@ In order to create a form screen, you have to inherit from the `PAYFormTableView
 
 @implementation YourViewController
 
-- (void)loadStructure:(id<PAYTableBuilder>)tableBuilder {
+- (void)loadStructure:(PAYFormTableBuilder *)tableBuilder {
     // Build your form here   
 }
 
@@ -56,16 +56,16 @@ In order to create a form screen, you have to inherit from the `PAYFormTableView
 ```
 
 ### Sections
-With the `tableBuilder` you are able to add sections to the form and do some table wide configuration. To add sections you use the following method or one of its convience counter parts.
+With the `tableBuilder` you are able to add sections to the form and do some form-wide configuration. To add sections you use the following method or one of its convience counter parts.
 
 ```obj-c
 - (PAYFormSection *)addSectionWithName:(NSString *)name 
  				    	    labelStyle:(PAYFormTableLabelStyle)style 
  						   headerBlock:(void(^)(PAYFormHeader *))headerBlock 
- 						  contentBlock:(void(^)(id<PAYSectionBuilder>))contentBlock
+ 						  contentBlock:(void(^)(PAYFormSectionBuilder *)contentBlock
 ``` 
 
-The most important parameter is the `contentBlock` which is defined as `^(id<PAYSectionBuilder> sectionBuilder)`. In this block, you are able to add fields, buttons and more.
+The most important parameter is the `contentBlock` which is defined as `^(id<PAYSectionBuilder> sectionBuilder)`. In this block, you are able to add fields, buttons and more (see row section).
 
 ### Rows
 With the `sectionBuilder` you have a factory object to create a variety of different row types. There are predefined methods to create:
@@ -76,7 +76,7 @@ With the `sectionBuilder` you have a factory object to create a variety of diffe
 * button groups (list of connected buttons)
 * switches
 
-But there is also a generic `addView:` method where you get an empty `PAYFormView` which only holds a table view cell you could configure on your own. Please note, that for all row types there are factory methods where you could pass a `configureBlock`, so you could always change them the way you like.
+But there is also a generic `addView:` method you could call on the `sectionBuilder`  where you get an empty `PAYFormView`, which only holds a table view cell you could configure on your own. Please note, that for all row types there are factory methods where you could pass a `configureBlock`, so you could always change them the way you like.
 
 ### Error Handling
 In the library there are two ways of error handling. Both are based on the error codes of `NSError`. For the builtin validation functions, these are listed in the `PAYErrorCodes.h`file. For your custom validations, you define them when throwing an error.
@@ -129,10 +129,10 @@ To create a registration form is common task in app development, so it is here u
 @implementation PAYRegistrationFormViewController
 
 
-- (void)loadStructure:(id<PAYTableBuilder>)tableBuilder {
+- (void)loadStructure:(PAYFormTableBuilder *)tableBuilder {
     [tableBuilder addSectionWithName:nil
                           labelStyle:PAYFormTableLabelStyleNone
-                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                        contentBlock:^(PAYFormSectionBuilder *sectionBuilder) {
         self.userNameField = [sectionBuilder addFieldWithName:@"Username" placeholder:@"your username"
                                                configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                    formField.isRequired = YES;
@@ -152,7 +152,7 @@ To create a registration form is common task in app development, so it is here u
     
     [tableBuilder addSectionWithName:@"Country"
                           labelStyle:PAYFormTableLabelStyleSimple
-                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                        contentBlock:^(PAYFormSectionBuilder *sectionBuilder) {
                             self.countryButtonGroup = [sectionBuilder addButtonGroupWithMutliSelection:NO
                                 contentBlock:^(id<PAYButtonGroupBuilder> buttonGroupBuilder) {
                                     NSArray *countries = @[
@@ -172,7 +172,7 @@ To create a registration form is common task in app development, so it is here u
     
     [tableBuilder addSectionWithName:@"Address"
                           labelStyle:PAYFormTableLabelStyleSimple
-                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                        contentBlock:^(PAYFormSectionBuilder *sectionBuilder) {
         self.streetTextField = [sectionBuilder addFieldWithName:@"Street" placeholder:@"your street"
                                                  configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                      formField.isRequired = YES;
@@ -198,7 +198,7 @@ To create a registration form is common task in app development, so it is here u
    
     
     [tableBuilder addSectionWithName:@"Terms and Conditions" 
-                        contentBlock:^(id<PAYSectionBuilder> sectionBuilder) {
+                        contentBlock:^(PAYFormSectionBuilder *sectionBuilder) {
         self.formSwitch = [sectionBuilder addSwitchWithName:@"Accept"
                                              configureBlock:^(PAYFormSwitch *formSwitch) {
         	formSwitch.isRequired = YES;
