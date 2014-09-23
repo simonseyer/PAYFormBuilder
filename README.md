@@ -18,7 +18,7 @@ Usage
 -----
 In order to create a form screen, you have to inherit from the PAYFormTableViewController and implement the `loadStructure:` method. All of your configuration should take place in this method.
 
-```
+```obj-c
 #import "PAYFormBuilder.h"
 
 @interface YourViewController : PAYFormTableViewController
@@ -26,7 +26,7 @@ In order to create a form screen, you have to inherit from the PAYFormTableViewC
 @end
 ```
 
-```
+```obj-c
 #import "YourViewController.h"
 
 @implementation YourViewController
@@ -41,7 +41,7 @@ In order to create a form screen, you have to inherit from the PAYFormTableViewC
 ### Sections
 With the `tableBuilder` you are able to add sections to the form and do some table wide configuration. To add sections you use the following method or one of its convience counter parts.
 
-```
+```obj-c
 - (PAYFormSection *)addSectionWithName:(NSString *)name 
  				    	    labelStyle:(PAYFormTableLabelStyle)style 
  						   headerBlock:(void(^)(PAYFormHeader *))headerBlock 
@@ -82,7 +82,7 @@ To create a registration form is common task in app development, so it is here u
 
 [![](Images/thumb/registrationForm3.png)](Images/registrationForm3.png)
 
-```
+```obj-c
 #import <UIKit/UIKit.h>
 #import "PAYFormBuilder.h"
 
@@ -91,7 +91,7 @@ To create a registration form is common task in app development, so it is here u
 @end
 ```
 
-```
+```obj-c
 #import "PAYRegistrationFormViewController.h"
 
 @interface PAYRegistrationFormViewController ()
