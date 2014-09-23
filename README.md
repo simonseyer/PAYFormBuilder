@@ -61,6 +61,21 @@ With the `sectionBuilder` you have a factory object to create a variety of diffe
 
 But there is also a generic `addView:` method where you get an empty `PAYFormView` which only holds a table view cell you could configure on your own. Please note, that for all row types there are factory methods where you could pass a `configureBlock`, so you could always change them the way you like.
 
+### Error Handling
+In the library there are two ways of error handling. Both are based on the error codes of `NSError`. For the builtin validation functions, these are listed in the `PAYErrorCodes.h`file. For your custom validations, you define them when throwing an error.
+
+* **Custom**: Just set the `formFailBlock` of the `PAYFormBuilder`. You get notified when the user finished the form with errors. To differentiate between different errors use the error code of the `NSError`.
+* **Automatic**: By default, the automatic error handling is activated, which shows an error alert to the user when he did a mistake. You configure this error handler in the following way:
+  * Call `setErrorMessage:forErrorCode:` on
+    * the `PAYFormDefaultErrorHandler` class
+    * on the `PAYFormView` class or of one of its subclasses (`PAYFormField`, `PAYFormButton`, ...)
+    * on instances of the `PAYFormView` class or of one of its subclasses
+  
+    The rule of thumb for the priority of the error messages is: the more specific a class/instance is, the higher the priority. Instances have a higher priority than classes. The error messages are of the type `PAYFormErrorMessage`. Look at the initializer of the class for different ways of error message creation.
+    
+  * Call `setButtonText:` on the `PAYFormDefaultErrorHandler` class to configure the dissmiss button the alert. This step is **required**.
+
+
 Example
 -------
 To create a registration form is common task in app development, so it is here used as example to show some of the possiblities of the PAYFormBuilder. To get an overview of all features, please run the example app.
