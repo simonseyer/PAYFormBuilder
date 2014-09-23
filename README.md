@@ -14,9 +14,26 @@ Features
 * **Customizable** - change many defaults with UIAppearance or configure each element individually 
 * **Example app** - get an overview over all posibilities of the lib and see how to get the best out of it
 
+Structure
+---------
+This short overview of the structure written in objective-c-pseudo-code should give you an idear, how to work with FormBuilder.
+```obj-c
+@class YourTableViewController: PAYFormTableViewController
+
+- loadStructure: tableBuilder {
+  [tableBuilder addSection:^(sectionBuilder){
+  	[sectionBuilder addRow]
+  	[sectionBuilder addRow]
+  }]
+  [tableBuilder addSection:^(sectionBuilder){
+  	[sectionBuilder addRow]
+  }]
+}
+```
+
 Usage
 -----
-In order to create a form screen, you have to inherit from the PAYFormTableViewController and implement the `loadStructure:` method. All of your configuration should take place in this method.
+In order to create a form screen, you have to inherit from the `PAYFormTableViewController` and implement the `loadStructure:` method. All of your configuration should take place in this method.
 
 ```obj-c
 #import "PAYFormBuilder.h"
@@ -32,7 +49,7 @@ In order to create a form screen, you have to inherit from the PAYFormTableViewC
 @implementation YourViewController
 
 - (void)loadStructure:(id<PAYTableBuilder>)tableBuilder {
-    // Build your form    
+    // Build your form here   
 }
 
 @end
