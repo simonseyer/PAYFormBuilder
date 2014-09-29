@@ -15,7 +15,7 @@
 		372EF9B218F460E8004D9D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372EF9B118F460E8004D9D78 /* Images.xcassets */; };
 		373805FF1925043000F20161 /* libPods-ExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 373805FE1925043000F20161 /* libPods-ExampleTests.a */; };
 		373806011925043E00F20161 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 373806001925043E00F20161 /* SenTestingKit.framework */; };
-		37783E2F18F4297900C53D54 /* libPAYFormBuilder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37783E2B18F4291200C53D54 /* libPAYFormBuilder.a */; };
+		374F214919D99DC700217AD7 /* libPAYFormBuilder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37783E2B18F4291200C53D54 /* libPAYFormBuilder.a */; };
 		3786EC39191D21E400EC1FBB /* PAYValidationsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786EC38191D21E400EC1FBB /* PAYValidationsTest.m */; };
 		37906D3818F4349F00FC3CC8 /* Main_Iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37906D3718F4349F00FC3CC8 /* Main_Iphone.storyboard */; };
 		3796520C18F426A00022151B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796520B18F426A00022151B /* Foundation.framework */; };
@@ -57,7 +57,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1C544E62BC734A128C338E8F /* Pods-ExampleTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleTests.xcconfig"; path = "Pods/Pods-ExampleTests.xcconfig"; sourceTree = "<group>"; };
 		2F603E676964460584CBE982 /* libPods-ExampleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExampleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		370BE09E190A9E9900954747 /* PAYControlsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYControlsViewController.h; sourceTree = "<group>"; };
 		370BE09F190A9E9900954747 /* PAYControlsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYControlsViewController.m; sourceTree = "<group>"; };
@@ -97,6 +96,8 @@
 		37F82F9A192512E000087781 /* PAYRegistrationFormTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYRegistrationFormTest.m; sourceTree = "<group>"; };
 		37F82F9E192518C600087781 /* KIFTestCase+PAYComfort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestCase+PAYComfort.h"; sourceTree = "<group>"; };
 		37F82F9F192518C600087781 /* KIFTestCase+PAYComfort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestCase+PAYComfort.m"; sourceTree = "<group>"; };
+		DC7CF2F2BED35E712F70AE6E /* Pods-ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExampleTests/Pods-ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EE3F538D421FE853CE2821CE /* Pods-ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExampleTests/Pods-ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37783E2F18F4297900C53D54 /* libPAYFormBuilder.a in Frameworks */,
+				374F214919D99DC700217AD7 /* libPAYFormBuilder.a in Frameworks */,
 				3796520E18F426A00022151B /* CoreGraphics.framework in Frameworks */,
 				3796521018F426A00022151B /* UIKit.framework in Frameworks */,
 				3796520C18F426A00022151B /* Foundation.framework in Frameworks */,
@@ -167,7 +168,7 @@
 				3796524318F427C30022151B /* ExampleTests */,
 				3796520A18F426A00022151B /* Frameworks */,
 				3796520918F426A00022151B /* Products */,
-				1C544E62BC734A128C338E8F /* Pods-ExampleTests.xcconfig */,
+				3BA24598A77F5C911A575264 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,6 +235,15 @@
 				37F82F9F192518C600087781 /* KIFTestCase+PAYComfort.m */,
 			);
 			path = ExampleTests;
+			sourceTree = "<group>";
+		};
+		3BA24598A77F5C911A575264 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DC7CF2F2BED35E712F70AE6E /* Pods-ExampleTests.debug.xcconfig */,
+				EE3F538D421FE853CE2821CE /* Pods-ExampleTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,7 +376,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-ExampleTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExampleTests/Pods-ExampleTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C6D7685B1C334AE8B91040B7 /* Check Pods Manifest.lock */ = {
@@ -525,8 +535,14 @@
 					"\"$(SRCROOT)/PAYFormBuilder\"/**",
 				);
 				INFOPLIST_FILE = "Example/Example-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -545,8 +561,14 @@
 					"\"$(SRCROOT)/PAYFormBuilder\"/**",
 				);
 				INFOPLIST_FILE = "Example/Example-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -554,7 +576,7 @@
 		};
 		3796523818F426A00022151B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C544E62BC734A128C338E8F /* Pods-ExampleTests.xcconfig */;
+			baseConfigurationReference = DC7CF2F2BED35E712F70AE6E /* Pods-ExampleTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -574,16 +596,7 @@
 				);
 				INFOPLIST_FILE = "ExampleTests/ExampleTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-framework",
-					CoreGraphics,
-					"-framework",
-					MessageUI,
-					"-framework",
-					XCTest,
-					"-all_load",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -592,7 +605,7 @@
 		};
 		3796523918F426A00022151B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1C544E62BC734A128C338E8F /* Pods-ExampleTests.xcconfig */;
+			baseConfigurationReference = EE3F538D421FE853CE2821CE /* Pods-ExampleTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Example.app/Example";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -608,16 +621,7 @@
 				);
 				INFOPLIST_FILE = "ExampleTests/ExampleTests-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = (
-					"-ObjC",
-					"-framework",
-					CoreGraphics,
-					"-framework",
-					MessageUI,
-					"-framework",
-					XCTest,
-					"-all_load",
-				);
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
