@@ -1,5 +1,5 @@
 before_install:
-  - gem install cocoapods -v '0.32.1'
+  - gem install cocoapods
   - brew update
   - if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
 
