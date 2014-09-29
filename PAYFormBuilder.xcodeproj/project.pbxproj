@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2DEAA2848A5D609D4D9E79A0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA1C63E5DFA4210863FCCEF /* libPods.a */; };
 		3709CE621920DFAB0077BAFF /* PAYValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3709CE601920DFAB0077BAFF /* PAYValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3709CE631920DFAB0077BAFF /* PAYValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3709CE611920DFAB0077BAFF /* PAYValidation.m */; };
 		3742D14619D9A84F00B78219 /* libPods-BlocksKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3742D14319D9A84F00B78219 /* libPods-BlocksKit.a */; };
@@ -219,7 +218,6 @@
 				3742D14819D9A84F00B78219 /* libPods-SZTextView.a in Frameworks */,
 				379651E818F2F1D10022151B /* UIKit.framework in Frameworks */,
 				3796518118F2F1350022151B /* Foundation.framework in Frameworks */,
-				2DEAA2848A5D609D4D9E79A0 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
