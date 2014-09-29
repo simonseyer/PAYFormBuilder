@@ -32,6 +32,9 @@
     
     self.defaultRowHeight    = 44.0f;
     self.defaultFooterHeight = 36.0f;
+    
+    self.tableView.accessibilityLabel = @"PAYFormTable";
+    self.tableView.isAccessibilityElement = YES;
 }
 
 - (void)viewDidLoad {
