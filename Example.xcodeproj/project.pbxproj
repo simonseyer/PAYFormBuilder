@@ -13,9 +13,9 @@
 		370BE0AB190AB82200954747 /* PAYValidationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370BE0AA190AB82200954747 /* PAYValidationsViewController.m */; };
 		370BE0AE190AB85A00954747 /* PAYCustomizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370BE0AD190AB85A00954747 /* PAYCustomizationViewController.m */; };
 		372EF9B218F460E8004D9D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372EF9B118F460E8004D9D78 /* Images.xcassets */; };
-		373805FF1925043000F20161 /* libPods-ExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 373805FE1925043000F20161 /* libPods-ExampleTests.a */; };
 		373806011925043E00F20161 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 373806001925043E00F20161 /* SenTestingKit.framework */; };
 		374F214919D99DC700217AD7 /* libPAYFormBuilder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37783E2B18F4291200C53D54 /* libPAYFormBuilder.a */; };
+		375D205119D9D18700E2C2B7 /* libPods-ExampleTests-KIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 375D205019D9D18700E2C2B7 /* libPods-ExampleTests-KIF.a */; };
 		3786EC39191D21E400EC1FBB /* PAYValidationsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786EC38191D21E400EC1FBB /* PAYValidationsTest.m */; };
 		37906D3818F4349F00FC3CC8 /* Main_Iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37906D3718F4349F00FC3CC8 /* Main_Iphone.storyboard */; };
 		3796520C18F426A00022151B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796520B18F426A00022151B /* Foundation.framework */; };
@@ -71,6 +71,7 @@
 		372EF9B118F460E8004D9D78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		373805FE1925043000F20161 /* libPods-ExampleTests.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ExampleTests.a"; path = "Pods/build/Debug-iphoneos/libPods-ExampleTests.a"; sourceTree = "<group>"; };
 		373806001925043E00F20161 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		375D205019D9D18700E2C2B7 /* libPods-ExampleTests-KIF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ExampleTests-KIF.a"; path = "Pods/build/Debug-iphoneos/libPods-ExampleTests-KIF.a"; sourceTree = "<group>"; };
 		37783E2518F4291200C53D54 /* PAYFormBuilder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = PAYFormBuilder.xcodeproj; sourceTree = SOURCE_ROOT; };
 		3786EC37191D21E400EC1FBB /* PAYValidationsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYValidationsTest.h; sourceTree = "<group>"; };
 		3786EC38191D21E400EC1FBB /* PAYValidationsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYValidationsTest.m; sourceTree = "<group>"; };
@@ -116,8 +117,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				375D205119D9D18700E2C2B7 /* libPods-ExampleTests-KIF.a in Frameworks */,
 				373806011925043E00F20161 /* SenTestingKit.framework in Frameworks */,
-				373805FF1925043000F20161 /* libPods-ExampleTests.a in Frameworks */,
 				3796522718F426A00022151B /* UIKit.framework in Frameworks */,
 				3796522618F426A00022151B /* Foundation.framework in Frameworks */,
 			);
@@ -184,6 +185,7 @@
 		3796520A18F426A00022151B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				375D205019D9D18700E2C2B7 /* libPods-ExampleTests-KIF.a */,
 				373806001925043E00F20161 /* SenTestingKit.framework */,
 				373805FE1925043000F20161 /* libPods-ExampleTests.a */,
 				37783E2518F4291200C53D54 /* PAYFormBuilder.xcodeproj */,
@@ -595,7 +597,10 @@
 					"\"$(SRCROOT)/PAYFormBuilder\"/**",
 				);
 				INFOPLIST_FILE = "ExampleTests/ExampleTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -620,7 +625,10 @@
 					"\"$(SRCROOT)/PAYFormBuilder\"/**",
 				);
 				INFOPLIST_FILE = "ExampleTests/ExampleTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
