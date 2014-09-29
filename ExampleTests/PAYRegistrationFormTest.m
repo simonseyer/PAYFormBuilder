@@ -56,8 +56,11 @@
     UISwitch *switchUI = (UISwitch *)[tester waitForViewWithAccessibilityLabel:@"termsSwitch"];
     [switchUI setOn:YES animated:YES];
     
+    // Scrolls to the top so the password field is in the visible area. Otherwise KIF could not tap on the view.
+    UITableView *tableView = (UITableView *) [tester waitForViewWithAccessibilityLabel:@"PAYFormTable"];
+    [tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+    
     // test
-    [tester tapViewWithAccessibilityLabel:@"passwordField"]; // not clear, why this is needed
     [tester enterText:@"abcd" intoViewWithAccessibilityLabel:@"passwordField"];
     [tester enterText:@"1234" intoViewWithAccessibilityLabel:@"password2Field"];
     
