@@ -9,6 +9,7 @@
 #import "PAYRegistrationFormTest.h"
 #import <KIF/KIF.h>
 #import "KIFUITestActor+PAYComfort.h"
+#import "NSError-KIFAdditions.h"
 
 @implementation PAYRegistrationFormTest
 
@@ -36,7 +37,8 @@
     // Check
     UITextField *userNameField = (UITextField *)[tester waitForViewWithAccessibilityLabel:@"usernameField"];
     if (!userNameField.isFirstResponder) {
-        [tester fail];
+        [tester failWithError:[NSError KIFErrorWithFormat:@"userNameField should be the first responder."]
+                     stopTest:YES];
     }
 }
 
@@ -50,7 +52,8 @@
     // Check
     UITextField *pwField = (UITextField *)[tester waitForViewWithAccessibilityLabel:@"passwordField"];
     if (!pwField.isFirstResponder) {
-        [tester fail];
+        [tester failWithError:[NSError KIFErrorWithFormat:@"pwField should be the first responder."]
+                     stopTest:YES];
     }
 }
 
