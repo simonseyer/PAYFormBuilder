@@ -29,7 +29,8 @@
 		3796524818F427C30022151B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3796524418F427C30022151B /* InfoPlist.strings */; };
 		3796524D18F427F00022151B /* PAYRegistrationFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3796524C18F427F00022151B /* PAYRegistrationFormViewController.m */; };
 		37F82F9B192512E000087781 /* PAYRegistrationFormTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F82F9A192512E000087781 /* PAYRegistrationFormTest.m */; };
-		37F82FA0192518C600087781 /* KIFTestCase+PAYComfort.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F82F9F192518C600087781 /* KIFTestCase+PAYComfort.m */; };
+		37F82FA0192518C600087781 /* KIFUITestActor+PAYComfort.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F82F9F192518C600087781 /* KIFUITestActor+PAYComfort.m */; };
+		7335325A186411AEC7291B29 /* libPods-ExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F603E676964460584CBE982 /* libPods-ExampleTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,8 +96,8 @@
 		3796524C18F427F00022151B /* PAYRegistrationFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYRegistrationFormViewController.m; sourceTree = "<group>"; };
 		37F82F99192512E000087781 /* PAYRegistrationFormTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYRegistrationFormTest.h; sourceTree = "<group>"; };
 		37F82F9A192512E000087781 /* PAYRegistrationFormTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYRegistrationFormTest.m; sourceTree = "<group>"; };
-		37F82F9E192518C600087781 /* KIFTestCase+PAYComfort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestCase+PAYComfort.h"; sourceTree = "<group>"; };
-		37F82F9F192518C600087781 /* KIFTestCase+PAYComfort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFTestCase+PAYComfort.m"; sourceTree = "<group>"; };
+		37F82F9E192518C600087781 /* KIFUITestActor+PAYComfort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFUITestActor+PAYComfort.h"; sourceTree = "<group>"; };
+		37F82F9F192518C600087781 /* KIFUITestActor+PAYComfort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KIFUITestActor+PAYComfort.m"; sourceTree = "<group>"; };
 		DC7CF2F2BED35E712F70AE6E /* Pods-ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExampleTests/Pods-ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EE3F538D421FE853CE2821CE /* Pods-ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExampleTests/Pods-ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +122,7 @@
 				373806011925043E00F20161 /* SenTestingKit.framework in Frameworks */,
 				3796522718F426A00022151B /* UIKit.framework in Frameworks */,
 				3796522618F426A00022151B /* Foundation.framework in Frameworks */,
+				7335325A186411AEC7291B29 /* libPods-ExampleTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,8 +235,8 @@
 				3786EC38191D21E400EC1FBB /* PAYValidationsTest.m */,
 				37F82F99192512E000087781 /* PAYRegistrationFormTest.h */,
 				37F82F9A192512E000087781 /* PAYRegistrationFormTest.m */,
-				37F82F9E192518C600087781 /* KIFTestCase+PAYComfort.h */,
-				37F82F9F192518C600087781 /* KIFTestCase+PAYComfort.m */,
+				37F82F9E192518C600087781 /* KIFUITestActor+PAYComfort.h */,
+				37F82F9F192518C600087781 /* KIFUITestActor+PAYComfort.m */,
 			);
 			path = ExampleTests;
 			sourceTree = "<group>";
@@ -419,7 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3786EC39191D21E400EC1FBB /* PAYValidationsTest.m in Sources */,
-				37F82FA0192518C600087781 /* KIFTestCase+PAYComfort.m in Sources */,
+				37F82FA0192518C600087781 /* KIFUITestActor+PAYComfort.m in Sources */,
 				37F82F9B192512E000087781 /* PAYRegistrationFormTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

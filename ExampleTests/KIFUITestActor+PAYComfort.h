@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Paij. All rights reserved.
 //
 
-#import "KIFTestCase.h"
+#import <KIF/KIFUITestActor.h>
 
-@interface KIFTestCase (PAYComfort)
+@interface KIFUITestActor (PAYComfort)
 
-- (BOOL)findViewWithLabel:(NSString*)label;
+- (void)checkForAbsenceOfViewWithAccessibilityLabel:(NSString*)label;
 
 @end

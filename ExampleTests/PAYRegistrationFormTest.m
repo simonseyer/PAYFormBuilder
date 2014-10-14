@@ -8,7 +8,7 @@
 
 #import "PAYRegistrationFormTest.h"
 #import <KIF/KIF.h>
-#import "KIFTestCase+PAYComfort.h"
+#import "KIFUITestActor+PAYComfort.h"
 
 @implementation PAYRegistrationFormTest
 
@@ -32,6 +32,8 @@
 
 - (void)test_A_firstFieldIsSelected {
     [tester waitForTimeInterval:0.1];
+    
+    // Check
     UITextField *userNameField = (UITextField *)[tester waitForViewWithAccessibilityLabel:@"usernameField"];
     if (!userNameField.isFirstResponder) {
         [tester fail];
@@ -39,9 +41,13 @@
 }
 
 - (void)test_B_jumpToNextField {
+    // Enter value
     [tester enterText:@"Donald" intoViewWithAccessibilityLabel:@"usernameField"];
-    // This test only succeeds with an english keyboard
+    
+    // IMPORTANT: this test only succeeds with an english keyboard
     [tester tapViewWithAccessibilityLabel:@"next"];
+    
+    // Check
     UITextField *pwField = (UITextField *)[tester waitForViewWithAccessibilityLabel:@"passwordField"];
     if (!pwField.isFirstResponder) {
         [tester fail];
@@ -49,86 +55,99 @@
 }
 
 - (void)test_C_passwordEqualFail {
-    // prerequisits
+    // Enter values
     [tester clearTextFromAndThenEnterText:@"teststreet" intoViewWithAccessibilityLabel:@"streetField"];
     [tester clearTextFromAndThenEnterText:@"123456" intoViewWithAccessibilityLabel:@"postalCodeField"];
     [tester clearTextFromAndThenEnterText:@"testcity" intoViewWithAccessibilityLabel:@"cityField"];
     UISwitch *switchUI = (UISwitch *)[tester waitForViewWithAccessibilityLabel:@"termsSwitch"];
-    [switchUI setOn:YES animated:YES];
+    [switchUI setOn:YES animated:NO];
     
     // Scrolls to the top so the password field is in the visible area. Otherwise KIF could not tap on the view.
     UITableView *tableView = (UITableView *) [tester waitForViewWithAccessibilityLabel:@"PAYFormTable"];
     [tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     
-    // test
     [tester enterText:@"abcd" intoViewWithAccessibilityLabel:@"passwordField"];
     [tester enterText:@"1234" intoViewWithAccessibilityLabel:@"password2Field"];
     
     [tester tapViewWithAccessibilityLabel:@"Done"];
-    if ([self findViewWithLabel:@"Password wrong"] && [self findViewWithLabel:@"Please enter the same password again"]) {
-        [tester tapViewWithAccessibilityLabel:@"Ok"];
-    } else {
-        [tester fail];
-    }
+    
+    // Check
+    [tester waitForViewWithAccessibilityLabel:@"Password wrong"];
+    [tester waitForViewWithAccessibilityLabel:@"Please enter the same password again"];
+    
+    // Reset
+    [tester tapViewWithAccessibilityLabel:@"Ok"];
 }
 
 - (void)test_D_passwordEqual {
-   // [tester tapViewWithAccessibilityLabel:@"passwordField"]; // not clear, why this is needed
+    // Enter values
     [tester clearTextFromAndThenEnterText:@"abcd" intoViewWithAccessibilityLabel:@"password2Field"];
     
     [tester tapViewWithAccessibilityLabel:@"Done"];
-    if ([self findViewWithLabel:@"Password wrong"] && [self findViewWithLabel:@"Please enter the same password again"]) {
-        [tester fail];
-    } else {
-        [tester tapViewWithAccessibilityLabel:@"Ok"];
-        
-    }
+    
+    // Check
+    [tester checkForAbsenceOfViewWithAccessibilityLabel:@"Password wrong"];
+    [tester checkForAbsenceOfViewWithAccessibilityLabel:@"Please enter the same password again"];
+    
+    // Reset
+    [tester tapViewWithAccessibilityLabel:@"Ok"];
 }
 
 - (void)test_E_customSwitchErrorMessage {
+    // Enter values
     UISwitch *switchUI = (UISwitch *)[tester waitForViewWithAccessibilityLabel:@"termsSwitch"];
-    [switchUI setOn:NO animated:YES];
+    [switchUI setOn:NO animated:NO];
 
     [tester tapViewWithAccessibilityLabel:@"Done"];
-    if ([self findViewWithLabel:@"Accept"] && [self findViewWithLabel:@"Please accept the terms and conditions to continue"]) {
-        [tester tapViewWithAccessibilityLabel:@"Ok"];
-        [switchUI setOn:YES animated:YES];
-    } else {
-        [tester fail];
-    }
+    
+    // Check
+    [tester waitForViewWithAccessibilityLabel:@"Accept"];
+    [tester waitForViewWithAccessibilityLabel:@"Please accept the terms and conditions to continue"];
+    
+    // Reset
+    [tester tapViewWithAccessibilityLabel:@"Ok"];
+    [switchUI setOn:YES animated:NO];
 }
 
 - (void)test_F_cleanedValue {
+    // Enter values
     [tester clearTextFromAndThenEnterText:@"123 456 789" intoViewWithAccessibilityLabel:@"postalCodeField"];
     
     [tester tapViewWithAccessibilityLabel:@"Done"];
-    if ([self findViewWithLabel:@"Success"] && [self findViewWithLabel:@"Well done, Donald. Here your cleaned postal code: 123456789. Country code: usa"]) {
-        [tester tapViewWithAccessibilityLabel:@"Ok"];
-    } else {
-        [tester fail];
-    }
+    
+    // Check
+    [tester waitForViewWithAccessibilityLabel:@"Success"];
+    [tester waitForViewWithAccessibilityLabel:@"Well done, Donald. Here your cleaned postal code: 123456789. Country code: usa"];
+    
+    // Reset
+    [tester tapViewWithAccessibilityLabel:@"Ok"];
 }
 
 - (void)test_G_singleSelection {
+    // Enter values
     [tester tapViewWithAccessibilityLabel:@"Germany"];
     
     [tester tapViewWithAccessibilityLabel:@"Done"];
-    if ([self findViewWithLabel:@"Success"] && [self findViewWithLabel:@"Well done, Donald. Here your cleaned postal code: 123456789. Country code: de"]) {
-        [tester tapViewWithAccessibilityLabel:@"Ok"];
-    } else {
-        [tester fail];
-    }
+    
+    // Check
+    [tester waitForViewWithAccessibilityLabel:@"Success"];
+    [tester waitForViewWithAccessibilityLabel:@"Well done, Donald. Here your cleaned postal code: 123456789. Country code: de"];
+    
+    // Reset
+    [tester tapViewWithAccessibilityLabel:@"Ok"];
 }
 
 - (void)test_H_finishOnLasField {
+    // Enter values
     [tester tapViewWithAccessibilityLabel:@"cityField"];
     
     [tester tapViewWithAccessibilityLabel:@"Done"]; // keyboard done
-    if ([self findViewWithLabel:@"Success"]) {
-        [tester tapViewWithAccessibilityLabel:@"Ok"];
-    } else {
-        [tester fail];
-    }
+    
+    // Check
+    [tester waitForViewWithAccessibilityLabel:@"Success"];
+    
+    // Reset
+    [tester tapViewWithAccessibilityLabel:@"Ok"];
 }
 
 @end
