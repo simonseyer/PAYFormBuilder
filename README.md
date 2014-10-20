@@ -1,5 +1,9 @@
-![](Images/AppIcon.png) PAYFormBuilder ![image](https://magnum.travis-ci.com/redpeppix-gmbh-co-kg/PAYFormBuilder.svg?token=UAwBhHcJg3f4aE5AT2Vs)
+![](Images/AppIcon.png) PAYFormBuilder 
 ==============
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/redpeppix-gmbh-co-kg/PAYFormBuilder/blob/master/LICENSE)
+[![CocoaPods](https://img.shields.io/cocoapods/v/PAYFormBuilder.svg?style=flat)](https://github.com/redpeppix-gmbh-co-kg/PAYFormBuilder)
+[![Travis](http://img.shields.io/travis/redpeppix-gmbh-co-kg/PAYFormBuilder.svg?style=flat)](https://travis-ci.org/redpeppix-gmbh-co-kg/PAYFormBuilder)
+
 The FormBuilder is a library to create generic iOS 7/8 screens the easy way. With it's block based syntax and wide possibilities for customization it's fun to create forms.
 
 [![](Images/thumb/controls.png)](Images/controls.png)
