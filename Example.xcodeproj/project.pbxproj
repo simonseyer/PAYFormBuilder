@@ -15,7 +15,6 @@
 		372EF9B218F460E8004D9D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372EF9B118F460E8004D9D78 /* Images.xcassets */; };
 		373806011925043E00F20161 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 373806001925043E00F20161 /* SenTestingKit.framework */; };
 		374F214919D99DC700217AD7 /* libPAYFormBuilder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37783E2B18F4291200C53D54 /* libPAYFormBuilder.a */; };
-		375D205119D9D18700E2C2B7 /* libPods-ExampleTests-KIF.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 375D205019D9D18700E2C2B7 /* libPods-ExampleTests-KIF.a */; };
 		3786EC39191D21E400EC1FBB /* PAYValidationsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786EC38191D21E400EC1FBB /* PAYValidationsTest.m */; };
 		37906D3818F4349F00FC3CC8 /* Main_Iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37906D3718F4349F00FC3CC8 /* Main_Iphone.storyboard */; };
 		3796520C18F426A00022151B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796520B18F426A00022151B /* Foundation.framework */; };
@@ -30,7 +29,7 @@
 		3796524D18F427F00022151B /* PAYRegistrationFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3796524C18F427F00022151B /* PAYRegistrationFormViewController.m */; };
 		37F82F9B192512E000087781 /* PAYRegistrationFormTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F82F9A192512E000087781 /* PAYRegistrationFormTest.m */; };
 		37F82FA0192518C600087781 /* KIFUITestActor+PAYComfort.m in Sources */ = {isa = PBXBuildFile; fileRef = 37F82F9F192518C600087781 /* KIFUITestActor+PAYComfort.m */; };
-		7335325A186411AEC7291B29 /* libPods-ExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F603E676964460584CBE982 /* libPods-ExampleTests.a */; };
+		D672E4652B0B25A59CCB88CE /* libPods-ExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F603E676964460584CBE982 /* libPods-ExampleTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,11 +117,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				375D205119D9D18700E2C2B7 /* libPods-ExampleTests-KIF.a in Frameworks */,
 				373806011925043E00F20161 /* SenTestingKit.framework in Frameworks */,
 				3796522718F426A00022151B /* UIKit.framework in Frameworks */,
 				3796522618F426A00022151B /* Foundation.framework in Frameworks */,
-				7335325A186411AEC7291B29 /* libPods-ExampleTests.a in Frameworks */,
+				D672E4652B0B25A59CCB88CE /* libPods-ExampleTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
