@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "PAYFormBuilder"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
 
   s.summary      = "Library to create iOS 7 forms with block based syntax"
   s.description  = <<-DESC
