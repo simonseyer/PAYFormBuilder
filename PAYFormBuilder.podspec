@@ -13,16 +13,16 @@ Pod::Spec.new do |s|
                    * **Example app** - get an overview over all posibilities of the lib and see how to get the best out of it
                    DESC
 
-  s.homepage     = "https://github.com/redpeppix-gmbh-co-kg/PAYFormBuilder"
-  s.screenshots  = ["https://github.com/redpeppix-gmbh-co-kg/PAYFormBuilder/blob/master/Images/registrationForm3.png",
-                    "https://github.com/redpeppix-gmbh-co-kg/PAYFormBuilder/blob/master/Images/controls.png", 
-                    "https://github.com/redpeppix-gmbh-co-kg/PAYFormBuilder/blob/master/Images/controls2.png"]
+  s.homepage     = "https://github.com/paij/PAYFormBuilder"
+  s.screenshots  = ["https://github.com/paij/PAYFormBuilder/blob/master/Images/registrationForm3.png",
+                    "https://github.com/paij/PAYFormBuilder/blob/master/Images/controls.png", 
+                    "https://github.com/paij/PAYFormBuilder/blob/master/Images/controls2.png"]
 
   s.license        = 'MIT'
   s.author         = { "Simon Seyer" => "seyer@paij.com" }
   s.platform       = :ios, '7.0'
 
-  s.source         = { :git => "https://github.com/redpeppix-gmbh-co-kg/PAYFormBuilder.git", :tag => s.version.to_s }
+  s.source         = { :git => "https://github.com/paij/PAYFormBuilder.git", :tag => s.version.to_s }
   s.source_files   = 'PAYFormBuilder/**/*.{h,m}'
   s.private_header_files = "PAYFormBuilder/**/*_protected.h", "PAYFormBuilder/privateProtocols/*", "PAYFormBuilder/**/*Protected.h"
 
