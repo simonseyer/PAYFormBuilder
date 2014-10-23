@@ -14,9 +14,9 @@ Pod::Spec.new do |s|
                    DESC
 
   s.homepage     = "https://github.com/paij/PAYFormBuilder"
-  s.screenshots  = ["https://github.com/paij/PAYFormBuilder/blob/master/Images/registrationForm3.png",
-                    "https://github.com/paij/PAYFormBuilder/blob/master/Images/controls.png", 
-                    "https://github.com/paij/PAYFormBuilder/blob/master/Images/controls2.png"]
+  s.screenshots  = ["https://raw.githubusercontent.com/paij/PAYFormBuilder/master/Images/registrationForm3.png",
+                    "https://raw.githubusercontent.com/paij/PAYFormBuilder/master/Images/controls.png", 
+                    "https://raw.githubusercontent.com/paij/PAYFormBuilder/master/Images/controls2.png"]
 
   s.license        = 'MIT'
   s.author         = { "Simon Seyer" => "seyer@paij.com" }
