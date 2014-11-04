@@ -60,7 +60,7 @@
 		379651E818F2F1D10022151B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379651E718F2F1D10022151B /* UIKit.framework */; };
 		379651F718F302940022151B /* PAYMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651F618F302940022151B /* PAYMessageInterceptor.m */; };
 		379651FA18F3035A0022151B /* UIColor+PAYHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651F918F3035A0022151B /* UIColor+PAYHex.m */; };
-		37A73CF619743D2700381DC9 /* PAYFormRow.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A73CF219743D2700381DC9 /* PAYFormRow.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		37A73CF619743D2700381DC9 /* PAYFormRow.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A73CF219743D2700381DC9 /* PAYFormRow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		37A73CF719743D2700381DC9 /* PAYNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A73CF319743D2700381DC9 /* PAYNotifications.h */; };
 		37A73CF819743D2700381DC9 /* PAYNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73CF419743D2700381DC9 /* PAYNotifications.m */; };
 		37A73D0319743D4200381DC9 /* NSError+PAYComfort.h in Headers */ = {isa = PBXBuildFile; fileRef = 37A73CFB19743D4200381DC9 /* NSError+PAYComfort.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -471,11 +471,11 @@
 				37AF34B418F8560300848D49 /* PAYFormSwitch.h in Headers */,
 				374F215919D99FE200217AD7 /* PAYFormHeader.h in Headers */,
 				3709CE621920DFAB0077BAFF /* PAYValidation.h in Headers */,
+				37A73CF619743D2700381DC9 /* PAYFormRow.h in Headers */,
 				374F216419D9A09100217AD7 /* PAYFormTableView.h in Headers */,
 				374F216519D9A09300217AD7 /* PAYTextLabel.h in Headers */,
 				375DAD70190F052600F4A41D /* PAYHeaderView.h in Headers */,
 				374F216719D9A0AD00217AD7 /* UIColor+PAYHex.h in Headers */,
-				37A73CF619743D2700381DC9 /* PAYFormRow.h in Headers */,
 				374F215B19D9A03C00217AD7 /* PAYValidatableFormCell.h in Headers */,
 				37A73CF719743D2700381DC9 /* PAYNotifications.h in Headers */,
 				37A73D2A1974601D00381DC9 /* PAYFormTableBuilder_protected.h in Headers */,
