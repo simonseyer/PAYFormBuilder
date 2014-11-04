@@ -14,7 +14,7 @@
 		370BE0AE190AB85A00954747 /* PAYCustomizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370BE0AD190AB85A00954747 /* PAYCustomizationViewController.m */; };
 		372EF9B218F460E8004D9D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372EF9B118F460E8004D9D78 /* Images.xcassets */; };
 		373806011925043E00F20161 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 373806001925043E00F20161 /* SenTestingKit.framework */; };
-		374F214919D99DC700217AD7 /* libPAYFormBuilder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 37783E2B18F4291200C53D54 /* libPAYFormBuilder.a */; };
+		376B2A8E1A08FC6300AC019E /* libPAYFormBuilder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 376B2A8D1A08FC6300AC019E /* libPAYFormBuilder.a */; };
 		3786EC39191D21E400EC1FBB /* PAYValidationsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786EC38191D21E400EC1FBB /* PAYValidationsTest.m */; };
 		37906D3818F4349F00FC3CC8 /* Main_Iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37906D3718F4349F00FC3CC8 /* Main_Iphone.storyboard */; };
 		3796520C18F426A00022151B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796520B18F426A00022151B /* Foundation.framework */; };
@@ -33,20 +33,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		37783E2A18F4291200C53D54 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 37783E2518F4291200C53D54 /* PAYFormBuilder.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3796517D18F2F1350022151B;
-			remoteInfo = PAYFormBuilder;
-		};
-		37783E2C18F4291200C53D54 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 37783E2518F4291200C53D54 /* PAYFormBuilder.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3796518D18F2F1350022151B;
-			remoteInfo = PAYFormBuilderTests;
-		};
 		3796522818F426A00022151B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3796520018F426A00022151B /* Project object */;
@@ -72,7 +58,8 @@
 		373805FE1925043000F20161 /* libPods-ExampleTests.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ExampleTests.a"; path = "Pods/build/Debug-iphoneos/libPods-ExampleTests.a"; sourceTree = "<group>"; };
 		373806001925043E00F20161 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		375D205019D9D18700E2C2B7 /* libPods-ExampleTests-KIF.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-ExampleTests-KIF.a"; path = "Pods/build/Debug-iphoneos/libPods-ExampleTests-KIF.a"; sourceTree = "<group>"; };
-		37783E2518F4291200C53D54 /* PAYFormBuilder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = PAYFormBuilder.xcodeproj; sourceTree = SOURCE_ROOT; };
+		376B2A8B1A08FC2D00AC019E /* libPAYFormBuilder.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPAYFormBuilder.a; path = "build/Debug-iphoneos/libPAYFormBuilder.a"; sourceTree = "<group>"; };
+		376B2A8D1A08FC6300AC019E /* libPAYFormBuilder.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPAYFormBuilder.a; path = "build/Debug-iphoneos/libPAYFormBuilder.a"; sourceTree = "<group>"; };
 		3786EC37191D21E400EC1FBB /* PAYValidationsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYValidationsTest.h; sourceTree = "<group>"; };
 		3786EC38191D21E400EC1FBB /* PAYValidationsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYValidationsTest.m; sourceTree = "<group>"; };
 		37906D3718F4349F00FC3CC8 /* Main_Iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_Iphone.storyboard; sourceTree = "<group>"; };
@@ -106,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				374F214919D99DC700217AD7 /* libPAYFormBuilder.a in Frameworks */,
+				376B2A8E1A08FC6300AC019E /* libPAYFormBuilder.a in Frameworks */,
 				3796520E18F426A00022151B /* CoreGraphics.framework in Frameworks */,
 				3796521018F426A00022151B /* UIKit.framework in Frameworks */,
 				3796520C18F426A00022151B /* Foundation.framework in Frameworks */,
@@ -153,15 +140,6 @@
 			name = examples;
 			sourceTree = "<group>";
 		};
-		37783E2618F4291200C53D54 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				37783E2B18F4291200C53D54 /* libPAYFormBuilder.a */,
-				37783E2D18F4291200C53D54 /* PAYFormBuilderTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		379651FF18F426A00022151B = {
 			isa = PBXGroup;
 			children = (
@@ -185,10 +163,11 @@
 		3796520A18F426A00022151B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				376B2A8D1A08FC6300AC019E /* libPAYFormBuilder.a */,
+				376B2A8B1A08FC2D00AC019E /* libPAYFormBuilder.a */,
 				375D205019D9D18700E2C2B7 /* libPods-ExampleTests-KIF.a */,
 				373806001925043E00F20161 /* SenTestingKit.framework */,
 				373805FE1925043000F20161 /* libPods-ExampleTests.a */,
-				37783E2518F4291200C53D54 /* PAYFormBuilder.xcodeproj */,
 				37906D5518F4552900FC3CC8 /* libPods.a */,
 				3796520B18F426A00022151B /* Foundation.framework */,
 				3796520D18F426A00022151B /* CoreGraphics.framework */,
@@ -313,12 +292,6 @@
 			mainGroup = 379651FF18F426A00022151B;
 			productRefGroup = 3796520918F426A00022151B /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 37783E2618F4291200C53D54 /* Products */;
-					ProjectRef = 37783E2518F4291200C53D54 /* PAYFormBuilder.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				3796520718F426A00022151B /* Example */,
@@ -326,23 +299,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		37783E2B18F4291200C53D54 /* libPAYFormBuilder.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPAYFormBuilder.a;
-			remoteRef = 37783E2A18F4291200C53D54 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		37783E2D18F4291200C53D54 /* PAYFormBuilderTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = PAYFormBuilderTests.xctest;
-			remoteRef = 37783E2C18F4291200C53D54 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3796520618F426A00022151B /* Resources */ = {
@@ -537,10 +493,7 @@
 					"\"$(SRCROOT)/PAYFormBuilder\"/**",
 				);
 				INFOPLIST_FILE = "Example/Example-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -563,10 +516,7 @@
 					"\"$(SRCROOT)/PAYFormBuilder\"/**",
 				);
 				INFOPLIST_FILE = "Example/Example-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -597,10 +547,7 @@
 					"\"$(SRCROOT)/PAYFormBuilder\"/**",
 				);
 				INFOPLIST_FILE = "ExampleTests/ExampleTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -625,10 +572,7 @@
 					"\"$(SRCROOT)/PAYFormBuilder\"/**",
 				);
 				INFOPLIST_FILE = "ExampleTests/ExampleTests-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
