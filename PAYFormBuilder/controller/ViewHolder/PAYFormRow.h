@@ -17,7 +17,7 @@
  *  Get the view of the form row. Each row is rendered
  *  as a UITableViewCell, so you get this cell to manipulate it.
  *
- *  @return <#return value description#>
+ *  @return the cell view
  */
 - (UITableViewCell *)view;
 
