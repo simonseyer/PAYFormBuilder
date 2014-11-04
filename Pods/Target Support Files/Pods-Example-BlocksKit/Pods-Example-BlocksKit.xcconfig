@@ -1,0 +1,1 @@
+PODS_EXAMPLE_BLOCKSKIT_OTHER_LDFLAGS = -framework "MessageUI"
