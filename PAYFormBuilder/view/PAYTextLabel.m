@@ -34,24 +34,23 @@
     self.adjustsFontSizeToFitWidth = NO;
     self.lineBreakMode = NSLineBreakByWordWrapping;
     
-    self.simpleStyleInsets          = UIEdgeInsetsMake(32, 15, 8, 0);
-    self.descriptionStyleInsets     = UIEdgeInsetsMake(36, 21, 8, 21);
-    self.wideDescriptionStyleInsets = UIEdgeInsetsMake(36, 21, 8, 36);
+    _simpleStyleInsets          = UIEdgeInsetsMake(32, 15, 8, 0);
+    _descriptionStyleInsets     = UIEdgeInsetsMake(36, 21, 8, 21);
+    _wideDescriptionStyleInsets = UIEdgeInsetsMake(36, 21, 8, 36);
     
-    self.simpleStyleFontSize      = 14;
-    self.descriptionStyleFontSize = 13;
-    self.headerTitleStyleFontSize = 24;
-    self.headerSubTitleStyleFontSize = 13;
+    _simpleStyleFontSize      = 14;
+    _descriptionStyleFontSize = 13;
+    _headerTitleStyleFontSize = 24;
+    _headerSubTitleStyleFontSize = 13;
     
-    self.descriptionStyleKerning     = 0.15f;
-    self.headerTitleStyleKerning    = 1.05f;
-    self.headerSubTitleStyleKerning = 1.15f;
+    _descriptionStyleKerning     = 0.15f;
+    _headerTitleStyleKerning    = 1.05f;
+    _headerSubTitleStyleKerning = 1.15f;
     
+    _descriptionStyleLineSpacing = 4.0f;
     
-    self.descriptionStyleLineSpacing = 4.0f;
-    
-    self.simpleStyleTextColor       = [UIColor colorFromHex:0xFF6D6D72];
-    self.descriptionStyleTextColor  = [UIColor colorFromHex:0xFF6A6A6A];
+    _simpleStyleTextColor       = [UIColor colorFromHex:0xFF6D6D72];
+    _descriptionStyleTextColor  = [UIColor colorFromHex:0xFF6A6A6A];
 }
 
 - (void)setStyle:(PAYFormTableLabelStyle)style {
