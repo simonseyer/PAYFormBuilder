@@ -139,8 +139,10 @@
     SZTextView *textView            = self.defaultTextView;
     textView.font                   = [UIFont fontWithName:PAYStyle.theme.fontName
                                                       size:self.defaultFontSize];
-    textView.placeholder            = placeholder;
-    textView.placeholderTextColor   = self.defaultPlaceholderColor;
+    textView.placeholderTextColor   = self.defaultPlaceholderColor;    
+    if (placeholder) {
+        textView.placeholder            = placeholder;
+    }
     
     CGRect textViewFrame      = self.defaultBounds;
     // Two line heights for top and bottom contentInset
