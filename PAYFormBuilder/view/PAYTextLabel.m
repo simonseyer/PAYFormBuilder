@@ -37,6 +37,7 @@
     _simpleStyleInsets          = UIEdgeInsetsMake(32, 15, 8, 0);
     _descriptionStyleInsets     = UIEdgeInsetsMake(36, 21, 8, 21);
     _wideDescriptionStyleInsets = UIEdgeInsetsMake(36, 21, 8, 36);
+    _headerStyleInsets          = UIEdgeInsetsMake(0, 21, 0, 21);
     
     _simpleStyleFontSize      = 14;
     _descriptionStyleFontSize = 13;
@@ -143,6 +144,9 @@
             return self.wideDescriptionStyleInsets;
         case PAYFormTableLabelStyleSimple:
             return self.simpleStyleInsets;
+        case PAYFormTableLabelStyleHeaderTitle:
+        case PAYFormTableLabelStyleHeaderSubTitle:
+            return self.headerStyleInsets;
         default:
             return UIEdgeInsetsZero;
     }
