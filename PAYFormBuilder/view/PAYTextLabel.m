@@ -105,14 +105,20 @@
                 NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
                 style.alignment                = NSTextAlignmentCenter;
                 
-                NSUInteger size = PAYFormTableLabelStyleHeaderSubTitle ? self.headerSubTitleStyleFontSize : self.headerTitleStyleFontSize;
-                NSUInteger kern = PAYFormTableLabelStyleHeaderSubTitle ? self.headerSubTitleStyleKerning : self.headerTitleStyleKerning;
-                NSString *fontName = PAYFormTableLabelStyleHeaderSubTitle ? PAYStyle.theme.subTitleFontName : PAYStyle.theme.fontName;
-                UIFont *font = [UIFont fontWithName:fontName size:size];
+                NSUInteger fontSize = self.headerTitleStyleFontSize;
+                NSUInteger fontKern = self.headerTitleStyleKerning;
+                NSString  *fontName = PAYStyle.theme.fontName;
+                if (self.style == PAYFormTableLabelStyleHeaderSubTitle) {
+                    fontSize = self.headerSubTitleStyleFontSize;
+                    fontKern = self.headerSubTitleStyleKerning;
+                    fontName = PAYStyle.theme.subTitleFontName;
+                }
+                
+                UIFont *font = [UIFont fontWithName:fontName size:fontSize];
                 
                 [attrText addAttribute:NSParagraphStyleAttributeName value:style range:strRange];
                 [attrText addAttribute:NSFontAttributeName value:font range:strRange];
-                [attrText addAttribute:NSKernAttributeName value:@(kern) range:strRange];
+                [attrText addAttribute:NSKernAttributeName value:@(fontKern) range:strRange];
                 break;
             }
             default:
