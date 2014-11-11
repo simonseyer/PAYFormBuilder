@@ -48,24 +48,27 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
+    NSInteger y;
     if (self.iconImage) {
         CGSize iconImageSize = self.iconView.image.size;
         self.iconView.frame = CGRectMake((self.frame.size.width - iconImageSize.width) / 2, self.iconTopMargin,
                                          iconImageSize.width, iconImageSize.height);
+        y = CGRectGetMaxY(self.iconView.frame);
     } else {
         self.iconView.frame = CGRectZero;
     }
     
     if (self.titleLabel.text) {
-        self.titleLabel.frame = CGRectMake(0, CGRectGetMaxY(self.iconView.frame) + self.titleTopMargin,
+        self.titleLabel.frame = CGRectMake(0, y + self.titleTopMargin,
                                            self.frame.size.width, 0);
         [self.titleLabel sizeToFit];
+        y = CGRectGetMaxY(self.titleLabel.frame);
     } else {
         self.titleLabel.frame = CGRectZero;
     }
     
     if (self.subTitleLabel.text) {
-        self.subTitleLabel.frame = CGRectMake(0, CGRectGetMaxY(self.titleLabel.frame) + self.subTitleTopMargin,
+        self.subTitleLabel.frame = CGRectMake(0, y + self.subTitleTopMargin,
                                               self.frame.size.width, 0);
         [self.subTitleLabel sizeToFit];
     } else {
