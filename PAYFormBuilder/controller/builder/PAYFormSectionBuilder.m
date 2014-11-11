@@ -256,6 +256,7 @@
     UIImageView *iconView;
     if (style == PAYFormButtonStyleIconDisclosure || style == PAYFormButtonStyleIconSelection) {
         iconView = [UIImageView new];
+        iconView.contentMode = UIViewContentModeScaleAspectFill;
         
         CGRect iconFrame = self.defaultBounds;
         iconFrame.size = CGSizeMake(self.defaultIconSize,
