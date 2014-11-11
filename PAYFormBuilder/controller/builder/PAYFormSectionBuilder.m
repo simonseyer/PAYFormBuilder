@@ -117,6 +117,7 @@
     label.font            = [UIFont fontWithName:PAYStyle.theme.fontName
                                             size:self.defaultFontSize];
     label.textColor       = self.defaultTextColor;
+    label.adjustsFontSizeToFitWidth = YES;
     
     return label;
 }
