@@ -24,6 +24,7 @@
 #import "PAYFormButtonGroupBuilder.h"
 #import "PAYFormView_protected.h"
 #import <SZTextView/SZTextView.h>
+#import "PAYStyle.h"
 
 @implementation PAYFormSectionBuilder
 
@@ -113,7 +114,7 @@
     labelFrame.origin.x   = self.defaultHorzMargin;
     labelFrame.size.width = self.defaultLabelWidth;
     label.frame           = labelFrame;
-    label.font            = [UIFont fontWithName:label.font.fontName
+    label.font            = [UIFont fontWithName:PAYStyle.theme.fontName
                                             size:self.defaultFontSize];
     label.textColor       = self.defaultTextColor;
     
@@ -123,7 +124,7 @@
 - (UITextField *)defaultTextField {
     UITextField *textField    = [UITextField new];
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    textField.font            = [UIFont fontWithName:textField.font.fontName
+    textField.font            = [UIFont fontWithName:PAYStyle.theme.fontName
                                                 size:self.defaultFontSize];
     return textField;
 }
@@ -135,6 +136,8 @@
 - (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder
                                            configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock {
     SZTextView *textView            = self.defaultTextView;
+    textView.font                   = [UIFont fontWithName:PAYStyle.theme.fontName
+                                                      size:self.defaultFontSize];
     textView.placeholder            = placeholder;
     textView.placeholderTextColor   = self.defaultPlaceholderColor;
     
@@ -212,7 +215,7 @@
     if (style != PAYFormButtonStyleEmpty) {
         titleLabel      = [UILabel new];
         titleLabel.text = text;
-        titleLabel.font = [UIFont fontWithName:titleLabel.font.fontName
+        titleLabel.font = [UIFont fontWithName:PAYStyle.theme.fontName
                                           size:self.defaultFontSize];
         titleLabel.userInteractionEnabled = NO;
         

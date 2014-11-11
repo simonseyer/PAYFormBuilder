@@ -8,6 +8,7 @@
 
 #import "PAYTextLabel.h"
 #import "UIColor+PAYHex.h"
+#import "PAYStyle.h"
 
 @implementation PAYTextLabel
 
@@ -85,7 +86,7 @@
                 style.lineSpacing              = self.descriptionStyleLineSpacing;
                 style.alignment                = NSTextAlignmentCenter;
                 
-                UIFont *font = [UIFont fontWithName:self.font.fontName size:self.descriptionStyleFontSize];
+                UIFont *font = [UIFont fontWithName:PAYStyle.theme.fontName size:self.descriptionStyleFontSize];
                 
                 [attrText addAttribute:NSParagraphStyleAttributeName value:style range:strRange];
                 [attrText addAttribute:NSFontAttributeName value:font range:strRange];
@@ -94,7 +95,7 @@
                 break;
             }
             case PAYFormTableLabelStyleSimple: {
-                UIFont *font = [UIFont fontWithName:self.font.fontName size:self.simpleStyleFontSize];
+                UIFont *font = [UIFont fontWithName:PAYStyle.theme.fontName size:self.simpleStyleFontSize];
                 [attrText addAttribute:NSFontAttributeName value:font range:strRange];
                 [attrText addAttribute:NSForegroundColorAttributeName value:self.simpleStyleTextColor range:strRange];
                 break;
@@ -106,7 +107,8 @@
                 
                 NSUInteger size = PAYFormTableLabelStyleHeaderSubTitle ? self.headerSubTitleStyleFontSize : self.headerTitleStyleFontSize;
                 NSUInteger kern = PAYFormTableLabelStyleHeaderSubTitle ? self.headerSubTitleStyleKerning : self.headerTitleStyleKerning;
-                UIFont *font = [UIFont fontWithName:self.font.fontName size:size];
+                NSString *fontName = PAYFormTableLabelStyleHeaderSubTitle ? PAYStyle.theme.subTitleFontName : PAYStyle.theme.fontName;
+                UIFont *font = [UIFont fontWithName:fontName size:size];
                 
                 [attrText addAttribute:NSParagraphStyleAttributeName value:style range:strRange];
                 [attrText addAttribute:NSFontAttributeName value:font range:strRange];
