@@ -15,7 +15,8 @@
 
 @interface PAYFormButtonGroup ()
 
-@property (nonatomic, retain) NSMutableDictionary *options;
+@property (nonatomic, retain) NSMutableArray *options;
+@property (nonatomic, retain) NSMutableArray *optionButtons;
 
 @end
 
@@ -27,7 +28,8 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.options = [NSMutableDictionary new];
+        self.options = [NSMutableArray new];
+        self.optionButtons = [NSMutableArray new];
         _selectedOptions = [NSMutableArray new];
     }
     return self;
@@ -58,11 +60,28 @@
 }
 
 - (void)addButton:(PAYFormButton *)button forValue:(id)value {
-    self.options[value] = button;
+    @synchronized(self) {
+        [self.options addObject: value];
+        [self.optionButtons addObject:button];
+    }
+}
+
+- (PAYFormButton *)buttonForValue:(id)value {
+    if (!value) {
+        return nil;
+    }
+    PAYFormButton *formButton;
+    @synchronized(self) {
+        NSInteger index = [self.options indexOfObject:value];
+        if (index != NSNotFound) {
+            formButton = self.optionButtons[index];
+        }
+    }
+    return formButton;
 }
 
 - (void)select:(BOOL)select value:(id)value {
-    PAYFormButton *formButton = self.options[value];
+    PAYFormButton *formButton = [self buttonForValue:value];
     if (self.multiSelection) {
         formButton.selected = select;
         if (select) {
@@ -84,12 +103,12 @@
 }
 
 - (void)optionStateChanged:(id)option {
-    PAYFormButton *formButton = self.options[option];
+    PAYFormButton *formButton = [self buttonForValue:option];
     [self select:!formButton.selected value:option];
 }
 
 - (void)selectButton:(BOOL)select withValue:(id)value {
-    PAYFormButton *formButton = self.options[value];
+    PAYFormButton *formButton = [self buttonForValue:value];
     formButton.selected = select;
 }
 
