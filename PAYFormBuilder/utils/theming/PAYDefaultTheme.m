@@ -12,8 +12,7 @@
 
 @synthesize fontName=_fontName, subTitleFontName=_subTitleFontName;
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         [self loadDefaults];
