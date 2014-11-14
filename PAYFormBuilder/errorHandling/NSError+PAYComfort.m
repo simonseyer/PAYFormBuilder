@@ -29,8 +29,6 @@
                                   userInfo:@{PAYFormErrorControlKey: control}];
 }
 
-
-
 - (NSString *)title {
     return self.localizedFailureReason;
 }
@@ -45,9 +43,5 @@
     }
     return nil;
 }
-
-
-
-
 
 @end
