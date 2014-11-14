@@ -12,14 +12,6 @@
 
 @implementation PAYTextLabel
 
-- (id)init {
-    self = [super init];
-    if (self) {
-        [self initializeVars];
-    }
-    return self;
-}
-
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
