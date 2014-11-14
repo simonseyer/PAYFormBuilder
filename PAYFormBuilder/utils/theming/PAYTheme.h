@@ -7,8 +7,8 @@
 //
 
 @protocol PAYTheme
-    
+
 @property (nonatomic, retain, readonly) NSString *fontName;
 @property (nonatomic, retain, readonly) NSString *subTitleFontName;
-    
+
 @end
