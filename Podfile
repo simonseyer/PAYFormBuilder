@@ -8,12 +8,12 @@ pod 'BlocksKit',    '~> 2'
 pod 'libextobjc',   '~> 0.4'
 pod 'SZTextView',   '~> 1.1'
 
-target :Example do
+target 'Example' do
   pod 'PAYFormBuilder', :path => '.'
   xcodeproj 'Example.xcodeproj'
 end
 
-target :ExampleTests do
+target 'ExampleTests' do
   pod 'PAYFormBuilder', :path => '.'
   pod 'KIF/OCUnit', '~> 3.0'
   xcodeproj 'Example.xcodeproj'
