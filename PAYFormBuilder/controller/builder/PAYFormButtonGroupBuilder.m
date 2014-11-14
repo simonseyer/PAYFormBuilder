@@ -43,12 +43,12 @@
                                                         if (selectionBlockForBlock) {
                                                             selectionBlockForBlock(formButton);
                                                         }
-    }
+                                                    }
                                                     configureBlock:^(PAYFormButton *formButton) {
                                                         if (icon) {
                                                             formButton.iconView.image = icon;
                                                         }
-    }];
+                                                    }];
     [self.buttonGroup addButton:button forValue:value];
     return button;
 }
