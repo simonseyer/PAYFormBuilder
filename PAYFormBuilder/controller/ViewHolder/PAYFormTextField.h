@@ -59,5 +59,4 @@
  */
 - (void)setFormatTextWithGroupSizes:(NSArray *)groupSizes separator:(NSString *)separator;
 
-
 @end

@@ -33,6 +33,7 @@ typedef enum {
 @property (nonatomic, assign) UIEdgeInsets simpleStyleInsets          UI_APPEARANCE_SELECTOR;
 @property (nonatomic, assign) UIEdgeInsets descriptionStyleInsets     UI_APPEARANCE_SELECTOR;
 @property (nonatomic, assign) UIEdgeInsets wideDescriptionStyleInsets UI_APPEARANCE_SELECTOR;
+@property (nonatomic, assign) UIEdgeInsets headerStyleInsets          UI_APPEARANCE_SELECTOR;
 
 @property (nonatomic, assign) CGFloat simpleStyleFontSize           UI_APPEARANCE_SELECTOR;
 @property (nonatomic, assign) CGFloat descriptionStyleFontSize      UI_APPEARANCE_SELECTOR;

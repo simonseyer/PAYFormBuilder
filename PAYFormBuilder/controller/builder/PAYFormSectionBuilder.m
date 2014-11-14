@@ -24,6 +24,7 @@
 #import "PAYFormButtonGroupBuilder.h"
 #import "PAYFormView_protected.h"
 #import <SZTextView/SZTextView.h>
+#import "PAYStyle.h"
 
 @implementation PAYFormSectionBuilder
 
@@ -113,9 +114,10 @@
     labelFrame.origin.x   = self.defaultHorzMargin;
     labelFrame.size.width = self.defaultLabelWidth;
     label.frame           = labelFrame;
-    label.font            = [UIFont fontWithName:label.font.fontName
+    label.font            = [UIFont fontWithName:PAYStyle.theme.fontName
                                             size:self.defaultFontSize];
     label.textColor       = self.defaultTextColor;
+    label.adjustsFontSizeToFitWidth = YES;
     
     return label;
 }
@@ -123,7 +125,7 @@
 - (UITextField *)defaultTextField {
     UITextField *textField    = [UITextField new];
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    textField.font            = [UIFont fontWithName:textField.font.fontName
+    textField.font            = [UIFont fontWithName:PAYStyle.theme.fontName
                                                 size:self.defaultFontSize];
     return textField;
 }
@@ -135,8 +137,12 @@
 - (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder
                                            configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock {
     SZTextView *textView            = self.defaultTextView;
-    textView.placeholder            = placeholder;
-    textView.placeholderTextColor   = self.defaultPlaceholderColor;
+    textView.font                   = [UIFont fontWithName:PAYStyle.theme.fontName
+                                                      size:self.defaultFontSize];
+    textView.placeholderTextColor   = self.defaultPlaceholderColor;    
+    if (placeholder) {
+        textView.placeholder            = placeholder;
+    }
     
     CGRect textViewFrame      = self.defaultBounds;
     // Two line heights for top and bottom contentInset
@@ -212,7 +218,7 @@
     if (style != PAYFormButtonStyleEmpty) {
         titleLabel      = [UILabel new];
         titleLabel.text = text;
-        titleLabel.font = [UIFont fontWithName:titleLabel.font.fontName
+        titleLabel.font = [UIFont fontWithName:PAYStyle.theme.fontName
                                           size:self.defaultFontSize];
         titleLabel.userInteractionEnabled = NO;
         
@@ -253,6 +259,7 @@
     UIImageView *iconView;
     if (style == PAYFormButtonStyleIconDisclosure || style == PAYFormButtonStyleIconSelection) {
         iconView = [UIImageView new];
+        iconView.contentMode = UIViewContentModeScaleAspectFill;
         
         CGRect iconFrame = self.defaultBounds;
         iconFrame.size = CGSizeMake(self.defaultIconSize,
