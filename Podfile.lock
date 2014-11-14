@@ -50,7 +50,7 @@ PODS:
     - libextobjc/RuntimeExtensions
   - libextobjc/RuntimeExtensions (0.4.1)
   - libextobjc/UmbrellaHeader (0.4.1)
-  - PAYFormBuilder (1.0.4):
+  - PAYFormBuilder (1.0.5):
     - BlocksKit (~> 2)
     - libextobjc (~> 0.4)
     - SZTextView (~> 1.1)
@@ -71,7 +71,7 @@ SPEC CHECKSUMS:
   BlocksKit: 4439e7f30a9f90743462ca63545a15c1f4304cef
   KIF: 2db5e8cf59136dd1267d49cca0d55883389b09d3
   libextobjc: d6146fce3ebea986b7f75fcb4c967639200b88b0
-  PAYFormBuilder: 3a742ba0e93ffcac750f4f1c37409fa22530c034
+  PAYFormBuilder: 488cfc4d1a6c9f9cf52ae6658f2c6ec2160f986f
   SZTextView: 8f1126696c6d54e5f0d672bbecf259ef65b04aeb
 
 COCOAPODS: 0.35.0.rc2
