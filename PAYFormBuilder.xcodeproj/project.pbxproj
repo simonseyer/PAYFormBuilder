@@ -92,7 +92,7 @@
 		37AF34B518F8560300848D49 /* PAYFormSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AF34B318F8560300848D49 /* PAYFormSwitch.m */; };
 		37E4CE341A093B8000F342A8 /* PAYFormRow.h in Headers */ = {isa = PBXBuildFile; fileRef = 37E4CE321A093B8000F342A8 /* PAYFormRow.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		37E4CE351A093B8000F342A8 /* PAYValidatableFormCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 37E4CE331A093B8000F342A8 /* PAYValidatableFormCell.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		C7F16347ED9D1943DB0A88A8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA1C63E5DFA4210863FCCEF /* libPods.a */; };
+		67950872DF1A010E111BE12F /* libPods-PAYFormBuilder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6456A80424BA45ADF9C19F82 /* libPods-PAYFormBuilder.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,8 +212,9 @@
 		37E4CE321A093B8000F342A8 /* PAYFormRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormRow.h; sourceTree = "<group>"; };
 		37E4CE331A093B8000F342A8 /* PAYValidatableFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYValidatableFormCell.h; sourceTree = "<group>"; };
 		4CA1C63E5DFA4210863FCCEF /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		6D947DC356AED0B3B6991AB6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		8D9391860D8F9546CC408491 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		6456A80424BA45ADF9C19F82 /* libPods-PAYFormBuilder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PAYFormBuilder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D86196D26711FD2A41EBC5A9 /* Pods-PAYFormBuilder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PAYFormBuilder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PAYFormBuilder/Pods-PAYFormBuilder.debug.xcconfig"; sourceTree = "<group>"; };
+		F0764EA0B93FE161F590044A /* Pods-PAYFormBuilder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PAYFormBuilder.release.xcconfig"; path = "Pods/Target Support Files/Pods-PAYFormBuilder/Pods-PAYFormBuilder.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,7 +224,7 @@
 			files = (
 				379651E818F2F1D10022151B /* UIKit.framework in Frameworks */,
 				3796518118F2F1350022151B /* Foundation.framework in Frameworks */,
-				C7F16347ED9D1943DB0A88A8 /* libPods.a in Frameworks */,
+				67950872DF1A010E111BE12F /* libPods-PAYFormBuilder.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +286,7 @@
 				3796518E18F2F1350022151B /* XCTest.framework */,
 				3796519118F2F1350022151B /* UIKit.framework */,
 				4CA1C63E5DFA4210863FCCEF /* libPods.a */,
+				6456A80424BA45ADF9C19F82 /* libPods-PAYFormBuilder.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -459,8 +461,8 @@
 		8833E89C7CBC5FB17266CDDF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6D947DC356AED0B3B6991AB6 /* Pods.debug.xcconfig */,
-				8D9391860D8F9546CC408491 /* Pods.release.xcconfig */,
+				D86196D26711FD2A41EBC5A9 /* Pods-PAYFormBuilder.debug.xcconfig */,
+				F0764EA0B93FE161F590044A /* Pods-PAYFormBuilder.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -628,7 +630,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PAYFormBuilder/Pods-PAYFormBuilder-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -772,7 +774,7 @@
 		};
 		379651A118F2F1350022151B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D947DC356AED0B3B6991AB6 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = D86196D26711FD2A41EBC5A9 /* Pods-PAYFormBuilder.debug.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/PAYFormBuilder.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -790,7 +792,7 @@
 		};
 		379651A218F2F1350022151B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D9391860D8F9546CC408491 /* Pods.release.xcconfig */;
+			baseConfigurationReference = F0764EA0B93FE161F590044A /* Pods-PAYFormBuilder.release.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/PAYFormBuilder.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
