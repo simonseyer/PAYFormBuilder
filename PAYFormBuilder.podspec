@@ -32,4 +32,5 @@ Pod::Spec.new do |s|
   s.dependency 'BlocksKit',    '~> 2'
   s.dependency 'libextobjc',   '~> 0.4'
   s.dependency 'SZTextView',   '~> 1.1'
+  s.dependency 'AMPopTip',     '~> 0.7'
 end

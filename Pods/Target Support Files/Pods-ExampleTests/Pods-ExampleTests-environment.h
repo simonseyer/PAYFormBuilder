@@ -6,6 +6,12 @@
 // project.
 
 
+// AMPopTip
+#define COCOAPODS_POD_AVAILABLE_AMPopTip
+#define COCOAPODS_VERSION_MAJOR_AMPopTip 0
+#define COCOAPODS_VERSION_MINOR_AMPopTip 7
+#define COCOAPODS_VERSION_PATCH_AMPopTip 0
+
 // BlocksKit
 #define COCOAPODS_POD_AVAILABLE_BlocksKit
 #define COCOAPODS_VERSION_MAJOR_BlocksKit 2

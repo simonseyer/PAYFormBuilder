@@ -8,6 +8,7 @@ target 'PAYFormBuilder' do
   pod 'BlocksKit',    '~> 2'
   pod 'libextobjc',   '~> 0.4'
   pod 'SZTextView',   '~> 1.1'
+  pod 'AMPopTip',     '~> 0.7'
 end
 
 target 'Example' do
