@@ -12,7 +12,7 @@
 @class PAYFormErrorMessage;
 
 
-@interface PAYFormView (PAYFormDefaultErrorHandlerProtected)
+@interface PAYFormView (PAYFormErrorMessageProtected)
 
 + (NSMutableDictionary *)classErrorMessages;
 + (void)setClassErrorMessages:(NSMutableDictionary *)errorMessages;

@@ -10,7 +10,7 @@
 
 @class PAYFormErrorMessage;
 
-@interface PAYFormView (PAYFormDefaultErrorHandler)
+@interface PAYFormView (PAYFormErrorMessage)
 
 /**
  *  Set an error message that is displayed for the error code. This method

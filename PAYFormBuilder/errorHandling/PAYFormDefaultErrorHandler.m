@@ -11,13 +11,15 @@
 #import <libextobjc/extobjc.h>
 #import "NSError+PAYComfort.h"
 
-#import "PAYFormView+PAYFormDefaultErrorHandlerProtected.h"
+#import "PAYFormView+PAYFormErrorMessageProtected.h"
 #import "PAYFormView_protected.h"
 #import "PAYFormErrorMessage.h"
 #import "PAYFormErrorMessage_protected.h"
 
 #import "PAYFormErrorStyler.h"
 #import "PAYFormErrorMessageManager_protected.h"
+
+#import "PAYFormTable.h"
 
 @implementation PAYFormDefaultErrorHandler
 

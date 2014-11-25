@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Paij. All rights reserved.
 //
 
-#import "PAYFormView+PAYFormDefaultErrorHandler.h"
-#import "PAYFormView+PAYFormDefaultErrorHandlerProtected.h"
+#import "PAYFormView+PAYFormErrorMessage.h"
+#import "PAYFormView+PAYFormErrorMessageProtected.h"
 
-@implementation PAYFormView (PAYFormDefaultErrorHandler)
+@implementation PAYFormView (PAYFormErrorMessage)
 
 + (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code {
     NSMutableDictionary *errorMessages = self.classErrorMessages;

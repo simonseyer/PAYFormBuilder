@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Paij. All rights reserved.
 //
 
-#import "PAYFormView+PAYFormDefaultErrorHandlerProtected.h"
+#import "PAYFormView+PAYFormErrorMessageProtected.h"
 #import <libextobjc/extobjc.h>
 
-@implementation PAYFormView (PAYFormDefaultErrorHandlerProtected)
+@implementation PAYFormView (PAYFormErrorMessageProtected)
 
 + (NSMutableDictionary *)classErrorMessages {
     return objc_getAssociatedObject(self.class, @selector(classErrorMessages));

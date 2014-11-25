@@ -10,7 +10,7 @@
 #import "PAYFormErrorMessage.h"
 #import "NSError+PAYComfort.h"
 #import "PAYFormView.h"
-#import "PAYFormView+PAYFormDefaultErrorHandlerProtected.h"
+#import "PAYFormView+PAYFormErrorMessageProtected.h"
 
 @implementation PAYFormErrorMessageManager
 
