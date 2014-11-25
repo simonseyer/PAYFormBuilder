@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Paij. All rights reserved.
 //
 
-#import "PAYFormView.h"
+#import "PAYFormField.h"
 #import "PAYValidatableFormCell.h"
 
 /**
  *  A form view with a switch control
  */
-@interface PAYFormSwitch : PAYFormView <PAYValidatableFormCell>
+@interface PAYFormSwitch : PAYFormField <PAYValidatableFormCell>
 
 /**
  *  The label, that is displayed in front of the switch

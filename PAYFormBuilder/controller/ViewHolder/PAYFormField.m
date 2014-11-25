@@ -14,6 +14,8 @@
 
 @implementation PAYFormField
 
+@synthesize validationResetBlock;
+
 - (NSString *)name {
     return @"";
 }
@@ -87,12 +89,15 @@
     return self.cleanBlock(self, self.value);
 }
 
-- (BOOL)isEmpty {
-    return NO;
+- (void)resetValidation {
+    if (self.validationResetBlock) {
+        self.validationResetBlock();
+        self.validationResetBlock = nil;
+    }
 }
 
-- (void)styleForError:(NSError *)error {
-    
+- (BOOL)isEmpty {
+    return NO;
 }
 
 @end

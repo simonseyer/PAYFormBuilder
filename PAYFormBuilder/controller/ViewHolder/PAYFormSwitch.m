@@ -15,14 +15,6 @@
 @implementation PAYFormSwitch
 
 
--(void)styleForError:(NSError *)error {
-    if (error) {
-        self.label.textColor = self.defaultErrorColor;
-    } else {
-        self.label.textColor = self.defaultTextColor;
-    }
-}
-
 -(NSError *)validate {
     if (self.isRequired && !self.switchControl.isOn) {
         return [NSError validationErrorWithCode:PAYFormMissingErrorCode control:self];

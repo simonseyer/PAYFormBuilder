@@ -79,7 +79,7 @@
     for (id<PAYFormRow> row in [self.views arrayByAddingObjectsFromArray:self.attachedObjects]) {
         if ([row conformsToProtocol:@protocol(PAYValidatableFormCell)]) {
             id<PAYValidatableFormCell> validatableCell = (id<PAYValidatableFormCell>)row;
-            [validatableCell styleForError:nil];
+            [validatableCell resetValidation];
             NSError *fieldError = [validatableCell validate];
             if (fieldError) {
                 [errors addObject:fieldError];

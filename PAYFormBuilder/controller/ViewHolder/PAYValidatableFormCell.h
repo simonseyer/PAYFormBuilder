@@ -8,10 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+
+typedef void(^PAYFormFieldResetBlock)();
+
+
 @protocol PAYValidatableFormCell <NSObject>
 
 - (NSError *)validate;
-- (void)styleForError:(NSError *)error;
+- (void)resetValidation;
 - (NSString *)name;
+
+@property (nonatomic, copy) PAYFormFieldResetBlock validationResetBlock;
 
 @end

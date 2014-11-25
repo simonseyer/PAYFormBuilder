@@ -103,18 +103,6 @@ static const NSUInteger RPFormSingleLineTextFieldPasswordMaxTextLength = 128;
     return self.textField.enabled;
 }
 
-# pragma mark - Error styling
-
-- (void)styleForError:(NSError *)error {
-    if (error) {
-        self.textField.textColor = self.defaultErrorColor;
-        self.label.textColor     = self.defaultErrorColor;
-    } else {
-        self.textField.textColor = self.defaultTextColor;
-        self.label.textColor     = self.defaultTextColor;
-    }
-}
-
 - (void)activateSecureInput {
     self.maxTextLength = RPFormSingleLineTextFieldPasswordMaxTextLength;
     
@@ -132,16 +120,6 @@ static const NSUInteger RPFormSingleLineTextFieldPasswordMaxTextLength = 128;
     
     if (self.maxTextLength > 0 && newText.length > self.maxTextLength && !self.mayExceedMaxLength) {
         return NO;
-    }
-    
-    if (self.validateWhileEnter) {
-        NSError *error = [self validate];
-        
-        // Suppress error with code PAYFormTextFieldBelowMinLength while still entering text
-        if ([error.domain isEqualToString:PAYFormErrorDomain] && error.code == PAYFormTextFieldBelowMinLengthErrorCode) {
-            error = nil;
-        }
-        [self styleForError:error];
     }
     
     if (self.formatBlock) {

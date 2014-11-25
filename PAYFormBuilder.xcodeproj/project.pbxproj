@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3709CE621920DFAB0077BAFF /* PAYValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 3709CE601920DFAB0077BAFF /* PAYValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3709CE631920DFAB0077BAFF /* PAYValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3709CE611920DFAB0077BAFF /* PAYValidation.m */; };
+		371378FD1A24B2C000905437 /* PAYFormErrorStyler.h in Headers */ = {isa = PBXBuildFile; fileRef = 371378FB1A24B2C000905437 /* PAYFormErrorStyler.h */; };
+		371378FE1A24B2C000905437 /* PAYFormErrorStyler.m in Sources */ = {isa = PBXBuildFile; fileRef = 371378FC1A24B2C000905437 /* PAYFormErrorStyler.m */; };
 		374F214E19D99F6200217AD7 /* PAYFormBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 37906D3018F431D200FC3CC8 /* PAYFormBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		374F214F19D99F6600217AD7 /* PAYFormTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 379651B518F2F1650022151B /* PAYFormTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		374F215119D99FBC00217AD7 /* PAYFormTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 379651C418F2F1650022151B /* PAYFormTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -120,6 +122,8 @@
 /* Begin PBXFileReference section */
 		3709CE601920DFAB0077BAFF /* PAYValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYValidation.h; sourceTree = "<group>"; };
 		3709CE611920DFAB0077BAFF /* PAYValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYValidation.m; sourceTree = "<group>"; };
+		371378FB1A24B2C000905437 /* PAYFormErrorStyler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormErrorStyler.h; sourceTree = "<group>"; };
+		371378FC1A24B2C000905437 /* PAYFormErrorStyler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormErrorStyler.m; sourceTree = "<group>"; };
 		373DA66319D99C840048F2A4 /* libPods.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libPods.a; path = "Pods/build/Debug-iphoneos/libPods.a"; sourceTree = "<group>"; };
 		3742D14319D9A84F00B78219 /* libPods-BlocksKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-BlocksKit.a"; path = "Pods/build/Debug-iphoneos/libPods-BlocksKit.a"; sourceTree = "<group>"; };
 		3742D14419D9A84F00B78219 /* libPods-libextobjc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libextobjc.a"; path = "Pods/build/Debug-iphoneos/libPods-libextobjc.a"; sourceTree = "<group>"; };
@@ -437,6 +441,8 @@
 				37A73D0019743D4200381DC9 /* PAYFormView+PAYFormDefaultErrorHandler.m */,
 				37A73D0119743D4200381DC9 /* PAYFormView+PAYFormDefaultErrorHandlerProtected.h */,
 				37A73D0219743D4200381DC9 /* PAYFormView+PAYFormDefaultErrorHandlerProtected.m */,
+				371378FB1A24B2C000905437 /* PAYFormErrorStyler.h */,
+				371378FC1A24B2C000905437 /* PAYFormErrorStyler.m */,
 			);
 			name = errorHandling;
 			path = PAYFormBuilder/errorHandling;
@@ -503,6 +509,7 @@
 				375DAD70190F052600F4A41D /* PAYHeaderView.h in Headers */,
 				374F216719D9A0AD00217AD7 /* UIColor+PAYHex.h in Headers */,
 				37E4CE341A093B8000F342A8 /* PAYFormRow.h in Headers */,
+				371378FD1A24B2C000905437 /* PAYFormErrorStyler.h in Headers */,
 				37E4CE351A093B8000F342A8 /* PAYValidatableFormCell.h in Headers */,
 				37A73CF719743D2700381DC9 /* PAYNotifications.h in Headers */,
 				37A73D2A1974601D00381DC9 /* PAYFormTableBuilder_protected.h in Headers */,
@@ -666,6 +673,7 @@
 				379651F718F302940022151B /* PAYMessageInterceptor.m in Sources */,
 				379651E118F2F1650022151B /* PAYFormView.m in Sources */,
 				37A73D0A19743D4200381DC9 /* PAYFormView+PAYFormDefaultErrorHandlerProtected.m in Sources */,
+				371378FE1A24B2C000905437 /* PAYFormErrorStyler.m in Sources */,
 				379651E618F2F1650022151B /* PAYTextLabel.m in Sources */,
 				379651DA18F2F1650022151B /* PAYFormField.m in Sources */,
 				379651DF18F2F1650022151B /* PAYFormTable.m in Sources */,

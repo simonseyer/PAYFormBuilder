@@ -41,7 +41,6 @@
                                                  placeholder:@"xxx"
                                               configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                   formField.maxTextLength = 3;
-                                                  formField.validateWhileEnter = YES;
                                               }];
                         }];
 }

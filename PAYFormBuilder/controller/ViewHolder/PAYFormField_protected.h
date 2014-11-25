@@ -8,6 +8,10 @@
 
 #import "PAYFormField.h"
 
+
+typedef void(^PAYFormFieldCompletionBlock)();
+
+
 @interface PAYFormField ()
 
 /**
@@ -25,12 +29,6 @@
  */
 @property (nonatomic, copy) PAYFormFieldCompletionBlock completionBlock;
 
-/**
- *  Style component appropriate for the errror.
- *
- *  @param error the error the control should by styled for
- */
-- (void)styleForError:(NSError *)error;
 
 /**
  *  Uses the integrated validators (for example isRequired) to check

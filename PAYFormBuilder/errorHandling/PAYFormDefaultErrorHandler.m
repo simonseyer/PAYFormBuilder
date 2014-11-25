@@ -8,6 +8,7 @@
 
 #import "PAYFormDefaultErrorHandler.h"
 #import <BlocksKit+UIKit.h>
+#import <libextobjc/extobjc.h>
 #import "NSError+PAYComfort.h"
 
 #import "PAYFormView+PAYFormDefaultErrorHandlerProtected.h"
@@ -15,7 +16,7 @@
 #import "PAYFormErrorMessage.h"
 #import "PAYFormErrorMessage_protected.h"
 
-
+#import "PAYFormErrorStyler.h"
 
 @implementation PAYFormDefaultErrorHandler
 
@@ -54,8 +55,8 @@ static NSString *buttonText;
             errorMessage = errorMessages[@(error.code)];
         }
         
-        if ([error.field isKindOfClass:PAYFormField.class]) {
-            [(PAYFormField *)error.field styleForError:error];
+        if ([error.field conformsToProtocol:@protocol(PAYValidatableFormCell)]) {
+            [PAYFormErrorStyler styleField:error.field];
         }
         
         UIAlertView* alertView = [UIAlertView bk_alertViewWithTitle:[errorMessage titleForField:error.field]

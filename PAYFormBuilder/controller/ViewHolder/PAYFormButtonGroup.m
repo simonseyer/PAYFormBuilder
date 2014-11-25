@@ -25,6 +25,8 @@
     NSMutableArray *_selectedOptions;
 }
 
+@synthesize validationResetBlock;
+
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -53,10 +55,6 @@
                                         control:self];
     }
     return nil;
-}
-
-- (void)styleForError:(NSError *)error {
-    
 }
 
 - (void)addButton:(PAYFormButton *)button forValue:(id)value {
@@ -110,6 +108,13 @@
 - (void)selectButton:(BOOL)select withValue:(id)value {
     PAYFormButton *formButton = [self buttonForValue:value];
     formButton.selected = select;
+}
+
+- (void)resetValidation {
+    if (self.validationResetBlock) {
+        self.validationResetBlock();
+        self.validationResetBlock = nil;
+    }
 }
 
 @end

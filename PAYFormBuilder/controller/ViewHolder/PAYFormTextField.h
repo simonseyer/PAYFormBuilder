@@ -34,13 +34,6 @@
 @property (nonatomic, assign) BOOL mayExceedMaxLength;
 
 /**
- *  When true, the validation of minTextLength and maxTextLength is
- *  done all the time the user entered text.
- *  When false, the validation is normally when the form is submitted (default)
- */
-@property (nonatomic, assign) BOOL validateWhileEnter;
-
-/**
  *  Sets a format that is defined by groups of characters.
  *  Example: for the groupSizes [@3, @3, @2] the text "aaabbbcc" is
  *           formatted as "aaa bbb cc"

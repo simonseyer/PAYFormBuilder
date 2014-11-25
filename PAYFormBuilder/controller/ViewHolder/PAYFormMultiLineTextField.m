@@ -83,16 +83,6 @@ static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
     return self.textView.editable;
 }
 
-# pragma mark - Error styling
-
-- (void)styleForError:(NSError *)error {
-    if (error) {
-        self.textView.textColor = self.defaultErrorColor;
-    } else {
-        self.textView.textColor = self.defaultTextColor;
-    }
-}
-
 #pragma mark - UITextFieldDelegate's implementation
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -101,16 +91,6 @@ static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
     
     if (self.maxTextLength > 0 && newText.length > self.maxTextLength && !self.mayExceedMaxLength) {
         return NO;
-    }
-    
-    if (self.validateWhileEnter) {
-        NSError *error = [self validate];
-        
-        // Suppress error with code PAYFormTextFieldBelowMinLength while still entering text
-        if ([error.domain isEqualToString:PAYFormErrorDomain] && error.code == PAYFormTextFieldBelowMinLengthErrorCode) {
-            error = nil;
-        }
-        [self styleForError:error];
     }
     
     if (self.formatBlock) {
