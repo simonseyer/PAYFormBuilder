@@ -7,7 +7,8 @@
 //
 
 #import "PAYFormView.h"
-#import "PAYFormDefaultErrorHandler.h"
+
+@class PAYFormErrorMessage;
 
 @interface PAYFormView (PAYFormDefaultErrorHandler)
 

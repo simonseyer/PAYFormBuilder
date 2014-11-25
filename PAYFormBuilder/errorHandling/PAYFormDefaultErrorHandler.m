@@ -17,17 +17,9 @@
 #import "PAYFormErrorMessage_protected.h"
 
 #import "PAYFormErrorStyler.h"
+#import "PAYFormErrorMessageManager_protected.h"
 
 @implementation PAYFormDefaultErrorHandler
-
-static NSMutableDictionary *errorMessages;
-+ (void)initialize {
-    errorMessages = [NSMutableDictionary new];
-}
-
-+ (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code {
-    errorMessages[@(code)] = errorMessage;
-}
 
 static NSString *buttonText;
 + (void)setButtonText:(NSString *)text {
@@ -44,20 +36,7 @@ static NSString *buttonText;
         
         // just handle the first error
         NSError *error = errors.firstObject;
-        
-        PAYFormErrorMessage *errorMessage = [PAYFormErrorMessage errorMessageWithError:error];
-        if (!errorMessage) {
-            if ([error.field isKindOfClass:PAYFormView.class]) {
-                 errorMessage = [(PAYFormView *)error.field errorMessageForErrorCode:error.code];
-            }
-        }
-        if (!errorMessage) {
-            errorMessage = errorMessages[@(error.code)];
-        }
-        
-        if ([error.field conformsToProtocol:@protocol(PAYValidatableFormCell)]) {
-            [PAYFormErrorStyler styleField:error.field];
-        }
+        PAYFormErrorMessage *errorMessage = [PAYFormErrorMessageManager errorMessageForError:error];
         
         UIAlertView* alertView = [UIAlertView bk_alertViewWithTitle:[errorMessage titleForField:error.field]
                                                             message:[errorMessage messageForField:error.field]];

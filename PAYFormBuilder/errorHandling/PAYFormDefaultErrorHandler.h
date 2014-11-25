@@ -7,22 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PAYFormTable.h"
 
-@class PAYFormErrorMessage;
 
 /**
  *  An error handler that displays dialogs for errors.
  */
 @interface PAYFormDefaultErrorHandler : NSObject
-
-/**
- *  Define an error message that sould be shown when an error with the error code occur
- *
- *  @param errorMessage the error message
- *  @param code         the code of the errro
- */
-+ (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code;
 
 /**
  *  Set the text of the button that is used to hide the dialog

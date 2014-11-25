@@ -15,10 +15,10 @@
     
     // Configure table builder default error messages
     [PAYFormDefaultErrorHandler setButtonText:@"Ok"];
-    [PAYFormDefaultErrorHandler setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"Missing"
+    [PAYFormErrorMessageManager setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"Missing"
                                                                                    message:@"Field %@ is missing"]
                                    forErrorCode:PAYFormMissingErrorCode];
-    [PAYFormDefaultErrorHandler setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"To long"
+    [PAYFormErrorMessageManager setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"To long"
                                                                                    message:@"Content of field %@ is to long"]
                                    forErrorCode:PAYFormTextFieldAboveMaxLengthErrorCode];
     [PAYFormTextField setErrorMessage:[PAYFormErrorMessage errorMessageWithTitleBlock:^NSString *(id formView) {
