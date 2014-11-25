@@ -45,7 +45,7 @@
  *  Is called, when a validation blocks returns an error. It should present
  *  the error to the user so he could fix it.
  */
-@property (nonatomic, copy) PAYFormTableFailBlock formFailBlock;
+@property (nonatomic, retain) id<PAYFormTableErrorDelegate> errorDelegate;
 
 #pragma mark - Default styles
 

@@ -14,6 +14,7 @@
 #import "PAYFormHeader.h"
 #import "PAYFormHeader_protected.h"
 #import "PAYTextLabel.h"
+#import "PAYFormDefaultErrorHandler.h"
 
 @implementation PAYFormTableBuilder
 
@@ -21,7 +22,7 @@
 @dynamic finishOnLastField;
 @dynamic validationBlock;
 @dynamic formSuccessBlock;
-@dynamic formFailBlock;
+@dynamic errorDelegate;
 
 
 - (id)init {
@@ -31,14 +32,8 @@
         
         self.labelStyleNoneDefaultHeight = 32.0f;
         self.labelStylEmptyDefaultHeight = 36.0f;
-    }
-    return self;
-}
-
-- (id)initWithFormTable:(PAYFormTable *)table {
-    self = [super init];
-    if (self) {
-        self.table = table;
+        
+        self.errorDelegate = [PAYFormDefaultErrorHandler new];
     }
     return self;
 }

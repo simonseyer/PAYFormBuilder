@@ -14,7 +14,8 @@
 
 @implementation PAYFormErrorStyler
 
-+ (void)styleField:(id<PAYValidatableFormCell>)field {
+- (void)styleField:(id<PAYValidatableFormCell>)field {
+    // Call the correct style method for the field type
     NSString *selectorName = [NSString stringWithFormat:@"style%@:", field.class];
     
     SEL s = NSSelectorFromString(selectorName);
@@ -26,7 +27,7 @@
     }
 }
 
-+ (void)stylePAYFormSingleLineTextField:(PAYFormSingleLineTextField *)formField {
+- (void)stylePAYFormSingleLineTextField:(PAYFormSingleLineTextField *)formField {
     formField.textField.textColor = formField.defaultErrorColor;
     formField.label.textColor     = formField.defaultErrorColor;
     
@@ -38,7 +39,7 @@
     };
 }
 
-+ (void)stylePAYFormMultiLineTextField:(PAYFormMultiLineTextField *)formField {
+- (void)stylePAYFormMultiLineTextField:(PAYFormMultiLineTextField *)formField {
     formField.textView.textColor = formField.defaultErrorColor;
     
     @weakify(formField);
@@ -48,7 +49,7 @@
     };
 }
 
-+ (void)stylePAYFormSwitch:(PAYFormSwitch *)formField {
+- (void)stylePAYFormSwitch:(PAYFormSwitch *)formField {
     formField.label.textColor = formField.defaultErrorColor;
     
     @weakify(formField);

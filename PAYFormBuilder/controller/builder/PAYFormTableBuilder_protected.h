@@ -14,6 +14,5 @@
 @property (nonatomic, retain) PAYFormTable *table;
 @property (nonatomic, assign) CGRect defaultBounds;
 
-- (id)initWithFormTable:(PAYFormTable *)table;
 
 @end

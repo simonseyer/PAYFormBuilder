@@ -16,6 +16,11 @@ typedef void(^PAYFormTableCompletionBlock)();
 typedef void (^PAYFormTableSuccessBlock)();
 typedef BOOL (^PAYFormTableFailBlock)(NSArray *errors);
 
+@protocol PAYFormTableErrorDelegate <NSObject>
+
+- (BOOL)handleErrors:(NSArray *)errors;
+
+@end
 
 @interface PAYFormTable : NSObject
 
@@ -27,7 +32,8 @@ typedef BOOL (^PAYFormTableFailBlock)(NSArray *errors);
 @property (nonatomic, copy) PAYFormValidationBlock validationBlock;
 @property (nonatomic, copy) PAYFormTableCompletionBlock completionBlock;
 @property (nonatomic, copy) PAYFormTableSuccessBlock formSuccessBlock;
-@property (nonatomic, copy) PAYFormTableFailBlock formFailBlock;
+
+@property (nonatomic, retain) id<PAYFormTableErrorDelegate> errorDelegate;
 
 - (void)initSectionJumpOrder;
 - (void)validate;

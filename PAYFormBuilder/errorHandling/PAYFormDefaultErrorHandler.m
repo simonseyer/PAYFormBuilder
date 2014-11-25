@@ -21,7 +21,22 @@
 
 #import "PAYFormTable.h"
 
+
+@interface PAYFormDefaultErrorHandler ()
+
+@property (nonatomic, retain) PAYFormErrorStyler *styler;
+
+@end
+
 @implementation PAYFormDefaultErrorHandler
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.styler = [PAYFormErrorStyler new];
+    }
+    return self;
+}
 
 static NSString *buttonText;
 + (void)setButtonText:(NSString *)text {
@@ -32,25 +47,25 @@ static NSString *buttonText;
     return buttonText;
 }
 
-+ (PAYFormTableFailBlock)failBlock {
-    return ^BOOL(NSArray *errors) {
-        NSAssert(buttonText, @"The button text of the default error handler has to be set, when it is used to show error messages");
-        
-        // just handle the first error
-        NSError *error = errors.firstObject;
-        PAYFormErrorMessage *errorMessage = [PAYFormErrorMessageManager errorMessageForError:error];
-        
-        UIAlertView* alertView = [UIAlertView bk_alertViewWithTitle:[errorMessage titleForField:error.field]
-                                                            message:[errorMessage messageForField:error.field]];
-        [alertView bk_addButtonWithTitle:buttonText handler:^{
-            if ([error.field isKindOfClass:PAYFormView.class]) {
-                [(PAYFormView *)error.field becomeFirstResponder];
-            }
-        }];
-        
-        [alertView show];
-        return NO;
-    };
+- (BOOL)handleErrors:(NSArray *)errors {
+    NSAssert(buttonText, @"The button text of the default error handler has to be set, when it is used to show error messages");
+    
+    // just handle the first error
+    NSError *error = errors.firstObject;
+    PAYFormErrorMessage *errorMessage = [PAYFormErrorMessageManager errorMessageForError:error];
+    
+    [self.styler styleField:error.field];
+    
+    UIAlertView* alertView = [UIAlertView bk_alertViewWithTitle:[errorMessage titleForField:error.field]
+                                                        message:[errorMessage messageForField:error.field]];
+    [alertView bk_addButtonWithTitle:buttonText handler:^{
+        if ([error.field isKindOfClass:PAYFormView.class]) {
+            [(PAYFormView *)error.field becomeFirstResponder];
+        }
+    }];
+    
+    [alertView show];
+    return NO;
 }
 
 @end

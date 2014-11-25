@@ -13,7 +13,6 @@
 #import <BlocksKit+UIKit.h>
 #import <libextobjc/extobjc.h>
 #import "PAYFormDefaultErrorHandler.h"
-#import "PAYFormDefaultErrorHandler_protected.h"
 
 
 @implementation PAYFormTable
@@ -29,7 +28,6 @@
                 [self validate];
             }
         };
-        self.formFailBlock = PAYFormDefaultErrorHandler.failBlock;
     }
     return self;
 }
@@ -41,7 +39,7 @@
             self.formSuccessBlock();
         }
     } else {
-        self.formFailBlock(errors);
+        [self.errorDelegate handleErrors:errors];
     }
 }
 

@@ -11,6 +11,6 @@
 
 @interface PAYFormErrorStyler : NSObject
 
-+ (void)styleField:(id<PAYValidatableFormCell>)field;
+- (void)styleField:(id<PAYValidatableFormCell>)field;
 
 @end
