@@ -38,8 +38,11 @@ static NSString *buttonText;
 }
 
 + (PAYFormTableFailBlock)failBlock {
-    return ^BOOL(NSError *error) {
+    return ^BOOL(NSArray *errors) {
         NSAssert(buttonText, @"The button text of the default error handler has to be set, when it is used to show error messages");
+        
+        // just handle the first error
+        NSError *error = errors.firstObject;
         
         PAYFormErrorMessage *errorMessage = [PAYFormErrorMessage errorMessageWithError:error];
         if (!errorMessage) {
@@ -49,6 +52,10 @@ static NSString *buttonText;
         }
         if (!errorMessage) {
             errorMessage = errorMessages[@(error.code)];
+        }
+        
+        if ([error.field isKindOfClass:PAYFormField.class]) {
+            [(PAYFormField *)error.field styleForError:error];
         }
         
         UIAlertView* alertView = [UIAlertView bk_alertViewWithTitle:[errorMessage titleForField:error.field]

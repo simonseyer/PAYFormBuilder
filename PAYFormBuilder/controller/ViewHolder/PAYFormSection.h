@@ -31,6 +31,6 @@ typedef void(^PAYFormSectionCompletionBlock)();
 - (BOOL)initFieldJumpOrderWithNextSection:(PAYFormSection *)section;
 - (PAYFormField *)firstFormField;
 
-- (NSError *)validate;
+- (NSArray *)validate;
 
 @end

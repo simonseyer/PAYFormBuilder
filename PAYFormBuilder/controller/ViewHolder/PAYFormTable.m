@@ -35,29 +35,28 @@
 }
 
 - (void)validate {
-    NSError *error = [self doValidate];
-    if (!error) {
+    NSArray *errors = [self doValidate];
+    if (!errors.count) {
         if (self.formSuccessBlock) {
             self.formSuccessBlock();
         }
     } else {
-        if ((!self.formFailBlock || !self.formFailBlock(error)) && error.field) {
-            [error.field styleForError:error];
-        }
+        self.formFailBlock(errors);
     }
 }
 
-- (NSError *)doValidate {
+- (NSArray *)doValidate {
+    NSMutableArray *errors = [NSMutableArray new];
     for (PAYFormSection *section in self.sections) {
-        NSError *error = [section validate];
-        if (error) {
-            return error;
-        }
+        [errors addObjectsFromArray:[section validate]];
     }
     if (self.validationBlock) {
-        return self.validationBlock();
+        NSError *validationError = self.validationBlock();
+        if (validationError) {
+            [errors addObject:validationError];
+        }
     }
-    return nil;
+    return errors;
 }
 
 - (void)initSectionJumpOrder {

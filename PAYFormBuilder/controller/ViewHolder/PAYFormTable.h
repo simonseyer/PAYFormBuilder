@@ -14,7 +14,7 @@
 typedef NSError *(^PAYFormValidationBlock)();
 typedef void(^PAYFormTableCompletionBlock)();
 typedef void (^PAYFormTableSuccessBlock)();
-typedef BOOL (^PAYFormTableFailBlock)(NSError *error);
+typedef BOOL (^PAYFormTableFailBlock)(NSArray *errors);
 
 
 @interface PAYFormTable : NSObject

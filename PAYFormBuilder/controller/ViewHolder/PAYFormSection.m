@@ -74,19 +74,19 @@
     return _firstFormField;
 }
 
-- (NSError *)validate {
-    NSError *error;
+- (NSArray *)validate {
+    NSMutableArray *errors = [NSMutableArray new];
     for (id<PAYFormRow> row in [self.views arrayByAddingObjectsFromArray:self.attachedObjects]) {
         if ([row conformsToProtocol:@protocol(PAYValidatableFormCell)]) {
             id<PAYValidatableFormCell> validatableCell = (id<PAYValidatableFormCell>)row;
             [validatableCell styleForError:nil];
             NSError *fieldError = [validatableCell validate];
-            if (!error && fieldError) {
-                error = fieldError;
+            if (fieldError) {
+                [errors addObject:fieldError];
             }
         }
     }
-    return error;
+    return errors;
 }
 
 @end
