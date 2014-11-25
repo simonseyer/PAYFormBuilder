@@ -35,6 +35,8 @@
 		374F216619D9A0A700217AD7 /* UIView+PAYKeyboardHandling_protected.h in Headers */ = {isa = PBXBuildFile; fileRef = 379651CC18F2F1650022151B /* UIView+PAYKeyboardHandling_protected.h */; };
 		374F216719D9A0AD00217AD7 /* UIColor+PAYHex.h in Headers */ = {isa = PBXBuildFile; fileRef = 379651F818F3035A0022151B /* UIColor+PAYHex.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		374F216819D9A0B200217AD7 /* PAYMessageInterceptor_protected.h in Headers */ = {isa = PBXBuildFile; fileRef = 379651F518F302940022151B /* PAYMessageInterceptor_protected.h */; };
+		375BD9601A24EEF200312FDE /* PAYFormSemanticErrorHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 375BD95E1A24EEF200312FDE /* PAYFormSemanticErrorHandler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		375BD9611A24EEF200312FDE /* PAYFormSemanticErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 375BD95F1A24EEF200312FDE /* PAYFormSemanticErrorHandler.m */; };
 		375DAD70190F052600F4A41D /* PAYHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = 375DAD6E190F052600F4A41D /* PAYHeaderView.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		375DAD71190F052600F4A41D /* PAYHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 375DAD6F190F052600F4A41D /* PAYHeaderView.m */; };
 		375FF9571A121D3700AA7401 /* PAYDefaultTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = 375FF9501A121D3700AA7401 /* PAYDefaultTheme.h */; };
@@ -129,6 +131,8 @@
 		3742D14319D9A84F00B78219 /* libPods-BlocksKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-BlocksKit.a"; path = "Pods/build/Debug-iphoneos/libPods-BlocksKit.a"; sourceTree = "<group>"; };
 		3742D14419D9A84F00B78219 /* libPods-libextobjc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libextobjc.a"; path = "Pods/build/Debug-iphoneos/libPods-libextobjc.a"; sourceTree = "<group>"; };
 		3742D14519D9A84F00B78219 /* libPods-SZTextView.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-SZTextView.a"; path = "Pods/build/Debug-iphoneos/libPods-SZTextView.a"; sourceTree = "<group>"; };
+		375BD95E1A24EEF200312FDE /* PAYFormSemanticErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormSemanticErrorHandler.h; sourceTree = "<group>"; };
+		375BD95F1A24EEF200312FDE /* PAYFormSemanticErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormSemanticErrorHandler.m; sourceTree = "<group>"; };
 		375DAD6E190F052600F4A41D /* PAYHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYHeaderView.h; sourceTree = "<group>"; };
 		375DAD6F190F052600F4A41D /* PAYHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYHeaderView.m; sourceTree = "<group>"; };
 		375FF9501A121D3700AA7401 /* PAYDefaultTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYDefaultTheme.h; sourceTree = "<group>"; };
@@ -436,6 +440,8 @@
 				37A73CFC19743D4200381DC9 /* NSError+PAYComfort.m */,
 				37A73CFD19743D4200381DC9 /* PAYFormDefaultErrorHandler.h */,
 				37A73CFE19743D4200381DC9 /* PAYFormDefaultErrorHandler.m */,
+				375BD95E1A24EEF200312FDE /* PAYFormSemanticErrorHandler.h */,
+				375BD95F1A24EEF200312FDE /* PAYFormSemanticErrorHandler.m */,
 				37A73D1319745FCF00381DC9 /* PAYFormErrorMessage.h */,
 				37A73D11197445F800381DC9 /* PAYFormErrorMessage_protected.h */,
 				37A73D1419745FCF00381DC9 /* PAYFormErrorMessage.m */,
@@ -494,6 +500,7 @@
 				37A73D191974600900381DC9 /* PAYErrorCodes.h in Headers */,
 				37A73D0319743D4200381DC9 /* NSError+PAYComfort.h in Headers */,
 				37A73D0519743D4200381DC9 /* PAYFormDefaultErrorHandler.h in Headers */,
+				375BD9601A24EEF200312FDE /* PAYFormSemanticErrorHandler.h in Headers */,
 				37A73D1519745FCF00381DC9 /* PAYFormErrorMessage.h in Headers */,
 				37A73D0719743D4200381DC9 /* PAYFormView+PAYFormErrorMessage.h in Headers */,
 				374F215119D99FBC00217AD7 /* PAYFormTable.h in Headers */,
@@ -674,6 +681,7 @@
 				37A73D0619743D4200381DC9 /* PAYFormDefaultErrorHandler.m in Sources */,
 				379651DD18F2F1650022151B /* PAYFormSection.m in Sources */,
 				37AF34A918F8175B00848D49 /* PAYFormButtonGroup.m in Sources */,
+				375BD9611A24EEF200312FDE /* PAYFormSemanticErrorHandler.m in Sources */,
 				37A73D0819743D4200381DC9 /* PAYFormView+PAYFormErrorMessage.m in Sources */,
 				37A73CF819743D2700381DC9 /* PAYNotifications.m in Sources */,
 				379651F718F302940022151B /* PAYMessageInterceptor.m in Sources */,
