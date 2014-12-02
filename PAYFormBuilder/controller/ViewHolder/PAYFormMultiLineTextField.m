@@ -12,6 +12,7 @@
 #import "PAYErrorCodes.h"
 #import "PAYFormView_protected.h"
 #import "PAYFormField_protected.h"
+#import "PAYNotifications.h"
 
 
 static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
@@ -105,6 +106,15 @@ static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
     }
     
     return YES;
+}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    [[NSNotificationCenter defaultCenter]postNotificationName:PAYFormRowFocusRequestNotification object:self.view];
+    
+    // Forward message
+    if (_messageInterceptor.receiver && [_messageInterceptor.receiver respondsToSelector:_cmd]) {
+        return [_messageInterceptor.receiver textViewDidBeginEditing:textView];
+    }
 }
 
 - (void)adjustSizeToContent {
