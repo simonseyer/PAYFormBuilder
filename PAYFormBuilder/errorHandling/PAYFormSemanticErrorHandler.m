@@ -20,7 +20,6 @@
 #import <objc/runtime.h>
 #import <libextobjc/extobjc.h>
 
-static char messageKey;
 static char popUpKey;
 
 @implementation PAYFormSemanticErrorHandler
@@ -33,16 +32,15 @@ static char popUpKey;
             
             PAYFormErrorMessage *errorMessage = [PAYFormErrorMessageManager errorMessageForError:error];
             NSString *msg = [errorMessage messageForField:error.field];
-            objc_setAssociatedObject(formRow, &messageKey, msg, OBJC_ASSOCIATION_RETAIN);
             
             BOOL isTextField = [formRow isKindOfClass:PAYFormTextField.class];
             if (first || !isTextField) {
-                [self showMessageforField:formRow];
+                [self showMessage:msg forField:formRow];
             }
             if (isTextField) {
                 UIControl *control = (UIControl *)((PAYFormField *)formRow).control;
                 [control bk_addEventHandler:^(id sender) {
-                    [self showMessageforField:formRow];
+                    [self showMessage:msg forField:formRow];
                 } forControlEvents:UIControlEventEditingDidBegin];
                 [control bk_addEventHandler:^(id sender) {
                     [self hideMessageForField:formRow];
@@ -58,9 +56,7 @@ static char popUpKey;
     return NO;
 }
 
-- (void)showMessageforField:(id<PAYFormRow, PAYValidatableFormCell>)formRow {
-    NSString *msg = objc_getAssociatedObject(formRow, &messageKey);
-    
+- (void)showMessage:(NSString *)msg forField:(id<PAYFormRow, PAYValidatableFormCell>)formRow{
     AMPopTip *popTip = [AMPopTip popTip];
     popTip.edgeInsets = UIEdgeInsetsMake(0, 30, 0, 30);
     [popTip showText:msg
@@ -74,7 +70,6 @@ static char popUpKey;
     formRow.validationResetBlock = ^{
         @strongify(formRow);
         [self hideMessageForField:formRow];
-        objc_setAssociatedObject(formRow, &messageKey, nil, OBJC_ASSOCIATION_RETAIN);
     };
 }
 
