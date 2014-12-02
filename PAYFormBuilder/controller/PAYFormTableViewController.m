@@ -14,7 +14,8 @@
 #import "PAYFormTableView.h"
 #import "PAYNotifications.h"
 #import "PAYFormView_protected.h"
-
+#import "BlocksKit.h"
+#import "UITableViewCell+ScrollInset.h"
 
 @interface PAYFormTableViewController ()
 
@@ -159,8 +160,15 @@
 }
      
 - (void)scrollToCell:(UITableViewCell *)cell {
-    NSIndexPath *scrollIndexPath = [self.tableView indexPathForRowAtPoint:cell.center];
-    [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    // Applies the scrollInsets of the cell to the scroll position
+    // Delay is needed to resolve conflicts with the TableView, which scrolls on its own
+    [self bk_performBlock:^(PAYFormTableViewController *obj) {
+        UIEdgeInsets insets = cell.scrollInsets;
+        UIEdgeInsets inversedInsets = UIEdgeInsetsMake(-insets.top, -insets.left,
+                                                       -insets.bottom, -insets.right);
+        CGRect rect = UIEdgeInsetsInsetRect(cell.frame, inversedInsets);
+        [obj.tableView scrollRectToVisible:rect animated:YES];
+    } afterDelay:0.01];
 }
 
 

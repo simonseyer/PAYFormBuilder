@@ -20,6 +20,7 @@
 #import <objc/runtime.h>
 #import <libextobjc/extobjc.h>
 #import "PAYFormErrorStyler.h"
+#import "UITableViewCell+ScrollInset.h"
 
 static char popUpKey;
 
@@ -87,6 +88,8 @@ static char popUpKey;
               inView:formRow.view
            fromFrame:CGRectMake(0, formRow.view.frame.size.height, formRow.view.frame.size.width, 0)];
     objc_setAssociatedObject(formRow, &popUpKey, popTip, OBJC_ASSOCIATION_RETAIN);
+    
+    formRow.view.scrollInsets = UIEdgeInsetsMake(0, 0, 60, 0);
     
     @weakify(formRow);
     [formRow.validationResetBlocks addObject:^{
