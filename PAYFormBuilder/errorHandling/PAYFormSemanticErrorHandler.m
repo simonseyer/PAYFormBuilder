@@ -21,6 +21,7 @@
 #import <libextobjc/extobjc.h>
 #import "PAYFormErrorStyler.h"
 #import "UITableViewCell+ScrollInset.h"
+#import "A2DynamicDelegate.h"
 
 static char popUpKey;
 
@@ -56,13 +57,29 @@ static char popUpKey;
                 [self showMessage:msg forField:formRow];
             }
             if (isTextField) {
-                UIControl *control = (UIControl *)((PAYFormField *)formRow).control;
-                [control bk_addEventHandler:^(id sender) {
-                    [self showMessage:msg forField:formRow];
-                } forControlEvents:UIControlEventEditingDidBegin];
-                [control bk_addEventHandler:^(id sender) {
-                    [self hideMessageForField:formRow];
-                } forControlEvents:UIControlEventEditingDidEnd];
+                if ([formRow isKindOfClass:PAYFormSingleLineTextField.class]) {
+                    UITextField *textField = ((PAYFormSingleLineTextField *)formRow).textField;
+                    
+                    [textField bk_addEventHandler:^(id sender) {
+                        [self showMessage:msg forField:formRow];
+                    } forControlEvents:UIControlEventEditingDidBegin];
+                    [textField bk_addEventHandler:^(id sender) {
+                        [self hideMessageForField:formRow];
+                    } forControlEvents:UIControlEventEditingDidEnd];
+                } else if ([formRow isKindOfClass:PAYFormMultiLineTextField.class]) {
+                    UITextView *textView = ((PAYFormMultiLineTextField *)formRow).textView;
+                    
+                    A2DynamicDelegate *dd = textView.bk_dynamicDelegate;
+                    [dd implementMethod:@selector(textViewDidBeginEditing:) withBlock:^(UITextView *textView) {
+                        [self showMessage:msg forField:formRow];
+                    }];
+                    [dd implementMethod:@selector(textViewDidEndEditing:) withBlock:^(UITextView *textView) {
+                        [self hideMessageForField:formRow];
+                    }];
+                    
+                    // TODO: Overrites delegates from the user
+                    ((PAYFormMultiLineTextField *)formRow).delegate = (id<UITextViewDelegate>)dd;
+                }
             }
             if (first) {
                 [formRow becomeFirstResponder];
@@ -95,10 +112,14 @@ static char popUpKey;
     [formRow.validationResetBlocks addObject:^{
         @strongify(formRow);
         [self hideMessageForField:formRow];
-        if ([formRow isKindOfClass:PAYFormTextField.class]) {
-            UIControl *control = (UIControl *)((PAYFormField *)formRow).control;
-            [control bk_removeEventHandlersForControlEvents:UIControlEventEditingDidBegin];
-            [control bk_removeEventHandlersForControlEvents:UIControlEventEditingDidEnd];
+        if ([formRow isKindOfClass:PAYFormSingleLineTextField.class]) {
+            UITextField *textField = ((PAYFormSingleLineTextField *)formRow).textField;
+            
+            [textField bk_removeEventHandlersForControlEvents:UIControlEventEditingDidBegin];
+            [textField bk_removeEventHandlersForControlEvents:UIControlEventEditingDidEnd];
+        } else if ([formRow isKindOfClass:PAYFormMultiLineTextField.class]) {
+            UITextView *textView = ((PAYFormMultiLineTextField *)formRow).textView;
+            textView.delegate = nil;
         }
     }];
 }
