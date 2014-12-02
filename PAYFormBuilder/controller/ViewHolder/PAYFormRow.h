@@ -27,5 +27,10 @@
  */
 - (void)didSelectRow;
 
+/*
+ * Calls `becomeFirstResponder` on the embedded view.
+ */
+- (BOOL)becomeFirstResponder;
+
 @end
 
