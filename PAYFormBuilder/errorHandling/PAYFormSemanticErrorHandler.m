@@ -84,8 +84,8 @@ static char popUpKey;
     [popTip showText:msg
            direction:AMPopTipDirectionDown
             maxWidth:formRow.view.frame.size.width - 120
-              inView:formRow.view.superview
-           fromFrame:formRow.view.frame];
+              inView:formRow.view
+           fromFrame:CGRectMake(0, formRow.view.frame.size.height, formRow.view.frame.size.width, 0)];
     objc_setAssociatedObject(formRow, &popUpKey, popTip, OBJC_ASSOCIATION_RETAIN);
     
     @weakify(formRow);
