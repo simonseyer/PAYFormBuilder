@@ -32,31 +32,31 @@
     formField.label.textColor     = formField.defaultErrorColor;
     
     @weakify(formField);
-    formField.validationResetBlock = ^{
+    [formField.validationResetBlocks addObject:^{
         @strongify(formField);
         formField.textField.textColor = formField.defaultTextColor;
         formField.label.textColor     = formField.defaultTextColor;
-    };
+    }];
 }
 
 - (void)stylePAYFormMultiLineTextField:(PAYFormMultiLineTextField *)formField {
     formField.textView.textColor = formField.defaultErrorColor;
     
     @weakify(formField);
-    formField.validationResetBlock = ^{
+    [formField.validationResetBlocks addObject:^{
         @strongify(formField);
         formField.textView.textColor = formField.defaultTextColor;
-    };
+    }];
 }
 
 - (void)stylePAYFormSwitch:(PAYFormSwitch *)formField {
     formField.label.textColor = formField.defaultErrorColor;
     
     @weakify(formField);
-    formField.validationResetBlock = ^{
+    [formField.validationResetBlocks addObject:^{
         @strongify(formField);
         formField.label.textColor = formField.defaultTextColor;
-    };
+    }];
 }
 
 

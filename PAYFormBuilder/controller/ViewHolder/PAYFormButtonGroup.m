@@ -25,7 +25,7 @@
     NSMutableArray *_selectedOptions;
 }
 
-@synthesize validationResetBlock;
+@synthesize validationResetBlocks;
 
 - (instancetype)init {
     self = [super init];
@@ -33,6 +33,7 @@
         self.options = [NSMutableArray new];
         self.optionButtons = [NSMutableArray new];
         _selectedOptions = [NSMutableArray new];
+        self.validationResetBlocks = [NSMutableArray new];
     }
     return self;
 }
@@ -111,10 +112,10 @@
 }
 
 - (void)resetValidation {
-    if (self.validationResetBlock) {
-        self.validationResetBlock();
-        self.validationResetBlock = nil;
+    for (PAYFormFieldResetBlock validationResetBlock in self.validationResetBlocks) {
+        validationResetBlock();
     }
+    [self.validationResetBlocks removeAllObjects];
 }
 
 @end

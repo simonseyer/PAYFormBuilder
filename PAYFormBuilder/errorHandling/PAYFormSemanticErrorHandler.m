@@ -72,10 +72,10 @@ static char popUpKey;
     objc_setAssociatedObject(formRow, &popUpKey, popTip, OBJC_ASSOCIATION_RETAIN);
     
     @weakify(formRow);
-    formRow.validationResetBlock = ^{
+    [formRow.validationResetBlocks addObject:^{
         @strongify(formRow);
         [self hideMessageForField:formRow];
-    };
+    }];
 }
 
 - (void)hideMessageForField :(id<PAYFormRow, PAYValidatableFormCell>)formRow {

@@ -18,6 +18,10 @@ typedef void(^PAYFormFieldResetBlock)();
 - (void)resetValidation;
 - (NSString *)name;
 
-@property (nonatomic, copy) PAYFormFieldResetBlock validationResetBlock;
+/**
+ *  An array of `PAYFormFieldResetBlock`s to reset the style
+ *  of the form cell back to default.
+ */
+@property (nonatomic, retain) NSMutableArray *validationResetBlocks;
 
 @end

@@ -14,7 +14,16 @@
 
 @implementation PAYFormField
 
-@synthesize validationResetBlock;
+@synthesize validationResetBlocks;
+
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        validationResetBlocks = [NSMutableArray new];
+    }
+    return self;
+}
 
 - (NSString *)name {
     return @"";
@@ -90,10 +99,10 @@
 }
 
 - (void)resetValidation {
-    if (self.validationResetBlock) {
-        self.validationResetBlock();
-        self.validationResetBlock = nil;
+    for (PAYFormFieldResetBlock validationResetBlock in self.validationResetBlocks) {
+        validationResetBlock();
     }
+    [self.validationResetBlocks removeAllObjects];
 }
 
 - (BOOL)isEmpty {
