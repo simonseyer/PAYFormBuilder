@@ -24,4 +24,6 @@
  */
 @property (nonatomic, retain, readonly) UITableViewCell *view;
 
+@property (nonatomic, weak, readonly) PAYFormSection *section;
+
 @end

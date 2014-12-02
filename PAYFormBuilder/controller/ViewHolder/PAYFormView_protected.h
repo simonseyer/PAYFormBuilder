@@ -23,4 +23,6 @@
  */
 - (BOOL)becomeFirstResponder;
 
+@property (nonatomic, weak) PAYFormSection *section;
+
 @end

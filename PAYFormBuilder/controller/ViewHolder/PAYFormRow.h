@@ -32,5 +32,10 @@
  */
 - (BOOL)becomeFirstResponder;
 
+/*
+ * The section, this row is embedded in
+ */
+- (PAYFormSection *)section;
+
 @end
 

@@ -54,6 +54,11 @@
     return self;
 }
 
+- (void) addFormView:(PAYFormView *)formView {
+    [self.section.views addObject:formView];
+    formView.section = self.section;
+}
+
 - (PAYFormSingleLineTextField *)addFieldWithPlaceholder:(NSString *)placeholder {
     return [self addFieldWithPlaceholder:placeholder configureBlock:NULL];
 }
@@ -103,7 +108,7 @@
         configureBlock(formField);
     }
     
-    [self.section.views addObject:formField];
+    [self addFormView:formField];
     
     return formField;
 }
@@ -162,7 +167,7 @@
         configureBlock(formField);
     }
     
-    [self.section.views addObject:formField];
+    [self addFormView:formField];
     
     return formField;
 }
@@ -282,7 +287,7 @@
         configureBlock(formButton);
     }
     
-    [self.section.views addObject:formButton];
+    [self addFormView:formButton];
     
     return formButton;
 }
@@ -339,7 +344,7 @@
         configureBlock(formSwitch);
     }
     
-    [self.section.views addObject:formSwitch];
+    [self addFormView:formSwitch];
     
     return formSwitch;
     
@@ -353,7 +358,7 @@
         configureBlock(formView);
     }
     
-    [self.section.views addObject:formView];
+    [self addFormView:formView];
 }
 
 - (UITableViewCell *)defaultCell {
