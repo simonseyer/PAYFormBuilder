@@ -57,6 +57,11 @@ static char popUpKey;
 }
 
 - (void)showMessage:(NSString *)msg forField:(id<PAYFormRow, PAYValidatableFormCell>)formRow{
+    // Preventing the popup to appear twice
+    if (objc_getAssociatedObject(formRow, &popUpKey)) {
+        return;
+    }
+    
     AMPopTip *popTip = [AMPopTip popTip];
     popTip.edgeInsets = UIEdgeInsetsMake(0, 30, 0, 30);
     [popTip showText:msg
