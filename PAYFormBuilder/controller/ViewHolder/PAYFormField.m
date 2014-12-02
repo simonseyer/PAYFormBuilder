@@ -40,13 +40,13 @@
 
 #pragma mark - Field jump implementation
 
-- (UIView<PAYFormControl> *)nextEnabledControl {
+- (PAYFormField *)nextEnabledControl {
     return self.nextFormField.ownOrNextEnabledControl;
 }
 
-- (UIView<PAYFormControl> *)ownOrNextEnabledControl {
+- (PAYFormField *)ownOrNextEnabledControl {
     if (self.isEnabled) {
-        return self.control;
+        return self;
     } else {
         return self.nextEnabledControl;
     }
