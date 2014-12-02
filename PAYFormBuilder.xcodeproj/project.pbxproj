@@ -11,6 +11,8 @@
 		3709CE631920DFAB0077BAFF /* PAYValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3709CE611920DFAB0077BAFF /* PAYValidation.m */; };
 		371378FD1A24B2C000905437 /* PAYFormErrorStyler.h in Headers */ = {isa = PBXBuildFile; fileRef = 371378FB1A24B2C000905437 /* PAYFormErrorStyler.h */; };
 		371378FE1A24B2C000905437 /* PAYFormErrorStyler.m in Sources */ = {isa = PBXBuildFile; fileRef = 371378FC1A24B2C000905437 /* PAYFormErrorStyler.m */; };
+		3744A67E1A2DE9AD004CA527 /* UITableViewCell+ScrollInset.h in Headers */ = {isa = PBXBuildFile; fileRef = 3744A67C1A2DE9AD004CA527 /* UITableViewCell+ScrollInset.h */; };
+		3744A67F1A2DE9AD004CA527 /* UITableViewCell+ScrollInset.m in Sources */ = {isa = PBXBuildFile; fileRef = 3744A67D1A2DE9AD004CA527 /* UITableViewCell+ScrollInset.m */; };
 		374F214E19D99F6200217AD7 /* PAYFormBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 37906D3018F431D200FC3CC8 /* PAYFormBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		374F214F19D99F6600217AD7 /* PAYFormTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 379651B518F2F1650022151B /* PAYFormTableViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		374F215119D99FBC00217AD7 /* PAYFormTable.h in Headers */ = {isa = PBXBuildFile; fileRef = 379651C418F2F1650022151B /* PAYFormTable.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -131,6 +133,8 @@
 		3742D14319D9A84F00B78219 /* libPods-BlocksKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-BlocksKit.a"; path = "Pods/build/Debug-iphoneos/libPods-BlocksKit.a"; sourceTree = "<group>"; };
 		3742D14419D9A84F00B78219 /* libPods-libextobjc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libextobjc.a"; path = "Pods/build/Debug-iphoneos/libPods-libextobjc.a"; sourceTree = "<group>"; };
 		3742D14519D9A84F00B78219 /* libPods-SZTextView.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-SZTextView.a"; path = "Pods/build/Debug-iphoneos/libPods-SZTextView.a"; sourceTree = "<group>"; };
+		3744A67C1A2DE9AD004CA527 /* UITableViewCell+ScrollInset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+ScrollInset.h"; sourceTree = "<group>"; };
+		3744A67D1A2DE9AD004CA527 /* UITableViewCell+ScrollInset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+ScrollInset.m"; sourceTree = "<group>"; };
 		375BD95E1A24EEF200312FDE /* PAYFormSemanticErrorHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormSemanticErrorHandler.h; sourceTree = "<group>"; };
 		375BD95F1A24EEF200312FDE /* PAYFormSemanticErrorHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormSemanticErrorHandler.m; sourceTree = "<group>"; };
 		375DAD6E190F052600F4A41D /* PAYHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYHeaderView.h; sourceTree = "<group>"; };
@@ -402,6 +406,8 @@
 				379651D518F2F1650022151B /* PAYTextLabel.m */,
 				375DAD6E190F052600F4A41D /* PAYHeaderView.h */,
 				375DAD6F190F052600F4A41D /* PAYHeaderView.m */,
+				3744A67C1A2DE9AD004CA527 /* UITableViewCell+ScrollInset.h */,
+				3744A67D1A2DE9AD004CA527 /* UITableViewCell+ScrollInset.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -506,6 +512,7 @@
 				374F215119D99FBC00217AD7 /* PAYFormTable.h in Headers */,
 				374F215219D99FBF00217AD7 /* PAYFormSection.h in Headers */,
 				374F215319D99FC200217AD7 /* PAYFormView.h in Headers */,
+				3744A67E1A2DE9AD004CA527 /* UITableViewCell+ScrollInset.h in Headers */,
 				375FF9571A121D3700AA7401 /* PAYDefaultTheme.h in Headers */,
 				374F215419D99FC700217AD7 /* PAYFormField.h in Headers */,
 				374F215519D99FCA00217AD7 /* PAYFormTextField.h in Headers */,
@@ -693,6 +700,7 @@
 				379651DF18F2F1650022151B /* PAYFormTable.m in Sources */,
 				379651D918F2F1650022151B /* PAYFormButton.m in Sources */,
 				379651E518F2F1650022151B /* PAYFormTableView.m in Sources */,
+				3744A67F1A2DE9AD004CA527 /* UITableViewCell+ScrollInset.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
