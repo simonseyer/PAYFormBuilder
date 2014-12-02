@@ -12,6 +12,7 @@
 #import "PAYFormView_protected.h"
 #import "PAYFormField_protected.h"
 #import <libextobjc/extobjc.h>
+#import "PAYNotifications.h"
 
 
 @implementation PAYFormSection
@@ -87,6 +88,12 @@
         }
     }
     return errors;
+}
+
+- (void)setFooterHeight:(CGFloat)footerHeight {
+    _footerHeight = footerHeight;
+    [[NSNotificationCenter defaultCenter]postNotificationName:PAYFormSectionFooterHeightChangedNotification
+                                                       object:self];
 }
 
 @end

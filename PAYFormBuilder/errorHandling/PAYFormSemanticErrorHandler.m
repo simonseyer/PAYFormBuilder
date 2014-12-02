@@ -106,7 +106,12 @@ static char popUpKey;
            fromFrame:CGRectMake(0, formRow.view.frame.size.height, formRow.view.frame.size.width, 0)];
     objc_setAssociatedObject(formRow, &popUpKey, popTip, OBJC_ASSOCIATION_RETAIN);
     
+    // TODO: dynamic offset
     formRow.view.scrollInsets = UIEdgeInsetsMake(0, 0, 60, 0);
+    if (formRow.section.views.lastObject == formRow) {
+        formRow.section.footerHeight = 30;
+    }
+    
     
     @weakify(formRow);
     [formRow.validationResetBlocks addObject:^{
@@ -128,6 +133,9 @@ static char popUpKey;
     AMPopTip *popTip = objc_getAssociatedObject(formRow, &popUpKey);
     [popTip hide];
     objc_setAssociatedObject(formRow, &popUpKey, nil, OBJC_ASSOCIATION_RETAIN);
+    
+    formRow.section.footerHeight = 0;
+    formRow.view.scrollInsets = UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
 

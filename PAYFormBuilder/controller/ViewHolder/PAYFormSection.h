@@ -22,6 +22,7 @@ typedef void(^PAYFormSectionCompletionBlock)();
 
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) PAYFormHeader *header;
+@property (nonatomic, assign) CGFloat footerHeight;
 @property (nonatomic, retain) NSMutableArray *views;
 @property (nonatomic, retain) NSMutableArray *attachedObjects;
 

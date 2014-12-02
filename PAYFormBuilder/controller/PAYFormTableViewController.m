@@ -56,6 +56,10 @@
                                            selector:@selector(handleFormRowFocusRequest:)
                                                name:PAYFormRowFocusRequestNotification
                                              object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(handleSectionFooterHeightChanged:)
+                                               name:PAYFormSectionFooterHeightChangedNotification
+                                             object:nil];
     
     if (self.table.selectFirstField) {
         PAYFormSection *firstSection = self.table.sections.firstObject;
@@ -106,7 +110,7 @@
 
 #pragma mark - UITableViewDataSource's implementation
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {Ø
     return self.table.sections.count;
 }
 
@@ -147,6 +151,10 @@
     return fieldView.frame.size.height;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return ((PAYFormSection *)self.table.sections[section]).footerHeight;
+}
+
 #pragma mark - View management
 
 - (id<PAYFormRow>)formRowForIndexPath:(NSIndexPath *)indexPath {
@@ -158,7 +166,11 @@
 - (void)handleFormRowFocusRequest:(NSNotification *)notfication {
     [self scrollToCell:notfication.object];
 }
-     
+
+- (void)handleSectionFooterHeightChanged:(NSNotification *)notification {
+    [self.tableView reloadData];
+}
+
 - (void)scrollToCell:(UITableViewCell *)cell {
     // Applies the scrollInsets of the cell to the scroll position
     // Delay is needed to resolve conflicts with the TableView, which scrolls on its own
