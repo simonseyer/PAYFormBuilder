@@ -92,6 +92,11 @@ static char popUpKey;
     [formRow.validationResetBlocks addObject:^{
         @strongify(formRow);
         [self hideMessageForField:formRow];
+        if ([formRow isKindOfClass:PAYFormTextField.class]) {
+            UIControl *control = (UIControl *)((PAYFormField *)formRow).control;
+            [control bk_removeEventHandlersForControlEvents:UIControlEventEditingDidBegin];
+            [control bk_removeEventHandlersForControlEvents:UIControlEventEditingDidEnd];
+        }
     }];
 }
 
