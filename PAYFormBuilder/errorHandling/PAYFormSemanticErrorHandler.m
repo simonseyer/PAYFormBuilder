@@ -19,16 +19,33 @@
 #import <BlocksKit/UIControl+BlocksKit.h>
 #import <objc/runtime.h>
 #import <libextobjc/extobjc.h>
+#import "PAYFormErrorStyler.h"
 
 static char popUpKey;
 
+@interface PAYFormSemanticErrorHandler ()
+
+@property (nonatomic, retain) PAYFormErrorStyler *styler;
+
+@end
+
+
 @implementation PAYFormSemanticErrorHandler
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.styler = [PAYFormErrorStyler new];
+    }
+    return self;
+}
 
 - (BOOL)handleErrors:(NSArray *)errors {
     BOOL first = YES;
     for (NSError *error in errors) {
         if ([error.field conformsToProtocol:@protocol(PAYFormRow) ]) {
             id<PAYFormRow, PAYValidatableFormCell> formRow = (id<PAYFormRow,PAYValidatableFormCell>)error.field;
+            [self.styler styleField:formRow];
             
             PAYFormErrorMessage *errorMessage = [PAYFormErrorMessageManager errorMessageForError:error];
             NSString *msg = [errorMessage messageForField:error.field];
