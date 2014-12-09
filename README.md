@@ -20,7 +20,7 @@ Features
 
 Structure
 ---------
-This short overview of the structure written in objective-c-pseudo-code should give you an idear, how to work with FormBuilder.
+This short overview of the structure written in objective-c-pseudo-code should give you an idea of how to work with FormBuilder.
 ```
 @class YourTableViewController : PAYFormTableViewController
 
@@ -60,7 +60,7 @@ In order to create a form screen, you have to inherit from the `PAYFormTableView
 ```
 
 ### Sections
-With the `tableBuilder` you are able to add sections to the form and do some form-wide configuration. To add sections you use the following method or one of its convience counter parts.
+With the `tableBuilder` you are able to add sections to the form and do some form-wide configuration. To add sections you use the following method or one of its convenience counter parts.
 
 ```obj-c
 - (PAYFormSection *)addSectionWithName:(NSString *)name 
@@ -85,8 +85,8 @@ But there is also a generic `addView:` method you could call on the `sectionBuil
 ### Error Handling
 In the library there are two ways of error handling. Both are based on the error codes of `NSError`. For the builtin validation functions, these are listed in the `PAYErrorCodes.h`file. For your custom validations, you define them when throwing an error.
 
-* **Custom**: Just set the `formFailBlock` of the `PAYFormBuilder`. You get notified when the user finished the form with errors. To differentiate between different errors use the error code of the `NSError`.
-* **Automatic**: By default, the automatic error handling is activated, which shows an error alert to the user when he did a mistake. You configure this error handler in the following way:
+* **Custom**: Just set the `formFailBlock` of the `PAYFormBuilder`. You get notified when the user finished the form with errors. To distinguish between different errors use the error code of the `NSError`.
+* **Automatic**: By default, the automatic error handling is activated, which shows an error alert to the user when he made a mistake. You configure this error handler in the following way:
   * Call `setErrorMessage:forErrorCode:` on
     * the `PAYFormDefaultErrorHandler` class
     * on the `PAYFormView` class or of one of its subclasses (`PAYFormField`, `PAYFormButton`, ...)
@@ -94,12 +94,12 @@ In the library there are two ways of error handling. Both are based on the error
   
     The rule of thumb for the priority of the error messages is: the more specific a class/instance is, the higher the priority. Instances have a higher priority than classes. The error messages are of the type `PAYFormErrorMessage`. Look at the initializer of the class for different ways of error message creation.
     
-  * Call `setButtonText:` on the `PAYFormDefaultErrorHandler` class to configure the dissmiss button the alert. This step is **required**.
+  * Call `setButtonText:` on the `PAYFormDefaultErrorHandler` class to configure the button that dismisses the alert. This step is **required**.
 
 
 Example
 -------
-To create a registration form is common task in app development, so it is here used as example to show some of the possiblities of the PAYFormBuilder. To get an overview of all features, please run the example app.
+To create a registration form is a common task in app development, so it is here used as example to show some of the possiblities of the PAYFormBuilder. To get an overview of all features, please run the example app.
 
 [![](Images/thumb/registrationForm3.png)](Images/registrationForm3.png)
 
@@ -266,7 +266,7 @@ Installation
 1. Drag and drop **PAYFormBuilder.xcodeproj** in your project navigator.
 2. Select your target and go to the *Build Phases* tab. In the *Link Binary With Libraries* section select the add button. On the sheet find and add libPAYFormBuilder.a.
 3. Add Target **PAYFormBuilder** to your *Target Dependencies* list.
-4. `import <PAYFormBuilder/PAYFormBuilder.h>` whereever you want to use the components. You could add it to your Prefix header file, if you want.
+4. `import <PAYFormBuilder/PAYFormBuilder.h>` wherever you want to use the components. You could add it to your Prefix header file, if you want.
 
 Requirements
 ------------
