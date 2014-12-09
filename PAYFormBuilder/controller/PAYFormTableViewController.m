@@ -110,7 +110,7 @@
 
 #pragma mark - UITableViewDataSource's implementation
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {Ø
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.table.sections.count;
 }
 
