@@ -139,7 +139,7 @@ To create a registration form is a common task in app development, so it is here
                         contentBlock:^(PAYFormSectionBuilder *sectionBuilder) {
         self.userNameField = [sectionBuilder addFieldWithName:@"Username" placeholder:@"your username"
                                                configureBlock:^(PAYFormSingleLineTextField *formField) {
-                                                   formField.isRequired = YES;
+                                                   formField.required = YES;
                                                    formField.minTextLength = 4;
                                                }];
         
@@ -179,14 +179,14 @@ To create a registration form is a common task in app development, so it is here
                         contentBlock:^(PAYFormSectionBuilder *sectionBuilder) {
         self.streetTextField = [sectionBuilder addFieldWithName:@"Street" placeholder:@"your street"
                                                  configureBlock:^(PAYFormSingleLineTextField *formField) {
-                                                     formField.isRequired = YES;
+                                                     formField.required = YES;
                                                      formField.expanding  = YES;
                                                  }];
         
         self.postalCodeTextField = [sectionBuilder addFieldWithName:@"Postal code" 
                                                         placeholder:@"your postal code"
                                                      configureBlock:^(PAYFormSingleLineTextField *formField) {
-                                                         formField.isRequired = YES;
+                                                         formField.required = YES;
                                                          formField.cleanBlock = ^id(PAYFormField *formField, id value) {
                                                              NSString *strValue = value;
                                                              return [strValue stringByReplacingOccurrencesOfString:@" " 
@@ -195,7 +195,7 @@ To create a registration form is a common task in app development, so it is here
                                                      }];
         self.cityTextField = [sectionBuilder addFieldWithName:@"City" placeholder:@"your city"
                                                configureBlock:^(PAYFormSingleLineTextField *formField) {
-                                                   formField.isRequired = YES;
+                                                   formField.required = YES;
                                                }];
     }];
     
@@ -205,7 +205,7 @@ To create a registration form is a common task in app development, so it is here
                         contentBlock:^(PAYFormSectionBuilder *sectionBuilder) {
         self.formSwitch = [sectionBuilder addSwitchWithName:@"Accept"
                                              configureBlock:^(PAYFormSwitch *formSwitch) {
-        	formSwitch.isRequired = YES;
+        	formSwitch.required = YES;
                                                  
            [formSwitch setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"Accept"
                                                                           message:@"Please accept the terms and conditions to continue"]
