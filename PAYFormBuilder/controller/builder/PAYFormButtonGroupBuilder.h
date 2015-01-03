@@ -24,7 +24,7 @@
 /**
  *  Activates the validation for a required option
  */
-@property (nonatomic, assign) BOOL isRequired;
+@property (nonatomic, assign, getter=isRequired) BOOL required;
 
 /**
  *  Add an option with a value and a label text. For each option

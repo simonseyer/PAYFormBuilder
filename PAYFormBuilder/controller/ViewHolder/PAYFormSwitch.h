@@ -27,7 +27,7 @@
 /**
  *  Validates, that the control is selected
  */
-@property (nonatomic, assign) BOOL isRequired;
+@property (nonatomic, assign, getter=isRequired) BOOL required;
 
 /**
  *  True, when the switch is turned on, false otherwise

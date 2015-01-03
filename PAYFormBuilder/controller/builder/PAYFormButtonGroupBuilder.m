@@ -15,7 +15,7 @@
 
 @implementation PAYFormButtonGroupBuilder
 
-@dynamic isRequired;
+@dynamic required;
 
 - (PAYFormButton *)addOption:(id)value
                     withText:(NSString *)text {

@@ -103,7 +103,7 @@
     [tableBuilder addSectionWithName:@"Terms and Conditions" contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         self.formSwitch = [sectionBuilder addSwitchWithName:@"Accept"
                                              configureBlock:^(PAYFormSwitch *formSwitch) {
-                                                 formSwitch.isRequired = YES;
+                                                 formSwitch.required = YES;
                                                  
                                                  [formSwitch setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"Accept"
                                                                                                                 message:@"Please accept the terms and conditions to continue"]

@@ -73,7 +73,7 @@
 }
 
 - (NSError *)prevalidate {
-    if (self.isRequired && self.isEmpty) {
+    if (self.required && self.isEmpty) {
         return [NSError validationErrorWithCode:PAYFormMissingErrorCode control:self];
     }
     return nil;

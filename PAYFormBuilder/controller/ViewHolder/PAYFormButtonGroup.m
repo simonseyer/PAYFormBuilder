@@ -48,7 +48,7 @@
 }
 
 - (NSError *)validate {
-    if (self.isRequired && _selectedOptions.count == 0) {
+    if (self.required && _selectedOptions.count == 0) {
         return [NSError validationErrorWithCode:PAYFormMissingErrorCode
                                         control:self];
     }
