@@ -24,7 +24,7 @@
 }
 
 -(NSError *)validate {
-    if (self.isRequired && !self.switchControl.isOn) {
+    if (self.required && !self.switchControl.isOn) {
         return [NSError validationErrorWithCode:PAYFormMissingErrorCode control:self];
     }
     return nil;

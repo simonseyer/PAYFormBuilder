@@ -36,7 +36,7 @@
                                                   formField.textField.isAccessibilityElement = YES;
                                               }];
                             [sectionBuilder addSwitchWithName:@"Required" configureBlock:^(PAYFormSwitch *formSwitch) {
-                                formSwitch.isRequired = YES;
+                                formSwitch.required = YES;
                                 formSwitch.switchControl.accessibilityLabel = @"requiredSwitch";
                                 formSwitch.switchControl.isAccessibilityElement = YES;
                             }];
@@ -54,7 +54,7 @@
             button0.view.accessibilityLabel = @"option1";
             button0.view.isAccessibilityElement = YES;
             [groupBuilder addOption:@1 withText:@"Option 2"];
-            groupBuilder.isRequired = YES;
+            groupBuilder.required = YES;
         }];
     }];
     [tableBuilder addSectionWithName:@"Required text view" contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {

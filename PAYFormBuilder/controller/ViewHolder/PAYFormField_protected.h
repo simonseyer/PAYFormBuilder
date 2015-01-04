@@ -33,7 +33,7 @@
 - (void)styleForError:(NSError *)error;
 
 /**
- *  Uses the integrated validators (for example isRequired) to check
+ *  Uses the integrated validators (for example required) to check
  *  the validity of the field
  *
  *  @return an error, when the field is not valid, nil otherwise

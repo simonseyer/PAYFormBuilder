@@ -30,7 +30,7 @@
 /**
  *  Validates that at least one button is selected
  */
-@property (nonatomic, assign) BOOL isRequired;
+@property (nonatomic, assign, getter=isRequired) BOOL required;
 
 /**
  *  The list of selected values
