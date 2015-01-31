@@ -24,6 +24,11 @@
 @property (nonatomic, weak) id<UITextViewDelegate> delegate;
 
 /**
+ *  A property to set for dynamic height adjustable field
+ */
+@property (nonatomic, assign) BOOL isAdjustable;
+
+/**
  *  Adjusts the height of the text view to the content height
  */
 - (void)adjustSizeToContent;
@@ -34,5 +39,14 @@
  *  @param maxHeight the maximum height of the text view
  */
 - (void)adjustSizeToContentWithMaxHeight:(CGFloat)maxHeight;
+
+
+/**
+ *  Adjusts the height of the text view to the content height
+ *  to fit the current text value without scrolling
+ *
+ */
+
+- (void)changeHeight:(BOOL)animated;
 
 @end

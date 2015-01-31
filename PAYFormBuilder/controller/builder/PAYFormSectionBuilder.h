@@ -117,6 +117,32 @@
  */
 - (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock;
 
+/**
+ *  Add a multiline textfield with a placeholder and option for an adjustable height.
+ *
+ *
+ *  @param placeholder    the text that should be displayed as placeholder
+ *  @param isAdjustable   boolean to set adjustability
+ *
+ *  @return the model object of the textfield. It could be for example used to get the input, the user entered in the textfield.
+*/
+- (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder adjustable:(BOOL)isAdjustable;
+
+/**
+ *  Add a multiline textfield with a placeholder and option for an adjustable height and a block for customization.
+ *
+ *
+ *  @param placeholder    the text that should be displayed as placeholder
+ *  @param isAdjustable   boolean to set adjustability
+ *  @param configureBlock a block that gets the preconfigurred PAYFormMultiLineTextField and
+ *                        could modify it's parameters. It's for example used to set validators.
+ *
+ *  @return the model object of the textfield. It could be for example used to get the input, the user entered in the textfield.
+ */
+- (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder adjustable:(BOOL)isAdjustable configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock;
+
+
+
 #pragma mark - Add buttons
 
 /**
