@@ -97,7 +97,7 @@ static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     NSString *newText = [textView.text stringByReplacingCharactersInRange:range withString:text];
-    BOOL applyText = NO;
+    BOOL applyText = YES;
     newText = self.cleanBlock(self, newText);
     
     if (self.maxTextLength > 0 && newText.length > self.maxTextLength && !self.mayExceedMaxLength) {
@@ -125,10 +125,10 @@ static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
     
     if (applyText && self.formatBlock) {
         textView.text = newText;
+        applyText = NO;
     }
     
-    // Should change, if the intercepted delegate returned YES and there is no format block
-    return  !self.formatBlock && applyText;
+    return  applyText;
 }
 
 - (void)adjustSizeToContent {
