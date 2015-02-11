@@ -96,6 +96,8 @@ In the library there are two ways of error handling. Both are based on the error
     
   * Call `setButtonText:` on the `PAYFormDefaultErrorHandler` class to configure the button that dismisses the alert. This step is **required**.
 
+### Custom text delegates
+The delegates of the wrapped `UITextField` and the `UITextView` are set by the framework to support validation and format features. To add custom delegates, just set them as  `delegate` of the ViewHolder (`PayFormSingleLineTextField` for example). If the `maxTextLength` validation contstraint succeeds, your delegate will be executed with the formatted text. 
 
 Example
 -------
