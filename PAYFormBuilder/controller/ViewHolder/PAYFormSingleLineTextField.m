@@ -128,7 +128,7 @@ static const NSUInteger RPFormSingleLineTextFieldPasswordMaxTextLength = 128;
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    BOOL applyText = NO;
+    BOOL applyText = YES;
     newText = self.cleanBlock(self, newText);
     
     if (self.maxTextLength > 0 && newText.length > self.maxTextLength && !self.mayExceedMaxLength) {
@@ -156,10 +156,10 @@ static const NSUInteger RPFormSingleLineTextFieldPasswordMaxTextLength = 128;
     
     if (applyText && self.formatBlock) {
         textField.text = newText;
+        applyText = NO;
     }
     
-    // Should change, if the intercepted delegate returned YES and there is no format block
-    return  !self.formatBlock && applyText;
+    return  applyText;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
