@@ -127,9 +127,10 @@ static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
     return YES;
 }
 
-- (void)textViewDidChange:(UITextView *)textView{
-    if(_isAdjustable)
+- (void)textViewDidChange:(UITextView *)textView {
+    if (_isAdjustable) {
         [self changeHeight:YES];
+    }
 }
 
 - (void)adjustSizeToContent {
@@ -153,44 +154,33 @@ static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
     self.view.frame = cellRect;
 }
 
-- (void)changeHeight:(BOOL)animated{
-    
+- (void)changeHeight:(BOOL)animated {
     CGFloat newHeight =  [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, CGFLOAT_MAX)].height;
     BOOL heightChanged = (newHeight != self.textView.frame.size.height);
-    
-    if(heightChanged){
+    if (heightChanged) {
         [[NSNotificationCenter defaultCenter] postNotificationName:PAYFormRowHeightChangeBeginNotification object:nil];
-        
-        if(animated){
+        if (animated) {
             [UIView animateWithDuration:0.2
                              animations:^{
                                  CGRect frame = self.textView.frame;
                                  frame.size.height = newHeight;
                                  self.textView.frame = frame;
-                                 
                                  frame = self.view.frame;
                                  frame.size.height = newHeight;
                                  self.view.frame = frame;
                              }completion:^(BOOL finished) {
                                  [[NSNotificationCenter defaultCenter] postNotificationName:PAYFormRowHeightChangeEndNotification object:nil];
                              }];
-        }
-        else{
+        } else {
             CGRect frame = self.textView.frame;
             frame.size.height = newHeight;
             self.textView.frame = frame;
-            
             frame = self.view.frame;
             frame.size.height = newHeight;
             self.view.frame = frame;
-            
             [[NSNotificationCenter defaultCenter] postNotificationName:PAYFormRowHeightChangeEndNotification object:nil];
         }
-        
     }
-    
-    
-    
 }
 
 

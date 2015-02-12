@@ -157,9 +157,9 @@
     
     CGRect textViewFrame      = self.defaultBounds;
     // Two line heights for top and bottom contentInset
-    if(isAdjustable){
+    if (isAdjustable) {
         textViewFrame.size.height = textView.font.lineHeight * self.defaultTextViewLineCount;
-    }else{
+    }else {
         textViewFrame.size.height = textView.font.lineHeight * (2 + self.defaultTextViewLineCount);
     }
     textView.frame            = textViewFrame;
@@ -172,26 +172,15 @@
     formField.view     = cell;
     formField.textView = textView;
     formField.name     = self.section.name;
-
-    if(isAdjustable){
-        formField.isAdjustable = YES;
-        formField.textView.scrollEnabled = NO;
-    }
-    else{
-        formField.isAdjustable = NO;
-        formField.textView.scrollEnabled = YES;
-    }
+    formField.isAdjustable = isAdjustable;
+    formField.textView.scrollEnabled = !isAdjustable;
     
-    if(configureBlock){
+    if (configureBlock) {
         configureBlock(formField);
     }
-    
     [self.section.views addObject:formField];
-    
     return formField;
 }
-
-
 
 - (SZTextView *)defaultTextView {
     SZTextView *textView        = [SZTextView new];
