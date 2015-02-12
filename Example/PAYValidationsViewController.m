@@ -61,10 +61,10 @@
         }];
     }];
     [tableBuilder addSectionWithName:@"Required text view" contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
-        [sectionBuilder addTextViewWithPlaceholder:@"Required" configureBlock:^(PAYFormMultiLineTextField *textField) {
-            textField.required = YES;
-            textField.textView.accessibilityLabel = @"textView";
-            textField.textView.isAccessibilityElement = YES;
+        [sectionBuilder addTextViewWithPlaceholder:@"Required" configureBlock:^(PAYFormMultiLineTextField *textView) {
+            textView.required = YES;
+            textView.textView.accessibilityLabel = @"textView";
+            textView.textView.isAccessibilityElement = YES;
         }];
     }];
     [tableBuilder addSectionWithLabelStyle:PAYFormTableLabelStyleNone contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
