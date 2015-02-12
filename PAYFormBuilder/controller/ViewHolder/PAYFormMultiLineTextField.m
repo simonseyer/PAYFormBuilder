@@ -38,6 +38,13 @@ static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
     return self.textView.text;
 }
 
+- (NSString *)name {
+    if ([self.textView respondsToSelector:@selector(placeholder)]) {
+        return [self.textView performSelector:@selector(placeholder)];
+    }
+    return @"";
+}
+
 - (BOOL)becomeFirstResponder {
     [super becomeFirstResponder];
     return [self.textView becomeFirstResponder];
