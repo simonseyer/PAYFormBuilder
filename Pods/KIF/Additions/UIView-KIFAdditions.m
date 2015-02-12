@@ -66,6 +66,39 @@ static CGFloat const kTwoFingerConstantWidth = 40;
 
 @end
 
+// On iOS 6 the accessibility label may contain line breaks, so when trying to find the
+// element, these line breaks are necessary. But on iOS 7 the system replaces them with
+// spaces. So the same test breaks on either iOS 6 or iOS 7. iOS8 befuddles this again by
+//limiting replacement to spaces in between strings. To work around this replace
+// the line breaks in both and try again.
+NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual) {
+    if (expected == actual) {
+        return YES;
+    }
+    
+    if (expected.length != actual.length) {
+        return NO;
+    }
+    
+    if ([expected isEqualToString:actual]) {
+        return YES;
+    }
+    
+    if ([expected rangeOfString:@"\n"].location == NSNotFound) {
+        return NO;
+    }
+    
+    for (NSUInteger i = 0; i < expected.length; i ++) {
+        unichar expectedChar = [expected characterAtIndex:i];
+        unichar actualChar = [actual characterAtIndex:i];
+        if (expectedChar != actualChar && !(expectedChar == '\n' && actualChar == ' ')) {
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
 
 @implementation UIView (KIFAdditions)
 
@@ -109,17 +142,7 @@ static CGFloat const kTwoFingerConstantWidth = 40;
             accessibilityValue = [(NSAttributedString *)accessibilityValue string];
         }
         
-        BOOL labelsMatch = element.accessibilityLabel == label || [element.accessibilityLabel isEqual:label];
-
-        // On iOS 6 the accessibility label may contain line breaks, so when trying to find the
-        // element, these line breaks are necessary. But on iOS 7 the system replaces them with
-        // spaces. So the same test breaks on either iOS 6 or iOS 7. To work around this replace
-        // the line breaks the same way and try again.
-        if (!labelsMatch) {
-            NSString *modifiedLabel = [label stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-            labelsMatch = element.accessibilityLabel == modifiedLabel || [element.accessibilityLabel isEqual:modifiedLabel];
-        }
-
+        BOOL labelsMatch = StringsMatchExceptLineBreaks(label, element.accessibilityLabel);
         BOOL traitsMatch = ((element.accessibilityTraits) & traits) == traits;
         BOOL valuesMatch = !value || [value isEqual:accessibilityValue];
 
@@ -219,17 +242,19 @@ static CGFloat const kTwoFingerConstantWidth = 40;
                     continue;
                 }
                 
-                // Get the cell directly from the dataSource because UICollectionView will only vend visible cells
-                UICollectionViewCell *cell = [collectionView.dataSource collectionView:collectionView cellForItemAtIndexPath:indexPath];
-                
-                UIAccessibilityElement *element = [cell accessibilityElementMatchingBlock:matchBlock];
-                
-                // Remove the cell from the collection view so that it doesn't stick around
-                [cell removeFromSuperview];
-                
-                // Skip this cell if it isn't the one we're looking for
-                if (!element) {
-                    continue;
+                @autoreleasepool {
+                    // Get the cell directly from the dataSource because UICollectionView will only vend visible cells
+                    UICollectionViewCell *cell = [collectionView.dataSource collectionView:collectionView cellForItemAtIndexPath:indexPath];
+                    
+                    UIAccessibilityElement *element = [cell accessibilityElementMatchingBlock:matchBlock];
+                    
+                    // Remove the cell from the collection view so that it doesn't stick around
+                    [cell removeFromSuperview];
+                    
+                    // Skip this cell if it isn't the one we're looking for
+                    if (!element) {
+                        continue;
+                    }
                 }
                 
                 // Scroll to the cell and wait for the animation to complete
@@ -476,23 +501,26 @@ static CGFloat const kTwoFingerConstantWidth = 40;
         }
         else
         {
+            UITouch *touch;
             for (NSUInteger pathIndex = 0; pathIndex < arrayOfPaths.count; pathIndex++)
             {
                 NSArray *path = arrayOfPaths[pathIndex];
                 CGPoint point = [path[pointIndex] CGPointValue];
-                UITouch *touch = touches[pathIndex];
-                if (pointIndex < pointsInPath - 1) {
-                    [touch setLocationInWindow:[self.window convertPoint:point fromView:self]];
-                    [touch setPhaseAndUpdateTimestamp:UITouchPhaseMoved];
-                }
-                else {
-                    [touch setPhaseAndUpdateTimestamp:UITouchPhaseEnded];
-                }
+                touch = touches[pathIndex];
+                [touch setLocationInWindow:[self.window convertPoint:point fromView:self]];
+                [touch setPhaseAndUpdateTimestamp:UITouchPhaseMoved];
             }
             UIEvent *event = [self eventWithTouches:[NSArray arrayWithArray:touches]];
             [[UIApplication sharedApplication] sendEvent:event];
 
             CFRunLoopRunInMode(UIApplicationCurrentRunMode, DRAG_TOUCH_DELAY, false);
+
+            // The last point needs to also send a phase ended touch.
+            if (pointIndex == pointsInPath - 1) {
+                [touch setPhaseAndUpdateTimestamp:UITouchPhaseEnded];
+                UIEvent *eventUp = [self eventWithTouch:touch];
+                [[UIApplication sharedApplication] sendEvent:eventUp];
+            }
         }
     }
 
@@ -702,7 +730,8 @@ static CGFloat const kTwoFingerConstantWidth = 40;
 
 - (UIEvent *)eventWithTouch:(UITouch *)touch;
 {
-    return [self eventWithTouches:@[touch]];
+    NSArray *touches = touch ? @[touch] : nil;
+    return [self eventWithTouches:touches];
 }
 
 - (BOOL)isUserInteractionActuallyEnabled;
@@ -754,6 +783,51 @@ static CGFloat const kTwoFingerConstantWidth = 40;
     }
     
     return nil;
+}
+
+- (BOOL)isVisibleInViewHierarchy
+{
+    __block BOOL result = YES;
+    [self performBlockOnAscendentViews:^(UIView *view, BOOL *stop) {
+        if (view.isHidden) {
+            result = NO;
+            if (stop != NULL) {
+                *stop = YES;
+            }
+        }
+    }];
+    return result;
+}
+
+- (void)performBlockOnDescendentViews:(void (^)(UIView *view, BOOL *stop))block
+{
+    BOOL stop = NO;
+    [self performBlockOnDescendentViews:block stop:&stop];
+}
+
+- (void)performBlockOnDescendentViews:(void (^)(UIView *view, BOOL *stop))block stop:(BOOL *)stop
+{
+    block(self, stop);
+    if (*stop) {
+        return;
+    }
+    
+    for (UIView *view in self.subviews) {
+        [view performBlockOnDescendentViews:block stop:stop];
+        if (*stop) {
+            return;
+        }
+    }
+}
+
+- (void)performBlockOnAscendentViews:(void (^)(UIView *view, BOOL *stop))block
+{
+    BOOL stop = NO;
+    UIView *checkedView = self;
+    while(checkedView && stop == NO) {
+        block(checkedView, &stop);
+        checkedView = checkedView.superview;
+    }
 }
 
 @end

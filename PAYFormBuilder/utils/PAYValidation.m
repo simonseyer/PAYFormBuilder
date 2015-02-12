@@ -15,7 +15,7 @@
 + (PAYFormFieldValidationBlock)integerValidationBlock {
     return ^NSError *(PAYFormField *formField){
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-        NSNumber *number = [formatter numberFromString:formField.value];
+        NSNumber *number = [formatter numberFromString:formField.cleanedValue];
         if (!!number) {
             return nil;
         } else {

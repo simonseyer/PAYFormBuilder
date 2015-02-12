@@ -42,7 +42,12 @@ static const NSUInteger RPFormSingleLineTextFieldPasswordMaxTextLength = 128;
 }
 
 - (NSString *)name {
-    return self.label.text;
+    if (self.label.text.length > 0) {
+        return self.label.text;
+    } else if (self.textField.placeholder.length > 0) {
+        return self.textField.placeholder;
+    }
+    return @"";
 }
 
 - (BOOL)becomeFirstResponder {

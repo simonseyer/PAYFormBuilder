@@ -136,7 +136,7 @@
 
 - (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder
                                            configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock {
-    return [self addTextViewWithPlaceholder:placeholder adjustable:NO configureBlock:NULL];
+    return [self addTextViewWithPlaceholder:placeholder adjustable:NO configureBlock:configureBlock];
 }
 
 - (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder
