@@ -51,6 +51,7 @@
 
 @property (nonatomic, assign) CGFloat labelStyleNoneDefaultHeight UI_APPEARANCE_SELECTOR;
 @property (nonatomic, assign) CGFloat labelStylEmptyDefaultHeight UI_APPEARANCE_SELECTOR;
+@property (nonatomic, assign) CGFloat infoIconMargin;
 
 #pragma mark - Add sections
 
@@ -93,6 +94,17 @@
 - (void)addSectionWithName:(NSString *)name contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock;
 
 /**
+ *  Add a new section to the table with a section header label and the default label style PAYFormTableLabelStyleSimple.
+ *
+ *  @param name         the text that should be visible above the section
+ *  @param contentBlock the block to configure the content of the section.
+ *                      A SectionBuilder is passed to accomplish this.
+ *  @param infoBlock    the block that is called when the user pushes the info icon of the section.
+ *                      The info icon is only shown, if this block is set.
+ */
+- (void)addSectionWithName:(NSString *)name contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock infoBlock:(void(^)(UIButton *))infoBlock;
+
+/**
  *  Add a new section to the table with a section header label and a custom label style.
  *
  *  @param name         the text that should be visible above the section
@@ -101,6 +113,18 @@
  *                      A SectionBuilder is passed to accomplish this.
  */
 - (void)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock;
+
+/**
+ *  Add a new section to the table with a section header label and a custom label style.
+ *
+ *  @param name         the text that should be visible above the section
+ *  @param style        the style of the label that is displayed above the section
+ *  @param contentBlock the block to configure the content of the section.
+ *                      A SectionBuilder is passed to accomplish this.
+ *  @param infoBlock    the block that is called when the user pushes the info icon of the section.
+ *                      The info icon is only shown, if this block is set.
+ */
+- (void)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock infoBlock:(void(^)(UIButton *))infoBlock;
 
 /**
  *  Add a new section to the table with a section header label, a custom label style as default and a custom header.
@@ -114,5 +138,20 @@
  *                      A SectionBuilder is passed to accomplish this.
  */
 - (void)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style headerBlock:(void(^)(PAYFormHeader *))headerBlock contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock;
+
+/**
+ *  Add a new section to the table with a section header label, a custom label style as default and a custom header.
+ *
+ *  @param name         the text that should be visible above the section
+ *  @param style        the style of the label that is displayed above the section.
+ *                      Could be changed in the header block.
+ *  @param headerBlock  the block to configure the header of the section.
+ *                      A preconfigured PAYFormHeader is passed, that could be personalized.
+ *  @param contentBlock the block to configure the content of the section.
+ *                      A SectionBuilder is passed to accomplish this.
+ *  @param infoBlock    the block that is called when the user pushes the info icon of the section.
+ *                      The info icon is only shown, if this block is set.
+ */
+- (void)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style headerBlock:(void(^)(PAYFormHeader *))headerBlock contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock infoBlock:(void(^)(UIButton *))infoBlock;
 
 @end

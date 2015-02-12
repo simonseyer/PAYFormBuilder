@@ -35,6 +35,21 @@
                            selectionBlock:nil];
                           }];
     
+    [tableBuilder addSectionWithName:@"Section with info button"
+                        contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
+                            [sectionBuilder addButtonWithText:@"Simple Entry"
+                                                        style:PAYFormButtonStyleDisabledCentered
+                                               selectionBlock:nil];
+                        }
+                           infoBlock:^(UIButton *infoButton) {
+                               UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Info"
+                                                                                   message:@"This alert could explain what the section is about."
+                                                                                  delegate:nil
+                                                                         cancelButtonTitle:@"Dismiss"
+                                                                         otherButtonTitles:@"More help", nil];
+                               [alertView show];
+                           }];
+    
     [tableBuilder addSectionWithName:@"Section with label style description and without any content."
                           labelStyle:PAYFormTableLabelStyleDescription
                         contentBlock:nil];

@@ -14,6 +14,7 @@
 #import "PAYFormHeader.h"
 #import "PAYFormHeader_protected.h"
 #import "PAYTextLabel.h"
+#import "BlocksKit+UIKit.h"
 
 @implementation PAYFormTableBuilder
 
@@ -31,6 +32,7 @@
         
         self.labelStyleNoneDefaultHeight = 32.0f;
         self.labelStylEmptyDefaultHeight = 36.0f;
+        self.infoIconMargin              = 6.0f;
     }
     return self;
 }
@@ -72,6 +74,15 @@
 }
 
 - (void)addSectionWithName:(NSString *)name
+              contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock
+                 infoBlock:(void(^)(UIButton *))infoBlock {
+    [self addSectionWithName:name
+                  labelStyle:PAYFormTableLabelStyleSimple
+                contentBlock:contentBlock
+                   infoBlock:infoBlock];
+}
+
+- (void)addSectionWithName:(NSString *)name
                 labelStyle:(PAYFormTableLabelStyle)style
               contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock {
     [self addSectionWithName:name
@@ -82,11 +93,34 @@
 
 - (void)addSectionWithName:(NSString *)name
                 labelStyle:(PAYFormTableLabelStyle)style
+              contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock
+                 infoBlock:(void(^)(UIButton *))infoBlock {
+    [self addSectionWithName:name
+                  labelStyle:style
+                 headerBlock:nil
+                contentBlock:contentBlock
+                   infoBlock:infoBlock];
+}
+
+- (void)addSectionWithName:(NSString *)name
+                labelStyle:(PAYFormTableLabelStyle)style
                headerBlock:(void(^)(PAYFormHeader *))headerBlock
               contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock {
+    [self addSectionWithName:name
+                  labelStyle:style
+                 headerBlock:nil
+                contentBlock:contentBlock
+                   infoBlock:nil];
+}
+
+- (void)addSectionWithName:(NSString *)name
+                labelStyle:(PAYFormTableLabelStyle)style
+               headerBlock:(void(^)(PAYFormHeader *))headerBlock
+              contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock
+                 infoBlock:(void (^)(UIButton *))infoBlock {
     PAYFormSection *formSection = [PAYFormSection new];
     formSection.name = name;
-    formSection.header = [self headerViewWithStyle:style name:name];
+    formSection.header = [self headerViewWithStyle:style name:name infoBlock:infoBlock];
     if (headerBlock) {
         headerBlock(formSection.header);
     }
@@ -101,7 +135,8 @@
 }
 
 - (PAYFormHeader *)headerViewWithStyle:(PAYFormTableLabelStyle)style
-                                  name:(NSString *)name {
+                                  name:(NSString *)name
+                             infoBlock:(void (^)(UIButton *))infoBlock {
     UIView *headerView         = [[UIView alloc] initWithFrame:self.defaultBounds];
     headerView.backgroundColor = UIColor.clearColor;
     
@@ -119,8 +154,17 @@
         
         headerRect.size.height = CGRectGetMaxY(textLabel.frame);
     }
-    headerView.frame       = headerRect;
-
+    headerView.frame = headerRect;
+    
+    if (infoBlock) {
+        UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+        infoButton.frame = CGRectMake(headerView.frame.size.width - infoButton.frame.size.width - self.infoIconMargin,
+                                      headerView.frame.size.height - infoButton.frame.size.height - self.infoIconMargin,
+                                      infoButton.frame.size.width, infoButton.frame.size.height);
+        [infoButton bk_addEventHandler:infoBlock forControlEvents:UIControlEventTouchUpInside];
+        [headerView addSubview:infoButton];
+    }
+    
     PAYFormHeader *formHeader    = [PAYFormHeader new];
     formHeader.view             = headerView;
     formHeader.label            = textLabel;
