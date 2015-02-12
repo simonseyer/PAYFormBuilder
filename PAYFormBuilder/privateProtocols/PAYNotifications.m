@@ -9,3 +9,5 @@
 #import "PAYNotifications.h"
 
 NSString * const PAYFormRowFocusRequestNotification = @"PAYFormRowFocusRequestNotification";
+NSString * const PAYFormRowHeightChangeBeginNotification = @"PAYFormRowHeightChangeBeginNotification";
+NSString * const PAYFormRowHeightChangeEndNotification = @"PAYFormRowHeightChangeEndNotification";

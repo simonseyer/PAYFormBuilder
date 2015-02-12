@@ -136,34 +136,49 @@
 
 - (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder
                                            configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock {
+    return [self addTextViewWithPlaceholder:placeholder adjustable:NO configureBlock:NULL];
+}
+
+- (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder
+                                               adjustable:(BOOL)isAdjustable{
+    return [self addTextViewWithPlaceholder:placeholder adjustable:isAdjustable configureBlock:NULL];
+}
+
+- (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder
+                                               adjustable:(BOOL)isAdjustable
+                                           configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock {
     SZTextView *textView            = self.defaultTextView;
     textView.font                   = [UIFont fontWithName:PAYStyle.theme.fontName
                                                       size:self.defaultFontSize];
-    textView.placeholderTextColor   = self.defaultPlaceholderColor;    
+    textView.placeholderTextColor   = self.defaultPlaceholderColor;
     if (placeholder) {
         textView.placeholder            = placeholder;
     }
     
     CGRect textViewFrame      = self.defaultBounds;
     // Two line heights for top and bottom contentInset
-    textViewFrame.size.height = textView.font.lineHeight * (2 + self.defaultTextViewLineCount);
+    if (isAdjustable) {
+        textViewFrame.size.height = textView.font.lineHeight * self.defaultTextViewLineCount;
+    }else {
+        textViewFrame.size.height = textView.font.lineHeight * (2 + self.defaultTextViewLineCount);
+    }
     textView.frame            = textViewFrame;
     
     UITableViewCell *cell = self.defaultCell;
     cell.frame            = textViewFrame;
     [cell addSubview:textView];
-
+    
     PAYFormMultiLineTextField *formField = [PAYFormMultiLineTextField new];
     formField.view     = cell;
     formField.textView = textView;
     formField.name     = self.section.name;
+    formField.isAdjustable = isAdjustable;
+    formField.textView.scrollEnabled = !isAdjustable;
     
-    if(configureBlock){
+    if (configureBlock) {
         configureBlock(formField);
     }
-    
     [self.section.views addObject:formField];
-    
     return formField;
 }
 

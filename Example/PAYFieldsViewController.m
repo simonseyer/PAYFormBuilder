@@ -22,6 +22,7 @@
                             [sectionBuilder addFieldWithName:@"Simple field" placeholder:@"placeholder"];
                             [sectionBuilder addFieldWithPlaceholder:@"Full size field"];
                             [sectionBuilder addTextViewWithPlaceholder:@"Text view with placeholder"];
+                            [sectionBuilder addTextViewWithPlaceholder:@"Adjustable Text view with placeholder" adjustable:YES];
                         }];
     
     [tableBuilder addSectionWithName:@"Advanced fields"

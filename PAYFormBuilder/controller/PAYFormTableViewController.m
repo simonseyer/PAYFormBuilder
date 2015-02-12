@@ -56,6 +56,16 @@
                                                name:PAYFormRowFocusRequestNotification
                                              object:nil];
     
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(handleChangeRowHeightBeginRequest:)
+                                               name:PAYFormRowHeightChangeBeginNotification
+                                             object:nil];
+
+    [NSNotificationCenter.defaultCenter addObserver:self
+                                           selector:@selector(handleChangeRowHeightEndRequest:)
+                                               name:PAYFormRowHeightChangeEndNotification
+                                             object:nil];
+    
     if (self.table.selectFirstField) {
         PAYFormSection *firstSection = self.table.sections.firstObject;
         [firstSection.firstFormField becomeFirstResponder];
@@ -157,7 +167,15 @@
 - (void)handleFormRowFocusRequest:(NSNotification *)notfication {
     [self scrollToCell:notfication.object];
 }
-     
+
+- (void)handleChangeRowHeightBeginRequest:(NSNotification *)notification{
+    [self.tableView beginUpdates];
+}
+
+- (void)handleChangeRowHeightEndRequest:(NSNotification *)notification{
+    [self.tableView endUpdates];
+}
+
 - (void)scrollToCell:(UITableViewCell *)cell {
     NSIndexPath *scrollIndexPath = [self.tableView indexPathForRowAtPoint:cell.center];
     [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
