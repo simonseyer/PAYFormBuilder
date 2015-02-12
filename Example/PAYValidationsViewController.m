@@ -43,6 +43,9 @@
                             [sectionBuilder addFieldWithName:@"Number" placeholder:@"only numbers allowed"
                                               configureBlock:^(PAYFormSingleLineTextField *formField) {
                                                   formField.validationBlock = PAYValidation.integerValidationBlock;
+                                                  formField.cleanBlock = (id)^(PAYFormField *formField, NSString *value) {
+                                                      return [value stringByReplacingOccurrencesOfString:@" " withString:@""];
+                                                  };
                                                   formField.textField.accessibilityLabel = @"integerValidationField";
                                                   formField.textField.isAccessibilityElement = YES;
                                               }];
