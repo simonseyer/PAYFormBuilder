@@ -108,7 +108,7 @@
               contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock {
     [self addSectionWithName:name
                   labelStyle:style
-                 headerBlock:nil
+                 headerBlock:headerBlock
                 contentBlock:contentBlock
                    infoBlock:nil];
 }
