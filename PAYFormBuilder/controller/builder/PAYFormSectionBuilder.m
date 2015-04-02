@@ -38,7 +38,6 @@
         self.defaultHorzMargin              = 14.0f;
         self.defaultLabelWidth              = 91.0f;
         self.defaultLabelFieldSpace         = 6.0f;
-        self.defaultDisclosureLeftMargin    = 21.0f;
         self.defaultDisclosureRightMargin   = 28.0f;
         self.defaultIconSize                = 21.0f;
         self.defaultIconMargin              = 17.0f;
@@ -248,12 +247,7 @@
         }
         
         CGRect labelFrame = self.defaultBounds;
-        if (style == PAYFormButtonStyleDisclosure) {
-            labelFrame.origin.x      = self.defaultDisclosureLeftMargin;
-            labelFrame.size.width   -= self.defaultDisclosureLeftMargin +
-                                       self.defaultDisclosureRightMargin;
-            titleLabel.textAlignment = NSTextAlignmentLeft;
-        } else if(style == PAYFormButtonStyleSelection) {
+        if (style == PAYFormButtonStyleDisclosure || style == PAYFormButtonStyleSelection) {
             labelFrame.origin.x      = self.defaultHorzMargin;
             labelFrame.size.width   -= self.defaultHorzMargin +
                                        self.defaultDisclosureRightMargin;
