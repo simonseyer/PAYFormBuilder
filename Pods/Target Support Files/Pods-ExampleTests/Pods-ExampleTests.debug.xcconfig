@@ -1,7 +1,0 @@
-FRAMEWORK_SEARCH_PATHS = $(inherited) "$(SDKROOT)/Developer/Library/Frameworks" "$(PLATFORM_DIR)/Developer/Library/Frameworks"
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/BlocksKit" "${PODS_ROOT}/Headers/Public/KIF" "${PODS_ROOT}/Headers/Public/PAYFormBuilder" "${PODS_ROOT}/Headers/Public/SZTextView" "${PODS_ROOT}/Headers/Public/libextobjc"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/BlocksKit" -isystem "${PODS_ROOT}/Headers/Public/KIF" -isystem "${PODS_ROOT}/Headers/Public/PAYFormBuilder" -isystem "${PODS_ROOT}/Headers/Public/SZTextView" -isystem "${PODS_ROOT}/Headers/Public/libextobjc" -DKIF_SENTEST
-OTHER_LDFLAGS = -ObjC -l"Pods-ExampleTests-BlocksKit" -l"Pods-ExampleTests-KIF" -l"Pods-ExampleTests-PAYFormBuilder" -l"Pods-ExampleTests-SZTextView" -l"Pods-ExampleTests-libextobjc" -framework "CoreGraphics" -framework "MessageUI" -framework "SenTestingKit" -framework "UIKit"
-OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
-PODS_ROOT = ${SRCROOT}/Pods
