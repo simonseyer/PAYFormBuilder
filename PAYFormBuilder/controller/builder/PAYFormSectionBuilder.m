@@ -39,7 +39,7 @@
         self.defaultHorzMargin              = 14.0f;
         self.defaultLabelWidth              = 91.0f;
         self.defaultLabelFieldSpace         = 6.0f;
-        self.defaultDisclosureRightMargin   = 28.0f;
+        self.defaultDisclosureRightMargin   = 36.0f;
         self.defaultIconSize                = 21.0f;
         self.defaultIconMargin              = 17.0f;
         self.defaultLeftIconMargin          = 59.0f;
@@ -50,6 +50,7 @@
         self.defaultButtonPrimaryTextColor  = [UIColor colorFromHex:0xFF214889];
         self.defaultButtonHilightTextColor  = [UIColor colorFromHex:0xFFE87E18];
         self.defaultButtonDisabledTextColor = [UIColor colorFromHex:0xFF898989];
+        self.defaultButtonDetailTextColor   = [UIColor colorFromHex:0xFFCCCCCC];
     }
     return self;
 }
@@ -198,6 +199,18 @@
 }
 
 - (PAYFormButton *)addButtonWithText:(NSString *)text
+                          detailText:(NSString *)detailText
+                               style:(PAYFormButtonStyle)style
+                      selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock {
+    return [self addButtonWithText:text
+                        detailText:detailText
+                             style:style
+                    selectionBlock:selectionBlock
+                    configureBlock:nil];
+}
+
+
+- (PAYFormButton *)addButtonWithText:(NSString *)text
                                style:(PAYFormButtonStyle)style
                                 icon:(UIImage *)icon
                       selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock {
@@ -210,6 +223,18 @@
 }
 
 - (PAYFormButton *)addButtonWithText:(NSString *)text
+                               style:(PAYFormButtonStyle)style
+                      selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock
+                      configureBlock:(void(^)(PAYFormButton *))configureBlock {
+    return [self addButtonWithText:text
+                        detailText:nil
+                             style:style
+                    selectionBlock:selectionBlock
+                    configureBlock:configureBlock];
+}
+
+- (PAYFormButton *)addButtonWithText:(NSString *)text
+                          detailText:(NSString *)detailText
                                style:(PAYFormButtonStyle)style
                       selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock
                       configureBlock:(void(^)(PAYFormButton *))configureBlock {
@@ -230,6 +255,7 @@
     }
     
     UILabel *titleLabel;
+    UILabel *detailLabel;
     if (style != PAYFormButtonStyleEmpty) {
         titleLabel      = [UILabel new];
         titleLabel.text = text;
@@ -264,6 +290,27 @@
         titleLabel.frame = labelFrame;
         
         [cell addSubview:titleLabel];
+        
+        if (detailText) {
+            detailLabel = [UILabel new];
+            detailLabel.text = detailText;
+            detailLabel.font = titleLabel.font;
+            detailLabel.textColor = self.defaultButtonDetailTextColor;
+            detailLabel.textAlignment = NSTextAlignmentRight;
+         
+            CGRect labelFrame = self.defaultBounds;
+            if (style == PAYFormButtonStyleDisclosure ||
+                style == PAYFormButtonStyleIconDisclosure ||
+                style == PAYFormButtonStyleSelection ||
+                style == PAYFormButtonStyleIconSelection) {
+                labelFrame.size.width -= self.defaultDisclosureRightMargin;
+            } else {
+                labelFrame.size.width -= self.defaultHorzMargin;
+            }
+            detailLabel.frame = labelFrame;
+            
+            [cell addSubview:detailLabel];
+        }
     }
         
     UIImageView *iconView;
@@ -284,6 +331,7 @@
     PAYFormButton *formButton  = [PAYFormButton new];
     formButton.view           = cell;
     formButton.titleLabel     = titleLabel;
+    formButton.detailLabel    = detailLabel;
     formButton.style          = style;
     formButton.iconView       = iconView;
     formButton.selectionBlock = selectionBlock;

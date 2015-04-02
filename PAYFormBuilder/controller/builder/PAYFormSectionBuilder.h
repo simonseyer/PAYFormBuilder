@@ -39,6 +39,7 @@
 @property (nonatomic, retain) UIColor      *defaultButtonPrimaryTextColor   UI_APPEARANCE_SELECTOR;
 @property (nonatomic, retain) UIColor      *defaultButtonHilightTextColor   UI_APPEARANCE_SELECTOR;
 @property (nonatomic, retain) UIColor      *defaultButtonDisabledTextColor  UI_APPEARANCE_SELECTOR;
+@property (nonatomic, retain) UIColor      *defaultButtonDetailTextColor    UI_APPEARANCE_SELECTOR;
 
 #pragma mark - Add singleline textfields
 
@@ -158,6 +159,19 @@
 - (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock;
 
 /**
+ *  Add a button with a text and a block that is called, when the user pressed the button.
+ *
+ *  @param text           the text that should be displayed on the button
+ *  @param detailText     the text that should be display as detail information
+ *  @param style          the style that determines the appearance of the button
+ *  @param selectionBlock the block that is called when the user touched the button.
+ *                        The corresponding PAYFormButton is passed.
+ *
+ *  @return the model object of the button
+ */
+- (PAYFormButton *)addButtonWithText:(NSString *)text detailText:(NSString *)detailText style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock;
+
+/**
  *  Add a button with a text, a icon and a block that is called, when the user pressed the button.
  *
  *  @param text           the text that should be displayed on the button
@@ -184,6 +198,21 @@
  *  @return the model object of the button
  */
 - (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock configureBlock:(void(^)(PAYFormButton *))configureBlock;
+
+/**
+ *  Add a button with a text, a customization block and a block that is called, when the user pressed the button.
+ *
+ *  @param text           the text that should be displayed on the button
+ *  @param detailText     the text that should be display as detail information
+ *  @param style          the style that determines the appearance of the button
+ *  @param selectionBlock the block that is called when the user touched the button.
+ *                        The corresponding PAYFormButton is passed.
+ *  @param configureBlock a block that gets the preconfigurred PAYFormButton and
+ *                        could modify it's parameters
+ *
+ *  @return the model object of the button
+ */
+- (PAYFormButton *)addButtonWithText:(NSString *)text detailText:(NSString *)detailText style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock configureBlock:(void(^)(PAYFormButton *))configureBlock;
 
 /**
  *  Add button-group that could be used as single- or multi-selection list. 

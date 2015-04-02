@@ -33,6 +33,11 @@ typedef enum {
 @property (nonatomic, retain, readonly) UILabel *titleLabel;
 
 /**
+ *  The detail label
+ */
+@property (nonatomic, retain, readonly) UILabel *detailLabel;
+
+/**
  *  The icon
  */
 @property (nonatomic, retain, readonly) UIImageView *iconView;
