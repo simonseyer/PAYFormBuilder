@@ -37,6 +37,10 @@
                             [sectionBuilder addButtonWithText:@"Button style disclosure"
                                                         style:PAYFormButtonStyleDisclosure
                                                selectionBlock:nil];
+                            [sectionBuilder addButtonWithText:@"Button style disclosure"
+                                                   detailText:@"with details"
+                                                        style:PAYFormButtonStyleDisclosure
+                                               selectionBlock:nil];
                             [sectionBuilder addButtonWithText:@"Button style selection"
                                                         style:PAYFormButtonStyleSelection
                                                selectionBlock:nil];
