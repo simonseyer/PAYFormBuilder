@@ -25,6 +25,7 @@
 #import "PAYFormView_protected.h"
 #import <SZTextView/SZTextView.h>
 #import "PAYStyle.h"
+#import "PAYSwitch.h"
 
 @implementation PAYFormSectionBuilder
 
@@ -322,7 +323,7 @@
     UILabel *label = [self defaultLabelInRect:self.defaultBounds];
     label.text     = name;
     
-    UISwitch *switchControl   = [UISwitch new];
+    UISwitch *switchControl   = [PAYSwitch new];
     
     CGRect switchFrame     = switchControl.frame;
     switchFrame.origin.x   = self.defaultBounds.size.width -
