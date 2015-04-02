@@ -90,5 +90,11 @@
     };
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.view.tintColor = UIColor.redColor;
+}
+
 
 @end
