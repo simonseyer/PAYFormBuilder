@@ -15,6 +15,7 @@
 #import "PAYFormHeader_protected.h"
 #import "PAYTextLabel.h"
 #import "BlocksKit+UIKit.h"
+#import "PAYStyle.h"
 
 @implementation PAYFormTableBuilder
 
@@ -29,10 +30,6 @@
     self = [super init];
     if (self) {
         self.table = [PAYFormTable new];
-        
-        self.labelStyleNoneDefaultHeight = 32.0f;
-        self.labelStylEmptyDefaultHeight = 36.0f;
-        self.infoIconMargin              = 6.0f;
     }
     return self;
 }
@@ -143,9 +140,9 @@
     PAYTextLabel *textLabel = nil;
     CGRect headerRect = headerView.frame;
     if (style == PAYFormTableLabelStyleNone) {
-        headerRect.size.height = self.labelStyleNoneDefaultHeight;
+        headerRect.size.height = PAYStyle.tableTheme.labelStyleNoneHeight;
     } else if (style == PAYFormTableLabelStyleEmpty) {
-        headerRect.size.height = self.labelStylEmptyDefaultHeight;
+        headerRect.size.height = PAYStyle.tableTheme.labelStyleEmptyHeight;;
     } else {
         textLabel       = [[PAYTextLabel alloc] initWithFrame:self.defaultBounds];
         textLabel.style = style;
@@ -158,8 +155,8 @@
     
     if (infoBlock) {
         UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-        infoButton.frame = CGRectMake(headerView.frame.size.width - infoButton.frame.size.width - self.infoIconMargin,
-                                      headerView.frame.size.height - infoButton.frame.size.height - self.infoIconMargin,
+        infoButton.frame = CGRectMake(headerView.frame.size.width - infoButton.frame.size.width - PAYStyle.tableTheme.infoIconMargin,
+                                      headerView.frame.size.height - infoButton.frame.size.height - PAYStyle.tableTheme.infoIconMargin,
                                       infoButton.frame.size.width, infoButton.frame.size.height);
         [infoButton bk_addEventHandler:infoBlock forControlEvents:UIControlEventTouchUpInside];
         [headerView addSubview:infoButton];

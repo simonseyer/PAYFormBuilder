@@ -11,4 +11,8 @@
 
 @interface PAYDefaultTheme : NSObject <PAYTheme>
 
+@property (nonatomic, retain) NSString *fontName;
+@property (nonatomic, retain) NSString *subTitleFontName;
+@property (nonatomic, assign) NSUInteger fontSize;
+
 @end

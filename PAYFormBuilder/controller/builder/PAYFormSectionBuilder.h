@@ -22,25 +22,6 @@
  */
 @interface PAYFormSectionBuilder : NSObject
 
-#pragma mark - Default styles
-
-@property (nonatomic, assign) CGFloat       defaultHorzMargin               UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat       defaultLabelWidth               UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat       defaultLabelFieldSpace          UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat       defaultDisclosureRightMargin    UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat       defaultDisclosureLeftMargin     UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat       defaultIconSize                 UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat       defaultIconMargin               UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat       defaultLeftIconMargin           UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) NSUInteger    defaultFontSize                 UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) NSUInteger    defaultTextViewLineCount        UI_APPEARANCE_SELECTOR;
-@property (nonatomic, retain) UIColor      *defaultTextColor                UI_APPEARANCE_SELECTOR;
-@property (nonatomic, retain) UIColor      *defaultPlaceholderColor         UI_APPEARANCE_SELECTOR;
-@property (nonatomic, retain) UIColor      *defaultButtonPrimaryTextColor   UI_APPEARANCE_SELECTOR;
-@property (nonatomic, retain) UIColor      *defaultButtonHilightTextColor   UI_APPEARANCE_SELECTOR;
-@property (nonatomic, retain) UIColor      *defaultButtonDisabledTextColor  UI_APPEARANCE_SELECTOR;
-@property (nonatomic, retain) UIColor      *defaultButtonDetailTextColor    UI_APPEARANCE_SELECTOR;
-
 #pragma mark - Add singleline textfields
 
 /**

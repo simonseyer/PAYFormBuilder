@@ -35,22 +35,6 @@
     if (self) {
         self.section = section;
         self.defaultBounds = defaultBounds;
-        
-        self.defaultHorzMargin              = 14.0f;
-        self.defaultLabelWidth              = 91.0f;
-        self.defaultLabelFieldSpace         = 6.0f;
-        self.defaultDisclosureRightMargin   = 36.0f;
-        self.defaultIconSize                = 21.0f;
-        self.defaultIconMargin              = 17.0f;
-        self.defaultLeftIconMargin          = 59.0f;
-        self.defaultFontSize                = 17.0f;
-        self.defaultTextViewLineCount       = 3;
-        self.defaultTextColor               = [UIColor colorFromHex:0xFF323232];
-        self.defaultPlaceholderColor        = [UIColor colorFromHex:0xFFCACACA];
-        self.defaultButtonPrimaryTextColor  = [UIColor colorFromHex:0xFF214889];
-        self.defaultButtonHilightTextColor  = [UIColor colorFromHex:0xFFE87E18];
-        self.defaultButtonDisabledTextColor = [UIColor colorFromHex:0xFF898989];
-        self.defaultButtonDetailTextColor   = [UIColor colorFromHex:0xFFCCCCCC];
     }
     return self;
 }
@@ -73,20 +57,20 @@
                                      placeholder:(NSString *)placeholder
                                   configureBlock:(void(^)(PAYFormSingleLineTextField *))configureBlock {
     UILabel *label = nil;
-    CGFloat leftFieldMargin = self.defaultHorzMargin;
+    CGFloat leftFieldMargin = PAYStyle.sectionTheme.horizontalMargin;
     if (name) {
         label           = [self defaultLabelInRect:self.defaultBounds];
         label.text      = name;
-        leftFieldMargin = CGRectGetMaxX(label.frame) + self.defaultLabelFieldSpace;
+        leftFieldMargin = CGRectGetMaxX(label.frame) + PAYStyle.sectionTheme.labelFieldSpacing;
     }
     
     UITextField *textField    = [self defaultTextField];
     textField.placeholder     = placeholder;
 
-    CGRect expandedFieldFrame = CGRectInset(self.defaultBounds, self.defaultHorzMargin, 0);
+    CGRect expandedFieldFrame = CGRectInset(self.defaultBounds, PAYStyle.sectionTheme.horizontalMargin, 0);
     CGRect fieldFrame         = self.defaultBounds;
     fieldFrame.origin.x       = leftFieldMargin;
-    fieldFrame.size.width    -= (fieldFrame.origin.x + self.defaultHorzMargin);
+    fieldFrame.size.width    -= (fieldFrame.origin.x + PAYStyle.sectionTheme.horizontalMargin);
     textField.frame           = fieldFrame;
     
     UITableViewCell *cell = self.defaultCell;
@@ -112,12 +96,12 @@
 - (UILabel *)defaultLabelInRect:(CGRect)defaultBounds {
     UILabel *label = [UILabel new];
     CGRect labelFrame     = defaultBounds;
-    labelFrame.origin.x   = self.defaultHorzMargin;
-    labelFrame.size.width = self.defaultLabelWidth;
+    labelFrame.origin.x   = PAYStyle.sectionTheme.horizontalMargin;
+    labelFrame.size.width = PAYStyle.sectionTheme.labelWidth;
     label.frame           = labelFrame;
     label.font            = [UIFont fontWithName:PAYStyle.theme.fontName
-                                            size:self.defaultFontSize];
-    label.textColor       = self.defaultTextColor;
+                                            size:PAYStyle.theme.fontSize];
+    label.textColor       = PAYStyle.sectionTheme.textColor;
     label.adjustsFontSizeToFitWidth = YES;
     
     return label;
@@ -127,7 +111,7 @@
     UITextField *textField    = [UITextField new];
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     textField.font            = [UIFont fontWithName:PAYStyle.theme.fontName
-                                                size:self.defaultFontSize];
+                                                size:PAYStyle.theme.fontSize];
     return textField;
 }
 
@@ -150,8 +134,8 @@
                                            configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock {
     SZTextView *textView            = self.defaultTextView;
     textView.font                   = [UIFont fontWithName:PAYStyle.theme.fontName
-                                                      size:self.defaultFontSize];
-    textView.placeholderTextColor   = self.defaultPlaceholderColor;
+                                                      size:PAYStyle.theme.fontSize];
+    textView.placeholderTextColor   = PAYStyle.sectionTheme.placeholderColor;
     if (placeholder) {
         textView.placeholder            = placeholder;
     }
@@ -159,9 +143,9 @@
     CGRect textViewFrame      = self.defaultBounds;
     // Two line heights for top and bottom contentInset
     if (isAdjustable) {
-        textViewFrame.size.height = textView.font.lineHeight * self.defaultTextViewLineCount;
+        textViewFrame.size.height = textView.font.lineHeight * PAYStyle.sectionTheme.textViewLineCount;
     }else {
-        textViewFrame.size.height = textView.font.lineHeight * (2 + self.defaultTextViewLineCount);
+        textViewFrame.size.height = textView.font.lineHeight * (2 + PAYStyle.sectionTheme.textViewLineCount);
     }
     textView.frame            = textViewFrame;
     
@@ -185,10 +169,10 @@
 
 - (SZTextView *)defaultTextView {
     SZTextView *textView        = [SZTextView new];
-    textView.font               = [UIFont fontWithName:textView.font.fontName
-                                                  size:self.defaultFontSize];
-    textView.textContainerInset = UIEdgeInsetsMake(textView.font.lineHeight, self.defaultHorzMargin,
-                                                   textView.font.lineHeight, self.defaultHorzMargin);
+    textView.font               = [UIFont fontWithName:PAYStyle.theme.fontName
+                                                  size:PAYStyle.theme.fontSize];
+    textView.textContainerInset = UIEdgeInsetsMake(textView.font.lineHeight, PAYStyle.sectionTheme.horizontalMargin,
+                                                   textView.font.lineHeight, PAYStyle.sectionTheme.horizontalMargin);
     return textView;
 }
 
@@ -251,7 +235,7 @@
     }
     
     if (style == PAYFormButtonStyleIconDisclosure || style == PAYFormButtonStyleIconSelection) {
-        cell.separatorInset = UIEdgeInsetsMake(0, self.defaultLeftIconMargin, 0, 0);
+        cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.iconMarginLeft, 0, 0);
     }
     
     UILabel *titleLabel;
@@ -260,29 +244,29 @@
         titleLabel      = [UILabel new];
         titleLabel.text = text;
         titleLabel.font = [UIFont fontWithName:PAYStyle.theme.fontName
-                                          size:self.defaultFontSize];
+                                          size:PAYStyle.theme.fontSize];
         titleLabel.userInteractionEnabled = NO;
         
         if (style == PAYFormButtonStylePrimaryCentered) {
-            titleLabel.textColor = self.defaultButtonPrimaryTextColor;
+            titleLabel.textColor = PAYStyle.sectionTheme.buttonPrimaryTextColor;
         } else if (style == PAYFormButtonStyleHilightedCentered) {
-            titleLabel.textColor = self.defaultButtonHilightTextColor;
+            titleLabel.textColor = PAYStyle.sectionTheme.buttonHilightTextColor;
         } else if (style == PAYFormButtonStyleDisabledCentered) {
-            titleLabel.textColor = self.defaultButtonDisabledTextColor;
+            titleLabel.textColor = PAYStyle.sectionTheme.buttonDisabledTextColor;
         } else {
-            titleLabel.textColor = self.defaultTextColor;
+            titleLabel.textColor = PAYStyle.sectionTheme.textColor;
         }
         
         CGRect labelFrame = self.defaultBounds;
         if (style == PAYFormButtonStyleDisclosure || style == PAYFormButtonStyleSelection) {
-            labelFrame.origin.x      = self.defaultHorzMargin;
-            labelFrame.size.width   -= self.defaultHorzMargin +
-                                       self.defaultDisclosureRightMargin;
+            labelFrame.origin.x      = PAYStyle.sectionTheme.horizontalMargin;
+            labelFrame.size.width   -= PAYStyle.sectionTheme.horizontalMargin +
+                                       PAYStyle.sectionTheme.disclosureMarginRight;
             titleLabel.textAlignment = NSTextAlignmentLeft;
         } else if (style == PAYFormButtonStyleIconDisclosure || style == PAYFormButtonStyleIconSelection) {
-            labelFrame.origin.x      = self.defaultLeftIconMargin;
-            labelFrame.size.width   -= self.defaultLeftIconMargin +
-                                       self.defaultDisclosureRightMargin;
+            labelFrame.origin.x      = PAYStyle.sectionTheme.iconMarginLeft;
+            labelFrame.size.width   -= PAYStyle.sectionTheme.iconMarginLeft +
+                                       PAYStyle.sectionTheme.disclosureMarginRight;
             titleLabel.textAlignment = NSTextAlignmentLeft;
         } else {
             titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -295,7 +279,7 @@
             detailLabel = [UILabel new];
             detailLabel.text = detailText;
             detailLabel.font = titleLabel.font;
-            detailLabel.textColor = self.defaultButtonDetailTextColor;
+            detailLabel.textColor = PAYStyle.sectionTheme.buttonDetailTextColor;
             detailLabel.textAlignment = NSTextAlignmentRight;
          
             CGRect labelFrame = self.defaultBounds;
@@ -303,9 +287,9 @@
                 style == PAYFormButtonStyleIconDisclosure ||
                 style == PAYFormButtonStyleSelection ||
                 style == PAYFormButtonStyleIconSelection) {
-                labelFrame.size.width -= self.defaultDisclosureRightMargin;
+                labelFrame.size.width -= PAYStyle.sectionTheme.disclosureMarginRight;
             } else {
-                labelFrame.size.width -= self.defaultHorzMargin;
+                labelFrame.size.width -= PAYStyle.sectionTheme.horizontalMargin;
             }
             detailLabel.frame = labelFrame;
             
@@ -319,9 +303,9 @@
         iconView.contentMode = UIViewContentModeScaleAspectFill;
         
         CGRect iconFrame = self.defaultBounds;
-        iconFrame.size = CGSizeMake(self.defaultIconSize,
-                                    self.defaultIconSize);
-        iconFrame.origin.x = self.defaultIconMargin;
+        iconFrame.size = CGSizeMake(PAYStyle.sectionTheme.iconSize,
+                                    PAYStyle.sectionTheme.iconSize);
+        iconFrame.origin.x = PAYStyle.sectionTheme.iconMargin;
         iconFrame.origin.y = (self.defaultBounds.size.height - iconFrame.size.height) / 2.0f;
         iconView.frame = iconFrame;
         
@@ -375,13 +359,13 @@
     
     CGRect switchFrame     = switchControl.frame;
     switchFrame.origin.x   = self.defaultBounds.size.width -
-                             switchFrame.size.width - self.defaultHorzMargin;
+                             switchFrame.size.width - PAYStyle.sectionTheme.horizontalMargin;
     switchFrame.origin.y   = (self.defaultBounds.size.height - switchFrame.size.height) / 2.0f;
     switchControl.frame    = switchFrame;
     
     CGRect labelFrame = label.frame;
     labelFrame.size.width  = switchFrame.origin.x;
-    labelFrame.size.width -= labelFrame.origin.x + self.defaultHorzMargin;
+    labelFrame.size.width -= labelFrame.origin.x + PAYStyle.sectionTheme.horizontalMargin;
     label.frame = labelFrame;
     
     UITableViewCell *cell = self.defaultCell;

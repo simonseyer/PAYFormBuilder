@@ -47,12 +47,6 @@
  */
 @property (nonatomic, copy) PAYFormTableFailBlock formFailBlock;
 
-#pragma mark - Default styles
-
-@property (nonatomic, assign) CGFloat labelStyleNoneDefaultHeight UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat labelStylEmptyDefaultHeight UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat infoIconMargin;
-
 #pragma mark - Add sections
 
 /**
