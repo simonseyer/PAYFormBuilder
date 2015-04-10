@@ -54,7 +54,7 @@ PODS:
     - BlocksKit (~> 2)
     - libextobjc (~> 0.4)
     - SZTextView (~> 1.1)
-  - SZTextView (1.2.0)
+  - SZTextView (1.2.1)
 
 DEPENDENCIES:
   - BlocksKit (~> 2)
@@ -72,6 +72,6 @@ SPEC CHECKSUMS:
   KIF: ef1691e54e1d969c3b4fd0b5b56a3d7ddf37f216
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   PAYFormBuilder: 7236e8599d1d91761bc306dba287e23663724b8c
-  SZTextView: a51ef616064ed07ca44403de1e125bb6f4d4f1fa
+  SZTextView: 906df45afd3c1b24fc5252088d5ef8061513c238
 
 COCOAPODS: 0.36.3
