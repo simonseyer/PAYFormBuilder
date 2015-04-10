@@ -26,5 +26,7 @@
 
 - (id<PAYLabelTheme>)forStyle:(PAYFormTableLabelStyle)style;
 
+- (void)setTheme:(id<PAYLabelTheme>) theme forStyle:(PAYFormTableLabelStyle)style;
+
 @end
 

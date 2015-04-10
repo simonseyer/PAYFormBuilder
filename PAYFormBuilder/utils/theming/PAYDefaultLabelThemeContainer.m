@@ -14,101 +14,92 @@
 
 @interface PAYDefaultLabelThemeContainer ()
 
-@property (nonatomic, retain) PAYDefaultLabelTheme *simpleTheme;
-@property (nonatomic, retain) PAYDefaultLabelTheme *descriptionTheme;
-@property (nonatomic, retain) PAYDefaultLabelTheme *descriptionWideTheme;
-@property (nonatomic, retain) PAYDefaultLabelTheme *headerTitleTheme;
-@property (nonatomic, retain) PAYDefaultLabelTheme *headerSubtitleTheme;
+@property (nonatomic, retain) NSMutableDictionary *themes;
 
 @end
 
 @implementation PAYDefaultLabelThemeContainer
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.themes = @{
+                        @(PAYFormTableLabelStyleSimple): [PAYDefaultLabelTheme new],
+                        @(PAYFormTableLabelStyleDescription): [PAYDefaultLabelTheme new],
+                        @(PAYFormTableLabelStyleDescriptionWide): [PAYDefaultLabelTheme new],
+                        @(PAYFormTableLabelStyleHeaderTitle): [PAYDefaultLabelTheme new],
+                        @(PAYFormTableLabelStyleHeaderSubTitle): [PAYDefaultLabelTheme new]
+                        }.mutableCopy;
+        [self loadSimpleTheme];
+    }
+    return self;
+}
+
 - (id<PAYLabelTheme>)forStyle:(PAYFormTableLabelStyle)style {
-    switch (style) {
-        case PAYFormTableLabelStyleSimple:
-            return self.simpleTheme;
-        case PAYFormTableLabelStyleDescription:
-            return self.descriptionTheme;
-        case PAYFormTableLabelStyleDescriptionWide:
-            return self.descriptionWideTheme;
-        case PAYFormTableLabelStyleHeaderTitle:
-            return self.headerTitleTheme;
-        case PAYFormTableLabelStyleHeaderSubTitle:
-            return self.headerSubtitleTheme;
-        default:
-            return nil;
-    }
+    return self.themes[@(style)];
 }
 
-- (PAYDefaultLabelTheme *)simpleTheme {
-    if (!_simpleTheme) {
-        _simpleTheme = [PAYDefaultLabelTheme new];
-        _simpleTheme.insets         = UIEdgeInsetsMake(32, 15, 8, 0);
-        _simpleTheme.fontSize       = 14;
-        _simpleTheme.kerning        = 0.0f;
-        _simpleTheme.lineSpacing    = 1.0f;
-        _simpleTheme.textColor      = [UIColor colorFromHex:0xFF6D6D72];
-        _simpleTheme.uppercased     = YES;
-        _simpleTheme.textAlignment  = NSTextAlignmentNatural;
-    }
-    return _simpleTheme;
+- (void)setTheme:(id<PAYLabelTheme>)theme forStyle:(PAYFormTableLabelStyle)style {
+    self.themes[@(style)] = theme;
 }
 
-- (PAYDefaultLabelTheme *)descriptionTheme {
-    if (!_descriptionTheme) {
-        _descriptionTheme = [PAYDefaultLabelTheme new];
-        _descriptionTheme.insets        = UIEdgeInsetsMake(36, 21, 8, 21);
-        _descriptionTheme.fontSize      = 13;
-        _descriptionTheme.kerning       = 0.15f;
-        _descriptionTheme.lineSpacing   = 4.0f;
-        _descriptionTheme.textColor     = [UIColor colorFromHex:0xFF6A6A6A];
-        _descriptionTheme.uppercased    = NO;
-        _descriptionTheme.textAlignment = NSTextAlignmentCenter;
-    }
-    return _descriptionTheme;
+- (void)loadSimpleTheme {
+    PAYDefaultLabelTheme *theme = self.themes[@(PAYFormTableLabelStyleSimple)];
+    theme.insets         = UIEdgeInsetsMake(32, 15, 8, 0);
+    theme.fontSize       = 14;
+    theme.kerning        = 0.0f;
+    theme.lineSpacing    = 1.0f;
+    theme.textColor      = [UIColor colorFromHex:0xFF6D6D72];
+    theme.uppercased     = YES;
+    theme.textAlignment  = NSTextAlignmentNatural;
 }
 
-- (PAYDefaultLabelTheme *)descriptionWideTheme {
-    if (!_descriptionWideTheme) {
-        _descriptionWideTheme = [PAYDefaultLabelTheme new];
-        _descriptionWideTheme.insets        = UIEdgeInsetsMake(36, 21, 8, 36);
-        _descriptionWideTheme.fontSize      = self.descriptionTheme.fontSize;
-        _descriptionWideTheme.kerning       = self.descriptionTheme.kerning;
-        _descriptionWideTheme.lineSpacing   = self.descriptionTheme.lineSpacing;
-        _descriptionWideTheme.textColor     = self.descriptionTheme.textColor;
-        _descriptionWideTheme.uppercased    = self.descriptionTheme.uppercased;
-        _descriptionWideTheme.textAlignment = self.descriptionTheme.textAlignment;
-    }
-    return _descriptionWideTheme;
+- (void)loadDescriptionTheme {
+    PAYDefaultLabelTheme *theme = self.themes[@(PAYFormTableLabelStyleDescription)];
+    theme.insets        = UIEdgeInsetsMake(36, 21, 8, 21);
+    theme.fontSize      = 13;
+    theme.kerning       = 0.15f;
+    theme.lineSpacing   = 4.0f;
+    theme.textColor     = [UIColor colorFromHex:0xFF6A6A6A];
+    theme.uppercased    = NO;
+    theme.textAlignment = NSTextAlignmentCenter;
 }
 
-- (PAYDefaultLabelTheme *)headerTitleTheme {
-    if (!_headerTitleTheme) {
-        _headerTitleTheme = [PAYDefaultLabelTheme new];
-        _headerTitleTheme.insets        = UIEdgeInsetsMake(0, 21, 0, 21);
-        _headerTitleTheme.fontSize      = 24;
-        _headerTitleTheme.kerning       = 1.05f;
-        _headerTitleTheme.lineSpacing   = self.simpleTheme.lineSpacing;
-        _headerTitleTheme.textColor     = self.simpleTheme.textColor;
-        _headerTitleTheme.uppercased    = NO;
-        _headerTitleTheme.textAlignment = NSTextAlignmentCenter;
-    }
-    return _headerTitleTheme;
+- (void)loadDescriptionWideTheme {
+    PAYDefaultLabelTheme *descriptionTheme = self.themes[@(PAYFormTableLabelStyleDescription)];
+    PAYDefaultLabelTheme *theme = self.themes[@(PAYFormTableLabelStyleDescriptionWide)];
+    theme.insets        = UIEdgeInsetsMake(36, 21, 8, 36);
+    theme.fontSize      = descriptionTheme.fontSize;
+    theme.kerning       = descriptionTheme.kerning;
+    theme.lineSpacing   = descriptionTheme.lineSpacing;
+    theme.textColor     = descriptionTheme.textColor;
+    theme.uppercased    = descriptionTheme.uppercased;
+    theme.textAlignment = descriptionTheme.textAlignment;
 }
 
-- (PAYDefaultLabelTheme *)headerSubtitleTheme {
-    if (!_headerSubtitleTheme) {
-        _headerSubtitleTheme = [PAYDefaultLabelTheme new];
-        _headerSubtitleTheme.insets         = self.headerTitleTheme.insets;
-        _headerSubtitleTheme.fontSize       = 13;
-        _headerSubtitleTheme.kerning        = 1.15f;
-        _headerSubtitleTheme.lineSpacing    = self.simpleTheme.lineSpacing;
-        _headerSubtitleTheme.textColor      = self.simpleTheme.textColor;
-        _headerSubtitleTheme.uppercased     = self.headerTitleTheme.uppercased;
-        _headerSubtitleTheme.textAlignment  = self.headerTitleTheme.textAlignment;
-    }
-    return _headerSubtitleTheme;
+- (void)loadHeaderTitleTheme {
+    PAYDefaultLabelTheme *simpleTheme = self.themes[@(PAYFormTableLabelStyleSimple)];
+    PAYDefaultLabelTheme *theme = self.themes[@(PAYFormTableLabelStyleHeaderTitle)];
+    theme.insets        = UIEdgeInsetsMake(0, 21, 0, 21);
+    theme.fontSize      = 24;
+    theme.kerning       = 1.05f;
+    theme.lineSpacing   = simpleTheme.lineSpacing;
+    theme.textColor     = simpleTheme.textColor;
+    theme.uppercased    = NO;
+    theme.textAlignment = NSTextAlignmentCenter;
+}
+
+- (void)loadHeaderSubTitleTheme {
+    PAYDefaultLabelTheme *headerTitleTheme = self.themes[@(PAYFormTableLabelStyleHeaderTitle)];
+    PAYDefaultLabelTheme *theme = self.themes[@(PAYFormTableLabelStyleHeaderSubTitle)];
+    theme.insets         = headerTitleTheme.insets;
+    theme.fontSize       = 13;
+    theme.kerning        = 1.15f;
+    theme.lineSpacing    = headerTitleTheme.lineSpacing;
+    theme.textColor      = headerTitleTheme.textColor;
+    theme.uppercased     = headerTitleTheme.uppercased;
+    theme.textAlignment  = headerTitleTheme.textAlignment;
 }
 
 @end
