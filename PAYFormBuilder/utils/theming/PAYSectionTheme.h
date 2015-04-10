@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+/*
+ * The section theme definition, that is used in the SectionBuilder
+ * to provide default styles used to layout the elements inside of one
+ * row.
+ */
 @protocol PAYSectionTheme <NSObject>
 
 - (CGFloat)horizontalMargin;

@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+/*
+ * The table theme definition, that is used in the TableBuilder
+ * to provide default styles used to layout the header of the sections 
+ */
 @protocol PAYTableTheme <NSObject>
 
 - (CGFloat)labelStyleNoneHeight;

@@ -6,6 +6,10 @@
 //  Copyright (c) 2014 Paij. All rights reserved.
 //
 
+/*
+ * The generic theme definition, that is used globally
+ * to define default styles.
+ */
 @protocol PAYTheme
 
 - (NSString *)fontName;
