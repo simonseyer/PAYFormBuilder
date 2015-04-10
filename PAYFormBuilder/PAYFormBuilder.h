@@ -32,3 +32,9 @@
 #import "PAYTextLabel.h"
 
 #import "UIColor+PAYHex.h"
+
+#import "PAYStyle.h"
+#import "PAYTheme.h"
+#import "PAYSectionTheme.h"
+#import "PAYTableTheme.h"
+#import "PAYLabelTheme.h"
