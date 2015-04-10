@@ -56,16 +56,21 @@
 - (PAYFormSingleLineTextField *)addFieldWithName:(NSString *)name
                                      placeholder:(NSString *)placeholder
                                   configureBlock:(void(^)(PAYFormSingleLineTextField *))configureBlock {
+    UITextField *textField    = [self defaultTextField];
+    textField.placeholder     = placeholder;
+    
     UILabel *label = nil;
     CGFloat leftFieldMargin = PAYStyle.sectionTheme.horizontalMargin;
     if (name) {
         label           = [self defaultLabelInRect:self.defaultBounds];
         label.text      = name;
         leftFieldMargin = CGRectGetMaxX(label.frame) + PAYStyle.sectionTheme.labelFieldSpacing;
+        if (textField.textAlignment == NSTextAlignmentRight) {
+            CGRect labelRect = label.frame;
+            labelRect.size.width = self.defaultBounds.size.width - 2 * PAYStyle.sectionTheme.horizontalMargin;
+            label.frame = labelRect;
+        }
     }
-    
-    UITextField *textField    = [self defaultTextField];
-    textField.placeholder     = placeholder;
 
     CGRect expandedFieldFrame = CGRectInset(self.defaultBounds, PAYStyle.sectionTheme.horizontalMargin, 0);
     CGRect fieldFrame         = self.defaultBounds;
@@ -74,6 +79,7 @@
     textField.frame           = fieldFrame;
     
     UITableViewCell *cell = self.defaultCell;
+    cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.horizontalMargin, 0, 0);
     [cell addSubview:label];
     [cell addSubview:textField];
     
@@ -99,8 +105,7 @@
     labelFrame.origin.x   = PAYStyle.sectionTheme.horizontalMargin;
     labelFrame.size.width = PAYStyle.sectionTheme.labelWidth;
     label.frame           = labelFrame;
-    label.font            = [UIFont fontWithName:PAYStyle.theme.fontName
-                                            size:PAYStyle.theme.fontSize];
+    label.font            = PAYStyle.theme.font;
     label.textColor       = PAYStyle.sectionTheme.textColor;
     label.adjustsFontSizeToFitWidth = YES;
     
@@ -110,8 +115,8 @@
 - (UITextField *)defaultTextField {
     UITextField *textField    = [UITextField new];
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    textField.font            = [UIFont fontWithName:PAYStyle.theme.fontName
-                                                size:PAYStyle.theme.fontSize];
+    textField.textAlignment   = PAYStyle.sectionTheme.fieldTextAlignment;
+    textField.font            = PAYStyle.theme.font;
     return textField;
 }
 
@@ -133,8 +138,7 @@
                                                adjustable:(BOOL)isAdjustable
                                            configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock {
     SZTextView *textView            = self.defaultTextView;
-    textView.font                   = [UIFont fontWithName:PAYStyle.theme.fontName
-                                                      size:PAYStyle.theme.fontSize];
+    textView.font                   = PAYStyle.theme.font;
     textView.placeholderTextColor   = PAYStyle.sectionTheme.placeholderColor;
     if (placeholder) {
         textView.placeholder            = placeholder;
@@ -169,8 +173,7 @@
 
 - (SZTextView *)defaultTextView {
     SZTextView *textView        = [SZTextView new];
-    textView.font               = [UIFont fontWithName:PAYStyle.theme.fontName
-                                                  size:PAYStyle.theme.fontSize];
+    textView.font               = PAYStyle.theme.font;
     textView.textContainerInset = UIEdgeInsetsMake(textView.font.lineHeight, PAYStyle.sectionTheme.horizontalMargin,
                                                    textView.font.lineHeight, PAYStyle.sectionTheme.horizontalMargin);
     return textView;
@@ -236,6 +239,8 @@
     
     if (style == PAYFormButtonStyleIconDisclosure || style == PAYFormButtonStyleIconSelection) {
         cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.iconMarginLeft, 0, 0);
+    } else {
+        cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.horizontalMargin, 0, 0);
     }
     
     UILabel *titleLabel;
@@ -243,8 +248,7 @@
     if (style != PAYFormButtonStyleEmpty) {
         titleLabel      = [UILabel new];
         titleLabel.text = text;
-        titleLabel.font = [UIFont fontWithName:PAYStyle.theme.fontName
-                                          size:PAYStyle.theme.fontSize];
+        titleLabel.font = PAYStyle.theme.font;
         titleLabel.userInteractionEnabled = NO;
         
         if (style == PAYFormButtonStylePrimaryCentered) {

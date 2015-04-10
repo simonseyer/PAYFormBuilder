@@ -18,6 +18,7 @@
 
 - (CGFloat)horizontalMargin;
 - (CGFloat)labelWidth;
+- (NSTextAlignment)fieldTextAlignment;
 - (CGFloat)labelFieldSpacing;
 - (CGFloat)disclosureMarginRight;
 - (CGFloat)iconSize;
@@ -25,6 +26,7 @@
 - (CGFloat)iconMarginLeft;
 - (NSUInteger)textViewLineCount;
 - (UIColor *)textColor;
+- (UIColor *)disabledTextColor;
 - (UIColor *)placeholderColor;
 - (UIColor *)buttonPrimaryTextColor;
 - (UIColor *)buttonHilightTextColor;

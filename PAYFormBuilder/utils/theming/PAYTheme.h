@@ -12,8 +12,7 @@
  */
 @protocol PAYTheme
 
-- (NSString *)fontName;
-- (NSString *)subTitleFontName;
-- (NSUInteger)fontSize;
+- (UIFont *)font;
+- (UIFont *)subTitleFont;
 
 @end

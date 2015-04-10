@@ -12,6 +12,7 @@
 #import "PAYErrorCodes.h"
 #import "PAYFormView_protected.h"
 #import "PAYFormField_protected.h"
+#import "PAYStyle.h"
 
 
 static const NSUInteger RPFormSingleLineTextFieldDefaultMaxTextLength = 255;
@@ -98,9 +99,11 @@ static const NSUInteger RPFormSingleLineTextFieldPasswordMaxTextLength = 128;
         self.textField.textAlignment   = NSTextAlignmentRight;
         self.defaultClearButtonMode    = self.textField.clearButtonMode;
         self.textField.clearButtonMode = UITextFieldViewModeNever;
+        self.textField.textColor       = PAYStyle.sectionTheme.disabledTextColor;
     } else {
-        self.textField.textAlignment   = NSTextAlignmentNatural;
+        self.textField.textAlignment   = PAYStyle.sectionTheme.fieldTextAlignment;
         self.textField.clearButtonMode = self.defaultClearButtonMode;
+        self.textField.textColor       = PAYStyle.sectionTheme.textColor;
     }
 }
 

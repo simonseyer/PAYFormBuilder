@@ -47,22 +47,22 @@
 - (void)loadSimpleTheme {
     PAYDefaultLabelTheme *theme = self.themes[@(PAYFormTableLabelStyleSimple)];
     theme.insets         = UIEdgeInsetsMake(32, 15, 8, 0);
-    theme.fontSize       = 14;
+    theme.font           = [UIFont fontWithName:@"Helvetica" size:14];
     theme.kerning        = 0.0f;
     theme.lineSpacing    = 1.0f;
     theme.textColor      = [UIColor colorFromHex:0xFF6D6D72];
-    theme.uppercased     = YES;
+    theme.capitalize     = YES;
     theme.textAlignment  = NSTextAlignmentNatural;
 }
 
 - (void)loadDescriptionTheme {
     PAYDefaultLabelTheme *theme = self.themes[@(PAYFormTableLabelStyleDescription)];
     theme.insets        = UIEdgeInsetsMake(36, 21, 8, 21);
-    theme.fontSize      = 13;
+    theme.font          = [UIFont fontWithName:@"Helvetica" size:13];;
     theme.kerning       = 0.15f;
     theme.lineSpacing   = 4.0f;
     theme.textColor     = [UIColor colorFromHex:0xFF6A6A6A];
-    theme.uppercased    = NO;
+    theme.capitalize    = NO;
     theme.textAlignment = NSTextAlignmentCenter;
 }
 
@@ -70,11 +70,11 @@
     PAYDefaultLabelTheme *descriptionTheme = self.themes[@(PAYFormTableLabelStyleDescription)];
     PAYDefaultLabelTheme *theme = self.themes[@(PAYFormTableLabelStyleDescriptionWide)];
     theme.insets        = UIEdgeInsetsMake(36, 21, 8, 36);
-    theme.fontSize      = descriptionTheme.fontSize;
+    theme.font          = descriptionTheme.font;
     theme.kerning       = descriptionTheme.kerning;
     theme.lineSpacing   = descriptionTheme.lineSpacing;
     theme.textColor     = descriptionTheme.textColor;
-    theme.uppercased    = descriptionTheme.uppercased;
+    theme.capitalize    = descriptionTheme.capitalize;
     theme.textAlignment = descriptionTheme.textAlignment;
 }
 
@@ -82,11 +82,11 @@
     PAYDefaultLabelTheme *simpleTheme = self.themes[@(PAYFormTableLabelStyleSimple)];
     PAYDefaultLabelTheme *theme = self.themes[@(PAYFormTableLabelStyleHeaderTitle)];
     theme.insets        = UIEdgeInsetsMake(0, 21, 0, 21);
-    theme.fontSize      = 24;
+    theme.font          = [UIFont fontWithName:@"Helvetica" size:24];
     theme.kerning       = 1.05f;
     theme.lineSpacing   = simpleTheme.lineSpacing;
     theme.textColor     = simpleTheme.textColor;
-    theme.uppercased    = NO;
+    theme.capitalize    = NO;
     theme.textAlignment = NSTextAlignmentCenter;
 }
 
@@ -94,11 +94,11 @@
     PAYDefaultLabelTheme *headerTitleTheme = self.themes[@(PAYFormTableLabelStyleHeaderTitle)];
     PAYDefaultLabelTheme *theme = self.themes[@(PAYFormTableLabelStyleHeaderSubTitle)];
     theme.insets         = headerTitleTheme.insets;
-    theme.fontSize       = 13;
+    theme.font           = [UIFont fontWithName:@"Helvetica" size:13];
     theme.kerning        = 1.15f;
     theme.lineSpacing    = headerTitleTheme.lineSpacing;
     theme.textColor      = headerTitleTheme.textColor;
-    theme.uppercased     = headerTitleTheme.uppercased;
+    theme.capitalize     = headerTitleTheme.capitalize;
     theme.textAlignment  = headerTitleTheme.textAlignment;
 }
 

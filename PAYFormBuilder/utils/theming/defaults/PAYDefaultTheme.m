@@ -13,9 +13,8 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.fontName         = @"HelveticaNeue-Light";
-        self.subTitleFontName = @"HelveticaNeue";
-        self.fontSize         = 17.0f;
+        self.font         = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        self.subTitleFont = [UIFont fontWithName:@"HelveticaNeue" size:17];
     }
     return self;
 }

@@ -52,7 +52,7 @@
 - (void)setAttributedText:(NSAttributedString *)attributedText {
     NSMutableAttributedString *attrText;
     if(attributedText){
-        if (self.theme.uppercased) {
+        if (self.theme.capitalize) {
             attrText = [[NSMutableAttributedString alloc] initWithString:attributedText.string.uppercaseString];
         } else {
             attrText =  attributedText.mutableCopy;
@@ -63,10 +63,8 @@
         style.lineSpacing              = self.theme.lineSpacing;
         style.alignment                = self.theme.textAlignment;
         
-        UIFont *font = [UIFont fontWithName:PAYStyle.theme.fontName size:self.theme.fontSize];
-        
         [attrText addAttribute:NSParagraphStyleAttributeName value:style range:strRange];
-        [attrText addAttribute:NSFontAttributeName value:font range:strRange];
+        [attrText addAttribute:NSFontAttributeName value:PAYStyle.theme.font range:strRange];
         [attrText addAttribute:NSKernAttributeName value:@(self.theme.kerning) range:strRange];
         [attrText addAttribute:NSForegroundColorAttributeName value:self.theme.textColor range:strRange];
     }

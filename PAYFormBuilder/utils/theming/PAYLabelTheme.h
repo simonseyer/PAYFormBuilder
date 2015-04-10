@@ -17,11 +17,11 @@
 @protocol PAYLabelTheme <NSObject>
 
 - (UIEdgeInsets)insets;
-- (CGFloat)fontSize;
+- (UIFont *)font;
 - (CGFloat)kerning;
 - (CGFloat)lineSpacing;
 - (UIColor *)textColor;
-- (BOOL)uppercased;
+- (BOOL)capitalize;
 - (NSTextAlignment)textAlignment;
 
 @end
