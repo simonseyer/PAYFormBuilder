@@ -41,7 +41,7 @@
  *  One selected value. If multiSelection is enabled, any
  *  of the selected values is returned.
  */
-@property (nonatomic, retain, readonly) id value;
+@property (nonatomic, retain) id value;
 
 /**
  *  Selects or unselectes a value

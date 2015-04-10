@@ -18,9 +18,6 @@
 @property (nonatomic, retain) NSMutableArray *options;
 @property (nonatomic, retain) NSMutableArray *optionButtons;
 
-// Property just for KVO compliance, events are triggered manually
-@property (nonatomic, retain, readwrite) id value;
-
 @end
 
 
@@ -44,6 +41,10 @@
 
 - (id)value {
     return self.values.firstObject;
+}
+
+- (void)setValue:(id)value {
+    [self select:value];
 }
 
 - (void)select:(id)value {
