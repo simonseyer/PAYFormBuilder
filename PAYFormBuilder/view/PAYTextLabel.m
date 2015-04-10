@@ -64,7 +64,7 @@
         style.alignment                = self.theme.textAlignment;
         
         [attrText addAttribute:NSParagraphStyleAttributeName value:style range:strRange];
-        [attrText addAttribute:NSFontAttributeName value:PAYStyle.theme.font range:strRange];
+        [attrText addAttribute:NSFontAttributeName value:self.theme.font range:strRange];
         [attrText addAttribute:NSKernAttributeName value:@(self.theme.kerning) range:strRange];
         [attrText addAttribute:NSForegroundColorAttributeName value:self.theme.textColor range:strRange];
     }
