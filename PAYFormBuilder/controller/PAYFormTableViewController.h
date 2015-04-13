@@ -18,16 +18,6 @@
 @interface PAYFormTableViewController : UITableViewController
 
 /**
- *  The default height of each row
- */
-@property (nonatomic, assign) CGFloat defaultRowHeight UI_APPEARANCE_SELECTOR;
-
-/**
- *  The default height of the table footer
- */
-@property (nonatomic, assign) CGFloat defaultFooterHeight UI_APPEARANCE_SELECTOR;
-
-/**
  *  This method could be overriden by the subclass to configure the form table view controller. 
  *  For example a custom footer could be set. This is method is only called once after the view 
  *  controller is set up and before loadStructure is called.

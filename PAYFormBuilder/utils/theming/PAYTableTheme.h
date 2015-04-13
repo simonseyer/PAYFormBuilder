@@ -15,6 +15,8 @@
  */
 @protocol PAYTableTheme <NSObject>
 
+- (CGFloat)rowHeight;
+- (CGFloat)footerHeight;
 - (CGFloat)labelStyleNoneHeight;
 - (CGFloat)labelStyleEmptyHeight;
 - (CGFloat)infoIconMargin;

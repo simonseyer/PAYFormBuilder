@@ -14,6 +14,7 @@
 #import "PAYFormTableView.h"
 #import "PAYNotifications.h"
 #import "PAYFormView_protected.h"
+#import "PAYStyle.h"
 
 
 @interface PAYFormTableViewController ()
@@ -29,9 +30,6 @@
     self.tableView = [[PAYFormTableView alloc] initWithFrame:[[UIScreen mainScreen] bounds]
                                                        style:UITableViewStyleGrouped];
     self.view = self.tableView;
-    
-    self.defaultRowHeight    = 44.0f;
-    self.defaultFooterHeight = 36.0f;
     
     self.tableView.accessibilityLabel = @"PAYFormTable";
     self.tableView.isAccessibilityElement = YES;
@@ -82,7 +80,7 @@
     PAYFormTableBuilder *tableBuilder = [PAYFormTableBuilder new];
     tableBuilder.defaultBounds = CGRectMake(0, 0,
                                             self.view.frame.size.width,
-                                            self.defaultRowHeight);
+                                            PAYStyle.tableTheme.rowHeight);
     [self loadStructure:tableBuilder];
     
     self.table = tableBuilder.table;
@@ -99,7 +97,7 @@
     UIView *footerView = [UIView new];
     footerView.frame = CGRectMake(0, 0,
                                   self.view.frame.size.width,
-                                  self.defaultFooterHeight);
+                                  PAYStyle.tableTheme.footerHeight);
     footerView.backgroundColor = UIColor.clearColor;
     
     self.tableView.tableFooterView = footerView;
