@@ -123,8 +123,6 @@
  */
 - (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder adjustable:(BOOL)isAdjustable configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock;
 
-
-
 #pragma mark - Add buttons
 
 /**
@@ -239,30 +237,5 @@
  *                        could modify it's parameters. The custom content has to be added to the view property.
  */
 - (void)addView:(void(^)(PAYFormView *))configureBlock;
-
-#pragma mark - Default views
-
-/**
- *  Get a label that is configured with the default parameters of the section.
- *
- *  @param defaultBounds the bounds the label should be configured with
- *
- *  @return the preconfigured label
- */
-- (UILabel *)defaultLabelInRect:(CGRect)defaultBounds;
-
-/**
- *  Get a configured textfield
- *
- *  @return the preconfigured textfield
- */
-- (UITextField *)defaultTextField;
-
-/**
- *  Get a configured textview
- *
- *  @return the preconfigured textview
- */
-- (SZTextView *)defaultTextView;
 
 @end
