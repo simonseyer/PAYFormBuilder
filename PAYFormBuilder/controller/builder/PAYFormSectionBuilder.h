@@ -22,24 +22,6 @@
  */
 @interface PAYFormSectionBuilder : NSObject
 
-#pragma mark - Default styles
-
-@property (nonatomic, assign) CGFloat       defaultHorzMargin               UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat       defaultLabelWidth               UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat       defaultLabelFieldSpace          UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat       defaultDisclosureRightMargin    UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat       defaultDisclosureLeftMargin     UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat       defaultIconSize                 UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat       defaultIconMargin               UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat       defaultLeftIconMargin           UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) NSUInteger    defaultFontSize                 UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) NSUInteger    defaultTextViewLineCount        UI_APPEARANCE_SELECTOR;
-@property (nonatomic, retain) UIColor      *defaultTextColor                UI_APPEARANCE_SELECTOR;
-@property (nonatomic, retain) UIColor      *defaultPlaceholderColor         UI_APPEARANCE_SELECTOR;
-@property (nonatomic, retain) UIColor      *defaultButtonPrimaryTextColor   UI_APPEARANCE_SELECTOR;
-@property (nonatomic, retain) UIColor      *defaultButtonHilightTextColor   UI_APPEARANCE_SELECTOR;
-@property (nonatomic, retain) UIColor      *defaultButtonDisabledTextColor  UI_APPEARANCE_SELECTOR;
-
 #pragma mark - Add singleline textfields
 
 /**
@@ -141,8 +123,6 @@
  */
 - (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder adjustable:(BOOL)isAdjustable configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock;
 
-
-
 #pragma mark - Add buttons
 
 /**
@@ -156,6 +136,19 @@
  *  @return the model object of the button
  */
 - (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock;
+
+/**
+ *  Add a button with a text and a block that is called, when the user pressed the button.
+ *
+ *  @param text           the text that should be displayed on the button
+ *  @param detailText     the text that should be display as detail information
+ *  @param style          the style that determines the appearance of the button
+ *  @param selectionBlock the block that is called when the user touched the button.
+ *                        The corresponding PAYFormButton is passed.
+ *
+ *  @return the model object of the button
+ */
+- (PAYFormButton *)addButtonWithText:(NSString *)text detailText:(NSString *)detailText style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock;
 
 /**
  *  Add a button with a text, a icon and a block that is called, when the user pressed the button.
@@ -184,6 +177,21 @@
  *  @return the model object of the button
  */
 - (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock configureBlock:(void(^)(PAYFormButton *))configureBlock;
+
+/**
+ *  Add a button with a text, a customization block and a block that is called, when the user pressed the button.
+ *
+ *  @param text           the text that should be displayed on the button
+ *  @param detailText     the text that should be display as detail information
+ *  @param style          the style that determines the appearance of the button
+ *  @param selectionBlock the block that is called when the user touched the button.
+ *                        The corresponding PAYFormButton is passed.
+ *  @param configureBlock a block that gets the preconfigurred PAYFormButton and
+ *                        could modify it's parameters
+ *
+ *  @return the model object of the button
+ */
+- (PAYFormButton *)addButtonWithText:(NSString *)text detailText:(NSString *)detailText style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock configureBlock:(void(^)(PAYFormButton *))configureBlock;
 
 /**
  *  Add button-group that could be used as single- or multi-selection list. 
@@ -229,30 +237,5 @@
  *                        could modify it's parameters. The custom content has to be added to the view property.
  */
 - (void)addView:(void(^)(PAYFormView *))configureBlock;
-
-#pragma mark - Default views
-
-/**
- *  Get a label that is configured with the default parameters of the section.
- *
- *  @param defaultBounds the bounds the label should be configured with
- *
- *  @return the preconfigured label
- */
-- (UILabel *)defaultLabelInRect:(CGRect)defaultBounds;
-
-/**
- *  Get a configured textfield
- *
- *  @return the preconfigured textfield
- */
-- (UITextField *)defaultTextField;
-
-/**
- *  Get a configured textview
- *
- *  @return the preconfigured textview
- */
-- (SZTextView *)defaultTextView;
 
 @end

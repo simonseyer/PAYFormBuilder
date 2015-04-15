@@ -13,52 +13,21 @@
 #import "UIApplication-KIFAdditions.h"
 #import "UITouch-KIFAdditions.h"
 #import <objc/runtime.h>
+#import "UIEvent+KIFAdditions.h"
 
-typedef struct __GSEvent * GSEventRef;
-
-static CGFloat const kTwoFingerConstantWidth = 40;
-
-//
-// GSEvent is an undeclared object. We don't need to use it ourselves but some
-// Apple APIs (UIScrollView in particular) require the x and y fields to be present.
-//
-@interface KIFEventProxy : NSObject
-{
-@public
-	unsigned int flags;
-	unsigned int type;
-	unsigned int ignored1;
-	float x1;
-	float y1;
-	float x2;
-	float y2;
-	unsigned int ignored2[10];
-	unsigned int ignored3[7];
-	float sizeX;
-	float sizeY;
-	float x3;
-	float y3;
-	unsigned int ignored4[3];
+double KIFDegreesToRadians(double deg) {
+    return (deg) / 180.0 * M_PI;
 }
 
-@end
+double KIFRadiansToDegrees(double rad) {
+    return ((rad) * (180.0 / M_PI));
+}
 
-@implementation KIFEventProxy
-@end
-
-// Exposes methods of UITouchesEvent so that the compiler doesn't complain
-@interface UIEvent (KIFAdditionsPrivate)
-
-- (void)_addTouch:(id)arg1 forDelayedDelivery:(BOOL)arg2;
-- (void)_clearTouches;
-- (void)_setGSEvent:(GSEventRef)event;
-
-@end
+static CGFloat const kTwoFingerConstantWidth = 40;
 
 @interface UIApplication (KIFAdditionsPrivate)
 - (UIEvent *)_touchesEvent;
 @end
-
 
 @interface NSObject (UIWebDocumentViewInternal)
 
@@ -252,7 +221,8 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
                     [cell removeFromSuperview];
                     
                     // Skip this cell if it isn't the one we're looking for
-                    if (!element) {
+                    // Sometimes we get cells with no size here which can cause an endless loop, so we ignore those
+                    if (!element || CGSizeEqualToSize(cell.frame.size, CGSizeZero)) {
                         continue;
                     }
                 }
@@ -401,6 +371,23 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
         [self becomeFirstResponder];
     }
 
+}
+
+- (void)twoFingerTapAtPoint:(CGPoint)point {
+    CGPoint finger1 = CGPointMake(point.x - kTwoFingerConstantWidth, point.y - kTwoFingerConstantWidth);
+    CGPoint finger2 = CGPointMake(point.x + kTwoFingerConstantWidth, point.y + kTwoFingerConstantWidth);
+    UITouch *touch1 = [[UITouch alloc] initAtPoint:finger1 inView:self];
+    UITouch *touch2 = [[UITouch alloc] initAtPoint:finger2 inView:self];
+    [touch1 setPhaseAndUpdateTimestamp:UITouchPhaseBegan];
+    [touch2 setPhaseAndUpdateTimestamp:UITouchPhaseBegan];
+
+    UIEvent *event = [self eventWithTouches:@[touch1, touch2]];
+    [[UIApplication sharedApplication] sendEvent:event];
+
+    [touch1 setPhaseAndUpdateTimestamp:UITouchPhaseEnded];
+    [touch2 setPhaseAndUpdateTimestamp:UITouchPhaseEnded];
+
+    [[UIApplication sharedApplication] sendEvent:event];
 }
 
 #define DRAG_TOUCH_DELAY 0.01
@@ -580,6 +567,35 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
     [self dragPointsAlongPaths:paths];
 }
 
+- (void)twoFingerRotateAtPoint:(CGPoint)centerPoint angle:(CGFloat)angleInDegrees {
+    NSInteger stepCount = ABS(angleInDegrees)/2; // very rough approximation. 90deg = ~45 steps, 360 deg = ~180 steps
+    CGFloat radius = kTwoFingerConstantWidth*2;
+    double angleInRadians = KIFDegreesToRadians(angleInDegrees);
+
+    NSMutableArray *finger1Path = [NSMutableArray array];
+    NSMutableArray *finger2Path = [NSMutableArray array];
+    for (NSUInteger i = 0; i < stepCount; i++) {
+        double currentAngle = 0;
+        if (i == stepCount - 1) {
+            currentAngle = angleInRadians; // do not interpolate for the last step for maximum accuracy
+        }
+        else {
+            double interpolation = i/(double)stepCount;
+            currentAngle = interpolation * angleInRadians;
+        }
+        // interpolate betwen 0 and the target rotation
+        CGPoint offset1 = CGPointMake(radius * cos(currentAngle), radius * sin(currentAngle));
+        CGPoint offset2 = CGPointMake(-offset1.x, -offset1.y); // second finger is just opposite of the first
+
+        CGPoint finger1 = CGPointMake(centerPoint.x + offset1.x, centerPoint.y + offset1.y);
+        CGPoint finger2 = CGPointMake(centerPoint.x + offset2.x, centerPoint.y + offset2.y);
+
+        [finger1Path addObject:[NSValue valueWithCGPoint:finger1]];
+        [finger2Path addObject:[NSValue valueWithCGPoint:finger2]];
+    }
+    [self dragPointsAlongPaths:@[[finger1Path copy], [finger2Path copy]]];
+}
+
 - (NSArray *)pointsFromStartPoint:(CGPoint)startPoint toPoint:(CGPoint)toPoint steps:(NSUInteger)stepCount {
 
     CGPoint displacement = CGPointMake(toPoint.x - startPoint.x, toPoint.y - startPoint.y);
@@ -704,22 +720,8 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
     // _touchesEvent is a private selector, interface is exposed in UIApplication(KIFAdditionsPrivate)
     UIEvent *event = [[UIApplication sharedApplication] _touchesEvent];
     
-    UITouch *touch = touches[0];
-    CGPoint location = [touch locationInView:touch.window];
-    KIFEventProxy *eventProxy = [[KIFEventProxy alloc] init];
-    eventProxy->x1 = location.x;
-    eventProxy->y1 = location.y;
-    eventProxy->x2 = location.x;
-    eventProxy->y2 = location.y;
-    eventProxy->x3 = location.x;
-    eventProxy->y3 = location.y;
-    eventProxy->sizeX = 1.0;
-    eventProxy->sizeY = 1.0;
-    eventProxy->flags = ([touch phase] == UITouchPhaseEnded) ? 0x1010180 : 0x3010180;
-    eventProxy->type = 3001;	
-
     [event _clearTouches];
-    [event _setGSEvent:(struct __GSEvent *)eventProxy];
+    [event kif_setEventWithTouches:touches];
 
     for (UITouch *aTouch in touches) {
         [event _addTouch:aTouch forDelayedDelivery:NO];
@@ -827,6 +829,179 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
     while(checkedView && stop == NO) {
         block(checkedView, &stop);
         checkedView = checkedView.superview;
+    }
+}
+
+- (void)printViewHierarchy {
+    [self printViewHierarchyWithIndentation:0];
+}
+
++(void)printViewHierarchy {
+    NSArray* windows = [UIApplication sharedApplication].windows;
+    if(windows.count == 1) {
+        [windows[0] printViewHierarchy];
+    } else {
+        //more than one window, also print some information about each window
+        for (UIWindow* window in windows) {
+            printf("Window level %f", window.windowLevel);
+            if(window.isKeyWindow) printf(" (key window)");
+            printf("\n");
+            [window printViewHierarchy];
+            printf("\n");
+        }
+    }
+}
+
+- (void)printAccessibilityTraits:(UIAccessibilityTraits)traits {
+    
+    printf("traits: ");
+    bool didPrintOne = false;
+    if(traits == UIAccessibilityTraitNone) {
+        printf("none");
+        didPrintOne = true;
+    }
+    if(traits & UIAccessibilityTraitButton) {
+        if(didPrintOne) printf(", ");
+        printf("button");
+        didPrintOne = true;
+    }
+    if(traits & UIAccessibilityTraitLink) {
+        if(didPrintOne) printf(", ");
+        printf("link");
+        didPrintOne = true;
+    }
+    if(traits & UIAccessibilityTraitHeader) {
+        if(didPrintOne) printf(", ");
+        printf("header");
+        didPrintOne = true;
+    }
+    if(traits & UIAccessibilityTraitSearchField) {
+        if(didPrintOne) printf(", ");
+        printf("search field");
+        didPrintOne = true;
+    }
+    if(traits & UIAccessibilityTraitImage) {
+        if(didPrintOne) printf(", ");
+        printf("image");
+        didPrintOne = true;
+    }
+    if(traits & UIAccessibilityTraitSelected) {
+        if(didPrintOne) printf(", ");
+        printf("selected");
+        didPrintOne = true;
+    }
+    if(traits & UIAccessibilityTraitPlaysSound) {
+        if(didPrintOne) printf(", ");
+        printf("plays sound");
+        didPrintOne = true;
+    }
+    if(traits & UIAccessibilityTraitKeyboardKey) {
+        if(didPrintOne) printf(", ");
+        printf("keyboard key");
+        didPrintOne = true;
+    }
+    if(traits & UIAccessibilityTraitStaticText) {
+        if(didPrintOne) printf(", ");
+        printf("static text");
+        didPrintOne = true;
+    }
+    if(traits & UIAccessibilityTraitSummaryElement) {
+        if(didPrintOne) printf(", ");
+        printf("summary element");
+        didPrintOne = true;
+    }
+    if(traits & UIAccessibilityTraitNotEnabled) {
+        if(didPrintOne) printf(", ");
+        printf("not enabled");
+        didPrintOne = true;
+    }
+    if(traits & UIAccessibilityTraitUpdatesFrequently) {
+        if(didPrintOne) printf(", ");
+        printf("updates frequently");
+        didPrintOne = true;
+    }
+    if(traits & UIAccessibilityTraitStartsMediaSession) {
+        if(didPrintOne) printf(", ");
+        printf("starts media session");
+        didPrintOne = true;
+    }
+    if(traits & UIAccessibilityTraitAdjustable) {
+        if(didPrintOne) printf(", ");
+        printf("adjustable");
+        didPrintOne = true;
+    }
+    if(traits & UIAccessibilityTraitAllowsDirectInteraction) {
+        if(didPrintOne) printf(", ");
+        printf("allows direct interaction");
+        didPrintOne = true;
+    }
+    if(traits & UIAccessibilityTraitCausesPageTurn) {
+        if(didPrintOne) printf(", ");
+        printf("causes page turn");
+        didPrintOne = true;
+    }
+    if(!didPrintOne) {
+        printf("unknown flags (0x%llx)", traits);
+    }
+}
+
+
+- (void)printViewHierarchyWithIndentation:(int)indent {
+    NSString* name = NSStringFromClass([self class]);
+    NSString* label = self.accessibilityLabel;
+    NSString* identifier = self.accessibilityIdentifier;
+    for(int i = 0; i < indent; ++i) {
+        printf("|\t");
+    }
+    printf("%s", name.UTF8String);
+    if(label != nil) {
+        printf(", label: %s", label.UTF8String);
+    } else if(identifier != nil) {
+        printf(", identifier: %s", identifier.UTF8String);
+    }
+    if(self.hidden) {
+        printf(" (invisible)");
+    }
+    
+    if([self isKindOfClass:[UIImageView class]]) {
+        if(((UIImageView*)self).highlighted) {
+            printf(" (highlighted)");
+        } else {
+            printf(" (not highlighted)");
+        }
+    }
+    
+    if([self isKindOfClass:[UIControl class]]) {
+        UIControl* ctrl = (UIControl*)self;
+        ctrl.enabled ? printf(" (enabled)") : printf(" (not enabled)");
+        ctrl.selected ? printf(" (selected)") : printf(" (not selected)");
+        ctrl.highlighted ? printf(" (highlighted)") : printf(" (not highlighted)");
+    }
+    printf("\n");
+    
+    //
+    NSInteger numOfAccElements = self.accessibilityElementCount;
+    if(numOfAccElements != NSNotFound) {
+        for (NSInteger i = 0; i < numOfAccElements; ++i) {
+            for(int i = 0; i < indent+1; ++i) {
+                printf("|\t");
+            }
+            UIAccessibilityElement *e = [(UIAccessibilityElement*)self accessibilityElementAtIndex:i];
+            printf("UIAccessibilityElement, label: %s", e.accessibilityLabel.UTF8String);
+            if(e.accessibilityValue && e.accessibilityValue.length > 0) {
+                printf(", value: %s", e.accessibilityValue.UTF8String);
+            }
+            if(e.accessibilityHint && e.accessibilityHint.length > 0) {
+                printf(", hint: %s", e.accessibilityHint.UTF8String);
+            }
+            printf(", ");
+            [self printAccessibilityTraits:e.accessibilityTraits];
+            printf("\n");
+        }
+    }
+    
+    for (UIView *subview in self.subviews) {
+        [subview printViewHierarchyWithIndentation:indent+1];
     }
 }
 

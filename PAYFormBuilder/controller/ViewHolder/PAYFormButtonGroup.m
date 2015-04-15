@@ -43,6 +43,10 @@
     return self.values.firstObject;
 }
 
+- (void)setValue:(id)value {
+    [self select:value];
+}
+
 - (void)select:(id)value {
     [self select:YES value:value];
 }
@@ -81,6 +85,7 @@
 }
 
 - (void)select:(BOOL)select value:(id)value {
+    [self willChangeValueForKey:@"value"];
     PAYFormButton *formButton = [self buttonForValue:value];
     if (self.multiSelection) {
         formButton.selected = select;
@@ -100,6 +105,7 @@
         [self selectButton:YES withValue:value];
         [_selectedOptions addObject:value];
     }
+    [self didChangeValueForKey:@"value"];
 }
 
 - (void)optionStateChanged:(id)option {
@@ -110,6 +116,14 @@
 - (void)selectButton:(BOOL)select withValue:(id)value {
     PAYFormButton *formButton = [self buttonForValue:value];
     formButton.selected = select;
+}
+
++ (BOOL)automaticallyNotifiesObserversForKey:(NSString *)theKey {
+    if ([theKey isEqualToString:@"value"]) {
+        return NO;
+    } else {
+        return [super automaticallyNotifiesObserversForKey:theKey];
+    }
 }
 
 @end

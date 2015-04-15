@@ -37,6 +37,10 @@
                             [sectionBuilder addButtonWithText:@"Button style disclosure"
                                                         style:PAYFormButtonStyleDisclosure
                                                selectionBlock:nil];
+                            [sectionBuilder addButtonWithText:@"Button style disclosure"
+                                                   detailText:@"with details"
+                                                        style:PAYFormButtonStyleDisclosure
+                                               selectionBlock:nil];
                             [sectionBuilder addButtonWithText:@"Button style selection"
                                                         style:PAYFormButtonStyleSelection
                                                selectionBlock:nil];
@@ -88,6 +92,12 @@
        // NSLog(@"%@", self.formSwitch.value ? @"YES" : @"NO");
        // [self performSegueWithIdentifier:@"next" sender:self];
     };
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.view.tintColor = UIColor.redColor;
 }
 
 

@@ -125,10 +125,14 @@
 }
 
 - (void)waitForAnimationsToFinish {
+    [self waitForAnimationsToFinishWithTimeout:self.animationWaitingTimeout];
+}
+
+- (void)waitForAnimationsToFinishWithTimeout:(NSTimeInterval)timeout {
     static const CGFloat kStabilizationWait = 0.5f;
     
-    NSTimeInterval maximumWaitingTimeInterval = self.animationWaitingTimeout;
-    if (maximumWaitingTimeInterval < kStabilizationWait) {
+    NSTimeInterval maximumWaitingTimeInterval = timeout;
+    if (maximumWaitingTimeInterval <= kStabilizationWait) {
         if(maximumWaitingTimeInterval >= 0) {
             [self waitForTimeInterval:maximumWaitingTimeInterval];
         }
@@ -138,6 +142,7 @@
     
     // Wait for the view to stabilize and give them a chance to start animations before we wait for them.
     [self waitForTimeInterval:kStabilizationWait];
+    maximumWaitingTimeInterval -= kStabilizationWait;
     
     NSTimeInterval startTime = [NSDate timeIntervalSinceReferenceDate];
     [self runBlock:^KIFTestStepResult(NSError **error) {
@@ -495,7 +500,12 @@
                 UILabel *label = (labels.count > 0 ? labels[0] : nil);
                 rowTitle = label.text;
             }
-            [dataToSelect addObject: rowTitle];
+            
+            if (rowTitle) {
+                [dataToSelect addObject: rowTitle];
+            } else {
+                @throw [NSException exceptionWithName:NSInternalInconsistencyException reason:@"Unknown picker type. Delegate responds neither to pickerView:titleForRow:forComponent: nor to pickerView:viewForRow:forComponent:reusingView:" userInfo:nil];
+            }
         }
     }
     
@@ -950,9 +960,20 @@
     [collectionView scrollToItemAtIndexPath:indexPath
                            atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally | UICollectionViewScrollPositionCenteredVertically
                                    animated:YES];
-    [self waitForTimeInterval:0.5];
+
+    [self waitForAnimationsToFinish];
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
 
+    //For big collection views with many cells the cell might not be ready yet. Relayout and try again.
+    if(cell == nil) {
+        [collectionView layoutIfNeeded];
+        [collectionView scrollToItemAtIndexPath:indexPath
+                               atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally | UICollectionViewScrollPositionCenteredVertically
+                                       animated:YES];
+        [self waitForAnimationsToFinish];
+        cell = [collectionView cellForItemAtIndexPath:indexPath];
+    }
+    
     if (!cell) {
         [self failWithError:[NSError KIFErrorWithFormat: @"Collection view cell at index path %@ not found", indexPath] stopTest:YES];
     }

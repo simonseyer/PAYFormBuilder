@@ -16,6 +16,11 @@
 @property (nonatomic, retain) UILabel *titleLabel;
 
 /**
+ *  The detail label
+ */
+@property (nonatomic, retain) UILabel *detailLabel;
+
+/**
  *  The icon
  */
 @property (nonatomic, retain) UIImageView *iconView;

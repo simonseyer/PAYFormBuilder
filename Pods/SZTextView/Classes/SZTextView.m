@@ -68,7 +68,7 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
     self._placeholderTextView = [[UITextView alloc] initWithFrame:frame];
     self._placeholderTextView.opaque = NO;
     self._placeholderTextView.backgroundColor = [UIColor clearColor];
-    self._placeholderTextView.textColor = [UIColor lightGrayColor];
+    self._placeholderTextView.textColor = [UIColor colorWithWhite:0.7f alpha:0.7f];
     self._placeholderTextView.textAlignment = self.textAlignment;
     self._placeholderTextView.editable = NO;
     self._placeholderTextView.scrollEnabled = NO;
@@ -227,10 +227,31 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
 - (void)setPlaceholderVisibleForText:(NSString *)text
 {
     if (text.length < 1) {
-        [self addSubview:self._placeholderTextView];
-        [self sendSubviewToBack:self._placeholderTextView];
-    } else {
-        [self._placeholderTextView removeFromSuperview];
+        if (self.fadeTime > 0.0) {
+            if (![self._placeholderTextView isDescendantOfView:self]) {
+                self._placeholderTextView.alpha = 0;
+                [self addSubview:self._placeholderTextView];
+                [self sendSubviewToBack:self._placeholderTextView];
+            }
+            [UIView animateWithDuration:_fadeTime animations:^{
+                self._placeholderTextView.alpha = 1;
+            }];
+        }
+        else {
+            [self addSubview:self._placeholderTextView];
+            [self sendSubviewToBack:self._placeholderTextView];
+            self._placeholderTextView.alpha = 1;
+        }
+    }
+    else {
+        if (self.fadeTime > 0.0) {
+            [UIView animateWithDuration:_fadeTime animations:^{
+                self._placeholderTextView.alpha = 0;
+            }];
+        }
+        else {
+            [self._placeholderTextView removeFromSuperview];
+        }
     }
 }
 

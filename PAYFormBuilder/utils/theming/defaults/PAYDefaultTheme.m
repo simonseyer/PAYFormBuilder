@@ -10,19 +10,13 @@
 
 @implementation PAYDefaultTheme
 
-@synthesize fontName=_fontName, subTitleFontName=_subTitleFontName;
-
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self loadDefaults];
+        self.font         = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        self.subTitleFont = [UIFont fontWithName:@"HelveticaNeue" size:17];
     }
     return self;
-}
-
-- (void)loadDefaults {
-    _fontName = @"HelveticaNeue-Light";
-    _subTitleFontName = @"HelveticaNeue";
 }
 
 @end
