@@ -23,7 +23,7 @@
   "source_files": "PAYFormBuilder/**/*.{h,m}",
   "private_header_files": [
     "PAYFormBuilder/**/*_protected.h",
-    "PAYFormBuilder/privateProtocols/*",
+    "PAYFormBuilder/privateProtocols/*.h",
     "PAYFormBuilder/**/*Protected.h"
   ],
   "requires_arc": true,
