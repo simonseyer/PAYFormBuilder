@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
 
   s.source         = { :git => "https://github.com/paij/PAYFormBuilder.git", :tag => s.version.to_s }
   s.source_files   = 'PAYFormBuilder/**/*.{h,m}'
-  s.private_header_files = "PAYFormBuilder/**/*_protected.h", "PAYFormBuilder/**/*Protected.h"
+  s.private_header_files = "PAYFormBuilder/**/*_protected.h", "PAYFormBuilder/privateProtocols/*.h", "PAYFormBuilder/**/*Protected.h"
 
   s.requires_arc   = true
   s.ios.frameworks = "UIKit"
