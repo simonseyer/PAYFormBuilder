@@ -175,7 +175,7 @@
     
     // Check
     [tester waitForViewWithAccessibilityLabel:@"Missing"];
-    [tester waitForViewWithAccessibilityLabel:@"Field Required text view is missing"];
+    [tester waitForViewWithAccessibilityLabel:@"Field Required is missing"];
     
     // Reset
     [tester tapViewWithAccessibilityLabel:@"Ok"];
