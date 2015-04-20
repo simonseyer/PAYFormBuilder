@@ -88,9 +88,9 @@
                         }];
 
     tableBuilder.formSuccessBlock = ^{
-       // NSLog(@"%@", self.countryButtonGroup.values);
-       // NSLog(@"%@", self.formSwitch.value ? @"YES" : @"NO");
-       // [self performSegueWithIdentifier:@"next" sender:self];
+        // NSLog(@"%@", self.countryButtonGroup.values);
+        // NSLog(@"%@", self.formSwitch.value ? @"YES" : @"NO");
+        // [self performSegueWithIdentifier:@"next" sender:self];
     };
 }
 
