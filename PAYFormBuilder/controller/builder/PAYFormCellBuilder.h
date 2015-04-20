@@ -25,7 +25,6 @@
  *
  *  @param name           the text of the label that is displayed in front of the textfield
  *  @param placeholder    the text that should be displayed as placeholder
- *  @param inBounds       the bounds the field should be layouted in
  *  @param configureBlock a block that gets the preconfigurred PAYFormSingleLineTextField and
  *                        could modify it's parameters. It's for example used to set validators.
  *
@@ -33,7 +32,6 @@
  */
 + (PAYFormSingleLineTextField *)fieldWithName:(NSString *)name
                                   placeholder:(NSString *)placeholder
-                                     inBounds:(CGRect)bounds
                                configureBlock:(void(^)(PAYFormSingleLineTextField *))configureBlock;
 
 /**
@@ -41,7 +39,6 @@
  *
  *  @param name           the name that is used in validation
  *  @param placeholder    the text that should be displayed as placeholder
- *  @param inBounds       the bounds the field should be layouted in
  *  @param isAdjustable   boolean to set adjustability
  *  @param configureBlock a block that gets the preconfigurred PAYFormMultiLineTextField and
  *                        could modify it's parameters. It's for example used to set validators.
@@ -50,7 +47,6 @@
  */
 + (PAYFormMultiLineTextField *)textViewWithName:(NSString *)name
                                     placeholder:(NSString *)placeholder
-                                       inBounds:(CGRect)bounds
                                      adjustable:(BOOL)isAdjustable
                                  configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock;
 
@@ -58,9 +54,9 @@
  *  Create a button with a text, a customization block and a block that is called, when the user pressed the button.
  *
  *  @param text           the text that should be displayed on the button
- *  @param detailText     the text that should be display as detail information
+ *  @param detailText     the text that should be displayed as detail information
+ *  @param icon           the icon that should be displayed on the left side of the cell
  *  @param style          the style that determines the appearance of the button
- *  @param inBounds       the bounds the field should be layouted in
  *  @param selectionBlock the block that is called when the user touched the button.
  *                        The corresponding PAYFormButton is passed.
  *  @param configureBlock a block that gets the preconfigurred PAYFormButton and
@@ -70,8 +66,8 @@
  */
 + (PAYFormButton *)buttonWithText:(NSString *)text
                        detailText:(NSString *)detailText
+                             icon:(UIImage *)icon
                             style:(PAYFormButtonStyle)style
-                         inBounds:(CGRect)bounds
                    selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock
                    configureBlock:(void(^)(PAYFormButton *))configureBlock;
 
@@ -79,7 +75,6 @@
  *  Create a toggle switch with a label and a customization block.
  *
  *  @param name           the text of the label that is displayed in front of the switch
- *  @param inBounds       the bounds the field should be layouted in
  *  @param configureBlock a block that gets the preconfigurred PAYFormSwitch and
  *                        could modify it's parameters
  
@@ -87,26 +82,21 @@
  *  @return a container for the switch
  */
 + (PAYFormSwitch *)switchWithName:(NSString *)name
-                         inBounds:(CGRect)bounds
                    configureBlock:(void(^)(PAYFormSwitch *))configureBlock;
 
 /**
- *  Get a label that is configured with the default parameters of the section.
- *
- *  @param bounds the bounds the label should be configured with
+ *  Get a cell that is configured with the default parameters of the section.
  *
  *  @return the preconfigured cell
  */
-+ (UITableViewCell *)defaultCellInBounds:(CGRect)bounds;
++ (UITableViewCell *)defaultCell;
 
 /**
  *  Get a label that is configured with the default parameters of the section.
  *
- *  @param bounds the bounds the label should be configured with
- *
  *  @return the preconfigured label
  */
-+ (UILabel *)defaultLabelInBounds:(CGRect)bounds;
++ (UILabel *)defaultLabel;
 
 /**
  *  Get a configured textfield
