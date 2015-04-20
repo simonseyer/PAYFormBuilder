@@ -73,8 +73,8 @@
     
     PAYHeaderView *header = [PAYHeaderView new];
     header.iconImage = [UIImage imageNamed:@"header"];
-    header.title = @"Test";
-    header.subTitle = @"Dies ist ein Test";
+    header.title = @"The header title";
+    header.subTitle = @"This is the subTitleLabel";
     self.tableView.tableHeaderView = header;
 }
 
