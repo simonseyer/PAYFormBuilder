@@ -193,7 +193,6 @@
     formButton.view           = cell;
     formButton.titleLabel     = titleLabel;
     formButton.detailLabel    = detailLabel;
-    formButton.style          = style;
     formButton.iconView       = iconView;
     formButton.selectionBlock = selectionBlock;
     

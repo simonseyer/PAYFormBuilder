@@ -51,11 +51,6 @@ typedef enum {
 @property (nonatomic, retain, readonly) UIImageView *iconView;
 
 /**
- *  The style
- */
-@property (nonatomic, assign, readonly) PAYFormButtonStyle style;
-
-/**
  *  A block that is called when the user tapped on the button
  */
 @property (nonatomic, copy) PAYFormButtonSelectionBlock selectionBlock;
