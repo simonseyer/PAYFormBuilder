@@ -27,12 +27,16 @@
 @implementation PAYFormTableViewController
 
 - (void)loadView {
-    self.tableView = [[PAYFormTableView alloc] initWithFrame:[[UIScreen mainScreen] bounds]
+    self.tableView = [[PAYFormTableView alloc] initWithFrame:CGRectZero
                                                        style:UITableViewStyleGrouped];
     self.view = self.tableView;
     
     self.tableView.accessibilityLabel = @"PAYFormTable";
     self.tableView.isAccessibilityElement = YES;
+    self.tableView.estimatedRowHeight = 44.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedSectionHeaderHeight = 36.0;
+    self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension;
 }
 
 - (void)viewDidLoad {
@@ -78,9 +82,6 @@
 
 - (void)loadStructure {
     PAYFormTableBuilder *tableBuilder = [PAYFormTableBuilder new];
-    tableBuilder.defaultBounds = CGRectMake(0, 0,
-                                            self.view.frame.size.width,
-                                            PAYStyle.tableTheme.rowHeight);
     [self loadStructure:tableBuilder];
     
     self.table = tableBuilder.table;
@@ -132,7 +133,6 @@
     return formRow.cell;
 }
 
-
 #pragma mark - UITableViewDelegate's implementation
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -144,14 +144,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    PAYFormSection *formSection = self.table.sections[section];
-    return formSection.header.view.frame.size.height;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIView *fieldView = [self formRowForIndexPath:indexPath].view;
-    return fieldView.frame.size.height;
+    UITableViewCell *fieldView = [self formRowForIndexPath:indexPath].cell;
+    CGSize size = [fieldView.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height + 0.5f;
 }
 
 #pragma mark - View management
