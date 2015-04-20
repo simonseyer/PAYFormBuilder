@@ -17,28 +17,28 @@
 - (void)loadStructure:(PAYFormTableBuilder *)tableBuilder {
     [tableBuilder addSectionWithContentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         [sectionBuilder addButtonWithText:@"Section with label style empty"
-                                    style:PAYFormButtonStyleDisabledCentered
+                                    style:PAYFormButtonStyleDefault
                            selectionBlock:nil];
     }];
     
     [tableBuilder addSectionWithLabelStyle:PAYFormTableLabelStyleNone
                               contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         [sectionBuilder addButtonWithText:@"Section with label style none"
-                                    style:PAYFormButtonStyleDisabledCentered
+                                    style:PAYFormButtonStyleDefault
                            selectionBlock:nil];
     }];
     
     [tableBuilder addSectionWithName:@"Label style simple (default)"
                         contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         [sectionBuilder addButtonWithText:@"Section with label style simple"
-                                    style:PAYFormButtonStyleDisabledCentered
+                                    style:PAYFormButtonStyleDefault
                            selectionBlock:nil];
                           }];
     
     [tableBuilder addSectionWithName:@"Section with info button"
                         contentBlock:^(PAYFormSectionBuilder *sectionBuilder) {
                             [sectionBuilder addButtonWithText:@"Simple Entry"
-                                                        style:PAYFormButtonStyleDisabledCentered
+                                                        style:PAYFormButtonStyleDefault
                                                selectionBlock:nil];
                         }
                            infoBlock:^(UIButton *infoButton) {

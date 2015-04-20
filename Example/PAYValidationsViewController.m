@@ -69,7 +69,7 @@
     }];
     [tableBuilder addSectionWithLabelStyle:PAYFormTableLabelStyleNone contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         [sectionBuilder addButtonWithText:@"Done"
-                                    style:PAYFormButtonStylePrimaryCentered
+                                    style:PAYFormButtonStylePrimary
                            selectionBlock:^(PAYFormButton *formButton) {
                                [self onDone:formButton];
                            }];
