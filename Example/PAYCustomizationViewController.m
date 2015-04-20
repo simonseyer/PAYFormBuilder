@@ -51,7 +51,7 @@
                              formHeader.label.textColor = [UIColor colorFromHex:0x0357AB];
                          } contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         [sectionBuilder addButtonWithText:@"Section header with blue text"
-                                    style:PAYFormButtonStyleDisabledCentered
+                                    style:PAYFormButtonStyleDefault
                            selectionBlock:nil];
     }];
     
