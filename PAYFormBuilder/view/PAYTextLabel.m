@@ -26,6 +26,15 @@
     return self;
 }
 
+- (instancetype)initWithStyle:(PAYFormTableLabelStyle)style {
+    self = [super init];
+    if (self) {
+        [self initializeVars];
+        self.style = style;
+    }
+    return self;
+}
+
 - (void)initializeVars {
     self.backgroundColor = UIColor.clearColor;
     self.numberOfLines = 0;
@@ -70,14 +79,14 @@
     }
     
     super.attributedText = attrText;
-    [self sizeToFit];
+    [self invalidateIntrinsicContentSize];
 }
 
 - (void)updateAttributedText {
     self.text = self.attributedText.string;
 }
 
-#pragma mark - positioning
+#pragma mark - layouting
 
 - (UIEdgeInsets)textInsets {
     return self.theme.insets;
@@ -87,38 +96,16 @@
     [super drawTextInRect:UIEdgeInsetsInsetRect(rect, self.textInsets)];
 }
 
-- (CGSize)sizeThatFits:(CGSize)size {
-    UIEdgeInsets insets = self.textInsets;
-    CGFloat textWidth = size.width - insets.left - insets.right;
-    size.height = [self preferredHeightForWidth:textWidth] + insets.top + insets.bottom;
-    return size;
+- (CGSize) intrinsicContentSize {
+    CGSize superSize = [super intrinsicContentSize] ;
+    superSize.height += self.textInsets.top + self.textInsets.bottom;
+    superSize.width += self.textInsets.left + self.textInsets.right;
+    return superSize;
 }
 
-- (CGSize)preferredSizeConstrainedToSize:(CGSize)constrainedSize {
-    NSStringDrawingContext *context = [NSStringDrawingContext new];
-    context.minimumScaleFactor      = 10 / self.font.pointSize;
-    
-    CGSize rectSize;
-    if (self.attributedText) {
-        rectSize = [self.attributedText boundingRectWithSize:constrainedSize
-                                                     options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-                                                     context:context].size;
-    } else {
-        NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
-        paragraphStyle.lineBreakMode            = self.lineBreakMode;
-        NSDictionary *attributes                = @{NSFontAttributeName : self.font,NSParagraphStyleAttributeName : paragraphStyle};
-        
-        rectSize = [self.text boundingRectWithSize:constrainedSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:context].size;
-    }
-    
-    rectSize.height = ceil(rectSize.height);
-    rectSize.width  = ceil(rectSize.width);
-    
-    return rectSize;
-}
-
-- (CGFloat)preferredHeightForWidth:(CGFloat)width {
-    return [self preferredSizeConstrainedToSize:CGSizeMake(width, 10000)].height;
+- (void)layoutSubviews {
+    self.preferredMaxLayoutWidth = self.frame.size.width;
+    [super layoutSubviews];
 }
 
 @end
