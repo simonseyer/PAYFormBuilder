@@ -32,6 +32,10 @@
                         @(PAYFormTableLabelStyleHeaderSubTitle): [PAYDefaultLabelTheme new]
                         }.mutableCopy;
         [self loadSimpleTheme];
+        [self loadDescriptionTheme];
+        [self loadDescriptionWideTheme];
+        [self loadHeaderTitleTheme];
+        [self loadHeaderSubTitleTheme];
     }
     return self;
 }
