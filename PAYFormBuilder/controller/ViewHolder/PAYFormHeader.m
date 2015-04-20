@@ -12,4 +12,9 @@
 
 @implementation PAYFormHeader
 
+- (void)setHeader:(UITableViewHeaderFooterView *)header {
+    _header = header;
+    _view = header.contentView;
+}
+
 @end

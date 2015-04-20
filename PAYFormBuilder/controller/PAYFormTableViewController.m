@@ -119,7 +119,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     PAYFormSection *formSection = self.table.sections[section];
-    return formSection.header.view;
+    return formSection.header.header;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

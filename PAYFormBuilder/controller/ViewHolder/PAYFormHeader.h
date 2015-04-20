@@ -14,6 +14,11 @@
 @interface PAYFormHeader : NSObject
 
 /**
+ *  The header view
+ */
+@property (nonatomic, retain, readonly) UITableViewHeaderFooterView *header;
+
+/**
  *  The view, that is visible in the header
  */
 @property (nonatomic, retain, readonly) UIView *view;
@@ -22,5 +27,10 @@
  *  The label, that contains the name of the section
  */
 @property (nonatomic, retain, readonly) UILabel *label;
+
+/**
+ *  An optional button, which provides additional help
+ */
+@property (nonatomic, retain, readonly) UIButton *infoButton;
 
 @end
