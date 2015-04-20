@@ -71,7 +71,7 @@
         [sectionBuilder addFieldWithPlaceholder:@"Another Entry"];
     }];
     
-    PAYHeaderView *header = [[PAYHeaderView alloc]initWithFrame:self.view.frame];
+    PAYHeaderView *header = [PAYHeaderView new];
     header.iconImage = [UIImage imageNamed:@"header"];
     header.title = @"Test";
     header.subTitle = @"Dies ist ein Test";
