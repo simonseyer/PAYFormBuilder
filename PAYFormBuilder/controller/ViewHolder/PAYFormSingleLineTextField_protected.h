@@ -20,14 +20,4 @@
  */
 @property (nonatomic, retain) UITextField *textField;
 
-/**
- *  The default frame of the control
- */
-@property (nonatomic, assign) CGRect defaultFrame;
-
-/**
- *  The frame, when the textfield is expanded
- */
-@property (nonatomic, assign) CGRect expandedFrame;
-
 @end

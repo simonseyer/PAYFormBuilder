@@ -219,8 +219,7 @@ static const NSUInteger RPFormSingleLineTextFieldPasswordMaxTextLength = 128;
           initialSpringVelocity:0.0f
                         options:(UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveLinear)
                      animations:^{
-                         self.textField.frame = expand ? self.expandedFrame : self.defaultFrame;
-                         self.label.alpha     = expand ? 0 : 1;
+                         //TODO
                      } completion:nil];
 }
 
