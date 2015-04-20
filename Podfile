@@ -17,6 +17,6 @@ end
 
 target 'ExampleTests' do
   pod 'PAYFormBuilder', :path => './'
-  pod 'KIF/OCUnit', '~> 3.0'
+  pod 'KIF/XCTest', '~> 3.0'
   xcodeproj 'Example.xcodeproj'
 end

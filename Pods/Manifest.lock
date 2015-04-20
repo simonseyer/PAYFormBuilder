@@ -14,7 +14,7 @@ PODS:
   - BlocksKit/UIKit (2.2.5):
     - BlocksKit/Core
     - BlocksKit/DynamicDelegate
-  - KIF/OCUnit (3.2.1)
+  - KIF/XCTest (3.2.1)
   - libextobjc (0.4.1):
     - libextobjc/EXTADT (= 0.4.1)
     - libextobjc/EXTConcreteProtocol (= 0.4.1)
@@ -58,20 +58,20 @@ PODS:
 
 DEPENDENCIES:
   - BlocksKit (~> 2)
-  - KIF/OCUnit (~> 3.0)
+  - KIF/XCTest (~> 3.0)
   - libextobjc (~> 0.4)
   - PAYFormBuilder (from `./`)
   - SZTextView (~> 1.1)
 
 EXTERNAL SOURCES:
   PAYFormBuilder:
-    :path: "./"
+    :path: ./
 
 SPEC CHECKSUMS:
   BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
   KIF: ef1691e54e1d969c3b4fd0b5b56a3d7ddf37f216
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
-  PAYFormBuilder: 5830e9ee082d2e714d5220ff76e69677a9147006
+  PAYFormBuilder: 11eef8852340a4f463d0a635904468524ae9ce99
   SZTextView: 906df45afd3c1b24fc5252088d5ef8061513c238
 
 COCOAPODS: 0.36.4
