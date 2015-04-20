@@ -55,7 +55,7 @@
                            selectionBlock:nil];
     }];
     
-    [tableBuilder addSectionWithName:@"To change some defaults, you could use the UIAppearence API with the following classes: PAYFormTableViewController, PAYFormTableBuilder, PAYFormSectionBuilder and PAYFormView."
+    [tableBuilder addSectionWithName:@"To change the default styles, use the theming API described in the README file."
                           labelStyle:PAYFormTableLabelStyleDescriptionWide
                         contentBlock:nil];
     
