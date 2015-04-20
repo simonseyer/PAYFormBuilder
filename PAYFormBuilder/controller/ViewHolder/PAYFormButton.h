@@ -19,14 +19,12 @@ FOUNDATION_EXPORT NSString *const PAYFormButtonIconHeightConstraintKey;
 
 typedef void(^PAYFormButtonSelectionBlock)(PAYFormButton *);
 typedef enum {
+    PAYFormButtonStyleDefault,
     PAYFormButtonStyleCentered,
-    PAYFormButtonStylePrimaryCentered,
-    PAYFormButtonStyleHilightedCentered,
-    PAYFormButtonStyleDisabledCentered,
+    PAYFormButtonStyleHilighted,
+    PAYFormButtonStylePrimary,
     PAYFormButtonStyleDisclosure,
-    PAYFormButtonStyleIconDisclosure,
     PAYFormButtonStyleSelection,
-    PAYFormButtonStyleIconSelection,
     PAYFormButtonStyleEmpty
 } PAYFormButtonStyle;
 
