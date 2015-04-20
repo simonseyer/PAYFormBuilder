@@ -77,7 +77,7 @@
  * this theme is returned as an container. To get the actual themes, call
  * `forStyle:` on the theme object.
  *
- * @return the label theme
+ * @return the label theme container
  */
 + (id<PAYLabelThemeContainer>)labelTheme;
 
