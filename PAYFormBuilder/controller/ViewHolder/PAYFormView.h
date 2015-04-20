@@ -19,6 +19,11 @@
  *  The view, where all sub-components are added. This view has to be manipulated 
  *  to change the appearance of one row of the form.
  */
-@property (nonatomic, retain) UITableViewCell *view;
+@property (nonatomic, retain) UIView *view;
+
+/**
+ *  The cell view.
+ */
+@property (nonatomic, retain) UITableViewCell *cell;
 
 @end

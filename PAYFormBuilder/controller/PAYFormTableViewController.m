@@ -129,7 +129,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     id<PAYFormRow> formRow = [self formRowForIndexPath:indexPath];
-    return formRow.view;
+    return formRow.cell;
 }
 
 

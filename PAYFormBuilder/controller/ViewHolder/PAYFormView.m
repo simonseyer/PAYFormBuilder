@@ -21,6 +21,11 @@
     return self;
 }
 
+- (void)setCell:(UITableViewCell *)cell {
+    _cell = cell;
+    _view = cell.contentView;
+}
+
 - (BOOL)becomeFirstResponder {
     [[NSNotificationCenter defaultCenter]postNotificationName:PAYFormRowFocusRequestNotification object:self.view];
     // Refuse first responder status, as no concrete replacement implementation was preferred.
