@@ -48,7 +48,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    NSInteger y;
+    NSInteger y = 0;
     if (self.iconImage) {
         CGSize iconImageSize = self.iconView.image.size;
         self.iconView.frame = CGRectMake((self.frame.size.width - iconImageSize.width) / 2, self.iconTopMargin,

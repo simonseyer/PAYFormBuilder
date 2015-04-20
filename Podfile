@@ -11,12 +11,12 @@ target 'PAYFormBuilder' do
 end
 
 target 'Example' do
-  pod 'PAYFormBuilder', :path => '.'
+  pod 'PAYFormBuilder', :path => './'
   xcodeproj 'Example.xcodeproj'
 end
 
 target 'ExampleTests' do
-  pod 'PAYFormBuilder', :path => '.'
+  pod 'PAYFormBuilder', :path => './'
   pod 'KIF/OCUnit', '~> 3.0'
   xcodeproj 'Example.xcodeproj'
 end
