@@ -13,8 +13,7 @@
 @interface PAYFormSectionBuilder ()
 
 @property (nonatomic, retain) PAYFormSection *section;
-@property (nonatomic, assign) CGRect defaultBounds;
 
-- (id)initWithFormSection:(PAYFormSection *)section defaultCellBounds:(CGRect)defaultBounds;
+- (id)initWithFormSection:(PAYFormSection *)section;
 
 @end
