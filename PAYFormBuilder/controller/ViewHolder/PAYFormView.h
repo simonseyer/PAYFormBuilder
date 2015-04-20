@@ -15,9 +15,6 @@
  */
 @interface PAYFormView : NSObject<PAYFormRow>
 
-@property (nonatomic, retain) UIColor *defaultErrorColor UI_APPEARANCE_SELECTOR;
-@property (nonatomic, retain) UIColor *defaultTextColor UI_APPEARANCE_SELECTOR;
-
 /**
  *  The view, where all sub-components are added. This view has to be manipulated 
  *  to change the appearance of one row of the form.

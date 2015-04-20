@@ -13,6 +13,7 @@
 #import "PAYFormView_protected.h"
 #import "PAYFormField_protected.h"
 #import "PAYNotifications.h"
+#import "PAYStyle.h"
 
 static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
 
@@ -94,9 +95,9 @@ static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
 
 - (void)styleForError:(NSError *)error {
     if (error) {
-        self.textView.textColor = self.defaultErrorColor;
+        self.textView.textColor = PAYStyle.sectionTheme.errorTextColor;
     } else {
-        self.textView.textColor = self.defaultTextColor;
+        self.textView.textColor = PAYStyle.sectionTheme.textColor;
     }
 }
 
