@@ -132,15 +132,6 @@
         titleLabel.font = PAYStyle.theme.font;
         titleLabel.userInteractionEnabled = NO;
         
-        if (style == PAYFormButtonStylePrimaryCentered) {
-            titleLabel.textColor = PAYStyle.sectionTheme.buttonPrimaryTextColor;
-        } else if (style == PAYFormButtonStyleHilightedCentered) {
-            titleLabel.textColor = PAYStyle.sectionTheme.buttonHilightTextColor;
-        } else if (style == PAYFormButtonStyleDisabledCentered) {
-            titleLabel.textColor = PAYStyle.sectionTheme.buttonDisabledTextColor;
-        } else {
-            titleLabel.textColor = PAYStyle.sectionTheme.textColor;
-        }
         
         CGRect labelFrame = bounds;
         if (style == PAYFormButtonStyleDisclosure || style == PAYFormButtonStyleSelection) {
@@ -159,6 +150,7 @@
         titleLabel.frame = labelFrame;
         
         [cell addSubview:titleLabel];
+        titleLabel.textColor = [PAYStyle.sectionTheme buttonTextColorForStyle:style];
         
         if (detailText) {
             detailLabel = [UILabel new];

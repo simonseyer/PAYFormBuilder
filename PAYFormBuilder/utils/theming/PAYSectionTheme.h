@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "PAYFormButton.h"
 
 /*
  * The section theme definition, that is used in the SectionBuilder
@@ -26,11 +27,10 @@
 - (CGFloat)iconMarginLeft;
 - (NSUInteger)textViewLineCount;
 - (UIColor *)textColor;
+- (UIColor *)errorTextColor;
 - (UIColor *)disabledTextColor;
 - (UIColor *)placeholderColor;
-- (UIColor *)buttonPrimaryTextColor;
-- (UIColor *)buttonHilightTextColor;
-- (UIColor *)buttonDisabledTextColor;
+- (UIColor *)buttonTextColorForStyle:(PAYFormButtonStyle)style;
 - (UIColor *)buttonDetailTextColor;
 
 @end
