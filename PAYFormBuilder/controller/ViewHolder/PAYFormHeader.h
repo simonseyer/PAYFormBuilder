@@ -33,4 +33,13 @@
  */
 @property (nonatomic, retain, readonly) UIButton *infoButton;
 
+@property (nonatomic, retain) NSLayoutConstraint *viewHeightConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewLabelTopConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewLabelRightConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewLabelBottomConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewLabelLeftConstraint;
+
+@property (nonatomic, retain) NSLayoutConstraint *viewInfoIconRightConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewInfoIconBottomConstraint;
+
 @end

@@ -144,10 +144,12 @@
         } else {
             headerHeight = PAYStyle.tableTheme.labelStyleEmptyHeight;
         }
-        [formHeader.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:[header(%f@100)]", headerHeight]
-                                                                              options:0
-                                                                              metrics:nil
-                                                                                views:@{@"header" : formHeader.view}]];
+        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[header(height@100)]"
+                                                                       options:0
+                                                                       metrics:@{@"height" : @(headerHeight)}
+                                                                         views:@{@"header" : formHeader.view}];
+        formHeader.viewHeightConstraint = constraints[0];
+        [formHeader.view addConstraint:formHeader.viewHeightConstraint];
     } else {
         formHeader.label = [[PAYTextLabel alloc] initWithStyle:style];
         formHeader.label.text  = name;
@@ -155,15 +157,29 @@
         
         [formHeader.view addSubview:formHeader.label];
         
-        NSDictionary *viewDict = @{@"header" : formHeader.view, @"label" : formHeader.label};
-        [formHeader.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-0-[label]-0-|"
-                                                                                options:0
-                                                                                metrics:nil
-                                                                                  views:viewDict]];
-        [formHeader.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[label]-0-|"
-                                                                                options:0
-                                                                                metrics:nil
-                                                                                  views:viewDict]];
+        NSDictionary *views = @{@"header" : formHeader.view, @"label" : formHeader.label};
+        {
+            NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"|-0-[label]-0-|"
+                                                                           options:0
+                                                                           metrics:nil
+                                                                             views:views];
+            formHeader.viewLabelLeftConstraint = constraints[0];
+            formHeader.viewLabelRightConstraint = constraints[1];
+            
+            [formHeader.view addConstraint:formHeader.viewLabelLeftConstraint];
+            [formHeader.view addConstraint:formHeader.viewLabelRightConstraint];
+        }
+        {
+            NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[label]-0-|"
+                                                                           options:0
+                                                                           metrics:nil
+                                                                             views:views];
+            formHeader.viewLabelTopConstraint = constraints[0];
+            formHeader.viewLabelBottomConstraint = constraints[1];
+            
+            [formHeader.view addConstraint:formHeader.viewLabelTopConstraint];
+            [formHeader.view addConstraint:formHeader.viewLabelBottomConstraint];
+        }
     }
     
     if (infoBlock) {
@@ -172,19 +188,25 @@
         [formHeader.infoButton bk_addEventHandler:infoBlock forControlEvents:UIControlEventTouchUpInside];
         [formHeader.view addSubview:formHeader.infoButton];
         
-        NSDictionary *viewDict = @{@"info" : formHeader.infoButton, @"view" : formHeader.view};
-        [formHeader.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"[info]-%f-|", PAYStyle.tableTheme.infoIconMargin]
-                                                                                options:0
-                                                                                metrics:nil
-                                                                                  views:viewDict]];
-        [formHeader.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:[NSString stringWithFormat:@"V:[info]-%f-|", PAYStyle.tableTheme.infoIconMargin]
-                                                                                options:0
-                                                                                metrics:nil
-                                                                                  views:viewDict]];
+        NSDictionary *views = @{@"info" : formHeader.infoButton, @"view" : formHeader.view};
+        NSDictionary *metrics = @{@"iconMargin" : @(PAYStyle.tableTheme.infoIconMargin)};
+        {
+            NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[info]-iconMargin-|"
+                                                                           options:0
+                                                                           metrics:metrics
+                                                                             views:views];
+            formHeader.viewInfoIconRightConstraint = constraints[0];
+            [formHeader.view addConstraint:formHeader.viewInfoIconRightConstraint];
+        }
+        {
+            NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[info]-iconMargin-|"
+                                                                           options:0
+                                                                           metrics:metrics
+                                                                             views:views];
+            formHeader.viewInfoIconBottomConstraint = constraints[0];
+            [formHeader.view addConstraint:formHeader.viewInfoIconBottomConstraint];
+        }
     }
-
-    
-    
     
     return formHeader;
 }
