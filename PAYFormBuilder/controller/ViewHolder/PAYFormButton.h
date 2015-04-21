@@ -28,7 +28,7 @@ typedef enum {
 /**
  *  The title label
  */
-@property (nonatomic, retain, readonly) UILabel *titleLabel;
+@property (nonatomic, retain, readonly) UILabel *label;
 
 /**
  *  The detail label

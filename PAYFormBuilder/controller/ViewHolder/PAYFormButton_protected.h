@@ -13,7 +13,7 @@
 /**
  *  The title label
  */
-@property (nonatomic, retain) UILabel *titleLabel;
+@property (nonatomic, retain) UILabel *label;
 
 /**
  *  The detail label

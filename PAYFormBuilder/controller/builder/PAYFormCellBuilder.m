@@ -159,19 +159,19 @@
     formButton.cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
     if (style != PAYFormButtonStyleEmpty) {
-        formButton.titleLabel = self.defaultLabel;
-        formButton.titleLabel.font = PAYStyle.tableTheme.font;
-        formButton.titleLabel.userInteractionEnabled = NO;
-        formButton.titleLabel.text = text;
+        formButton.label = self.defaultLabel;
+        formButton.label.font = PAYStyle.tableTheme.font;
+        formButton.label.userInteractionEnabled = NO;
+        formButton.label.text = text;
         if (style == PAYFormButtonStyleCentered || style == PAYFormButtonStylePrimary || style == PAYFormButtonStyleHilighted) {
-            formButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+            formButton.label.textAlignment = NSTextAlignmentCenter;
         }
         
-        [formButton.view addSubview:formButton.titleLabel];
+        [formButton.view addSubview:formButton.label];
         
-        formButton.titleLabel.textColor = [PAYStyle.sectionTheme buttonTextColorForStyle:style];
+        formButton.label.textColor = [PAYStyle.sectionTheme buttonTextColorForStyle:style];
         
-        [self addDefaultLabelConstrainsToLabel:formButton.titleLabel withFormView:formButton];
+        [self addDefaultLabelConstrainsToLabel:formButton.label withFormView:formButton];
         formButton.labelWidthConstraint.active = NO;
         
         if (icon) {
@@ -182,7 +182,7 @@
             
             formButton.viewLabelLeftConstraint.active = NO;
             
-            NSDictionary *views = @{@"icon" : formButton.iconView, @"view" : formButton.view, @"label" : formButton.titleLabel};
+            NSDictionary *views = @{@"icon" : formButton.iconView, @"view" : formButton.view, @"label" : formButton.label};
             {
                 NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[icon(iconSize)]"
                                                                                options:0
@@ -232,7 +232,7 @@
             formButton.detailLabel.textAlignment = NSTextAlignmentRight;
             [formButton.view addSubview:formButton.detailLabel];
             
-            NSDictionary *views = @{@"label" : formButton.titleLabel, @"detailLabel" : formButton.detailLabel, @"view" : formButton.view};
+            NSDictionary *views = @{@"label" : formButton.label, @"detailLabel" : formButton.detailLabel, @"view" : formButton.view};
             {
                 NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[label]-horzMargin-[detailLabel]-0-|"
                                                                                options:0
@@ -258,7 +258,7 @@
                 [formButton.view addConstraint:formButton.viewDetailLabelBottomConstraint];
             }
         } else {
-            NSDictionary *views = @{@"view" : formButton.view, @"label" : formButton.titleLabel};
+            NSDictionary *views = @{@"view" : formButton.view, @"label" : formButton.label};
             {
                 NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[label]-horzMargin-|"
                                                                                options:0
