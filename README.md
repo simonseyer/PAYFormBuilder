@@ -17,6 +17,7 @@ Features
 * **Validation** - use validation handling and error message management out of the box
 * **Customizable** - change everything the `PAYFormBuilder` configured for you - just register some blocks and wait for a call 
 * **Themable** - You decide, how your form should look like
+* **Auto layout compatible** - For full flexibility all elements are positioned with auto layout
 * **Example app** - get an overview over all posibilities of the lib and see how to get the best out of it
 
 Structure
@@ -104,6 +105,11 @@ The delegates of the wrapped `UITextField` and the `UITextView` are set by the f
 Just take a look at the `utils/theming` folder to see, which theme container and style properties are available. You could replace every theme by implementing one of the `PAY*Theme` protocols and set them on the `PAYStyle` class. Easier is however to just get a theme from the `PAYStyle` class and adjust different properties.
 
 *Important* is to do the theming before you create a form. All styles are applied on form initialization, so there is no chance to update them later.
+
+### Layout customization
+Each of the container objects (`PAYFormButton`, `PAYFormSingleLineTextField`, `PAYFormHeader`, etc.) you get when creating elements, holds a list of `NSLayoutConstraint` properties, which allow you to adjust layout. Simply change the properties, disable or delete the constraints.  
+
+The constraint properties are prefixed with the name of the view where the constraint is added to. For example the constraint property `viewControlBottomConstraint` is added to the `view` property of the container and constrains the bottom spacing of the control.
 
 Example
 -------
