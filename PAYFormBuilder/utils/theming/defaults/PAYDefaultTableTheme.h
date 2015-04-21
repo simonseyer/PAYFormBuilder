@@ -11,6 +11,8 @@
 
 @interface PAYDefaultTableTheme : NSObject <PAYTableTheme>
 
+@property (nonatomic, retain) UIFont *font;
+@property (nonatomic, retain) UIFont *subTitleFont;
 @property (nonatomic, assign) CGFloat rowHeight;
 @property (nonatomic, assign) CGFloat footerHeight;
 @property (nonatomic, assign) CGFloat labelStyleNoneHeight;

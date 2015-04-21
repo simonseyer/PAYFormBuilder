@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PAYTheme.h"
 #import "PAYSectionTheme.h"
 #import "PAYTableTheme.h"
 #import "PAYLabelTheme.h"
@@ -23,21 +22,6 @@
  * defaults group.
  */
 @interface PAYStyle : NSObject
-
-/*
- * Get the generic theme. By default, the PAYDefaultTheme
- * is returned.
- * 
- * @return the generic theme
- */
-+ (id<PAYTheme>)theme;
-
-/*
- * Set a new generic theme
- *
- * @param theme the new theme
- */
-+ (void)setTheme:(id<PAYTheme>)theme;
 
 /*
  * Get the section theme. By default, the PAYDefaultSectionTheme

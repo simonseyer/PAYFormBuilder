@@ -7,28 +7,15 @@
 //
 
 #import "PAYStyle.h"
-#import "PAYDefaultTheme.h"
 #import "PAYDefaultSectionTheme.h"
 #import "PAYDefaultTableTheme.h"
 #import "PAYDefaultLabelThemeContainer.h"
 
 @implementation PAYStyle
 
-static id<PAYTheme> _theme;
 static id<PAYSectionTheme> _sectionTheme;
 static id<PAYTableTheme> _tableTheme;
 static id<PAYLabelThemeContainer> _labelTheme;
-
-+ (id<PAYTheme>)theme {
-    if (!_theme) {
-        _theme = [PAYDefaultTheme new];
-    }
-    return _theme;
-}
-
-+ (void)setTheme:(id<PAYTheme>)theme {
-    _theme = theme;
-}
 
 + (id<PAYSectionTheme>)sectionTheme {
     if (!_sectionTheme) {

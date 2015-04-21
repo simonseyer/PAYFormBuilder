@@ -92,7 +92,7 @@
     
     
     SZTextView *textView            = self.defaultTextView;
-    textView.font                   = PAYStyle.theme.font;
+    textView.font                   = PAYStyle.tableTheme.font;
     textView.placeholderTextColor   = PAYStyle.sectionTheme.placeholderColor;
     if (placeholder) {
         textView.placeholder = placeholder;
@@ -160,7 +160,7 @@
     
     if (style != PAYFormButtonStyleEmpty) {
         formButton.titleLabel = self.defaultLabel;
-        formButton.titleLabel.font = PAYStyle.theme.font;
+        formButton.titleLabel.font = PAYStyle.tableTheme.font;
         formButton.titleLabel.userInteractionEnabled = NO;
         formButton.titleLabel.text = text;
         if (style == PAYFormButtonStyleCentered || style == PAYFormButtonStylePrimary || style == PAYFormButtonStyleHilighted) {
@@ -338,7 +338,7 @@
 + (UILabel *)defaultLabel {
     UILabel *label = [UILabel new];
     
-    label.font            = PAYStyle.theme.font;
+    label.font            = PAYStyle.tableTheme.font;
     label.textColor       = PAYStyle.sectionTheme.textColor;
     label.adjustsFontSizeToFitWidth = NO;
     label.translatesAutoresizingMaskIntoConstraints = NO;
@@ -384,14 +384,14 @@
     UITextField *textField    = [UITextField new];
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     textField.textAlignment   = PAYStyle.sectionTheme.fieldTextAlignment;
-    textField.font            = PAYStyle.theme.font;
+    textField.font            = PAYStyle.tableTheme.font;
     textField.translatesAutoresizingMaskIntoConstraints = NO;
     return textField;
 }
 
 + (SZTextView *)defaultTextView {
     SZTextView *textView        = [SZTextView new];
-    textView.font               = PAYStyle.theme.font;
+    textView.font               = PAYStyle.tableTheme.font;
     textView.textContainerInset = UIEdgeInsetsMake(textView.font.lineHeight, 0, textView.font.lineHeight, 0);
     textView.translatesAutoresizingMaskIntoConstraints = NO;
     return textView;
@@ -401,7 +401,7 @@
     return @{@"horzMargin" : @(PAYStyle.sectionTheme.horizontalMargin),
              @"labelWidth" : @(PAYStyle.sectionTheme.labelWidth),
              @"rowHeight" : @(PAYStyle.tableTheme.rowHeight),
-             @"textViewHeight" : @(floor(PAYStyle.theme.font.lineHeight * (PAYStyle.sectionTheme.textViewLineCount + 2))),
+             @"textViewHeight" : @(floor(PAYStyle.tableTheme.font.lineHeight * (PAYStyle.sectionTheme.textViewLineCount + 2))),
              @"iconSize" : @(PAYStyle.sectionTheme.iconSize)};
 }
 

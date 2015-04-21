@@ -15,6 +15,8 @@
  */
 @protocol PAYTableTheme <NSObject>
 
+- (UIFont *)font;
+- (UIFont *)subTitleFont;
 - (CGFloat)rowHeight;
 - (CGFloat)footerHeight;
 - (CGFloat)labelStyleNoneHeight;
