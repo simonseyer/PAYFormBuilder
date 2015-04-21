@@ -11,13 +11,6 @@
 #import "UIColor+PAYHex.h"
 #import "PAYNotifications.h"
 
-NSString *const PAYFormViewLabelHorizontalConstraintKey = @"PAYFormViewLabelHorizontalConstraintKey";
-NSString *const PAYFormViewLabelWidthConstraintKey = @"PAYFormViewLabelWidthConstraintKey";
-NSString *const PAYFormViewLabelVerticalConstraintKey = @"PAYFormViewLabelVerticalConstraintKey";
-
-NSString *const PAYFormViewControlHorizontalConstraintKey = @"PAYFormViewControlHorizontalConstraintKey";
-NSString *const PAYFormViewControlVerticalConstraintKey = @"PAYFormViewControlVerticalConstraintKey";
-
 @implementation PAYFormView
 
 - (void)setCell:(UITableViewCell *)cell {

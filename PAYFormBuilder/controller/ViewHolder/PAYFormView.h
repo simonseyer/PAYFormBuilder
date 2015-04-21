@@ -10,14 +10,6 @@
 #import "PAYFormSection.h"
 #import "PAYFormRow.h"
 
-
-FOUNDATION_EXPORT NSString *const PAYFormViewLabelHorizontalConstraintKey;
-FOUNDATION_EXPORT NSString *const PAYFormViewLabelWidthConstraintKey;
-FOUNDATION_EXPORT NSString *const PAYFormViewLabelVerticalConstraintKey;
-
-FOUNDATION_EXPORT NSString *const PAYFormViewControlHorizontalConstraintKey;
-FOUNDATION_EXPORT NSString *const PAYFormViewControlVerticalConstraintKey;
-
 /**
  *  High level model for one view in the form.
  */

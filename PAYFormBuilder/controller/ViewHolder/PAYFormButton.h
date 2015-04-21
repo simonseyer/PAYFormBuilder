@@ -9,14 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "PAYFormView.h"
 
-FOUNDATION_EXPORT NSString *const PAYFormButtonDetailLabelHorizontalConstraintKey;
-FOUNDATION_EXPORT NSString *const PAYFormButtonDetailLabelVerticalConstraintKey;
-
-FOUNDATION_EXPORT NSString *const PAYFormButtonIconHorizontalConstraintKey;
-FOUNDATION_EXPORT NSString *const PAYFormButtonIconVerticalConstraintKey;
-FOUNDATION_EXPORT NSString *const PAYFormButtonIconWidthConstraintKey;
-FOUNDATION_EXPORT NSString *const PAYFormButtonIconHeightConstraintKey;
-
 typedef void(^PAYFormButtonSelectionBlock)(PAYFormButton *);
 typedef enum {
     PAYFormButtonStyleDefault,
