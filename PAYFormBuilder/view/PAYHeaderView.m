@@ -7,7 +7,7 @@
 //
 
 #import "PAYHeaderView.h"
-#import "UIColor+PAYHex.h"
+#import "PAYStyle.h"
 
 @implementation PAYHeaderView {
 @private
@@ -43,12 +43,7 @@
     [self addSubview:self.subTitleLabel];
     [self addSubview:self.iconView];
     
-    self.iconTopMargin = 32;
-    self.titleTopMargin = 21;
-    self.subTitleTopMargin = 14;
-    
-    self.tintColor = [UIColor colorFromHex:0xFF008D79];
-    
+    self.tintColor = PAYStyle.tableTheme.headerTintColor;
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[self]-(<=1)-[iconView]"
                                                                  options:NSLayoutFormatAlignAllCenterX
@@ -57,7 +52,7 @@
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin@200-[iconView]"
                                                                  options:0
-                                                                 metrics:@{@"margin" : @(self.iconTopMargin)}
+                                                                 metrics:@{@"margin" : @(PAYStyle.tableTheme.headerIconTopMargin)}
                                                                    views:@{@"self" : self, @"iconView" : self.iconView}]];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[self]-(<=1)-[titleLabel]"
@@ -67,7 +62,7 @@
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[iconView]-margin@200-[titleLabel]"
                                                                  options:0
-                                                                 metrics:@{@"margin" : @(self.titleTopMargin)}
+                                                                 metrics:@{@"margin" : @(PAYStyle.tableTheme.headerTitleTopMargin)}
                                                                    views:@{@"iconView" : self.iconView, @"titleLabel" : self.titleLabel}]];
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[self]-(<=1)-[subTitleLabel]"
@@ -77,7 +72,7 @@
     
     [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[titleLabel]-margin@200-[subTitleLabel]"
                                                                  options:0
-                                                                 metrics:@{@"margin" : @(self.subTitleTopMargin)}
+                                                                 metrics:@{@"margin" : @(PAYStyle.tableTheme.headerSubTitleTopMargin)}
                                                                    views:@{@"titleLabel" : self.titleLabel, @"subTitleLabel" : self.subTitleLabel}]];
 }
 

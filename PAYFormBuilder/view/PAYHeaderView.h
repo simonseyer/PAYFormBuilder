@@ -44,9 +44,4 @@
  */
 @property (nonatomic, retain) PAYTextLabel *subTitleLabel;
 
-
-@property (nonatomic, assign) CGFloat iconTopMargin      UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat titleTopMargin     UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) CGFloat subTitleTopMargin  UI_APPEARANCE_SELECTOR;
-
 @end

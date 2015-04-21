@@ -17,10 +17,15 @@
 
 - (UIFont *)font;
 - (UIFont *)subTitleFont;
+- (UIColor *)backgroundColor;
 - (CGFloat)rowHeight;
 - (CGFloat)footerHeight;
 - (CGFloat)labelStyleNoneHeight;
 - (CGFloat)labelStyleEmptyHeight;
 - (CGFloat)infoIconMargin;
+- (CGFloat)headerIconTopMargin;
+- (CGFloat)headerTitleTopMargin;
+- (CGFloat)headerSubTitleTopMargin;
+- (UIColor *)headerTintColor;
 
 @end
