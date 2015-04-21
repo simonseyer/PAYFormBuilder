@@ -100,11 +100,13 @@
 }
 
 - (void)buildFooter {
-    UIView *footerView = [UIView new];
-    footerView.frame = CGRectMake(0, 0, 0, PAYStyle.tableTheme.footerHeight);
-    footerView.backgroundColor = UIColor.clearColor;
-    
-    self.tableView.tableFooterView = footerView;
+    if (!self.tableView.tableFooterView) {
+        UIView *footerView = [UIView new];
+        footerView.frame = CGRectMake(0, 0, 0, PAYStyle.tableTheme.footerHeight);
+        footerView.backgroundColor = UIColor.clearColor;
+        
+        self.tableView.tableFooterView = footerView;
+    }
 }
 
 - (void)initForm {
@@ -188,32 +190,33 @@
 #pragma mark - Layout header view
 
 - (void)updateViewConstraints {
-    UIView *header = self.tableView.tableHeaderView;
-    if (header) {
-        header.translatesAutoresizingMaskIntoConstraints = NO;
-        
-        [header setNeedsLayout];
-        [header layoutIfNeeded];
-        
-        NSArray *temporaryWidthConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[headerView(width)]"
-                                                                                     options:0
-                                                                                     metrics:@{@"width": @(header.bounds.size.width)}
-                                                                                       views:@{@"headerView": header}];
-        [header addConstraints:temporaryWidthConstraints];
-        
-        CGFloat height = [header systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-        
-        [header removeConstraints:temporaryWidthConstraints];
-        header.translatesAutoresizingMaskIntoConstraints = YES;
-        
-        //update the header's frame and set it again
-        CGRect headerFrame = header.frame;
-        headerFrame.size.height = height;
-        header.frame = headerFrame;
-        self.tableView.tableHeaderView = header;
-    }
+    self.tableView.tableHeaderView = [self updateFixedHeightOfView:self.tableView.tableHeaderView];
+    self.tableView.tableFooterView = [self updateFixedHeightOfView:self.tableView.tableFooterView];
     
     [super updateViewConstraints];
+}
+
+- (UIView *)updateFixedHeightOfView:(UIView *)view {
+    if (view) {
+        view.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        [view setNeedsLayout];
+        [view layoutIfNeeded];
+        
+        NSArray *temporaryWidthConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[view(width)]"
+                                                                                     options:0
+                                                                                     metrics:@{@"width": @(view.bounds.size.width)}
+                                                                                       views:@{@"view": view}];
+        [view addConstraints:temporaryWidthConstraints];
+        
+        CGFloat height = [view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+        
+        [view removeConstraints:temporaryWidthConstraints];
+        view.translatesAutoresizingMaskIntoConstraints = YES;
+        
+        view.frame = CGRectMake(0, 0, view.frame.size.width, height);
+    }
+    return view;
 }
 
 @end
