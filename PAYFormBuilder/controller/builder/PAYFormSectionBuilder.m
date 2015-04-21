@@ -110,7 +110,6 @@
                           detailText:detailText
                                 icon:(UIImage *)icon
                                style:(PAYFormButtonStyle)style
-
                       selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock {
     return [self addButtonWithText:text
                         detailText:detailText
@@ -129,7 +128,7 @@
                               icon:nil
                              style:style
                     selectionBlock:selectionBlock
-                    configureBlock:nil];
+                    configureBlock:configureBlock];
 }
 
 - (PAYFormButton *)addButtonWithText:(NSString *)text
