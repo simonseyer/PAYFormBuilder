@@ -102,7 +102,7 @@
     
     NSDictionary *views = NSDictionaryOfVariableBindings(textView, formField.view);
     {
-        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"|-0-[textView]-0-|"
+        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"|-horzMargin-[textView]-horzMargin-|"
                                                                        options:0
                                                                        metrics:self.metrics
                                                                          views:views];
