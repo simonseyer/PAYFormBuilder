@@ -50,6 +50,11 @@
     [self buildFooter];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self updateViewConstraints];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
@@ -96,9 +101,7 @@
 
 - (void)buildFooter {
     UIView *footerView = [UIView new];
-    footerView.frame = CGRectMake(0, 0,
-                                  self.view.frame.size.width,
-                                  PAYStyle.tableTheme.footerHeight);
+    footerView.frame = CGRectMake(0, 0, 0, PAYStyle.tableTheme.footerHeight);
     footerView.backgroundColor = UIColor.clearColor;
     
     self.tableView.tableFooterView = footerView;
@@ -180,6 +183,37 @@
 
 - (void)onDone:(id)sender {
     [self.table validate];
+}
+
+#pragma mark - Layout header view
+
+- (void)updateViewConstraints {
+    UIView *header = self.tableView.tableHeaderView;
+    if (header) {
+        header.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        [header setNeedsLayout];
+        [header layoutIfNeeded];
+        
+        NSArray *temporaryWidthConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[headerView(width)]"
+                                                                                     options:0
+                                                                                     metrics:@{@"width": @(header.bounds.size.width)}
+                                                                                       views:@{@"headerView": header}];
+        [header addConstraints:temporaryWidthConstraints];
+        
+        CGFloat height = [header systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+        
+        [header removeConstraints:temporaryWidthConstraints];
+        header.translatesAutoresizingMaskIntoConstraints = YES;
+        
+        //update the header's frame and set it again
+        CGRect headerFrame = header.frame;
+        headerFrame.size.height = height;
+        header.frame = headerFrame;
+        self.tableView.tableHeaderView = header;
+    }
+    
+    [super updateViewConstraints];
 }
 
 @end
