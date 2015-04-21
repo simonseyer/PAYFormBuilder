@@ -58,4 +58,18 @@ typedef enum {
  */
 @property (nonatomic, assign) BOOL selected;
 
+@property (nonatomic, retain) NSLayoutConstraint *iconWidthConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *iconHeightConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewIconLeftConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewIconCenterVerticalConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewIconCenterVerticalHelperConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewIconLabelConstraint;
+
+@property (nonatomic, retain) NSLayoutConstraint *viewLabelDetailLabelConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewDetailLabelTopConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewDetailLabelRightConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewDetailLabelBottomConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *detailLabelHeightConstraint;
+
+
 @end

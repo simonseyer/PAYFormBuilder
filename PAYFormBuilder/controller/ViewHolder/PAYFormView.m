@@ -20,14 +20,6 @@ NSString *const PAYFormViewControlVerticalConstraintKey = @"PAYFormViewControlVe
 
 @implementation PAYFormView
 
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        self.constraints = @{}.mutableCopy;
-    }
-    return self;
-}
-
 - (void)setCell:(UITableViewCell *)cell {
     _cell = cell;
     _view = cell.contentView;
@@ -42,29 +34,5 @@ NSString *const PAYFormViewControlVerticalConstraintKey = @"PAYFormViewControlVe
 - (void)didSelectRow {
     // Stub
 }
-
-- (void)addConstraintWithFormat:(NSString *)format key:(NSString *)key toViews:(NSDictionary *)views {
-    [self addConstraintWithFormat:format options:0 key:key toViews:views];
-}
-
-- (void)addConstraintWithFormat:(NSString *)format options:(NSLayoutFormatOptions)options key:(NSString *)key toViews:(NSDictionary *)views {
-    NSArray *constrains = [NSLayoutConstraint constraintsWithVisualFormat:format
-                                                                  options:options
-                                                                  metrics:nil
-                                                                    views:views];
-    for (NSLayoutConstraint *constraint in constrains) {
-        UIView *firstView = constraint.firstItem;
-        UIView *secondView = constraint.secondItem;
-        if ([firstView isDescendantOfView:secondView]) {
-            [secondView addConstraint:constraint];
-        } else if ([secondView isDescendantOfView:firstView]) {
-            [firstView addConstraint:constraint];
-        } else {
-            [firstView.superview addConstraint:constraint];
-        }
-    }
-    [self.constraints setValue:constrains forKey:key];
-}
-
 
 @end

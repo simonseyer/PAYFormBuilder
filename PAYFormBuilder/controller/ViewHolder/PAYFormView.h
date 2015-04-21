@@ -34,9 +34,18 @@ FOUNDATION_EXPORT NSString *const PAYFormViewControlVerticalConstraintKey;
  */
 @property (nonatomic, retain) UITableViewCell *cell;
 
-@property (nonatomic, retain) NSMutableDictionary *constraints;
+@property (nonatomic, retain) NSLayoutConstraint *viewLabelTopConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewLabelRightConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewLabelBottomConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewLabelLeftConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *labelWidthConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *labelHeightConstraint;
 
-- (void)addConstraintWithFormat:(NSString *)format key:(NSString *)key toViews:(NSDictionary *)views;
-- (void)addConstraintWithFormat:(NSString *)format options:(NSLayoutFormatOptions)options key:(NSString *)key toViews:(NSDictionary *)views;
+@property (nonatomic, retain) NSLayoutConstraint *viewLabelControlConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewControlTopConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewControlRightConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewControlBottomConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewControlLeftConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *controlHeightContraint;
 
 @end

@@ -34,4 +34,7 @@
  */
 @property (nonatomic, assign) BOOL value;
 
+@property (nonatomic, retain) NSLayoutConstraint *viewSwitchCenterVerticalConstraint;
+@property (nonatomic, retain) NSLayoutConstraint *viewSwitchCenterVerticalHelperConstraint;
+
 @end
