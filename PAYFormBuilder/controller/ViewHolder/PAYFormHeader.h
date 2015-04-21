@@ -33,13 +33,39 @@
  */
 @property (nonatomic, retain, readonly) UIButton *infoButton;
 
+/**
+ * Constrains the height of the header view. Added to the view.
+ */
 @property (nonatomic, retain) NSLayoutConstraint *viewHeightConstraint;
+
+/**
+ * Constrains the top spacing between the label and the superview. Added to the view.
+ */
 @property (nonatomic, retain) NSLayoutConstraint *viewLabelTopConstraint;
+
+/**
+ * Constrains the trailing spacing between the label and the superview. Added to the view.
+ */
 @property (nonatomic, retain) NSLayoutConstraint *viewLabelRightConstraint;
+
+/**
+ * Constrains the bottom spacing between the label and the superview. Added to the view.
+ */
 @property (nonatomic, retain) NSLayoutConstraint *viewLabelBottomConstraint;
+
+/**
+ * Constrains the leading spacing between the label and the superview. Added to the view.
+ */
 @property (nonatomic, retain) NSLayoutConstraint *viewLabelLeftConstraint;
 
+/**
+ * Constrains the trailing spacing between the icon and the superview. Added to the view.
+ */
 @property (nonatomic, retain) NSLayoutConstraint *viewInfoIconRightConstraint;
+
+/**
+ * Constrains the bottom spacing between the icon and the superview. Added to the view.
+ */
 @property (nonatomic, retain) NSLayoutConstraint *viewInfoIconBottomConstraint;
 
 @end
