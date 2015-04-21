@@ -165,7 +165,7 @@
 		379651C418F2F1650022151B /* PAYFormTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormTable.h; sourceTree = "<group>"; };
 		379651C518F2F1650022151B /* PAYFormTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormTable.m; sourceTree = "<group>"; };
 		379651C618F2F1650022151B /* PAYFormTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormTextField.h; sourceTree = "<group>"; };
-		379651C718F2F1650022151B /* PAYFormTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PAYFormTextField.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		379651C718F2F1650022151B /* PAYFormTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PAYFormTextField.m; sourceTree = "<group>"; };
 		379651C818F2F1650022151B /* PAYFormView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYFormView.h; sourceTree = "<group>"; };
 		379651C918F2F1650022151B /* PAYFormView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYFormView.m; sourceTree = "<group>"; };
 		379651CC18F2F1650022151B /* UIView+PAYKeyboardHandling_protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+PAYKeyboardHandling_protected.h"; path = "../view/categories/UIView+PAYKeyboardHandling_protected.h"; sourceTree = "<group>"; };

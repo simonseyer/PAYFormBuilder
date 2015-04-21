@@ -22,6 +22,8 @@ static const NSUInteger RPFormSingleLineTextFieldPasswordMaxTextLength = 128;
 @interface PAYFormSingleLineTextField () <UITextFieldDelegate>
 
 @property (nonatomic, assign) UITextFieldViewMode defaultClearButtonMode;
+@property (nonatomic, assign) CGFloat savedLabelWidthConstraintConstant;
+@property (nonatomic, assign) CGFloat savedLabelControlConstraintConstant;
 
 @end
 
@@ -213,13 +215,24 @@ static const NSUInteger RPFormSingleLineTextFieldPasswordMaxTextLength = 128;
 }
 
 - (void)expandTextfield:(BOOL)expand {
+    [self.view layoutIfNeeded];
+    if (expand) {
+        self.savedLabelWidthConstraintConstant = self.labelWidthConstraint.constant;
+        self.savedLabelControlConstraintConstant = self.viewLabelControlConstraint.constant;
+        self.labelWidthConstraint.constant = 0;
+        self.viewLabelControlConstraint.constant = 0;
+    } else if(self.labelWidthConstraint.constant == 0) {
+        self.labelWidthConstraint.constant = self.savedLabelWidthConstraintConstant;
+        self.viewLabelControlConstraint.constant = self.savedLabelControlConstraintConstant;
+    }
+    
     [UIView animateWithDuration:0.5f
                           delay:0.0f
          usingSpringWithDamping:500.0f
           initialSpringVelocity:0.0f
                         options:(UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveLinear)
                      animations:^{
-                         //TODO
+                         [self.view layoutIfNeeded];
                      } completion:nil];
 }
 
