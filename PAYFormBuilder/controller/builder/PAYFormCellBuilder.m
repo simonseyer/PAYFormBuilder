@@ -113,7 +113,7 @@
         [formField.view addConstraint:formField.viewControlRightConstraint];
     }
     {
-        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[textView(>=textViewHeight)]-0-|"
+        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[textView(>=textViewHeight@200)]-0-|"
                                                                        options:0
                                                                        metrics:self.metrics
                                                                          views:views];

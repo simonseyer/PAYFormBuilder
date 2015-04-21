@@ -23,6 +23,7 @@
         self.iconMargin              = 17.0f;
         self.iconMarginLeft          = 59.0f;
         self.textViewLineCount       = 3;
+        self.textViewMaxLineCount    = 5;
         self.textColor               = [UIColor colorFromHex:0xFF323232];
         self.errorTextColor = [UIColor colorFromHex:0xFFFF3B30];
         self.disabledTextColor       = self.textColor;

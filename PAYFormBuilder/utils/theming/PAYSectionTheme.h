@@ -26,6 +26,7 @@
 - (CGFloat)iconMargin;
 - (CGFloat)iconMarginLeft;
 - (NSUInteger)textViewLineCount;
+- (NSUInteger)textViewMaxLineCount;
 - (UIColor *)textColor;
 - (UIColor *)errorTextColor;
 - (UIColor *)disabledTextColor;

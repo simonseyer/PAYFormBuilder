@@ -40,13 +40,4 @@
  */
 - (void)adjustSizeToContentWithMaxHeight:(CGFloat)maxHeight;
 
-
-/**
- *  Adjusts the height of the text view to the content height
- *  to fit the current text value without scrolling
- *
- */
-
-- (void)changeHeight:(BOOL)animated;
-
 @end
