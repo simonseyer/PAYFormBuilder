@@ -366,7 +366,7 @@
         [formView.view addConstraint:formView.labelWidthConstraint];
     }
     {
-        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[label(rowHeight)]-0-|"
+        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[label(rowHeight)]-0@200-|"
                                                                        options:0
                                                                        metrics:self.metrics
                                                                          views:views];
