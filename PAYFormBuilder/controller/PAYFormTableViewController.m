@@ -190,32 +190,35 @@
 #pragma mark - Layout header view
 
 - (void)updateViewConstraints {
-    self.tableView.tableHeaderView = [self updateFixedHeightOfView:self.tableView.tableHeaderView];
-    self.tableView.tableFooterView = [self updateFixedHeightOfView:self.tableView.tableFooterView];
+    if (self.tableView.tableHeaderView) {
+        self.tableView.tableHeaderView = [self updateFixedHeightOfView:self.tableView.tableHeaderView];
+    }
+    if (self.tableView.tableFooterView) {
+        self.tableView.tableFooterView = [self updateFixedHeightOfView:self.tableView.tableFooterView];
+    }
     
     [super updateViewConstraints];
 }
 
 - (UIView *)updateFixedHeightOfView:(UIView *)view {
-    if (view) {
-        view.translatesAutoresizingMaskIntoConstraints = NO;
-        
-        [view setNeedsLayout];
-        [view layoutIfNeeded];
-        
-        NSArray *temporaryWidthConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[view(width)]"
-                                                                                     options:0
-                                                                                     metrics:@{@"width": @(view.bounds.size.width)}
-                                                                                       views:@{@"view": view}];
-        [view addConstraints:temporaryWidthConstraints];
-        
-        CGFloat height = [view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-        
-        [view removeConstraints:temporaryWidthConstraints];
-        view.translatesAutoresizingMaskIntoConstraints = YES;
-        
-        view.frame = CGRectMake(0, 0, view.frame.size.width, height);
-    }
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [view setNeedsLayout];
+    [view layoutIfNeeded];
+    
+    NSArray *temporaryWidthConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[view(width)]"
+                                                                                 options:0
+                                                                                 metrics:@{@"width": @(view.bounds.size.width)}
+                                                                                   views:@{@"view": view}];
+    [view addConstraints:temporaryWidthConstraints];
+    
+    CGFloat height = [view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    
+    [view removeConstraints:temporaryWidthConstraints];
+    view.translatesAutoresizingMaskIntoConstraints = YES;
+    
+    view.frame = CGRectMake(0, 0, view.frame.size.width, height);
+    
     return view;
 }
 
