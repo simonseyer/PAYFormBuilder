@@ -13,7 +13,6 @@
 		370BE0AB190AB82200954747 /* PAYValidationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370BE0AA190AB82200954747 /* PAYValidationsViewController.m */; };
 		370BE0AE190AB85A00954747 /* PAYCustomizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 370BE0AD190AB85A00954747 /* PAYCustomizationViewController.m */; };
 		372EF9B218F460E8004D9D78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372EF9B118F460E8004D9D78 /* Images.xcassets */; };
-		373806011925043E00F20161 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 373806001925043E00F20161 /* SenTestingKit.framework */; };
 		3786EC39191D21E400EC1FBB /* PAYValidationsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3786EC38191D21E400EC1FBB /* PAYValidationsTest.m */; };
 		37906D3818F4349F00FC3CC8 /* Main_Iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37906D3718F4349F00FC3CC8 /* Main_Iphone.storyboard */; };
 		3796520C18F426A00022151B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3796520B18F426A00022151B /* Foundation.framework */; };
@@ -56,7 +55,6 @@
 		370BE0AC190AB85A00954747 /* PAYCustomizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYCustomizationViewController.h; sourceTree = "<group>"; };
 		370BE0AD190AB85A00954747 /* PAYCustomizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYCustomizationViewController.m; sourceTree = "<group>"; };
 		372EF9B118F460E8004D9D78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		373806001925043E00F20161 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		3786EC37191D21E400EC1FBB /* PAYValidationsTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAYValidationsTest.h; sourceTree = "<group>"; };
 		3786EC38191D21E400EC1FBB /* PAYValidationsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAYValidationsTest.m; sourceTree = "<group>"; };
 		37906D3718F4349F00FC3CC8 /* Main_Iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_Iphone.storyboard; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				373806011925043E00F20161 /* SenTestingKit.framework in Frameworks */,
 				3796522718F426A00022151B /* UIKit.framework in Frameworks */,
 				3796522618F426A00022151B /* Foundation.framework in Frameworks */,
 				D672E4652B0B25A59CCB88CE /* libPods-ExampleTests.a in Frameworks */,
@@ -162,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				C3E0019A1AE4FB44009A5286 /* XCTest.framework */,
-				373806001925043E00F20161 /* SenTestingKit.framework */,
 				3796520B18F426A00022151B /* Foundation.framework */,
 				3796520D18F426A00022151B /* CoreGraphics.framework */,
 				3796520F18F426A00022151B /* UIKit.framework */,
