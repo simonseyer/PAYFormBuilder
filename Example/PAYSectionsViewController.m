@@ -17,28 +17,28 @@
 - (void)loadStructure:(PAYFormTableBuilder *)tableBuilder {
     [tableBuilder addSectionWithContentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         [sectionBuilder addButtonWithText:@"Section with label style empty"
-                                    style:PAYFormButtonStyleDisabledCentered
+                                    style:PAYFormButtonStyleDefault
                            selectionBlock:nil];
     }];
     
     [tableBuilder addSectionWithLabelStyle:PAYFormTableLabelStyleNone
                               contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         [sectionBuilder addButtonWithText:@"Section with label style none"
-                                    style:PAYFormButtonStyleDisabledCentered
+                                    style:PAYFormButtonStyleDefault
                            selectionBlock:nil];
     }];
     
     [tableBuilder addSectionWithName:@"Label style simple (default)"
                         contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
         [sectionBuilder addButtonWithText:@"Section with label style simple"
-                                    style:PAYFormButtonStyleDisabledCentered
+                                    style:PAYFormButtonStyleDefault
                            selectionBlock:nil];
                           }];
     
     [tableBuilder addSectionWithName:@"Section with info button"
                         contentBlock:^(PAYFormSectionBuilder *sectionBuilder) {
                             [sectionBuilder addButtonWithText:@"Simple Entry"
-                                                        style:PAYFormButtonStyleDisabledCentered
+                                                        style:PAYFormButtonStyleDefault
                                                selectionBlock:nil];
                         }
                            infoBlock:^(UIButton *infoButton) {
@@ -59,22 +59,28 @@
                         contentBlock:nil];
     [tableBuilder addSectionWithHeaderBlock:^(PAYFormHeader *formHeader) {
         UILabel *customLabel = [UILabel new];
+        customLabel.translatesAutoresizingMaskIntoConstraints = NO;
         customLabel.textColor = [UIColor colorFromHex:0xFF5e3a];
         customLabel.text = @"Custom header";
-        
-        [customLabel sizeToFit];
-        customLabel.frame = CGRectOffset(customLabel.frame, 20, 20);
-        formHeader.view.frame = CGRectInset(customLabel.frame, 0, -15);
-        
         [formHeader.view addSubview:customLabel];
+        
+        UIView *formView = formHeader.view;
+        [formHeader.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[formView]-(<=1@200)-[customLabel]"
+                                                                                options:NSLayoutFormatAlignAllCenterY
+                                                                                metrics:nil
+                                                                                  views:NSDictionaryOfVariableBindings(customLabel, formView)]];
+        [formHeader.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-50-[customLabel]"
+                                                                                options:NSLayoutFormatAlignAllCenterY
+                                                                                metrics:nil
+                                                                                  views:NSDictionaryOfVariableBindings(customLabel, formView)]];
     } contentBlock:^(PAYFormSectionBuilder *sectionBuilder) {
         [sectionBuilder addFieldWithPlaceholder:@"Another Entry"];
     }];
     
-    PAYHeaderView *header = [[PAYHeaderView alloc]initWithFrame:self.view.frame];
+    PAYHeaderView *header = [PAYHeaderView new];
     header.iconImage = [UIImage imageNamed:@"header"];
-    header.title = @"Test";
-    header.subTitle = @"Dies ist ein Test";
+    header.title = @"The header title";
+    header.subTitle = @"This is the subTitleLabel";
     self.tableView.tableHeaderView = header;
 }
 

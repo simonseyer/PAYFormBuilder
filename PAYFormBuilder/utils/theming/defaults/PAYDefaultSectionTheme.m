@@ -23,15 +23,27 @@
         self.iconMargin              = 17.0f;
         self.iconMarginLeft          = 59.0f;
         self.textViewLineCount       = 3;
+        self.textViewMaxLineCount    = 5;
         self.textColor               = [UIColor colorFromHex:0xFF323232];
+        self.errorTextColor = [UIColor colorFromHex:0xFFFF3B30];
         self.disabledTextColor       = self.textColor;
         self.placeholderColor        = [UIColor colorFromHex:0xFFCACACA];
-        self.buttonPrimaryTextColor  = [UIColor colorFromHex:0xFF214889];
-        self.buttonHilightTextColor  = [UIColor colorFromHex:0xFFE87E18];
-        self.buttonDisabledTextColor = [UIColor colorFromHex:0xFF898989];
+        self.buttonTextColors = @{
+                                  @(PAYFormButtonStyleCentered) : self.textColor,
+                                  @(PAYFormButtonStyleDefault) : self.textColor,
+                                  @(PAYFormButtonStyleDisclosure) : self.textColor,
+                                  @(PAYFormButtonStyleHilighted) : [UIColor colorFromHex:0xFFE87E18],
+                                  @(PAYFormButtonStylePrimary) : [UIColor colorFromHex:0xFF214889],
+                                  @(PAYFormButtonStyleSelection) : self.textColor,
+                                  }.mutableCopy;
         self.buttonDetailTextColor   = [UIColor colorFromHex:0xFFCCCCCC];
     }
     return self;
+}
+
+- (UIColor *)buttonTextColorForStyle:(PAYFormButtonStyle)style
+{
+    return self.buttonTextColors[@(style)];
 }
 
 @end

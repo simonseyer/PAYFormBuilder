@@ -14,12 +14,10 @@
 
 @implementation PAYFormSectionBuilder
 
-- (id)initWithFormSection:(PAYFormSection *)section
-        defaultCellBounds:(CGRect)defaultBounds {
+- (id)initWithFormSection:(PAYFormSection *)section {
     self = [super init];
     if (self) {
         self.section = section;
-        self.defaultBounds = defaultBounds;
     }
     return self;
 }
@@ -43,7 +41,6 @@
                                   configureBlock:(void(^)(PAYFormSingleLineTextField *))configureBlock {
     PAYFormSingleLineTextField *formField = [PAYFormCellBuilder fieldWithName:name
                                                                   placeholder:placeholder
-                                                                     inBounds:self.defaultBounds
                                                                configureBlock:configureBlock];
     [self.section.views addObject:formField];
     return formField;
@@ -68,7 +65,6 @@
                                            configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock {
     PAYFormMultiLineTextField *formField = [PAYFormCellBuilder textViewWithName:self.section.name
                                                                     placeholder:placeholder
-                                                                       inBounds:self.defaultBounds
                                                                      adjustable:isAdjustable
                                                                  configureBlock:configureBlock];
     [self.section.views addObject:formField];
@@ -78,7 +74,12 @@
 - (PAYFormButton *)addButtonWithText:(NSString *)text
                                style:(PAYFormButtonStyle)style
                       selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock {
-    return [self addButtonWithText:text style:style selectionBlock:selectionBlock configureBlock:NULL];
+    return [self addButtonWithText:text
+                        detailText:nil
+                              icon:nil
+                             style:style
+                    selectionBlock:selectionBlock
+                    configureBlock:nil];
 }
 
 - (PAYFormButton *)addButtonWithText:(NSString *)text
@@ -87,22 +88,35 @@
                       selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock {
     return [self addButtonWithText:text
                         detailText:detailText
+                              icon:nil
                              style:style
                     selectionBlock:selectionBlock
                     configureBlock:nil];
 }
 
-
 - (PAYFormButton *)addButtonWithText:(NSString *)text
-                               style:(PAYFormButtonStyle)style
                                 icon:(UIImage *)icon
+                               style:(PAYFormButtonStyle)style
                       selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock {
     return [self addButtonWithText:text
+                        detailText:nil
+                              icon:icon
                              style:style
                     selectionBlock:selectionBlock
-                    configureBlock:^(PAYFormButton *formButton) {
-                        formButton.iconView.image = icon;
-    }];
+                    configureBlock:nil];
+}
+
+- (PAYFormButton *)addButtonWithText:(NSString *)text
+                          detailText:detailText
+                                icon:(UIImage *)icon
+                               style:(PAYFormButtonStyle)style
+                      selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock {
+    return [self addButtonWithText:text
+                        detailText:detailText
+                              icon:icon
+                             style:style
+                    selectionBlock:selectionBlock
+                    configureBlock:nil];
 }
 
 - (PAYFormButton *)addButtonWithText:(NSString *)text
@@ -111,6 +125,7 @@
                       configureBlock:(void(^)(PAYFormButton *))configureBlock {
     return [self addButtonWithText:text
                         detailText:nil
+                              icon:nil
                              style:style
                     selectionBlock:selectionBlock
                     configureBlock:configureBlock];
@@ -118,16 +133,17 @@
 
 - (PAYFormButton *)addButtonWithText:(NSString *)text
                           detailText:(NSString *)detailText
+                                icon:(UIImage *)icon
                                style:(PAYFormButtonStyle)style
                       selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock
                       configureBlock:(void(^)(PAYFormButton *))configureBlock {
     PAYFormButton *formView = [PAYFormCellBuilder buttonWithText:text
                                                       detailText:detailText
+                                                            icon:icon
                                                            style:style
-                                                        inBounds:self.defaultBounds
                                                   selectionBlock:selectionBlock
                                                   configureBlock:configureBlock];
-     [self.section.views addObject:formView];
+    [self.section.views addObject:formView];
     return formView;
 }
 
@@ -155,7 +171,6 @@
 - (PAYFormSwitch *)addSwitchWithName:(NSString *)name
                       configureBlock:(void(^)(PAYFormSwitch *))configureBlock {
     PAYFormSwitch *formView = [PAYFormCellBuilder switchWithName:name
-                                                        inBounds:self.defaultBounds
                                                   configureBlock:configureBlock];
     [self.section.views addObject:formView];
     return formView;
@@ -163,7 +178,7 @@
 
 - (void)addView:(void(^)(PAYFormView *))configureBlock {
     PAYFormView *formView = [PAYFormView new];
-    formView.view        = [PAYFormCellBuilder defaultCellInBounds:self.defaultBounds];
+    formView.view        = [PAYFormCellBuilder defaultCell];
     
     if (configureBlock) {
         configureBlock(formView);

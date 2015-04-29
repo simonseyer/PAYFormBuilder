@@ -9,12 +9,6 @@
 #import "PAYFormButton.h"
 #import "PAYFormButton_protected.h"
 
-
-@interface PAYFormButton ()
-
-@end
-
-
 @implementation PAYFormButton
 
 - (void)didSelectRow {
@@ -26,9 +20,9 @@
 - (void)setSelected:(BOOL)selected {
     _selected = selected;
     if (selected) {
-        self.view.accessoryType = UITableViewCellAccessoryCheckmark;
+        self.cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
-        self.view.accessoryType = UITableViewCellAccessoryNone;
+        self.cell.accessoryType = UITableViewCellAccessoryNone;
     }
 }
 

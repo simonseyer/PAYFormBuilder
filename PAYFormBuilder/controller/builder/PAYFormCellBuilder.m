@@ -18,41 +18,63 @@
 
 + (PAYFormSingleLineTextField *)fieldWithName:(NSString *)name
                                   placeholder:(NSString *)placeholder
-                                     inBounds:(CGRect)bounds
                                configureBlock:(void(^)(PAYFormSingleLineTextField *))configureBlock {
-    UITextField *textField    = [self defaultTextField];
-    textField.placeholder     = placeholder;
+    PAYFormSingleLineTextField *formField = [PAYFormSingleLineTextField new];
     
-    UILabel *label = nil;
-    CGFloat leftFieldMargin = PAYStyle.sectionTheme.horizontalMargin;
+    formField.cell = self.defaultCell;
+    formField.cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.horizontalMargin, 0, 0);
+    
+    formField.textField = self.defaultTextField;
+    formField.textField.placeholder = placeholder;
+    [formField.view addSubview:formField.textField];
+    
+    NSDictionary *views = @{@"view" : formField.view, @"textField" : formField.textField};
     if (name) {
-        label           = [self defaultLabelInBounds:bounds];
-        label.text      = name;
-        leftFieldMargin = CGRectGetMaxX(label.frame) + PAYStyle.sectionTheme.labelFieldSpacing;
-        if (textField.textAlignment == NSTextAlignmentRight) {
-            CGRect labelRect = label.frame;
-            labelRect.size.width = bounds.size.width - 2 * PAYStyle.sectionTheme.horizontalMargin;
-            label.frame = labelRect;
+        formField.label      = self.defaultLabel;
+        formField.label.text = name;
+        [formField.view addSubview:formField.label];
+        
+        [self addDefaultLabelConstrainsToLabel:formField.label withFormView:formField];
+        
+        NSDictionary *views = @{@"view" : formField.view, @"label" : formField.label, @"textField" : formField.textField};
+        {
+            NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[label]-horzMargin-[textField]-horzMargin-|"
+                                                                           options:0
+                                                                           metrics:self.metrics
+                                                                             views:views];
+            formField.viewLabelControlConstraint = constraints[0];
+            formField.viewControlRightConstraint = constraints[1];
+            
+            [formField.view addConstraint:formField.viewLabelControlConstraint];
+            [formField.view addConstraint:formField.viewControlRightConstraint];
+        }
+    } else {
+        {
+            NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"|-horzMargin-[textField]-horzMargin-|"
+                                                                           options:0
+                                                                           metrics:self.metrics
+                                                                             views:views];
+            formField.viewControlLeftConstraint = constraints[0];
+            formField.viewControlRightConstraint = constraints[1];
+            
+            [formField.view addConstraint:formField.viewControlLeftConstraint];
+            [formField.view addConstraint:formField.viewControlRightConstraint];
         }
     }
     
-    CGRect expandedFieldFrame = CGRectInset(bounds, PAYStyle.sectionTheme.horizontalMargin, 0);
-    CGRect fieldFrame         = bounds;
-    fieldFrame.origin.x       = leftFieldMargin;
-    fieldFrame.size.width    -= (fieldFrame.origin.x + PAYStyle.sectionTheme.horizontalMargin);
-    textField.frame           = fieldFrame;
-    
-    UITableViewCell *cell = [self defaultCellInBounds:bounds];
-    cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.horizontalMargin, 0, 0);
-    [cell addSubview:label];
-    [cell addSubview:textField];
-    
-    PAYFormSingleLineTextField *formField = [PAYFormSingleLineTextField new];
-    formField.view          = cell;
-    formField.label         = label;
-    formField.textField     = textField;
-    formField.defaultFrame  = textField.frame;
-    formField.expandedFrame = expandedFieldFrame;
+    {
+        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[textField(rowHeight)]-0-|"
+                                                                       options:0
+                                                                       metrics:self.metrics
+                                                                         views:views];
+        formField.viewControlTopConstraint = constraints[0];
+        formField.controlHeightContraint = constraints[1];
+        formField.viewControlBottomConstraint = constraints[2];
+        
+        [formField.view addConstraint:formField.viewControlTopConstraint];
+        [formField.textField addConstraint:formField.controlHeightContraint];
+        [formField.view addConstraint:formField.viewControlBottomConstraint];
+    }
     
     if (configureBlock) {
         configureBlock(formField);
@@ -63,32 +85,47 @@
 
 + (PAYFormMultiLineTextField *)textViewWithName:(NSString *)name
                                     placeholder:(NSString *)placeholder
-                                       inBounds:(CGRect)bounds
                                      adjustable:(BOOL)isAdjustable
                                  configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock {
+    PAYFormMultiLineTextField *formField = [PAYFormMultiLineTextField new];
+    formField.cell = self.defaultCell;
+    
+    
     SZTextView *textView            = self.defaultTextView;
-    textView.font                   = PAYStyle.theme.font;
+    textView.font                   = PAYStyle.tableTheme.font;
     textView.placeholderTextColor   = PAYStyle.sectionTheme.placeholderColor;
     if (placeholder) {
-        textView.placeholder            = placeholder;
+        textView.placeholder = placeholder;
     }
-    
-    CGRect textViewFrame  = bounds;
-    // Two line heights for top and bottom contentInset
-    if (isAdjustable) {
-        textViewFrame.size.height = textView.font.lineHeight * PAYStyle.sectionTheme.textViewLineCount;
-    }else {
-        textViewFrame.size.height = textView.font.lineHeight * (2 + PAYStyle.sectionTheme.textViewLineCount);
-    }
-    textView.frame            = textViewFrame;
-    
-    UITableViewCell *cell = [self defaultCellInBounds:bounds];
-    cell.frame            = textViewFrame;
-    [cell addSubview:textView];
-    
-    PAYFormMultiLineTextField *formField = [PAYFormMultiLineTextField new];
-    formField.view     = cell;
     formField.textView = textView;
+    [formField.view addSubview:textView];
+    
+    NSDictionary *views = NSDictionaryOfVariableBindings(textView, formField.view);
+    {
+        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"|-horzMargin-[textView]-horzMargin-|"
+                                                                       options:0
+                                                                       metrics:self.metrics
+                                                                         views:views];
+        formField.viewControlLeftConstraint = constraints[0];
+        formField.viewControlRightConstraint = constraints[1];
+        
+        [formField.view addConstraint:formField.viewControlLeftConstraint];
+        [formField.view addConstraint:formField.viewControlRightConstraint];
+    }
+    {
+        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[textView(>=textViewHeight@200)]-0-|"
+                                                                       options:0
+                                                                       metrics:self.metrics
+                                                                         views:views];
+        formField.viewControlTopConstraint = constraints[0];
+        formField.controlHeightContraint = constraints[1];
+        formField.viewControlBottomConstraint = constraints[2];
+        
+        [formField.view addConstraint:formField.viewControlTopConstraint];
+        [formField.control addConstraint:formField.controlHeightContraint];
+        [formField.view addConstraint:formField.viewControlBottomConstraint];
+    }
+    
     formField.name     = name;
     formField.isAdjustable = isAdjustable;
     formField.textView.scrollEnabled = !isAdjustable;
@@ -102,107 +139,138 @@
 
 + (PAYFormButton *)buttonWithText:(NSString *)text
                        detailText:(NSString *)detailText
+                             icon:(UIImage *)icon
                             style:(PAYFormButtonStyle)style
-                         inBounds:(CGRect)bounds
                    selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock
                    configureBlock:(void(^)(PAYFormButton *))configureBlock {
-    UITableViewCell *cell = [self defaultCellInBounds:bounds];
-    
-    if (style == PAYFormButtonStyleDisabledCentered) {
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    PAYFormButton *formButton  = [PAYFormButton new];
+    formButton.cell = self.defaultCell;
+    if (style == PAYFormButtonStyleDisclosure) {
+        formButton.cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    } else if (style == PAYFormButtonStyleSelection) {
+        formButton.cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
+    if (style == PAYFormButtonStylePrimary || style == PAYFormButtonStyleCentered) {
+        formButton.cell.separatorInset = UIEdgeInsetsZero;
     } else {
-        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+        formButton.cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.horizontalMargin, 0, 0);
     }
     
-    if (style == PAYFormButtonStyleDisclosure || style == PAYFormButtonStyleIconDisclosure) {
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
+    formButton.cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
-    if (style == PAYFormButtonStyleIconDisclosure || style == PAYFormButtonStyleIconSelection) {
-        cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.iconMarginLeft, 0, 0);
-    } else {
-        cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.horizontalMargin, 0, 0);
-    }
-    
-    UILabel *titleLabel;
-    UILabel *detailLabel;
     if (style != PAYFormButtonStyleEmpty) {
-        titleLabel      = [UILabel new];
-        titleLabel.text = text;
-        titleLabel.font = PAYStyle.theme.font;
-        titleLabel.userInteractionEnabled = NO;
-        
-        if (style == PAYFormButtonStylePrimaryCentered) {
-            titleLabel.textColor = PAYStyle.sectionTheme.buttonPrimaryTextColor;
-        } else if (style == PAYFormButtonStyleHilightedCentered) {
-            titleLabel.textColor = PAYStyle.sectionTheme.buttonHilightTextColor;
-        } else if (style == PAYFormButtonStyleDisabledCentered) {
-            titleLabel.textColor = PAYStyle.sectionTheme.buttonDisabledTextColor;
-        } else {
-            titleLabel.textColor = PAYStyle.sectionTheme.textColor;
+        formButton.label = self.defaultLabel;
+        formButton.label.font = PAYStyle.tableTheme.font;
+        formButton.label.userInteractionEnabled = NO;
+        formButton.label.text = text;
+        if (style == PAYFormButtonStyleCentered || style == PAYFormButtonStylePrimary || style == PAYFormButtonStyleHilighted) {
+            formButton.label.textAlignment = NSTextAlignmentCenter;
         }
         
-        CGRect labelFrame = bounds;
-        if (style == PAYFormButtonStyleDisclosure || style == PAYFormButtonStyleSelection) {
-            labelFrame.origin.x      = PAYStyle.sectionTheme.horizontalMargin;
-            labelFrame.size.width   -= PAYStyle.sectionTheme.horizontalMargin +
-            PAYStyle.sectionTheme.disclosureMarginRight;
-            titleLabel.textAlignment = NSTextAlignmentLeft;
-        } else if (style == PAYFormButtonStyleIconDisclosure || style == PAYFormButtonStyleIconSelection) {
-            labelFrame.origin.x      = PAYStyle.sectionTheme.iconMarginLeft;
-            labelFrame.size.width   -= PAYStyle.sectionTheme.iconMarginLeft +
-            PAYStyle.sectionTheme.disclosureMarginRight;
-            titleLabel.textAlignment = NSTextAlignmentLeft;
-        } else {
-            titleLabel.textAlignment = NSTextAlignmentCenter;
-        }
-        titleLabel.frame = labelFrame;
+        [formButton.view addSubview:formButton.label];
         
-        [cell addSubview:titleLabel];
+        formButton.label.textColor = [PAYStyle.sectionTheme buttonTextColorForStyle:style];
+        
+        [self addDefaultLabelConstrainsToLabel:formButton.label withFormView:formButton];
+        formButton.labelWidthConstraint.active = NO;
+        
+        if (icon) {
+            formButton.iconView = [[UIImageView alloc] initWithImage:icon];
+            formButton.iconView.contentMode = UIViewContentModeScaleAspectFill;
+            formButton.iconView.translatesAutoresizingMaskIntoConstraints = NO;
+            [formButton.view addSubview:formButton.iconView];
+            
+            formButton.viewLabelLeftConstraint.active = NO;
+            
+            NSDictionary *views = @{@"icon" : formButton.iconView, @"view" : formButton.view, @"label" : formButton.label};
+            {
+                NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[icon(iconSize)]"
+                                                                               options:0
+                                                                               metrics:self.metrics
+                                                                                 views:views];
+                formButton.iconWidthConstraint = constraints[0];
+                
+                [formButton.iconView addConstraint:formButton.iconWidthConstraint];
+            }
+            {
+                NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[icon(iconSize)]"
+                                                                               options:0
+                                                                               metrics:self.metrics
+                                                                                 views:views];
+                formButton.iconHeightConstraint = constraints[0];
+                
+                [formButton.iconView addConstraint:formButton.iconHeightConstraint];
+            }
+            {
+                NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"|-horzMargin-[icon]-horzMargin-[label]"
+                                                                               options:0
+                                                                               metrics:self.metrics
+                                                                                 views:views];
+                formButton.viewIconLeftConstraint = constraints[0];
+                formButton.viewIconLabelConstraint = constraints[1];
+                
+                [formButton.view addConstraint:formButton.viewIconLeftConstraint];
+                [formButton.view addConstraint:formButton.viewIconLabelConstraint];
+            }
+            {
+                NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[view]-(<=1)-[icon]"
+                                                                               options:NSLayoutFormatAlignAllCenterY
+                                                                               metrics:self.metrics
+                                                                                 views:views];
+                formButton.viewIconCenterVerticalConstraint = constraints[0];
+                formButton.viewIconCenterVerticalHelperConstraint = constraints[1];
+                
+                [formButton.view addConstraint:formButton.viewIconCenterVerticalConstraint];
+                [formButton.view addConstraint:formButton.viewIconCenterVerticalHelperConstraint];
+            }
+        }
         
         if (detailText) {
-            detailLabel = [UILabel new];
-            detailLabel.text = detailText;
-            detailLabel.font = titleLabel.font;
-            detailLabel.textColor = PAYStyle.sectionTheme.buttonDetailTextColor;
-            detailLabel.textAlignment = NSTextAlignmentRight;
+            formButton.detailLabel = self.defaultLabel;
+            formButton.detailLabel.text = detailText;
+            formButton.detailLabel.textColor = PAYStyle.sectionTheme.buttonDetailTextColor;
+            formButton.detailLabel.textAlignment = NSTextAlignmentRight;
+            [formButton.view addSubview:formButton.detailLabel];
             
-            CGRect labelFrame = bounds;
-            if (style == PAYFormButtonStyleDisclosure ||
-                style == PAYFormButtonStyleIconDisclosure ||
-                style == PAYFormButtonStyleSelection ||
-                style == PAYFormButtonStyleIconSelection) {
-                labelFrame.size.width -= PAYStyle.sectionTheme.disclosureMarginRight;
-            } else {
-                labelFrame.size.width -= PAYStyle.sectionTheme.horizontalMargin;
+            NSDictionary *views = @{@"label" : formButton.label, @"detailLabel" : formButton.detailLabel, @"view" : formButton.view};
+            {
+                NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[label]-horzMargin-[detailLabel]-0-|"
+                                                                               options:0
+                                                                               metrics:self.metrics
+                                                                                 views:views];
+                formButton.viewLabelDetailLabelConstraint = constraints[0];
+                formButton.viewDetailLabelRightConstraint = constraints[1];
+                
+                [formButton.view addConstraint:formButton.viewLabelDetailLabelConstraint];
+                [formButton.view addConstraint:formButton.viewDetailLabelRightConstraint];
             }
-            detailLabel.frame = labelFrame;
-            
-            [cell addSubview:detailLabel];
+            {
+                NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[detailLabel(rowHeight)]-0-|"
+                                                                               options:0
+                                                                               metrics:self.metrics
+                                                                                 views:views];
+                formButton.viewDetailLabelTopConstraint = constraints[0];
+                formButton.detailLabelHeightConstraint = constraints[1];
+                formButton.viewDetailLabelBottomConstraint = constraints[2];
+                
+                [formButton.view addConstraint:formButton.viewDetailLabelTopConstraint];
+                [formButton.detailLabel addConstraint:formButton.detailLabelHeightConstraint];
+                [formButton.view addConstraint:formButton.viewDetailLabelBottomConstraint];
+            }
+        } else {
+            NSDictionary *views = @{@"view" : formButton.view, @"label" : formButton.label};
+            {
+                NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[label]-horzMargin-|"
+                                                                               options:0
+                                                                               metrics:self.metrics
+                                                                                 views:views];
+                formButton.viewLabelRightConstraint = constraints[0];
+                [formButton.view addConstraint:formButton.viewLabelRightConstraint];
+            }
         }
     }
     
-    UIImageView *iconView;
-    if (style == PAYFormButtonStyleIconDisclosure || style == PAYFormButtonStyleIconSelection) {
-        iconView = [UIImageView new];
-        iconView.contentMode = UIViewContentModeScaleAspectFill;
-        
-        CGRect iconFrame = bounds;
-        iconFrame.size = CGSizeMake(PAYStyle.sectionTheme.iconSize,
-                                    PAYStyle.sectionTheme.iconSize);
-        iconFrame.origin.x = PAYStyle.sectionTheme.iconMargin;
-        iconFrame.origin.y = (bounds.size.height - iconFrame.size.height) / 2.0f;
-        iconView.frame = iconFrame;
-        
-        [cell addSubview:iconView];
-    }
     
-    PAYFormButton *formButton  = [PAYFormButton new];
-    formButton.view           = cell;
-    formButton.titleLabel     = titleLabel;
-    formButton.detailLabel    = detailLabel;
-    formButton.style          = style;
-    formButton.iconView       = iconView;
     formButton.selectionBlock = selectionBlock;
     
     if (configureBlock){
@@ -213,32 +281,46 @@
 }
 
 + (PAYFormSwitch *)switchWithName:(NSString *)name
-                         inBounds:(CGRect)bounds
                    configureBlock:(void(^)(PAYFormSwitch *))configureBlock {
-    UILabel *label = [self defaultLabelInBounds:bounds];
-    label.text     = name;
-    
-    UISwitch *switchControl   = [PAYSwitch new];
-    
-    CGRect switchFrame     = switchControl.frame;
-    switchFrame.origin.x   = bounds.size.width - switchFrame.size.width - PAYStyle.sectionTheme.horizontalMargin;
-    switchFrame.origin.y   = (bounds.size.height - switchFrame.size.height) / 2.0f;
-    switchControl.frame    = switchFrame;
-    
-    CGRect labelFrame = label.frame;
-    labelFrame.size.width  = switchFrame.origin.x;
-    labelFrame.size.width -= labelFrame.origin.x + PAYStyle.sectionTheme.horizontalMargin;
-    label.frame = labelFrame;
-    
-    UITableViewCell *cell = [self defaultCellInBounds:bounds];
-    [cell addSubview:label];
-    [cell addSubview:switchControl];
-    
     PAYFormSwitch *formSwitch = [PAYFormSwitch new];
-    formSwitch.view          = cell;
-    formSwitch.label         = label;
-    formSwitch.switchControl = switchControl;
     
+    formSwitch.cell = self.defaultCell;
+    
+    formSwitch.label      = self.defaultLabel;
+    formSwitch.label.text = name;
+    [formSwitch.view addSubview:formSwitch.label];
+    
+    [self addDefaultLabelConstrainsToLabel:formSwitch.label withFormView:formSwitch];
+    formSwitch.labelWidthConstraint.active = NO;
+    
+    formSwitch.switchControl = [PAYSwitch new];
+    formSwitch.switchControl.translatesAutoresizingMaskIntoConstraints = NO;
+    [formSwitch.view addSubview:formSwitch.switchControl];
+    
+    NSDictionary *views = @{@"view" : formSwitch.view, @"label" : formSwitch.label, @"switch" : formSwitch.switchControl};
+    {
+        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[label]-horzMargin-[switch]-horzMargin-|"
+                                                                       options:0
+                                                                       metrics:self.metrics
+                                                                         views:views];
+        formSwitch.viewLabelControlConstraint = constraints[0];
+        formSwitch.viewControlRightConstraint = constraints[1];
+        
+        [formSwitch.view addConstraint:formSwitch.viewLabelControlConstraint];
+        [formSwitch.view addConstraint:formSwitch.viewControlRightConstraint];
+    }
+    {
+        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[view]-(<=1)-[switch]"
+                                                                       options:NSLayoutFormatAlignAllCenterY
+                                                                       metrics:self.metrics
+                                                                         views:views];
+        formSwitch.viewSwitchCenterVerticalConstraint = constraints[0];
+        formSwitch.viewSwitchCenterVerticalHelperConstraint = constraints[1];
+        
+        [formSwitch.view addConstraint:formSwitch.viewSwitchCenterVerticalConstraint];
+        [formSwitch.view addConstraint:formSwitch.viewSwitchCenterVerticalHelperConstraint];
+    }
+
     if (configureBlock) {
         configureBlock(formSwitch);
     }
@@ -246,41 +328,81 @@
     return formSwitch;
 }
 
-+ (UITableViewCell *)defaultCellInBounds:(CGRect)bounds {
++ (UITableViewCell *)defaultCell {
     UITableViewCell *cell = [UITableViewCell new];
-    cell.frame            = bounds;
     cell.backgroundColor  = UIColor.whiteColor;
     cell.selectionStyle   = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
-+ (UILabel *)defaultLabelInBounds:(CGRect)bounds {
++ (UILabel *)defaultLabel {
     UILabel *label = [UILabel new];
-    CGRect labelFrame     = bounds;
-    labelFrame.origin.x   = PAYStyle.sectionTheme.horizontalMargin;
-    labelFrame.size.width = PAYStyle.sectionTheme.labelWidth;
-    label.frame           = labelFrame;
-    label.font            = PAYStyle.theme.font;
+    
+    label.font            = PAYStyle.tableTheme.font;
     label.textColor       = PAYStyle.sectionTheme.textColor;
-    label.adjustsFontSizeToFitWidth = YES;
+    label.adjustsFontSizeToFitWidth = NO;
+    label.translatesAutoresizingMaskIntoConstraints = NO;
     
     return label;
+}
+
++ (void)addDefaultLabelConstrainsToLabel:(UILabel *)label withFormView:(PAYFormView *)formView
+{
+    NSDictionary *views = NSDictionaryOfVariableBindings(formView.view, label);
+    {
+        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"|-horzMargin-[label]"
+                                                                       options:0
+                                                                       metrics:self.metrics
+                                                                         views:views];
+        formView.viewLabelLeftConstraint = constraints[0];
+        [formView.view addConstraint:formView.viewLabelLeftConstraint];
+    }
+    {
+        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[label(labelWidth)]"
+                                                                       options:0
+                                                                       metrics:self.metrics
+                                                                         views:views];
+        formView.labelWidthConstraint = constraints[0];
+        [formView.view addConstraint:formView.labelWidthConstraint];
+    }
+    {
+        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[label(rowHeight)]-0@200-|"
+                                                                       options:0
+                                                                       metrics:self.metrics
+                                                                         views:views];
+        formView.viewLabelTopConstraint = constraints[0];
+        formView.labelHeightConstraint = constraints[1];
+        formView.viewLabelBottomConstraint = constraints[2];
+        
+        [formView.view addConstraint:formView.viewLabelTopConstraint];
+        [label addConstraint:formView.labelHeightConstraint];
+        [formView.view addConstraint:formView.viewLabelBottomConstraint];
+    }
 }
 
 + (UITextField *)defaultTextField {
     UITextField *textField    = [UITextField new];
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
     textField.textAlignment   = PAYStyle.sectionTheme.fieldTextAlignment;
-    textField.font            = PAYStyle.theme.font;
+    textField.font            = PAYStyle.tableTheme.font;
+    textField.translatesAutoresizingMaskIntoConstraints = NO;
     return textField;
 }
 
 + (SZTextView *)defaultTextView {
     SZTextView *textView        = [SZTextView new];
-    textView.font               = PAYStyle.theme.font;
-    textView.textContainerInset = UIEdgeInsetsMake(textView.font.lineHeight, PAYStyle.sectionTheme.horizontalMargin,
-                                                   textView.font.lineHeight, PAYStyle.sectionTheme.horizontalMargin);
+    textView.font               = PAYStyle.tableTheme.font;
+    textView.textContainerInset = UIEdgeInsetsMake(textView.font.lineHeight, 0, textView.font.lineHeight, 0);
+    textView.translatesAutoresizingMaskIntoConstraints = NO;
     return textView;
+}
+
++ (NSDictionary *)metrics {
+    return @{@"horzMargin" : @(PAYStyle.sectionTheme.horizontalMargin),
+             @"labelWidth" : @(PAYStyle.sectionTheme.labelWidth),
+             @"rowHeight" : @(PAYStyle.tableTheme.rowHeight),
+             @"textViewHeight" : @(floor(PAYStyle.tableTheme.font.lineHeight * (PAYStyle.sectionTheme.textViewLineCount + 2))),
+             @"iconSize" : @(PAYStyle.sectionTheme.iconSize)};
 }
 
 @end

@@ -30,13 +30,6 @@ typedef enum {
  */
 @property (nonatomic, assign) PAYFormTableLabelStyle style;
 
-/**
- *  The preferred height based on the given width and the content.
- *
- *  @param width the maximum width
- *
- *  @return the preferred height
- */
-- (CGFloat)preferredHeightForWidth:(CGFloat)width;
+- (instancetype)initWithStyle:(PAYFormTableLabelStyle)style;
 
 @end

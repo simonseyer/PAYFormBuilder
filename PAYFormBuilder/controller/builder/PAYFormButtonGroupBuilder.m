@@ -34,9 +34,8 @@
               selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock {
     __block PAYFormButtonSelectionBlock selectionBlockForBlock = selectionBlock;
     __weak PAYFormButtonGroup *blockButtonGroup = self.buttonGroup;
-    PAYFormButtonStyle style = icon ? PAYFormButtonStyleIconSelection : PAYFormButtonStyleSelection;
     PAYFormButton *button = [self.sectionBuilder addButtonWithText:text
-                                                             style:style
+                                                             style:PAYFormButtonStyleDefault
                                                     selectionBlock:^(PAYFormButton *formButton) {
                                                         __strong PAYFormButtonGroup *buttonGroup = blockButtonGroup;
                                                         [buttonGroup optionStateChanged:value];

@@ -10,16 +10,16 @@
 #import "PAYFormSwitch_protected.h"
 #import "NSError+PAYComfort.h"
 #import "PAYErrorCodes.h"
-
+#import "PAYStyle.h"
 
 @implementation PAYFormSwitch
 
 
 -(void)styleForError:(NSError *)error {
     if (error) {
-        self.label.textColor = self.defaultErrorColor;
+        self.label.textColor = PAYStyle.sectionTheme.errorTextColor;
     } else {
-        self.label.textColor = self.defaultTextColor;
+        self.label.textColor = PAYStyle.sectionTheme.textColor;
     }
 }
 

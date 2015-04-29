@@ -22,6 +22,8 @@ static const NSUInteger RPFormSingleLineTextFieldPasswordMaxTextLength = 128;
 @interface PAYFormSingleLineTextField () <UITextFieldDelegate>
 
 @property (nonatomic, assign) UITextFieldViewMode defaultClearButtonMode;
+@property (nonatomic, assign) CGFloat savedLabelWidthConstraintConstant;
+@property (nonatomic, assign) CGFloat savedLabelControlConstraintConstant;
 
 @end
 
@@ -115,11 +117,11 @@ static const NSUInteger RPFormSingleLineTextFieldPasswordMaxTextLength = 128;
 
 - (void)styleForError:(NSError *)error {
     if (error) {
-        self.textField.textColor = self.defaultErrorColor;
-        self.label.textColor     = self.defaultErrorColor;
+        self.textField.textColor = PAYStyle.sectionTheme.errorTextColor;
+        self.label.textColor     = PAYStyle.sectionTheme.errorTextColor;
     } else {
-        self.textField.textColor = self.defaultTextColor;
-        self.label.textColor     = self.defaultTextColor;
+        self.textField.textColor = PAYStyle.sectionTheme.textColor;
+        self.label.textColor     = PAYStyle.sectionTheme.textColor;
     }
 }
 
@@ -213,14 +215,24 @@ static const NSUInteger RPFormSingleLineTextFieldPasswordMaxTextLength = 128;
 }
 
 - (void)expandTextfield:(BOOL)expand {
+    [self.view layoutIfNeeded];
+    if (expand) {
+        self.savedLabelWidthConstraintConstant = self.labelWidthConstraint.constant;
+        self.savedLabelControlConstraintConstant = self.viewLabelControlConstraint.constant;
+        self.labelWidthConstraint.constant = 0;
+        self.viewLabelControlConstraint.constant = 0;
+    } else if(self.labelWidthConstraint.constant == 0) {
+        self.labelWidthConstraint.constant = self.savedLabelWidthConstraintConstant;
+        self.viewLabelControlConstraint.constant = self.savedLabelControlConstraintConstant;
+    }
+    
     [UIView animateWithDuration:0.5f
                           delay:0.0f
          usingSpringWithDamping:500.0f
           initialSpringVelocity:0.0f
                         options:(UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveLinear)
                      animations:^{
-                         self.textField.frame = expand ? self.expandedFrame : self.defaultFrame;
-                         self.label.alpha     = expand ? 0 : 1;
+                         [self.view layoutIfNeeded];
                      } completion:nil];
 }
 

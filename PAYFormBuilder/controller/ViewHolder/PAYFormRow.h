@@ -14,12 +14,18 @@
 @protocol PAYFormRow <NSObject>
 
 /**
- *  Get the view of the form row. Each row is rendered
- *  as a UITableViewCell, so you get this cell to manipulate it.
+ *  Get the content view of the form row, where all view are added
+ *
+ *  @return the content view
+ */
+- (UIView *)view;
+
+/**
+ *  Get the UITableViewCell.
  *
  *  @return the cell view
  */
-- (UITableViewCell *)view;
+- (UITableViewCell *)cell;
 
 /**
  *  Handles the selection of a row. Do NOT call this method by

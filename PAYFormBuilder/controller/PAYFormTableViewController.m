@@ -27,12 +27,16 @@
 @implementation PAYFormTableViewController
 
 - (void)loadView {
-    self.tableView = [[PAYFormTableView alloc] initWithFrame:[[UIScreen mainScreen] bounds]
+    self.tableView = [[PAYFormTableView alloc] initWithFrame:CGRectZero
                                                        style:UITableViewStyleGrouped];
     self.view = self.tableView;
     
     self.tableView.accessibilityLabel = @"PAYFormTable";
     self.tableView.isAccessibilityElement = YES;
+    self.tableView.estimatedRowHeight = 44.0;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedSectionHeaderHeight = 36.0;
+    self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension;
 }
 
 - (void)viewDidLoad {
@@ -44,6 +48,11 @@
     [self.tableView enableTapToEndEditing];
     
     [self buildFooter];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self updateViewConstraints];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -78,9 +87,6 @@
 
 - (void)loadStructure {
     PAYFormTableBuilder *tableBuilder = [PAYFormTableBuilder new];
-    tableBuilder.defaultBounds = CGRectMake(0, 0,
-                                            self.view.frame.size.width,
-                                            PAYStyle.tableTheme.rowHeight);
     [self loadStructure:tableBuilder];
     
     self.table = tableBuilder.table;
@@ -94,13 +100,13 @@
 }
 
 - (void)buildFooter {
-    UIView *footerView = [UIView new];
-    footerView.frame = CGRectMake(0, 0,
-                                  self.view.frame.size.width,
-                                  PAYStyle.tableTheme.footerHeight);
-    footerView.backgroundColor = UIColor.clearColor;
-    
-    self.tableView.tableFooterView = footerView;
+    if (!self.tableView.tableFooterView) {
+        UIView *footerView = [UIView new];
+        footerView.frame = CGRectMake(0, 0, 0, PAYStyle.tableTheme.footerHeight);
+        footerView.backgroundColor = UIColor.clearColor;
+        
+        self.tableView.tableFooterView = footerView;
+    }
 }
 
 - (void)initForm {
@@ -119,7 +125,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     PAYFormSection *formSection = self.table.sections[section];
-    return formSection.header.view;
+    return formSection.header.header;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -129,9 +135,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     id<PAYFormRow> formRow = [self formRowForIndexPath:indexPath];
-    return formRow.view;
+    return formRow.cell;
 }
-
 
 #pragma mark - UITableViewDelegate's implementation
 
@@ -144,14 +149,10 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    PAYFormSection *formSection = self.table.sections[section];
-    return formSection.header.view.frame.size.height;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIView *fieldView = [self formRowForIndexPath:indexPath].view;
-    return fieldView.frame.size.height;
+    UITableViewCell *fieldView = [self formRowForIndexPath:indexPath].cell;
+    CGSize size = [fieldView.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height + 0.5f;
 }
 
 #pragma mark - View management
@@ -184,6 +185,41 @@
 
 - (void)onDone:(id)sender {
     [self.table validate];
+}
+
+#pragma mark - Layout header view
+
+- (void)updateViewConstraints {
+    if (self.tableView.tableHeaderView) {
+        self.tableView.tableHeaderView = [self updateFixedHeightOfView:self.tableView.tableHeaderView];
+    }
+    if (self.tableView.tableFooterView) {
+        self.tableView.tableFooterView = [self updateFixedHeightOfView:self.tableView.tableFooterView];
+    }
+    
+    [super updateViewConstraints];
+}
+
+- (UIView *)updateFixedHeightOfView:(UIView *)view {
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [view setNeedsLayout];
+    [view layoutIfNeeded];
+    
+    NSArray *temporaryWidthConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[view(width)]"
+                                                                                 options:0
+                                                                                 metrics:@{@"width": @(view.bounds.size.width)}
+                                                                                   views:@{@"view": view}];
+    [view addConstraints:temporaryWidthConstraints];
+    
+    CGFloat height = [view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    
+    [view removeConstraints:temporaryWidthConstraints];
+    view.translatesAutoresizingMaskIntoConstraints = YES;
+    
+    view.frame = CGRectMake(0, 0, view.frame.size.width, height);
+    
+    return view;
 }
 
 @end

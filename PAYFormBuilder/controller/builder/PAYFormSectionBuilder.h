@@ -126,7 +126,7 @@
 #pragma mark - Add buttons
 
 /**
- *  Add a button with a text and a block that is called, when the user pressed the button.
+ *  Add a configured button
  *
  *  @param text           the text that should be displayed on the button
  *  @param style          the style that determines the appearance of the button
@@ -138,10 +138,10 @@
 - (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock;
 
 /**
- *  Add a button with a text and a block that is called, when the user pressed the button.
+ *  Add a configured button
  *
  *  @param text           the text that should be displayed on the button
- *  @param detailText     the text that should be display as detail information
+ *  @param detailText     the text that should be displayed as detail information
  *  @param style          the style that determines the appearance of the button
  *  @param selectionBlock the block that is called when the user touched the button.
  *                        The corresponding PAYFormButton is passed.
@@ -151,21 +151,34 @@
 - (PAYFormButton *)addButtonWithText:(NSString *)text detailText:(NSString *)detailText style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock;
 
 /**
- *  Add a button with a text, a icon and a block that is called, when the user pressed the button.
+ *  Add a configured button
  *
  *  @param text           the text that should be displayed on the button
+ *  @param icon           the icon that should be displaced in the button
  *  @param style          the style that determines the appearance of the button
- *  @param icon           an icon that should be displayed in the button. It will only appear, when one of the
- *                        icon-styles are used: PAYFormButtonStyleIconDisclosure or PAYFormButtonStyleIconSelection
  *  @param selectionBlock the block that is called when the user touched the button.
  *                        The corresponding PAYFormButton is passed.
  *
  *  @return the model object of the button
  */
-- (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style icon:(UIImage *)icon selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock;
+- (PAYFormButton *)addButtonWithText:(NSString *)text icon:(UIImage *)icon style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock;
 
 /**
- *  Add a button with a text, a customization block and a block that is called, when the user pressed the button.
+ *  Add a configured button
+ *
+ *  @param text           the text that should be displayed on the button
+ *  @param detailText     the text that should be displayed as detail information
+ *  @param icon           the icon that should be displaced in the button
+ *  @param style          the style that determines the appearance of the button
+ *  @param selectionBlock the block that is called when the user touched the button.
+ *                        The corresponding PAYFormButton is passed.
+ *
+ *  @return the model object of the button
+ */
+- (PAYFormButton *)addButtonWithText:(NSString *)text detailText:detailText icon:(UIImage *)icon style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock;
+
+/**
+ *  Add a configured button
  *
  *  @param text           the text that should be displayed on the button
  *  @param style          the style that determines the appearance of the button
@@ -179,10 +192,11 @@
 - (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock configureBlock:(void(^)(PAYFormButton *))configureBlock;
 
 /**
- *  Add a button with a text, a customization block and a block that is called, when the user pressed the button.
+ *  Add a configured button
  *
  *  @param text           the text that should be displayed on the button
- *  @param detailText     the text that should be display as detail information
+ *  @param detailText     the text that should be displayed as detail information
+ *  @param icon           the icon that should be displaced in the button
  *  @param style          the style that determines the appearance of the button
  *  @param selectionBlock the block that is called when the user touched the button.
  *                        The corresponding PAYFormButton is passed.
@@ -191,7 +205,7 @@
  *
  *  @return the model object of the button
  */
-- (PAYFormButton *)addButtonWithText:(NSString *)text detailText:(NSString *)detailText style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock configureBlock:(void(^)(PAYFormButton *))configureBlock;
+- (PAYFormButton *)addButtonWithText:(NSString *)text detailText:(NSString *)detailText icon:(UIImage *)icon style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock configureBlock:(void(^)(PAYFormButton *))configureBlock;
 
 /**
  *  Add button-group that could be used as single- or multi-selection list. 

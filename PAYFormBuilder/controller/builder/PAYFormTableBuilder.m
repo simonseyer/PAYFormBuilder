@@ -123,8 +123,7 @@
     }
     
     if (contentBlock) {
-        PAYFormSectionBuilder *builder = [[PAYFormSectionBuilder alloc] initWithFormSection:formSection
-                                                                          defaultCellBounds:self.defaultBounds];
+        PAYFormSectionBuilder *builder = [[PAYFormSectionBuilder alloc] initWithFormSection:formSection];
         contentBlock(builder);
     }
     
@@ -134,37 +133,80 @@
 - (PAYFormHeader *)headerViewWithStyle:(PAYFormTableLabelStyle)style
                                   name:(NSString *)name
                              infoBlock:(void (^)(UIButton *))infoBlock {
-    UIView *headerView         = [[UIView alloc] initWithFrame:self.defaultBounds];
-    headerView.backgroundColor = UIColor.clearColor;
+    PAYFormHeader *formHeader = [PAYFormHeader new];
+    formHeader.header           = [UITableViewHeaderFooterView new];
+    formHeader.view.backgroundColor = UIColor.clearColor;
     
-    PAYTextLabel *textLabel = nil;
-    CGRect headerRect = headerView.frame;
-    if (style == PAYFormTableLabelStyleNone) {
-        headerRect.size.height = PAYStyle.tableTheme.labelStyleNoneHeight;
-    } else if (style == PAYFormTableLabelStyleEmpty) {
-        headerRect.size.height = PAYStyle.tableTheme.labelStyleEmptyHeight;;
+    if (style == PAYFormTableLabelStyleNone || style == PAYFormTableLabelStyleEmpty) {
+        CGFloat headerHeight;
+        if (style == PAYFormTableLabelStyleNone) {
+            headerHeight = PAYStyle.tableTheme.labelStyleNoneHeight;
+        } else {
+            headerHeight = PAYStyle.tableTheme.labelStyleEmptyHeight;
+        }
+        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[header(height@100)]"
+                                                                       options:0
+                                                                       metrics:@{@"height" : @(headerHeight)}
+                                                                         views:@{@"header" : formHeader.view}];
+        formHeader.viewHeightConstraint = constraints[0];
+        [formHeader.view addConstraint:formHeader.viewHeightConstraint];
     } else {
-        textLabel       = [[PAYTextLabel alloc] initWithFrame:self.defaultBounds];
-        textLabel.style = style;
-        textLabel.text  = name;
-        [headerView addSubview:textLabel];
+        formHeader.label = [[PAYTextLabel alloc] initWithStyle:style];
+        formHeader.label.text  = name;
+        formHeader.label.translatesAutoresizingMaskIntoConstraints = NO;
         
-        headerRect.size.height = CGRectGetMaxY(textLabel.frame);
+        [formHeader.view addSubview:formHeader.label];
+        
+        NSDictionary *views = @{@"header" : formHeader.view, @"label" : formHeader.label};
+        {
+            NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"|-0-[label]-0-|"
+                                                                           options:0
+                                                                           metrics:nil
+                                                                             views:views];
+            formHeader.viewLabelLeftConstraint = constraints[0];
+            formHeader.viewLabelRightConstraint = constraints[1];
+            
+            [formHeader.view addConstraint:formHeader.viewLabelLeftConstraint];
+            [formHeader.view addConstraint:formHeader.viewLabelRightConstraint];
+        }
+        {
+            NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[label]-0-|"
+                                                                           options:0
+                                                                           metrics:nil
+                                                                             views:views];
+            formHeader.viewLabelTopConstraint = constraints[0];
+            formHeader.viewLabelBottomConstraint = constraints[1];
+            
+            [formHeader.view addConstraint:formHeader.viewLabelTopConstraint];
+            [formHeader.view addConstraint:formHeader.viewLabelBottomConstraint];
+        }
     }
-    headerView.frame = headerRect;
     
     if (infoBlock) {
-        UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-        infoButton.frame = CGRectMake(headerView.frame.size.width - infoButton.frame.size.width - PAYStyle.tableTheme.infoIconMargin,
-                                      headerView.frame.size.height - infoButton.frame.size.height - PAYStyle.tableTheme.infoIconMargin,
-                                      infoButton.frame.size.width, infoButton.frame.size.height);
-        [infoButton bk_addEventHandler:infoBlock forControlEvents:UIControlEventTouchUpInside];
-        [headerView addSubview:infoButton];
+        formHeader.infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+        formHeader.infoButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [formHeader.infoButton bk_addEventHandler:infoBlock forControlEvents:UIControlEventTouchUpInside];
+        [formHeader.view addSubview:formHeader.infoButton];
+        
+        NSDictionary *views = @{@"info" : formHeader.infoButton, @"view" : formHeader.view};
+        NSDictionary *metrics = @{@"iconMargin" : @(PAYStyle.tableTheme.infoIconMargin)};
+        {
+            NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[info]-iconMargin-|"
+                                                                           options:0
+                                                                           metrics:metrics
+                                                                             views:views];
+            formHeader.viewInfoIconRightConstraint = constraints[0];
+            [formHeader.view addConstraint:formHeader.viewInfoIconRightConstraint];
+        }
+        {
+            NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[info]-iconMargin-|"
+                                                                           options:0
+                                                                           metrics:metrics
+                                                                             views:views];
+            formHeader.viewInfoIconBottomConstraint = constraints[0];
+            [formHeader.view addConstraint:formHeader.viewInfoIconBottomConstraint];
+        }
     }
-    
-    PAYFormHeader *formHeader    = [PAYFormHeader new];
-    formHeader.view             = headerView;
-    formHeader.label            = textLabel;
     
     return formHeader;
 }

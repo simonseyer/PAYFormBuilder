@@ -7,9 +7,12 @@
 //
 
 #import "PAYHeaderView.h"
-#import "UIColor+PAYHex.h"
+#import "PAYStyle.h"
 
-@implementation PAYHeaderView
+@implementation PAYHeaderView {
+@private
+    BOOL _hasLoadedConstraints;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -29,71 +32,67 @@
 
 - (void)initializeVars {
     self.iconView = [UIImageView new];
-    self.titleLabel = [[PAYTextLabel alloc]initWithFrame:self.frame];
-    self.titleLabel.style = PAYFormTableLabelStyleHeaderTitle;
-    self.subTitleLabel = [[PAYTextLabel alloc]initWithFrame:self.frame];
-    self.subTitleLabel.style = PAYFormTableLabelStyleHeaderSubTitle;
+    self.titleLabel = [[PAYTextLabel alloc]initWithStyle:PAYFormTableLabelStyleHeaderTitle];
+    self.subTitleLabel = [[PAYTextLabel alloc]initWithStyle:PAYFormTableLabelStyleHeaderSubTitle];
+    
+     self.iconView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+     self.subTitleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     
     [self addSubview:self.titleLabel];
     [self addSubview:self.subTitleLabel];
     [self addSubview:self.iconView];
     
-    self.iconTopMargin = 32;
-    self.titleTopMargin = 21;
-    self.subTitleTopMargin = 14;
+    self.tintColor = PAYStyle.tableTheme.headerTintColor;
     
-    self.tintColor = [UIColor colorFromHex:0xFF008D79];
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[self]-(<=1)-[iconView]"
+                                                                 options:NSLayoutFormatAlignAllCenterX
+                                                                 metrics:nil
+                                                                   views:@{@"self" : self, @"iconView" : self.iconView}]];
     
-    NSInteger y = 0;
-    if (self.iconImage) {
-        CGSize iconImageSize = self.iconView.image.size;
-        self.iconView.frame = CGRectMake((self.frame.size.width - iconImageSize.width) / 2, self.iconTopMargin,
-                                         iconImageSize.width, iconImageSize.height);
-        y = CGRectGetMaxY(self.iconView.frame);
-    } else {
-        self.iconView.frame = CGRectZero;
-    }
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-margin@200-[iconView]"
+                                                                 options:0
+                                                                 metrics:@{@"margin" : @(PAYStyle.tableTheme.headerIconTopMargin)}
+                                                                   views:@{@"self" : self, @"iconView" : self.iconView}]];
     
-    if (self.titleLabel.text) {
-        self.titleLabel.frame = CGRectMake(0, y + self.titleTopMargin,
-                                           self.frame.size.width, 0);
-        [self.titleLabel sizeToFit];
-        y = CGRectGetMaxY(self.titleLabel.frame);
-    } else {
-        self.titleLabel.frame = CGRectZero;
-    }
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[self]-(<=1)-[titleLabel]"
+                                                                 options:NSLayoutFormatAlignAllCenterX
+                                                                 metrics:nil
+                                                                   views:@{@"self" : self, @"titleLabel" : self.titleLabel}]];
     
-    if (self.subTitleLabel.text) {
-        self.subTitleLabel.frame = CGRectMake(0, y + self.subTitleTopMargin,
-                                              self.frame.size.width, 0);
-        [self.subTitleLabel sizeToFit];
-    } else {
-        self.subTitleLabel.frame = CGRectZero;
-    }
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[iconView]-margin@200-[titleLabel]"
+                                                                 options:0
+                                                                 metrics:@{@"margin" : @(PAYStyle.tableTheme.headerTitleTopMargin)}
+                                                                   views:@{@"iconView" : self.iconView, @"titleLabel" : self.titleLabel}]];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[self]-(<=1)-[subTitleLabel]"
+                                                                 options:NSLayoutFormatAlignAllCenterX
+                                                                 metrics:nil
+                                                                   views:@{@"self" : self, @"subTitleLabel" : self.subTitleLabel}]];
+    
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[titleLabel]-margin@200-[subTitleLabel]"
+                                                                 options:0
+                                                                 metrics:@{@"margin" : @(PAYStyle.tableTheme.headerSubTitleTopMargin)}
+                                                                   views:@{@"titleLabel" : self.titleLabel, @"subTitleLabel" : self.subTitleLabel}]];
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
-    [self layoutSubviews];
-    CGSize fitSize = size;
-    
-    if (self.subTitleLabel.frame.size.height > 0) {
-        fitSize.height = CGRectGetMaxY(self.subTitleLabel.frame);
-    } else if(self.titleLabel.frame.size.height > 0) {
-        fitSize.height = CGRectGetMaxY(self.titleLabel.frame);
-    } else {
-        fitSize.height = CGRectGetMaxY(self.iconView.frame);
+    return [self systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+}
+
+- (void)updateConstraints {
+    if (!_hasLoadedConstraints) {
+        _hasLoadedConstraints = YES;
     }
-    
-    return fitSize;
+    [super updateConstraints];
+}
+
+- (BOOL)needsUpdateConstraints {
+    return YES;
 }
 
 - (void)setIconImage:(UIImage *)iconImage {
     _iconImage = iconImage;
-    
     self.iconView.image = iconImage;
     [self sizeToFit];
 }

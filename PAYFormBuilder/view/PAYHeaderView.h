@@ -44,9 +44,4 @@
  */
 @property (nonatomic, retain) PAYTextLabel *subTitleLabel;
 
-
-@property (nonatomic, assign) NSUInteger iconTopMargin      UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) NSUInteger titleTopMargin     UI_APPEARANCE_SELECTOR;
-@property (nonatomic, assign) NSUInteger subTitleTopMargin  UI_APPEARANCE_SELECTOR;
-
 @end

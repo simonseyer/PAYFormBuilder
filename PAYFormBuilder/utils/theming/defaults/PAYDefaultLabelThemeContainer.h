@@ -19,6 +19,12 @@
 @property (nonatomic, assign) BOOL              capitalize;
 @property (nonatomic, assign) NSTextAlignment   textAlignment;
 
++ (PAYDefaultLabelTheme *)simpleTheme;
++ (PAYDefaultLabelTheme *)descriptionTheme;
++ (PAYDefaultLabelTheme *)descriptionWideTheme;
++ (PAYDefaultLabelTheme *)headerTitleTheme;
++ (PAYDefaultLabelTheme *)headerSubTitleTheme;
+
 @end
 
 @interface PAYDefaultLabelThemeContainer : NSObject <PAYLabelThemeContainer>

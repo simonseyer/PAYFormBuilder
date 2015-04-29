@@ -1,15 +1,17 @@
 Pod::Spec.new do |s|
   s.name         = "PAYFormBuilder"
-  s.version      = "1.3.1"
+  s.version      = "2.0.0"
 
-  s.summary      = "Library to create iOS 7 forms with block based syntax"
+  s.summary      = "Library to create iOS 7/8 forms with a block based syntax"
   s.description  = <<-DESC
-                   With the PAYFormBuilder you could easily create forms with iOS 7 style. Some of the features are:
+                   With the PAYFormBuilder you could easily create forms with iOS 7 style.
 
                    * **Easy syntax** - with the block syntax your code is well structured and easy to understand
-                   * **Predefined Styles** - get a seamless iOS 7 feeling without writing one line of styling code
+                   * **Predefined Styles** - get a seamless iOS 7/8 feeling without writing one line of styling code
                    * **Validation** - use validation handling and error message management out of the box
-                   * **Customizable** - change many defaults with UIAppearance or configure each element individually 
+                   * **Customizable** - change everything the `PAYFormBuilder` configured for you - just register some blocks and wait for a call 
+                   * **Themable** - You decide, how your form should look like
+                   * **Auto layout compatible** - For full flexibility all elements are positioned with auto layout
                    * **Example app** - get an overview over all posibilities of the lib and see how to get the best out of it
                    DESC
 

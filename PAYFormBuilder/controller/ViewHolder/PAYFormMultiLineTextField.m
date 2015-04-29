@@ -13,9 +13,7 @@
 #import "PAYFormView_protected.h"
 #import "PAYFormField_protected.h"
 #import "PAYNotifications.h"
-
-static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
-
+#import "PAYStyle.h"
 
 @interface PAYFormMultiLineTextField () <UITextViewDelegate>
 
@@ -94,9 +92,9 @@ static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
 
 - (void)styleForError:(NSError *)error {
     if (error) {
-        self.textView.textColor = self.defaultErrorColor;
+        self.textView.textColor = PAYStyle.sectionTheme.errorTextColor;
     } else {
-        self.textView.textColor = self.defaultTextColor;
+        self.textView.textColor = PAYStyle.sectionTheme.textColor;
     }
 }
 
@@ -140,57 +138,30 @@ static const CGFloat PAYFormMultiLineTextFieldDefaultMaxHeightFactor = 5;
 
 - (void)textViewDidChange:(UITextView *)textView {
     if (_isAdjustable) {
-        [self changeHeight:YES];
+        CGFloat maxHeight = floor(PAYStyle.tableTheme.font.lineHeight * (PAYStyle.sectionTheme.textViewMaxLineCount + 2));
+        [self adjustSizeToContentWithMaxHeight:maxHeight];
     }
 }
 
 - (void)adjustSizeToContent {
-    [self adjustSizeToContentWithMaxHeight:PAYFormMultiLineTextFieldDefaultMaxHeightFactor * self.textView.font.lineHeight];
+    [self adjustSizeToContentWithMaxHeight:CGFLOAT_MAX];
 }
 
 - (void)adjustSizeToContentWithMaxHeight:(CGFloat)maxHeight {
-    CGSize dynamicSize = [self.textView.text sizeWithAttributes:@{ NSFontAttributeName : self.textView.font }];
-    CGRect textViewRect = self.textView.frame;
-    if (dynamicSize.height < self.defaultHeight) {
-        textViewRect.size.height = self.defaultHeight;
-    } else if (dynamicSize.height < maxHeight) {
-        [self.textView sizeToFit];
-    } else {
-        textViewRect.size.height = maxHeight;
-    }
-    self.textView.frame = textViewRect;
-    
-    CGRect cellRect = self.view.frame;
-    cellRect.size.height = textViewRect.size.height;
-    self.view.frame = cellRect;
+    CGFloat minHeight = floor(PAYStyle.tableTheme.font.lineHeight * (PAYStyle.sectionTheme.textViewLineCount + 2));
+    [self updateHeightWithMinHeight:minHeight maxHeight:maxHeight];
 }
 
-- (void)changeHeight:(BOOL)animated {
+- (void)updateHeightWithMinHeight:(CGFloat)minHeight maxHeight:(CGFloat)maxHeight {
     CGFloat newHeight =  [self.textView sizeThatFits:CGSizeMake(self.textView.frame.size.width, CGFLOAT_MAX)].height;
+    newHeight = MIN(newHeight, maxHeight);
+    newHeight = MAX(newHeight, minHeight);
+    
     BOOL heightChanged = (newHeight != self.textView.frame.size.height);
     if (heightChanged) {
         [[NSNotificationCenter defaultCenter] postNotificationName:PAYFormRowHeightChangeBeginNotification object:nil];
-        if (animated) {
-            [UIView animateWithDuration:0.2
-                             animations:^{
-                                 CGRect frame = self.textView.frame;
-                                 frame.size.height = newHeight;
-                                 self.textView.frame = frame;
-                                 frame = self.view.frame;
-                                 frame.size.height = newHeight;
-                                 self.view.frame = frame;
-                             }completion:^(BOOL finished) {
-                                 [[NSNotificationCenter defaultCenter] postNotificationName:PAYFormRowHeightChangeEndNotification object:nil];
-                             }];
-        } else {
-            CGRect frame = self.textView.frame;
-            frame.size.height = newHeight;
-            self.textView.frame = frame;
-            frame = self.view.frame;
-            frame.size.height = newHeight;
-            self.view.frame = frame;
-            [[NSNotificationCenter defaultCenter] postNotificationName:PAYFormRowHeightChangeEndNotification object:nil];
-        }
+        self.controlHeightContraint.constant = newHeight;
+        [[NSNotificationCenter defaultCenter] postNotificationName:PAYFormRowHeightChangeEndNotification object:nil];
     }
 }
 

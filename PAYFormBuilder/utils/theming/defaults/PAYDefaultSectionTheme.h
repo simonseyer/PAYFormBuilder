@@ -20,12 +20,12 @@
 @property (nonatomic, assign) CGFloat           iconMargin;
 @property (nonatomic, assign) CGFloat           iconMarginLeft;
 @property (nonatomic, assign) NSUInteger        textViewLineCount;
+@property (nonatomic, assign) NSUInteger        textViewMaxLineCount;
 @property (nonatomic, retain) UIColor          *textColor;
+@property (nonatomic, retain) UIColor          *errorTextColor;
 @property (nonatomic, retain) UIColor          *disabledTextColor;
 @property (nonatomic, retain) UIColor          *placeholderColor;
-@property (nonatomic, retain) UIColor          *buttonPrimaryTextColor;
-@property (nonatomic, retain) UIColor          *buttonHilightTextColor;
-@property (nonatomic, retain) UIColor          *buttonDisabledTextColor;
+@property (nonatomic, retain) NSMutableDictionary *buttonTextColors;
 @property (nonatomic, retain) UIColor          *buttonDetailTextColor;
 
 @end

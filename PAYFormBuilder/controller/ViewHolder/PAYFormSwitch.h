@@ -34,4 +34,14 @@
  */
 @property (nonatomic, assign) BOOL value;
 
+/**
+ * Constrains the vertical position of the switch. Added to the view.
+ */
+@property (nonatomic, retain) NSLayoutConstraint *viewSwitchCenterVerticalConstraint;
+
+/**
+ * Helps to constrain the vertical position of the switch. Added to the view.
+ */
+@property (nonatomic, retain) NSLayoutConstraint *viewSwitchCenterVerticalHelperConstraint;
+
 @end

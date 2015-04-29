@@ -7,7 +7,7 @@
 //
 
 #import "PAYFormTableView.h"
-#import "UIColor+PAYHex.h"
+#import "PAYStyle.h"
 
 @implementation PAYFormTableView
 
@@ -37,7 +37,7 @@
 
 - (void)initializeVariables {
     // Apply default style
-    self.backgroundColor     = [UIColor colorFromHex:0xFFF6F6F7];
+    self.backgroundColor     = PAYStyle.tableTheme.backgroundColor;
     self.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
     self.sectionFooterHeight = 0.0;
 }
