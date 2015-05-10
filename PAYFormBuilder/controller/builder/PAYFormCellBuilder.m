@@ -22,7 +22,11 @@
     PAYFormSingleLineTextField *formField = [PAYFormSingleLineTextField new];
     
     formField.cell = self.defaultCell;
-    formField.cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.horizontalMargin, 0, 0);
+    if (PAYStyle.sectionTheme.fixedSeperatorInset) {
+        formField.cell.separatorInset = PAYStyle.sectionTheme.seperatorInset;
+    } else {
+        formField.cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.horizontalMargin, 0, 0);
+    }
     
     formField.textField = self.defaultTextField;
     formField.textField.placeholder = placeholder;
@@ -150,10 +154,14 @@
     } else if (style == PAYFormButtonStyleSelection) {
         formButton.cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
-    if (style == PAYFormButtonStylePrimary || style == PAYFormButtonStyleCentered) {
-        formButton.cell.separatorInset = UIEdgeInsetsZero;
+    if (PAYStyle.sectionTheme.fixedSeperatorInset) {
+        formButton.cell.separatorInset = PAYStyle.sectionTheme.seperatorInset;
     } else {
-        formButton.cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.horizontalMargin, 0, 0);
+        if (style == PAYFormButtonStylePrimary || style == PAYFormButtonStyleCentered) {
+            formButton.cell.separatorInset = UIEdgeInsetsZero;
+        } else {
+            formButton.cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.horizontalMargin, 0, 0);
+        }
     }
     
     formButton.cell.selectionStyle = UITableViewCellSelectionStyleGray;
@@ -286,6 +294,9 @@
     PAYFormSwitch *formSwitch = [PAYFormSwitch new];
     
     formSwitch.cell = self.defaultCell;
+    if (PAYStyle.sectionTheme.fixedSeperatorInset) {
+        formSwitch.cell.separatorInset = PAYStyle.sectionTheme.seperatorInset;
+    }
     
     formSwitch.label      = self.defaultLabel;
     formSwitch.label.text = name;
@@ -333,6 +344,8 @@
     UITableViewCell *cell = [UITableViewCell new];
     cell.backgroundColor  = UIColor.whiteColor;
     cell.selectionStyle   = UITableViewCellSelectionStyleNone;
+    cell.layoutMargins = UIEdgeInsetsZero;
+    cell.preservesSuperviewLayoutMargins = NO;
     return cell;
 }
 

@@ -18,6 +18,7 @@
         self.fieldTextAlignment      = NSTextAlignmentNatural;
         self.labelWidth              = 91.0f;
         self.fixedLabelWidth         = YES;
+        self.fixedSeperatorInset     = NO;
         self.labelFieldSpacing       = 6.0f;
         self.disclosureMarginRight   = 36.0f;
         self.iconSize                = 21.0f;

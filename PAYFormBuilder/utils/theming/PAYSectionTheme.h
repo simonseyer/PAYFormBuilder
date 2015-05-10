@@ -21,6 +21,8 @@
 - (BOOL)fixedLabelWidth;
 - (CGFloat)labelWidth;
 - (NSTextAlignment)fieldTextAlignment;
+- (BOOL)fixedSeperatorInset;
+- (UIEdgeInsets)seperatorInset;
 - (CGFloat)labelFieldSpacing;
 - (CGFloat)disclosureMarginRight;
 - (CGFloat)iconSize;

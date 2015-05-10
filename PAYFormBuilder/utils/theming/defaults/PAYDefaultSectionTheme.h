@@ -15,6 +15,8 @@
 @property (nonatomic, assign) CGFloat           labelWidth;
 @property (nonatomic, assign) BOOL              fixedLabelWidth;
 @property (nonatomic, assign) NSTextAlignment   fieldTextAlignment;
+@property (nonatomic, assign) BOOL              fixedSeperatorInset;
+@property (nonatomic, assign) UIEdgeInsets      seperatorInset;
 @property (nonatomic, assign) CGFloat           labelFieldSpacing;
 @property (nonatomic, assign) CGFloat           disclosureMarginRight;
 @property (nonatomic, assign) CGFloat           iconSize;
