@@ -1,8 +1,8 @@
 {
   "name": "PAYFormBuilder",
-  "version": "1.3.1",
-  "summary": "Library to create iOS 7 forms with block based syntax",
-  "description": "                   With the PAYFormBuilder you could easily create forms with iOS 7 style. Some of the features are:\n\n                   * **Easy syntax** - with the block syntax your code is well structured and easy to understand\n                   * **Predefined Styles** - get a seamless iOS 7 feeling without writing one line of styling code\n                   * **Validation** - use validation handling and error message management out of the box\n                   * **Customizable** - change many defaults with UIAppearance or configure each element individually \n                   * **Example app** - get an overview over all posibilities of the lib and see how to get the best out of it\n",
+  "version": "2.0.0",
+  "summary": "Library to create iOS 7/8 forms with a block based syntax",
+  "description": "                   With the PAYFormBuilder you could easily create forms with iOS 7 style.\n\n                   * **Easy syntax** - with the block syntax your code is well structured and easy to understand\n                   * **Predefined Styles** - get a seamless iOS 7/8 feeling without writing one line of styling code\n                   * **Validation** - use validation handling and error message management out of the box\n                   * **Customizable** - change everything the `PAYFormBuilder` configured for you - just register some blocks and wait for a call \n                   * **Themable** - You decide, how your form should look like\n                   * **Auto layout compatible** - For full flexibility all elements are positioned with auto layout\n                   * **Example app** - get an overview over all posibilities of the lib and see how to get the best out of it\n",
   "homepage": "https://github.com/paij/PAYFormBuilder",
   "screenshots": [
     "https://raw.githubusercontent.com/paij/PAYFormBuilder/master/Images/registrationForm3.png",
@@ -18,7 +18,7 @@
   },
   "source": {
     "git": "https://github.com/paij/PAYFormBuilder.git",
-    "tag": "1.3.1"
+    "tag": "2.0.0"
   },
   "source_files": "PAYFormBuilder/**/*.{h,m}",
   "private_header_files": [
