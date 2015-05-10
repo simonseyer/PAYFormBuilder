@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import "PAYFormButton.h"
 
+typedef UIView *(^PAYViewProviderBlock)();
+
 /*
  * The section theme definition, that is used in the SectionBuilder
  * to provide default styles used to layout the elements inside of one
@@ -30,6 +32,8 @@
 - (CGFloat)iconMarginLeft;
 - (NSUInteger)textViewLineCount;
 - (NSUInteger)textViewMaxLineCount;
+- (PAYViewProviderBlock)detailAccessoryViewProviderBlock;
+- (PAYViewProviderBlock)checkmarkAccessoryViewProviderBlock;
 - (UIColor *)textColor;
 - (UIColor *)errorTextColor;
 - (UIColor *)disabledTextColor;

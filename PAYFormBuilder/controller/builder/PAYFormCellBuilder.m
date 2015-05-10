@@ -150,8 +150,14 @@
     PAYFormButton *formButton  = [PAYFormButton new];
     formButton.cell = self.defaultCell;
     if (style == PAYFormButtonStyleDisclosure) {
+        if (PAYStyle.sectionTheme.detailAccessoryViewProviderBlock) {
+            formButton.cell.accessoryView = PAYStyle.sectionTheme.detailAccessoryViewProviderBlock();
+        }
         formButton.cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else if (style == PAYFormButtonStyleSelection) {
+        if (PAYStyle.sectionTheme.checkmarkAccessoryViewProviderBlock) {
+            formButton.cell.accessoryView = PAYStyle.sectionTheme.checkmarkAccessoryViewProviderBlock();
+        }
         formButton.cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     if (PAYStyle.sectionTheme.fixedSeperatorInset) {
