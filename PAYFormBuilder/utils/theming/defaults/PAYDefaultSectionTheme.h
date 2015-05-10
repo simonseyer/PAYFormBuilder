@@ -13,6 +13,7 @@
 
 @property (nonatomic, assign) CGFloat           horizontalMargin;
 @property (nonatomic, assign) CGFloat           labelWidth;
+@property (nonatomic, assign) BOOL              fixedLabelWidth;
 @property (nonatomic, assign) NSTextAlignment   fieldTextAlignment;
 @property (nonatomic, assign) CGFloat           labelFieldSpacing;
 @property (nonatomic, assign) CGFloat           disclosureMarginRight;

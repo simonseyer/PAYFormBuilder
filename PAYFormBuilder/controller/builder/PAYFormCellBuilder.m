@@ -230,6 +230,7 @@
             formButton.detailLabel.text = detailText;
             formButton.detailLabel.textColor = PAYStyle.sectionTheme.buttonDetailTextColor;
             formButton.detailLabel.textAlignment = NSTextAlignmentRight;
+            [formButton.detailLabel setContentCompressionResistancePriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
             [formButton.view addSubview:formButton.detailLabel];
             
             NSDictionary *views = @{@"label" : formButton.label, @"detailLabel" : formButton.detailLabel, @"view" : formButton.view};
@@ -357,13 +358,15 @@
         formView.viewLabelLeftConstraint = constraints[0];
         [formView.view addConstraint:formView.viewLabelLeftConstraint];
     }
-    {
+    if (PAYStyle.sectionTheme.fixedLabelWidth) {
         NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[label(labelWidth)]"
                                                                        options:0
                                                                        metrics:self.metrics
                                                                          views:views];
         formView.labelWidthConstraint = constraints[0];
         [formView.view addConstraint:formView.labelWidthConstraint];
+    } else {
+        [label setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
     }
     {
         NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[label(rowHeight)]-0@200-|"

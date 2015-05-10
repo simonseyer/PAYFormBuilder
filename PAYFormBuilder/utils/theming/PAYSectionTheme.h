@@ -18,6 +18,7 @@
 @protocol PAYSectionTheme <NSObject>
 
 - (CGFloat)horizontalMargin;
+- (BOOL)fixedLabelWidth;
 - (CGFloat)labelWidth;
 - (NSTextAlignment)fieldTextAlignment;
 - (CGFloat)labelFieldSpacing;
