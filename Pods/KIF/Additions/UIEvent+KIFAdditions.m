@@ -89,6 +89,7 @@ typedef struct __GSEvent * GSEventRef;
 @interface UIEvent (KIFAdditionsMorePrivateHeaders)
 - (void)_setGSEvent:(GSEventRef)event;
 - (void)_setHIDEvent:(IOHIDEventRef)event;
+- (void)_setTimestamp:(NSTimeInterval)timestemp;
 @end
 
 @implementation UIEvent (KIFAdditions)
@@ -122,12 +123,15 @@ typedef struct __GSEvent * GSEventRef;
     
     [self _setGSEvent:(GSEventRef)gsEventProxy];
     
+    [self _setTimestamp:(((UITouch*)touches[0]).timestamp)];
 }
 
 - (void)kif_setIOHIDEventWithTouches:(NSArray *)touches
 {
     uint64_t abTime = mach_absolute_time();
-    AbsoluteTime timeStamp = *(AbsoluteTime *) &abTime;
+    AbsoluteTime timeStamp;
+    timeStamp.hi = (UInt32)(abTime >> 32);
+    timeStamp.lo = (UInt32)(abTime);
     
     IOHIDEventRef handEvent = IOHIDEventCreateDigitizerEvent(kCFAllocatorDefault, timeStamp, kIOHIDDigitizerTransducerTypeHand, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
     
@@ -144,9 +148,11 @@ typedef struct __GSEvent * GSEventRef;
                                                                                     0, 0, 0, 0, 0, 0, 0, 0,
                                                                                     (IOHIDFloat)isTouching, (IOHIDFloat)isTouching, 0);
         IOHIDEventAppendEvent(handEvent, fingerEvent);
+        CFRelease(fingerEvent);
     }
     
     [self _setHIDEvent:handEvent];
+    CFRelease(handEvent);
 }
 
 @end

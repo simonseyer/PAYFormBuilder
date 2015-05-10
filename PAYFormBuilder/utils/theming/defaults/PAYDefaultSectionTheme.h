@@ -13,7 +13,10 @@
 
 @property (nonatomic, assign) CGFloat           horizontalMargin;
 @property (nonatomic, assign) CGFloat           labelWidth;
+@property (nonatomic, assign) BOOL              fixedLabelWidth;
 @property (nonatomic, assign) NSTextAlignment   fieldTextAlignment;
+@property (nonatomic, assign) BOOL              fixedSeperatorInset;
+@property (nonatomic, assign) UIEdgeInsets      seperatorInset;
 @property (nonatomic, assign) CGFloat           labelFieldSpacing;
 @property (nonatomic, assign) CGFloat           disclosureMarginRight;
 @property (nonatomic, assign) CGFloat           iconSize;
@@ -21,6 +24,8 @@
 @property (nonatomic, assign) CGFloat           iconMarginLeft;
 @property (nonatomic, assign) NSUInteger        textViewLineCount;
 @property (nonatomic, assign) NSUInteger        textViewMaxLineCount;
+@property (nonatomic, copy)   PAYViewProviderBlock detailAccessoryViewProviderBlock;
+@property (nonatomic, copy)   PAYViewProviderBlock checkmarkAccessoryViewProviderBlock;
 @property (nonatomic, retain) UIColor          *textColor;
 @property (nonatomic, retain) UIColor          *errorTextColor;
 @property (nonatomic, retain) UIColor          *disabledTextColor;

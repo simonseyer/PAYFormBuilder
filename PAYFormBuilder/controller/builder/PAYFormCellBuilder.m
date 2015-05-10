@@ -22,7 +22,11 @@
     PAYFormSingleLineTextField *formField = [PAYFormSingleLineTextField new];
     
     formField.cell = self.defaultCell;
-    formField.cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.horizontalMargin, 0, 0);
+    if (PAYStyle.sectionTheme.fixedSeperatorInset) {
+        formField.cell.separatorInset = PAYStyle.sectionTheme.seperatorInset;
+    } else {
+        formField.cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.horizontalMargin, 0, 0);
+    }
     
     formField.textField = self.defaultTextField;
     formField.textField.placeholder = placeholder;
@@ -146,14 +150,24 @@
     PAYFormButton *formButton  = [PAYFormButton new];
     formButton.cell = self.defaultCell;
     if (style == PAYFormButtonStyleDisclosure) {
+        if (PAYStyle.sectionTheme.detailAccessoryViewProviderBlock) {
+            formButton.cell.accessoryView = PAYStyle.sectionTheme.detailAccessoryViewProviderBlock();
+        }
         formButton.cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     } else if (style == PAYFormButtonStyleSelection) {
+        if (PAYStyle.sectionTheme.checkmarkAccessoryViewProviderBlock) {
+            formButton.cell.accessoryView = PAYStyle.sectionTheme.checkmarkAccessoryViewProviderBlock();
+        }
         formButton.cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
-    if (style == PAYFormButtonStylePrimary || style == PAYFormButtonStyleCentered) {
-        formButton.cell.separatorInset = UIEdgeInsetsZero;
+    if (PAYStyle.sectionTheme.fixedSeperatorInset) {
+        formButton.cell.separatorInset = PAYStyle.sectionTheme.seperatorInset;
     } else {
-        formButton.cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.horizontalMargin, 0, 0);
+        if (style == PAYFormButtonStylePrimary || style == PAYFormButtonStyleCentered) {
+            formButton.cell.separatorInset = UIEdgeInsetsZero;
+        } else {
+            formButton.cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.horizontalMargin, 0, 0);
+        }
     }
     
     formButton.cell.selectionStyle = UITableViewCellSelectionStyleGray;
@@ -230,6 +244,7 @@
             formButton.detailLabel.text = detailText;
             formButton.detailLabel.textColor = PAYStyle.sectionTheme.buttonDetailTextColor;
             formButton.detailLabel.textAlignment = NSTextAlignmentRight;
+            [formButton.detailLabel setContentCompressionResistancePriority:UILayoutPriorityDefaultLow forAxis:UILayoutConstraintAxisHorizontal];
             [formButton.view addSubview:formButton.detailLabel];
             
             NSDictionary *views = @{@"label" : formButton.label, @"detailLabel" : formButton.detailLabel, @"view" : formButton.view};
@@ -285,6 +300,9 @@
     PAYFormSwitch *formSwitch = [PAYFormSwitch new];
     
     formSwitch.cell = self.defaultCell;
+    if (PAYStyle.sectionTheme.fixedSeperatorInset) {
+        formSwitch.cell.separatorInset = PAYStyle.sectionTheme.seperatorInset;
+    }
     
     formSwitch.label      = self.defaultLabel;
     formSwitch.label.text = name;
@@ -332,6 +350,8 @@
     UITableViewCell *cell = [UITableViewCell new];
     cell.backgroundColor  = UIColor.whiteColor;
     cell.selectionStyle   = UITableViewCellSelectionStyleNone;
+    cell.layoutMargins = UIEdgeInsetsZero;
+    cell.preservesSuperviewLayoutMargins = NO;
     return cell;
 }
 
@@ -357,13 +377,15 @@
         formView.viewLabelLeftConstraint = constraints[0];
         [formView.view addConstraint:formView.viewLabelLeftConstraint];
     }
-    {
+    if (PAYStyle.sectionTheme.fixedLabelWidth) {
         NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[label(labelWidth)]"
                                                                        options:0
                                                                        metrics:self.metrics
                                                                          views:views];
         formView.labelWidthConstraint = constraints[0];
         [formView.view addConstraint:formView.labelWidthConstraint];
+    } else {
+        [label setContentCompressionResistancePriority:UILayoutPriorityDefaultHigh forAxis:UILayoutConstraintAxisHorizontal];
     }
     {
         NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[label(rowHeight)]-0@200-|"

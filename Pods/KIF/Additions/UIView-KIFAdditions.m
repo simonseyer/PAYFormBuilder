@@ -53,14 +53,17 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
         return YES;
     }
     
-    if ([expected rangeOfString:@"\n"].location == NSNotFound) {
+    if ([expected rangeOfString:@"\n"].location == NSNotFound &&
+        [actual rangeOfString:@"\n"].location == NSNotFound) {
         return NO;
     }
     
     for (NSUInteger i = 0; i < expected.length; i ++) {
         unichar expectedChar = [expected characterAtIndex:i];
         unichar actualChar = [actual characterAtIndex:i];
-        if (expectedChar != actualChar && !(expectedChar == '\n' && actualChar == ' ')) {
+        if (expectedChar != actualChar &&
+           !(expectedChar == '\n' && actualChar == ' ') &&
+           !(expectedChar == ' '  && actualChar == '\n')) {
             return NO;
         }
     }
@@ -121,7 +124,12 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
 
 - (UIAccessibilityElement *)accessibilityElementMatchingBlock:(BOOL(^)(UIAccessibilityElement *))matchBlock;
 {
-    if (self.hidden) {
+    return [self accessibilityElementMatchingBlock:matchBlock notHidden:YES];
+}
+
+- (UIAccessibilityElement *)accessibilityElementMatchingBlock:(BOOL(^)(UIAccessibilityElement *))matchBlock notHidden:(BOOL)notHidden;
+{
+    if (notHidden && self.hidden) {
         return nil;
     }
     
@@ -167,7 +175,7 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
     while (elementStack.count) {
         UIAccessibilityElement *element = [elementStack lastObject];
         [elementStack removeLastObject];
-
+        
         BOOL elementMatches = matchBlock(element);
 
         if (elementMatches) {
@@ -193,46 +201,89 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
             UIAccessibilityElement *subelement = [element accessibilityElementAtIndex:accessibilityElementIndex];
             
             if (subelement) {
+                // Skip table view cell accessibility elements, they're handled below
+                if ([subelement isKindOfClass:NSClassFromString(@"UITableViewCellAccessibilityElement")]) {
+                    continue;
+                }
+                
                 [elementStack addObject:subelement];
             }
         }
     }
     
-    if (!matchingButOccludedElement && [self isKindOfClass:[UICollectionView class]]) {
-        UICollectionView *collectionView = (UICollectionView *)self;
-        
-        NSArray *indexPathsForVisibleItems = [collectionView indexPathsForVisibleItems];
-        
-        for (NSUInteger section = 0, numberOfSections = [collectionView numberOfSections]; section < numberOfSections; section++) {
-            for (NSUInteger item = 0, numberOfItems = [collectionView numberOfItemsInSection:section]; item < numberOfItems; item++) {
-                // Skip visible items because they are already handled
-                NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:section];
-                if ([indexPathsForVisibleItems containsObject:indexPath]) {
-                    continue;
-                }
-                
-                @autoreleasepool {
-                    // Get the cell directly from the dataSource because UICollectionView will only vend visible cells
-                    UICollectionViewCell *cell = [collectionView.dataSource collectionView:collectionView cellForItemAtIndexPath:indexPath];
-                    
-                    UIAccessibilityElement *element = [cell accessibilityElementMatchingBlock:matchBlock];
-                    
-                    // Remove the cell from the collection view so that it doesn't stick around
-                    [cell removeFromSuperview];
-                    
-                    // Skip this cell if it isn't the one we're looking for
-                    // Sometimes we get cells with no size here which can cause an endless loop, so we ignore those
-                    if (!element || CGSizeEqualToSize(cell.frame.size, CGSizeZero)) {
+    if (!matchingButOccludedElement) {
+        if ([self isKindOfClass:[UITableView class]]) {
+            UITableView *tableView = (UITableView *)self;
+            
+            NSArray *indexPathsForVisibleRows = [tableView indexPathsForVisibleRows];
+            
+            for (NSUInteger section = 0, numberOfSections = [tableView numberOfSections]; section < numberOfSections; section++) {
+                for (NSUInteger row = 0, numberOfRows = [tableView numberOfRowsInSection:section]; row < numberOfRows; row++) {
+                    // Skip visible rows because they are already handled
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+                    if ([indexPathsForVisibleRows containsObject:indexPath]) {
                         continue;
                     }
+                    
+                    @autoreleasepool {
+                        // Get the cell directly from the dataSource because UITableView will only vend visible cells
+                        UITableViewCell *cell = [tableView.dataSource tableView:tableView cellForRowAtIndexPath:indexPath];
+                        
+                        UIAccessibilityElement *element = [cell accessibilityElementMatchingBlock:matchBlock notHidden:NO];
+                        
+                        // Remove the cell from the table view so that it doesn't stick around
+                        [cell removeFromSuperview];
+                        
+                        // Skip this cell if it isn't the one we're looking for
+                        if (!element) {
+                            continue;
+                        }
+                    }
+                    
+                    // Scroll to the cell and wait for the animation to complete
+                    [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionNone animated:YES];
+                    CFRunLoopRunInMode(UIApplicationCurrentRunMode, 0.5, false);
+                    
+                    // Now try finding the element again
+                    return [self accessibilityElementMatchingBlock:matchBlock];
                 }
-                
-                // Scroll to the cell and wait for the animation to complete
-                [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
-                CFRunLoopRunInMode(UIApplicationCurrentRunMode, 0.5, false);
-                
-                // Now try finding the element again
-                return [self accessibilityElementMatchingBlock:matchBlock];
+            }
+        } else if ([self isKindOfClass:[UICollectionView class]]) {
+            UICollectionView *collectionView = (UICollectionView *)self;
+            
+            NSArray *indexPathsForVisibleItems = [collectionView indexPathsForVisibleItems];
+            
+            for (NSUInteger section = 0, numberOfSections = [collectionView numberOfSections]; section < numberOfSections; section++) {
+                for (NSUInteger item = 0, numberOfItems = [collectionView numberOfItemsInSection:section]; item < numberOfItems; item++) {
+                    // Skip visible items because they are already handled
+                    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:section];
+                    if ([indexPathsForVisibleItems containsObject:indexPath]) {
+                        continue;
+                    }
+                    
+                    @autoreleasepool {
+                        // Get the cell directly from the dataSource because UICollectionView will only vend visible cells
+                        UICollectionViewCell *cell = [collectionView.dataSource collectionView:collectionView cellForItemAtIndexPath:indexPath];
+                        
+                        UIAccessibilityElement *element = [cell accessibilityElementMatchingBlock:matchBlock notHidden:NO];
+                        
+                        // Remove the cell from the collection view so that it doesn't stick around
+                        [cell removeFromSuperview];
+                        
+                        // Skip this cell if it isn't the one we're looking for
+                        // Sometimes we get cells with no size here which can cause an endless loop, so we ignore those
+                        if (!element || CGSizeEqualToSize(cell.frame.size, CGSizeZero)) {
+                            continue;
+                        }
+                    }
+                    
+                    // Scroll to the cell and wait for the animation to complete
+                    [collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+                    CFRunLoopRunInMode(UIApplicationCurrentRunMode, 0.5, false);
+                    
+                    // Now try finding the element again
+                    return [self accessibilityElementMatchingBlock:matchBlock];
+                }
             }
         }
     }
@@ -485,6 +536,8 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
             }
             UIEvent *eventDown = [self eventWithTouches:[NSArray arrayWithArray:touches]];
             [[UIApplication sharedApplication] sendEvent:eventDown];
+            
+            CFRunLoopRunInMode(UIApplicationCurrentRunMode, DRAG_TOUCH_DELAY, false);
         }
         else
         {
@@ -987,7 +1040,7 @@ NS_INLINE BOOL StringsMatchExceptLineBreaks(NSString *expected, NSString *actual
                 printf("|\t");
             }
             UIAccessibilityElement *e = [(UIAccessibilityElement*)self accessibilityElementAtIndex:i];
-            printf("UIAccessibilityElement, label: %s", e.accessibilityLabel.UTF8String);
+            printf("%s, label: %s", NSStringFromClass([e class]).UTF8String, e.accessibilityLabel.UTF8String);
             if(e.accessibilityValue && e.accessibilityValue.length > 0) {
                 printf(", value: %s", e.accessibilityValue.UTF8String);
             }
