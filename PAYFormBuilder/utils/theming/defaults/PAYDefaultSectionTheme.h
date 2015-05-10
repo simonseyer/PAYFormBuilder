@@ -25,7 +25,7 @@
 @property (nonatomic, assign) NSUInteger        textViewLineCount;
 @property (nonatomic, assign) NSUInteger        textViewMaxLineCount;
 @property (nonatomic, copy)   PAYViewProviderBlock detailAccessoryViewProviderBlock;
-@property (nonatomic, copy)   PAYViewProviderBlock checkmarkAccessorycViewProviderBlock;
+@property (nonatomic, copy)   PAYViewProviderBlock checkmarkAccessoryViewProviderBlock;
 @property (nonatomic, retain) UIColor          *textColor;
 @property (nonatomic, retain) UIColor          *errorTextColor;
 @property (nonatomic, retain) UIColor          *disabledTextColor;
