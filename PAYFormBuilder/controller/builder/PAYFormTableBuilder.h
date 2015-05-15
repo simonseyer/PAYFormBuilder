@@ -148,4 +148,15 @@
  */
 - (void)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style headerBlock:(void(^)(PAYFormHeader *))headerBlock contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock infoBlock:(void(^)(UIButton *))infoBlock;
 
+/**
+ *  Create a form header with a name, a style and an info block
+ *
+ *  @param name         the text that should be visible above the section
+ *  @param style        the style of the label that is displayed above the section.
+ *                      Could be changed in the header block.
+ *  @param infoBlock    the block that is called when the user pushes the info icon of the section.
+ *                      The info icon is only shown, if this block is set.
+ */
++ (PAYFormHeader *)headerViewWithStyle:(PAYFormTableLabelStyle)style name:(NSString *)name infoBlock:(void (^)(UIButton *))infoBlock;
+
 @end

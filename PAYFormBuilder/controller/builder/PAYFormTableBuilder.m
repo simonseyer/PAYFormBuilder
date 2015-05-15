@@ -117,7 +117,7 @@
                  infoBlock:(void (^)(UIButton *))infoBlock {
     PAYFormSection *formSection = [PAYFormSection new];
     formSection.name = name;
-    formSection.header = [self headerViewWithStyle:style name:name infoBlock:infoBlock];
+    formSection.header = [PAYFormTableBuilder headerViewWithStyle:style name:name infoBlock:infoBlock];
     if (headerBlock) {
         headerBlock(formSection.header);
     }
@@ -130,7 +130,7 @@
     [self.table.sections addObject:formSection];
 }
 
-- (PAYFormHeader *)headerViewWithStyle:(PAYFormTableLabelStyle)style
++ (PAYFormHeader *)headerViewWithStyle:(PAYFormTableLabelStyle)style
                                   name:(NSString *)name
                              infoBlock:(void (^)(UIButton *))infoBlock {
     PAYFormHeader *formHeader = [PAYFormHeader new];
