@@ -20,6 +20,7 @@
         self.fixedLabelWidth         = YES;
         self.fixedSeperatorInset     = NO;
         self.labelFieldSpacing       = 6.0f;
+        self.detailLabelMarginRight  = self.horizontalMargin;
         self.disclosureMarginRight   = 36.0f;
         self.iconSize                = 21.0f;
         self.iconMargin              = 17.0f;

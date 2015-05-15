@@ -22,6 +22,7 @@ typedef UIView *(^PAYViewProviderBlock)();
 - (CGFloat)horizontalMargin;
 - (BOOL)fixedLabelWidth;
 - (CGFloat)labelWidth;
+- (CGFloat)detailLabelMarginRight;
 - (NSTextAlignment)fieldTextAlignment;
 - (BOOL)fixedSeperatorInset;
 - (UIEdgeInsets)seperatorInset;

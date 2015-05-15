@@ -18,6 +18,7 @@
 @property (nonatomic, assign) BOOL              fixedSeperatorInset;
 @property (nonatomic, assign) UIEdgeInsets      seperatorInset;
 @property (nonatomic, assign) CGFloat           labelFieldSpacing;
+@property (nonatomic, assign) CGFloat           detailLabelMarginRight;
 @property (nonatomic, assign) CGFloat           disclosureMarginRight;
 @property (nonatomic, assign) CGFloat           iconSize;
 @property (nonatomic, assign) CGFloat           iconMargin;

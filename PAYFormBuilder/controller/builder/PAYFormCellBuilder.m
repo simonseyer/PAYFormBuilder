@@ -249,7 +249,7 @@
             
             NSDictionary *views = @{@"label" : formButton.label, @"detailLabel" : formButton.detailLabel, @"view" : formButton.view};
             {
-                NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[label]-horzMargin-[detailLabel]-0-|"
+                NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[label]-horzMargin-[detailLabel]-detailLabelMarginRight-|"
                                                                                options:0
                                                                                metrics:self.metrics
                                                                                  views:views];
@@ -424,7 +424,8 @@
              @"labelWidth" : @(PAYStyle.sectionTheme.labelWidth),
              @"rowHeight" : @(PAYStyle.tableTheme.rowHeight),
              @"textViewHeight" : @(floor(PAYStyle.tableTheme.font.lineHeight * (PAYStyle.sectionTheme.textViewLineCount + 2))),
-             @"iconSize" : @(PAYStyle.sectionTheme.iconSize)};
+             @"iconSize" : @(PAYStyle.sectionTheme.iconSize),
+             @"detailLabelMarginRight" : @(PAYStyle.sectionTheme.detailLabelMarginRight)};
 }
 
 @end
