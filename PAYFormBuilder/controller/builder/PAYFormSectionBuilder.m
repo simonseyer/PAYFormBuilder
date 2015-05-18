@@ -178,7 +178,7 @@
 
 - (void)addView:(void(^)(PAYFormView *))configureBlock {
     PAYFormView *formView = [PAYFormView new];
-    formView.view        = [PAYFormCellBuilder defaultCell];
+    formView.cell         = [PAYFormCellBuilder defaultCell];
     
     if (configureBlock) {
         configureBlock(formView);

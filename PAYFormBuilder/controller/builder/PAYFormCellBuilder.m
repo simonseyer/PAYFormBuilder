@@ -22,9 +22,7 @@
     PAYFormSingleLineTextField *formField = [PAYFormSingleLineTextField new];
     
     formField.cell = self.defaultCell;
-    if (PAYStyle.sectionTheme.fixedSeperatorInset) {
-        formField.cell.separatorInset = PAYStyle.sectionTheme.seperatorInset;
-    } else {
+    if (!PAYStyle.sectionTheme.fixedSeperatorInset) {
         formField.cell.separatorInset = UIEdgeInsetsMake(0, PAYStyle.sectionTheme.horizontalMargin, 0, 0);
     }
     
@@ -160,9 +158,7 @@
         }
         formButton.cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
-    if (PAYStyle.sectionTheme.fixedSeperatorInset) {
-        formButton.cell.separatorInset = PAYStyle.sectionTheme.seperatorInset;
-    } else {
+    if (!PAYStyle.sectionTheme.fixedSeperatorInset) {
         if (style == PAYFormButtonStylePrimary || style == PAYFormButtonStyleCentered) {
             formButton.cell.separatorInset = UIEdgeInsetsZero;
         } else {
@@ -300,9 +296,6 @@
     PAYFormSwitch *formSwitch = [PAYFormSwitch new];
     
     formSwitch.cell = self.defaultCell;
-    if (PAYStyle.sectionTheme.fixedSeperatorInset) {
-        formSwitch.cell.separatorInset = PAYStyle.sectionTheme.seperatorInset;
-    }
     
     formSwitch.label      = self.defaultLabel;
     formSwitch.label.text = name;
@@ -352,6 +345,9 @@
     cell.selectionStyle   = UITableViewCellSelectionStyleNone;
     cell.layoutMargins = UIEdgeInsetsZero;
     cell.preservesSuperviewLayoutMargins = NO;
+    if (PAYStyle.sectionTheme.fixedSeperatorInset) {
+        cell.separatorInset = PAYStyle.sectionTheme.seperatorInset;
+    }
     return cell;
 }
 
