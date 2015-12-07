@@ -10,4 +10,4 @@ xcode_scheme: Example
 xcode_sdk: iphonesimulator
 
 script: 
-    - "xctool -workspace PAYFormBuilder.xcworkspace -scheme Example -sdk iphonesimulator8.1 -destination 'platform=iOS Simulator,name=iPhone 5,OS=8.1' build test"
+    - "xctool -workspace PAYFormBuilder.xcworkspace -scheme Example -sdk iphonesimulator -destination 'OS=9.1,name=iPhone 6s' build test"
