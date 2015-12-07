@@ -47,7 +47,7 @@
     [tester enterText:@"Donald" intoViewWithAccessibilityLabel:@"usernameField"];
     
     // IMPORTANT: this test only succeeds with an english keyboard
-    [tester tapViewWithAccessibilityLabel:@"next"];
+    [tester tapViewWithAccessibilityLabel:@"Next"];
     
     // Check
     UITextField *pwField = (UITextField *)[tester waitForViewWithAccessibilityLabel:@"passwordField"];
