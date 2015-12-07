@@ -127,12 +127,11 @@
         NSString *msg = [NSString stringWithFormat:@"Well done, %@. Here your cleaned postal code: %@. Country code: %@",
                          self.userNameField.value, self.postalCodeTextField.cleanedValue, self.countryButtonGroup.value];
         
-        UIAlertView *alertView  = [[UIAlertView alloc]initWithTitle:@"Success"
-                                                            message:msg
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles: nil];
-        [alertView show];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Success"
+                                                                                 message:msg
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
     };
 }
 

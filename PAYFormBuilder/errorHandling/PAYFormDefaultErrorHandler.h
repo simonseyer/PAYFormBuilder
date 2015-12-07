@@ -31,4 +31,11 @@
  */
 + (void)setButtonText:(NSString *)text;
 
+/**
+ *  The ViewController the alert is displayed in
+ *
+ *  @param viewController the view controller
+ */
++ (void)setParentViewController:(UIViewController *)viewController;
+
 @end

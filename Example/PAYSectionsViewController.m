@@ -42,12 +42,12 @@
                                                selectionBlock:nil];
                         }
                            infoBlock:^(UIButton *infoButton) {
-                               UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Info"
-                                                                                   message:@"This alert could explain what the section is about."
-                                                                                  delegate:nil
-                                                                         cancelButtonTitle:@"Dismiss"
-                                                                         otherButtonTitles:@"More help", nil];
-                               [alertView show];
+                               UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Info"
+                                                                                                        message:@"This alert could explain what the section is about."
+                                                                                                 preferredStyle:UIAlertControllerStyleAlert];
+                               [alertController addAction:[UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleDefault handler:nil]];
+                               [alertController addAction:[UIAlertAction actionWithTitle:@"More help" style:UIAlertActionStyleDefault handler:nil]];
+                               [self presentViewController:alertController animated:YES completion:nil];
                            }];
     
     [tableBuilder addSectionWithName:@"Section with label style description and without any content."
