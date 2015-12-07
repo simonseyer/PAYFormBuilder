@@ -31,7 +31,6 @@ Pod::Spec.new do |s|
   s.requires_arc   = true
   s.ios.frameworks = "UIKit"
 
-  s.dependency 'BlocksKit',    '~> 2'
   s.dependency 'libextobjc',   '~> 0.4'
   s.dependency 'SZTextView',   '~> 1.1'
 end
