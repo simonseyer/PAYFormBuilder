@@ -14,7 +14,7 @@
 + (PAYDefaultLabelTheme *)simpleTheme {
     PAYDefaultLabelTheme *theme = [PAYDefaultLabelTheme new];
     theme.insets         = UIEdgeInsetsMake(32, 15, 8, 0);
-    theme.font           = [UIFont fontWithName:@"Helvetica" size:14];
+    theme.font           = [UIFont fontWithName:theme.font.fontName size:14];
     theme.kerning        = 0.0f;
     theme.lineSpacing    = 1.0f;
     theme.textColor      = [UIColor colorFromHex:0xFF6D6D72];
@@ -26,7 +26,7 @@
 + (PAYDefaultLabelTheme *)descriptionTheme {
     PAYDefaultLabelTheme *theme = [PAYDefaultLabelTheme new];
     theme.insets        = UIEdgeInsetsMake(36, 21, 8, 21);
-    theme.font          = [UIFont fontWithName:theme.font.fontName size:13];;
+    theme.font          = [UIFont fontWithName:theme.font.fontName size:13];
     theme.kerning       = 0.15f;
     theme.lineSpacing   = 4.0f;
     theme.textColor     = [UIColor colorFromHex:0xFF6A6A6A];

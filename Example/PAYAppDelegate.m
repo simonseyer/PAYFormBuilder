@@ -42,6 +42,8 @@
     [PAYFormSwitch setErrorMessage:[PAYFormErrorMessage errorMessageWithTitle:@"Missing" message:@"Please check %@"]
                       forErrorCode:PAYFormMissingErrorCode];
     
+    [PAYFormDefaultErrorHandler setParentViewController:self.window.rootViewController];
+    
     return YES;
 }
 

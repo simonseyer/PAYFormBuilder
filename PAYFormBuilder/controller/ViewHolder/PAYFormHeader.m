@@ -17,4 +17,11 @@
     _view = header.contentView;
 }
 
+- (void)handleInfoButtonPress:(UIButton *)button
+{
+    if (self.infoBlock) {
+        self.infoBlock(button);
+    }
+}
+
 @end

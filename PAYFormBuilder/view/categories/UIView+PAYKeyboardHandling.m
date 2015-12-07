@@ -8,8 +8,6 @@
 
 #import "UIView+PAYKeyboardHandling_protected.h"
 #import <objc/runtime.h>
-#import <BlocksKit/BlocksKit+UIKit.h>
-#import <libextobjc/extobjc.h>
 
 
 @interface PAYTapToEndEditingDelegate : NSObject <UIGestureRecognizerDelegate>
@@ -56,14 +54,14 @@
     delegate.hostView = self;
     self.tapToEndEditingDelegate = delegate;
     
-    @weakify(self);
-    UITapGestureRecognizer *singleTap = [UITapGestureRecognizer bk_recognizerWithHandler:^(UIGestureRecognizer *sender, UIGestureRecognizerState state, CGPoint location) {
-            @strongify(self);
-            [self endEditing:YES];
-        } delay:0.18];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedBackground)];
     singleTap.delegate             = delegate;
     singleTap.cancelsTouchesInView = NO;
     [self addGestureRecognizer:singleTap];
+}
+
+- (void)tappedBackground {
+    [self endEditing:YES];
 }
 
 @end

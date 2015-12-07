@@ -7,7 +7,6 @@
 //
 
 #import "PAYFormDefaultErrorHandler.h"
-#import <BlocksKit+UIKit.h>
 #import "NSError+PAYComfort.h"
 
 #import "PAYFormView+PAYFormDefaultErrorHandlerProtected.h"
@@ -20,12 +19,18 @@
 @implementation PAYFormDefaultErrorHandler
 
 static NSMutableDictionary *errorMessages;
+static UIViewController *parentViewController;
+
 + (void)initialize {
     errorMessages = [NSMutableDictionary new];
 }
 
 + (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code {
     errorMessages[@(code)] = errorMessage;
+}
+
++ (void)setParentViewController:(UIViewController *)viewController {
+    parentViewController = viewController;
 }
 
 static NSString *buttonText;
@@ -40,6 +45,7 @@ static NSString *buttonText;
 + (PAYFormTableFailBlock)failBlock {
     return ^BOOL(NSError *error) {
         NSAssert(buttonText, @"The button text of the default error handler has to be set, when it is used to show error messages");
+        NSAssert(parentViewController, @"A parent view controller has to be set when using the DefaultErrorHandler");
         
         PAYFormErrorMessage *errorMessage = [PAYFormErrorMessage errorMessageWithError:error];
         if (!errorMessage) {
@@ -51,15 +57,16 @@ static NSString *buttonText;
             errorMessage = errorMessages[@(error.code)];
         }
         
-        UIAlertView* alertView = [UIAlertView bk_alertViewWithTitle:[errorMessage titleForField:error.field]
-                                                            message:[errorMessage messageForField:error.field]];
-        [alertView bk_addButtonWithTitle:buttonText handler:^{
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:[errorMessage titleForField:error.field]
+                                                                                 message:[errorMessage messageForField:error.field]
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:buttonText style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             if ([error.field isKindOfClass:PAYFormView.class]) {
                 [(PAYFormView *)error.field becomeFirstResponder];
             }
-        }];
-        
-        [alertView show];
+        }]];
+        [parentViewController presentViewController:alertController animated:YES completion:nil];
+
         return NO;
     };
 }

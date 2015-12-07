@@ -52,7 +52,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self updateViewConstraints];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self updateViewConstraints];
+    });
 }
 
 - (void)viewDidAppear:(BOOL)animated {

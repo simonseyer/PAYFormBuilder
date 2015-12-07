@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "PAYFormBuilder"
-  s.version      = "2.1.1"
+  s.version      = "3.0.0"
 
   s.summary      = "Library to create iOS 7/8 forms with a block based syntax"
   s.description  = <<-DESC
@@ -31,7 +31,6 @@ Pod::Spec.new do |s|
   s.requires_arc   = true
   s.ios.frameworks = "UIKit"
 
-  s.dependency 'BlocksKit',    '~> 2'
   s.dependency 'libextobjc',   '~> 0.4'
   s.dependency 'SZTextView',   '~> 1.1'
 end

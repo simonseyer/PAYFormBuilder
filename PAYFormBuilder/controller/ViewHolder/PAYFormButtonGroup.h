@@ -20,7 +20,7 @@
 /**
  *  The name of the group
  */
-@property (nonatomic, assign) NSString *name;
+@property (nonatomic, strong) NSString *name;
 
 /**
  *  True, if multiple buttons could be selected at once

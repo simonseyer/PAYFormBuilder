@@ -8,3 +8,6 @@ language: objective-c
 xcode_workspace: PAYFormBuilder.xcworkspace
 xcode_scheme: Example
 xcode_sdk: iphonesimulator
+
+script: 
+    - "xctool -workspace PAYFormBuilder.xcworkspace -scheme Example -sdk iphonesimulator -destination 'OS=9.1,name=iPhone 6s' build test"

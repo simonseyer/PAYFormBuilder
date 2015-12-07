@@ -14,7 +14,6 @@
 #import "PAYFormHeader.h"
 #import "PAYFormHeader_protected.h"
 #import "PAYTextLabel.h"
-#import "BlocksKit+UIKit.h"
 #import "PAYStyle.h"
 
 @implementation PAYFormTableBuilder
@@ -136,6 +135,7 @@
     PAYFormHeader *formHeader = [PAYFormHeader new];
     formHeader.header           = [UITableViewHeaderFooterView new];
     formHeader.view.backgroundColor = UIColor.clearColor;
+    formHeader.infoBlock = infoBlock;
     
     if (style == PAYFormTableLabelStyleNone || style == PAYFormTableLabelStyleEmpty) {
         CGFloat headerHeight;
@@ -185,7 +185,7 @@
     if (infoBlock) {
         formHeader.infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
         formHeader.infoButton.translatesAutoresizingMaskIntoConstraints = NO;
-        [formHeader.infoButton bk_addEventHandler:infoBlock forControlEvents:UIControlEventTouchUpInside];
+        [formHeader.infoButton addTarget:formHeader action:@selector(handleInfoButtonPress:) forControlEvents:UIControlEventTouchUpInside];
         [formHeader.view addSubview:formHeader.infoButton];
         
         NSDictionary *views = @{@"info" : formHeader.infoButton, @"view" : formHeader.view};

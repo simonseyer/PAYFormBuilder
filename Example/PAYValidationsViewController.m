@@ -80,12 +80,11 @@
         return nil;
     };
     tableBuilder.formSuccessBlock = ^{
-        UIAlertView *alertView  = [[UIAlertView alloc]initWithTitle:@"Success"
-                                                            message:@"Well done!"
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles: nil];
-        [alertView show];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Success"
+                                                                                 message:@"Well done!"
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleDefault handler:nil]];
+        [self presentViewController:alertController animated:YES completion:nil];
     };
     
 }

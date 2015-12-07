@@ -8,6 +8,7 @@
 
 #import "UIAutomationHelper.h"
 #include <dlfcn.h>
+#import <UIView-KIFAdditions.h>
 
 @interface UIAElement : NSObject <NSCopying>
 - (void)tap;
@@ -15,6 +16,8 @@
 
 @interface UIAAlert : UIAElement
 - (NSArray *)buttons;
+- (BOOL)isValid;
+- (BOOL)isVisible;
 @end
 
 @interface UIAApplication : UIAElement
@@ -24,6 +27,7 @@
 @interface UIATarget : UIAElement
 + (UIATarget *)localTarget;
 - (UIAApplication *)frontMostApp;
+- (void)deactivateAppForDuration:(NSNumber *)duration;
 @end
 
 @interface UIAElementNil : UIAElement
@@ -43,18 +47,27 @@
     return sharedHelper;
 }
 
-+ (void)acknowledgeSystemAlert {
-    [[self sharedHelper] acknowledgeSystemAlert];
++ (BOOL)acknowledgeSystemAlert {
+    return [[self sharedHelper] acknowledgeSystemAlert];
 }
 
-- (void)acknowledgeSystemAlert {
++ (void)deactivateAppForDuration:(NSNumber *)duration {
+    [[self sharedHelper] deactivateAppForDuration:duration];
+}
+- (BOOL)acknowledgeSystemAlert {
     UIAApplication *application = [[self target] frontMostApp];
-    UIAAlert *alert = application.alert;
+	UIAAlert* alert = application.alert;
+	if (![alert isKindOfClass:[self nilElementClass]]) {
+		[[alert.buttons lastObject] tap];
+		while ([alert isValid] && [alert isVisible]) {
+		}
+		return YES;
+	}
+    return NO;
+}
 
-    if (![alert isKindOfClass:[self nilElementClass]]) {
-        [[alert.buttons lastObject] tap];
-        while (![application.alert isKindOfClass:[self nilElementClass]]) { }
-    }
+- (void)deactivateAppForDuration:(NSNumber *)duration {
+    [[self target] deactivateAppForDuration:duration];
 }
 
 #pragma mark - Private
