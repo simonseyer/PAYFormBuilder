@@ -65,7 +65,7 @@
     }
     
     {
-        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[textField(rowHeight)]-0-|"
+        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[textField(rowHeight)]-0@200-|"
                                                                        options:0
                                                                        metrics:self.metrics
                                                                          views:views];
@@ -115,7 +115,7 @@
         [formField.view addConstraint:formField.viewControlRightConstraint];
     }
     {
-        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[textView(>=textViewHeight@200)]-0-|"
+        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[textView(>=textViewHeight@200)]-0@200-|"
                                                                        options:0
                                                                        metrics:self.metrics
                                                                          views:views];
@@ -256,7 +256,7 @@
                 [formButton.view addConstraint:formButton.viewDetailLabelRightConstraint];
             }
             {
-                NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[detailLabel(rowHeight)]-0-|"
+                NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[detailLabel(rowHeight)]-0@200-|"
                                                                                options:0
                                                                                metrics:self.metrics
                                                                                  views:views];
