@@ -12,7 +12,7 @@
 @interface PAYDefaultLabelTheme : NSObject <PAYLabelTheme>
 
 @property (nonatomic, assign) UIEdgeInsets      insets;
-@property (nonatomic, assign) UIFont           *font;
+@property (nonatomic, strong) UIFont           *font;
 @property (nonatomic, assign) CGFloat           kerning;
 @property (nonatomic, assign) CGFloat           lineSpacing;
 @property (nonatomic, retain) UIColor           *textColor;
