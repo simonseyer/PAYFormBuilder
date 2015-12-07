@@ -10,7 +10,6 @@
 #import "PAYFormField.h"
 #import "PAYFormView_protected.h"
 #import "NSError+PAYComfort.h"
-#import <BlocksKit+UIKit.h>
 #import <libextobjc/extobjc.h>
 #import "PAYFormDefaultErrorHandler.h"
 #import "PAYFormDefaultErrorHandler_protected.h"

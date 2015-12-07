@@ -34,6 +34,11 @@
 @property (nonatomic, retain, readonly) UIButton *infoButton;
 
 /**
+ *  The block that is called when the info button is pressed
+ */
+@property (nonatomic, copy) void (^infoBlock)(UIButton *);
+
+/**
  * Constrains the height of the header view. Added to the view.
  */
 @property (nonatomic, retain) NSLayoutConstraint *viewHeightConstraint;

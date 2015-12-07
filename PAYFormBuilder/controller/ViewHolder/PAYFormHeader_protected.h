@@ -30,4 +30,11 @@
  */
 @property (nonatomic, retain) UIButton *infoButton;
 
+/**
+ *  Handles button presses of the info button
+ *
+ *  @param button the info button
+ */
+- (void)handleInfoButtonPress:(UIButton *)button;
+
 @end

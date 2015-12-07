@@ -7,7 +7,6 @@
 //
 
 #import "PAYFormDefaultErrorHandler.h"
-#import <BlocksKit+UIKit.h>
 #import "NSError+PAYComfort.h"
 
 #import "PAYFormView+PAYFormDefaultErrorHandlerProtected.h"
@@ -51,15 +50,9 @@ static NSString *buttonText;
             errorMessage = errorMessages[@(error.code)];
         }
         
-        UIAlertView* alertView = [UIAlertView bk_alertViewWithTitle:[errorMessage titleForField:error.field]
-                                                            message:[errorMessage messageForField:error.field]];
-        [alertView bk_addButtonWithTitle:buttonText handler:^{
             if ([error.field isKindOfClass:PAYFormView.class]) {
                 [(PAYFormView *)error.field becomeFirstResponder];
             }
-        }];
-        
-        [alertView show];
         return NO;
     };
 }
