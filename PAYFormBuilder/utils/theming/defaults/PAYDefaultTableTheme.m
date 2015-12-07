@@ -15,8 +15,14 @@
 {
     self = [super init];
     if (self) {
-        self.font                    = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-        self.subTitleFont            = [UIFont fontWithName:@"HelveticaNeue" size:17];
+        @try {
+            self.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+            self.subTitleFont = [UIFont fontWithName:@"HelveticaNeue" size:17];
+        }
+        @catch (NSException *exception) {
+            self.font = [UIFont systemFontOfSize:17];
+            self.subTitleFont = [UIFont systemFontOfSize:17];
+        }
         self.backgroundColor         = [UIColor colorFromHex:0xFFF6F6F7];
         self.rowHeight               = 44.0f;
         self.footerHeight            = 36.0f;
