@@ -1,5 +1,7 @@
 PODS:
-  - KIF/XCTest (3.2.3)
+  - KIF (3.3.0):
+    - KIF/Core (= 3.3.0)
+  - KIF/Core (3.3.0)
   - libextobjc (0.4.1):
     - libextobjc/EXTADT (= 0.4.1)
     - libextobjc/EXTConcreteProtocol (= 0.4.1)
@@ -41,7 +43,7 @@ PODS:
   - SZTextView (1.2.1)
 
 DEPENDENCIES:
-  - KIF/XCTest (~> 3.0)
+  - KIF (~> 3.0)
   - PAYFormBuilder (from `./`)
 
 EXTERNAL SOURCES:
@@ -49,7 +51,7 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  KIF: a94bffe9c97e449e44f8fa481c53243d21309e1e
+  KIF: 0a82046d06f3648799cac522d2d0f7934214caac
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   PAYFormBuilder: e980a508e7bc8c521e27c59d3db0bcce3d15dbf7
   SZTextView: 906df45afd3c1b24fc5252088d5ef8061513c238

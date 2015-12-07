@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '355186364DEF8B92C6C356F4'
+               BlueprintIdentifier = '27477810DAA8DC35F02764F2'
                BlueprintName = 'PAYFormBuilder'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPAYFormBuilder.a'>
