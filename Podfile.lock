@@ -1,7 +1,7 @@
 PODS:
-  - KIF (3.3.0):
-    - KIF/Core (= 3.3.0)
-  - KIF/Core (3.3.0)
+  - KIF (3.4.2):
+    - KIF/Core (= 3.4.2)
+  - KIF/Core (3.4.2)
   - libextobjc (0.4.1):
     - libextobjc/EXTADT (= 0.4.1)
     - libextobjc/EXTConcreteProtocol (= 0.4.1)
@@ -37,10 +37,10 @@ PODS:
     - libextobjc/RuntimeExtensions
   - libextobjc/RuntimeExtensions (0.4.1)
   - libextobjc/UmbrellaHeader (0.4.1)
-  - PAYFormBuilder (2.1.1):
+  - PAYFormBuilder (3.0.0):
     - libextobjc (~> 0.4)
     - SZTextView (~> 1.1)
-  - SZTextView (1.2.1)
+  - SZTextView (1.2.2)
 
 DEPENDENCIES:
   - KIF (~> 3.0)
@@ -51,9 +51,11 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  KIF: 0a82046d06f3648799cac522d2d0f7934214caac
+  KIF: b518c9831453abea5afdbbde3908ec47832d6d56
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
-  PAYFormBuilder: e980a508e7bc8c521e27c59d3db0bcce3d15dbf7
-  SZTextView: 906df45afd3c1b24fc5252088d5ef8061513c238
+  PAYFormBuilder: a67f65f33c6eae19d85715b9a7679ee578fd18e0
+  SZTextView: 3a81174dce0710a9ab069bc73a813e6df53b9c82
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 51df3bc80275698da412e201f2d8e70277d06fd2
+
+COCOAPODS: 1.0.1

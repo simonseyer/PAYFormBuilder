@@ -1,6 +1,9 @@
 FRAMEWORK_SEARCH_PATHS = $(inherited) $(PLATFORM_DIR)/Developer/Library/Frameworks "$(PLATFORM_DIR)/Developer/Library/Frameworks"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/KIF" "${PODS_ROOT}/Headers/Public/PAYFormBuilder" "${PODS_ROOT}/Headers/Public/SZTextView" "${PODS_ROOT}/Headers/Public/libextobjc"
+LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/KIF" "$PODS_CONFIGURATION_BUILD_DIR/PAYFormBuilder" "$PODS_CONFIGURATION_BUILD_DIR/SZTextView" "$PODS_CONFIGURATION_BUILD_DIR/libextobjc"
 OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/KIF" -isystem "${PODS_ROOT}/Headers/Public/PAYFormBuilder" -isystem "${PODS_ROOT}/Headers/Public/SZTextView" -isystem "${PODS_ROOT}/Headers/Public/libextobjc"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"KIF" -l"PAYFormBuilder" -l"SZTextView" -l"libextobjc" -framework "CoreGraphics" -framework "IOKit" -framework "UIKit" -framework "XCTest"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"KIF" -l"PAYFormBuilder" -l"SZTextView" -l"libextobjc" -framework "CoreGraphics" -framework "IOKit" -framework "QuartzCore" -framework "UIKit" -framework "XCTest"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_ROOT = ${SRCROOT}/Pods

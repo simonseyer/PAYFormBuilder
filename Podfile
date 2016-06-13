@@ -1,16 +1,16 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '7.0'
-xcodeproj 'PAYFormBuilder.xcodeproj'
+project 'PAYFormBuilder.xcodeproj'
 workspace 'PAYFormBuilder.xcworkspace'
 
 target 'Example' do
   pod 'PAYFormBuilder', :path => './'
-  xcodeproj 'Example.xcodeproj'
+  project 'Example.xcodeproj'
 end
 
 target 'ExampleTests' do
   pod 'PAYFormBuilder', :path => './'
   pod 'KIF', '~> 3.0'
-  xcodeproj 'Example.xcodeproj'
+  project 'Example.xcodeproj'
 end
