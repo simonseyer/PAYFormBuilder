@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Paij. All rights reserved.
 //
 
-#import "KIFTestCase.h"
+@import KIF;
 
 @interface PAYRegistrationFormTest : KIFTestCase
 

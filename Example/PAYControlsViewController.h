@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 Paij. All rights reserved.
 //
 
-#import "PAYFormTableViewController.h"
-
 @interface PAYControlsViewController : PAYFormTableViewController
 
 @end

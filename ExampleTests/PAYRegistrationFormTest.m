@@ -7,9 +7,8 @@
 //
 
 #import "PAYRegistrationFormTest.h"
-#import <KIF/KIF.h>
+@import KIF;
 #import "KIFUITestActor+PAYComfort.h"
-#import "NSError-KIFAdditions.h"
 
 @implementation PAYRegistrationFormTest
 
