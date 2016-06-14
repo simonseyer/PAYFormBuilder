@@ -1,1 +1,2 @@
 github "glaszig/SZTextView" ~> 1.2.0
+github "kif-framework/KIF" ~> 3.4.0
