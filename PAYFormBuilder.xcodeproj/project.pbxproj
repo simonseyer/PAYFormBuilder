@@ -156,6 +156,42 @@
 		C39503721AD7B6BD0067CF7C /* PAYStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = C39503641AD7B6BD0067CF7C /* PAYStyle.h */; };
 		C39503731AD7B6BD0067CF7C /* PAYStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C39503651AD7B6BD0067CF7C /* PAYStyle.m */; };
 		C39503741AD7B6BD0067CF7C /* PAYTableTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = C39503661AD7B6BD0067CF7C /* PAYTableTheme.h */; };
+		C3F48DDA1D100CAF00A8CE5E /* PAYValidatableFormCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 37E4CE331A093B8000F342A8 /* PAYValidatableFormCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C3F48DDB1D100CE300A8CE5E /* PAYNotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73CF419743D2700381DC9 /* PAYNotifications.m */; };
+		C3F48DDC1D100CE300A8CE5E /* PAYFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651B618F2F1650022151B /* PAYFormTableViewController.m */; };
+		C3F48DDD1D100CE300A8CE5E /* PAYFormCellBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = C32293CC1ADECB08007E8252 /* PAYFormCellBuilder.m */; };
+		C3F48DDE1D100CE300A8CE5E /* PAYFormTableBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73D221974601D00381DC9 /* PAYFormTableBuilder.m */; };
+		C3F48DDF1D100CE300A8CE5E /* PAYFormSectionBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73D201974601D00381DC9 /* PAYFormSectionBuilder.m */; };
+		C3F48DE01D100CE300A8CE5E /* PAYFormButtonGroupBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73D1E1974601D00381DC9 /* PAYFormButtonGroupBuilder.m */; };
+		C3F48DE11D100CE300A8CE5E /* PAYErrorCodes.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73D181974600900381DC9 /* PAYErrorCodes.m */; };
+		C3F48DE21D100CE300A8CE5E /* NSError+PAYComfort.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73CFC19743D4200381DC9 /* NSError+PAYComfort.m */; };
+		C3F48DE31D100CE300A8CE5E /* PAYFormDefaultErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73CFE19743D4200381DC9 /* PAYFormDefaultErrorHandler.m */; };
+		C3F48DE41D100CE300A8CE5E /* PAYFormErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73D1419745FCF00381DC9 /* PAYFormErrorMessage.m */; };
+		C3F48DE51D100CE300A8CE5E /* PAYFormView+PAYFormDefaultErrorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73D0019743D4200381DC9 /* PAYFormView+PAYFormDefaultErrorHandler.m */; };
+		C3F48DE61D100CE300A8CE5E /* PAYFormView+PAYFormDefaultErrorHandlerProtected.m in Sources */ = {isa = PBXBuildFile; fileRef = 37A73D0219743D4200381DC9 /* PAYFormView+PAYFormDefaultErrorHandlerProtected.m */; };
+		C3F48DE71D100CE300A8CE5E /* PAYFormTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651C518F2F1650022151B /* PAYFormTable.m */; };
+		C3F48DE81D100CE300A8CE5E /* PAYFormSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651C118F2F1650022151B /* PAYFormSection.m */; };
+		C3F48DE91D100CE300A8CE5E /* PAYFormView.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651C918F2F1650022151B /* PAYFormView.m */; };
+		C3F48DEA1D100CE300A8CE5E /* PAYFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651BB18F2F1650022151B /* PAYFormField.m */; };
+		C3F48DEB1D100CE300A8CE5E /* PAYFormTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651C718F2F1650022151B /* PAYFormTextField.m */; };
+		C3F48DEC1D100CE300A8CE5E /* PAYFormSingleLineTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651C318F2F1650022151B /* PAYFormSingleLineTextField.m */; };
+		C3F48DED1D100CE300A8CE5E /* PAYFormMultiLineTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651BF18F2F1650022151B /* PAYFormMultiLineTextField.m */; };
+		C3F48DEE1D100CE300A8CE5E /* PAYFormButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651B918F2F1650022151B /* PAYFormButton.m */; };
+		C3F48DEF1D100CE300A8CE5E /* PAYFormButtonGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AF34A718F8175B00848D49 /* PAYFormButtonGroup.m */; };
+		C3F48DF01D100CE300A8CE5E /* PAYFormSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 37AF34B318F8560300848D49 /* PAYFormSwitch.m */; };
+		C3F48DF11D100CE300A8CE5E /* PAYFormHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651BD18F2F1650022151B /* PAYFormHeader.m */; };
+		C3F48DF21D100CE300A8CE5E /* PAYFormTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651D318F2F1650022151B /* PAYFormTableView.m */; };
+		C3F48DF31D100CE300A8CE5E /* PAYTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651D518F2F1650022151B /* PAYTextLabel.m */; };
+		C3F48DF41D100CE300A8CE5E /* PAYHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 375DAD6F190F052600F4A41D /* PAYHeaderView.m */; };
+		C3F48DF51D100CE300A8CE5E /* PAYSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = C31424BD1ACD7BFC00B7005D /* PAYSwitch.m */; };
+		C3F48DF61D100CE300A8CE5E /* PAYMessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651F618F302940022151B /* PAYMessageInterceptor.m */; };
+		C3F48DF71D100CE300A8CE5E /* UIView+PAYKeyboardHandling.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651CD18F2F1650022151B /* UIView+PAYKeyboardHandling.m */; };
+		C3F48DF81D100CE300A8CE5E /* UIColor+PAYHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651F918F3035A0022151B /* UIColor+PAYHex.m */; };
+		C3F48DF91D100CE300A8CE5E /* PAYDefaultLabelThemeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = C395035B1AD7B6BD0067CF7C /* PAYDefaultLabelThemeContainer.m */; };
+		C3F48DFA1D100CE300A8CE5E /* PAYDefaultSectionTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C395035D1AD7B6BD0067CF7C /* PAYDefaultSectionTheme.m */; };
+		C3F48DFB1D100CE300A8CE5E /* PAYDefaultTableTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C395035F1AD7B6BD0067CF7C /* PAYDefaultTableTheme.m */; };
+		C3F48DFC1D100CE300A8CE5E /* PAYStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = C39503651AD7B6BD0067CF7C /* PAYStyle.m */; };
+		C3F48DFD1D100CE300A8CE5E /* PAYValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3709CE611920DFAB0077BAFF /* PAYValidation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -672,6 +708,7 @@
 				C33C979C1D0F013C00CCFFE8 /* PAYFormButton_protected.h in Headers */,
 				C33C978C1D0F011A00CCFFE8 /* PAYFormErrorMessage_protected.h in Headers */,
 				C33C97951D0F012E00CCFFE8 /* PAYFormField_protected.h in Headers */,
+				C3F48DDA1D100CAF00A8CE5E /* PAYValidatableFormCell.h in Headers */,
 				C33C97A71D0F015A00CCFFE8 /* PAYMessageInterceptor_protected.h in Headers */,
 				C33C97A01D0F014300CCFFE8 /* PAYFormSwitch_protected.h in Headers */,
 				C33C97A21D0F014700CCFFE8 /* PAYFormHeader_protected.h in Headers */,
@@ -848,6 +885,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3F48DFC1D100CE300A8CE5E /* PAYStyle.m in Sources */,
+				C3F48DDD1D100CE300A8CE5E /* PAYFormCellBuilder.m in Sources */,
+				C3F48DED1D100CE300A8CE5E /* PAYFormMultiLineTextField.m in Sources */,
+				C3F48DF41D100CE300A8CE5E /* PAYHeaderView.m in Sources */,
+				C3F48DF91D100CE300A8CE5E /* PAYDefaultLabelThemeContainer.m in Sources */,
+				C3F48DE41D100CE300A8CE5E /* PAYFormErrorMessage.m in Sources */,
+				C3F48DF61D100CE300A8CE5E /* PAYMessageInterceptor.m in Sources */,
+				C3F48DE71D100CE300A8CE5E /* PAYFormTable.m in Sources */,
+				C3F48DF31D100CE300A8CE5E /* PAYTextLabel.m in Sources */,
+				C3F48DFD1D100CE300A8CE5E /* PAYValidation.m in Sources */,
+				C3F48DE21D100CE300A8CE5E /* NSError+PAYComfort.m in Sources */,
+				C3F48DE91D100CE300A8CE5E /* PAYFormView.m in Sources */,
+				C3F48DFA1D100CE300A8CE5E /* PAYDefaultSectionTheme.m in Sources */,
+				C3F48DF51D100CE300A8CE5E /* PAYSwitch.m in Sources */,
+				C3F48DE31D100CE300A8CE5E /* PAYFormDefaultErrorHandler.m in Sources */,
+				C3F48DDE1D100CE300A8CE5E /* PAYFormTableBuilder.m in Sources */,
+				C3F48DF81D100CE300A8CE5E /* UIColor+PAYHex.m in Sources */,
+				C3F48DEE1D100CE300A8CE5E /* PAYFormButton.m in Sources */,
+				C3F48DE81D100CE300A8CE5E /* PAYFormSection.m in Sources */,
+				C3F48DEB1D100CE300A8CE5E /* PAYFormTextField.m in Sources */,
+				C3F48DE61D100CE300A8CE5E /* PAYFormView+PAYFormDefaultErrorHandlerProtected.m in Sources */,
+				C3F48DEF1D100CE300A8CE5E /* PAYFormButtonGroup.m in Sources */,
+				C3F48DEC1D100CE300A8CE5E /* PAYFormSingleLineTextField.m in Sources */,
+				C3F48DFB1D100CE300A8CE5E /* PAYDefaultTableTheme.m in Sources */,
+				C3F48DF01D100CE300A8CE5E /* PAYFormSwitch.m in Sources */,
+				C3F48DDF1D100CE300A8CE5E /* PAYFormSectionBuilder.m in Sources */,
+				C3F48DE11D100CE300A8CE5E /* PAYErrorCodes.m in Sources */,
+				C3F48DF11D100CE300A8CE5E /* PAYFormHeader.m in Sources */,
+				C3F48DEA1D100CE300A8CE5E /* PAYFormField.m in Sources */,
+				C3F48DE51D100CE300A8CE5E /* PAYFormView+PAYFormDefaultErrorHandler.m in Sources */,
+				C3F48DF71D100CE300A8CE5E /* UIView+PAYKeyboardHandling.m in Sources */,
+				C3F48DDC1D100CE300A8CE5E /* PAYFormTableViewController.m in Sources */,
+				C3F48DE01D100CE300A8CE5E /* PAYFormButtonGroupBuilder.m in Sources */,
+				C3F48DF21D100CE300A8CE5E /* PAYFormTableView.m in Sources */,
+				C3F48DDB1D100CE300A8CE5E /* PAYNotifications.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
