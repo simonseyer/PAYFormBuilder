@@ -1,0 +1,6 @@
+framework module SZTextView {
+  umbrella header "SZTextView.h"
+
+  export *
+  module * { export * }
+}
