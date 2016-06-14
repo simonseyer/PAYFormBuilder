@@ -288,7 +288,7 @@ Migration
 * `PAYFormButton` now has a `label` property instead of `titleLabel`
 * `PAYFormView` (and it's subclasses `PAYFormButton`, `PAYFormSingleLineTextField`, etc.) now has a `cell` property, which allows to configure or replace the cell. Still use the `view` property to add subviews.
 * The names of the `PAYFormButtonStyle`s were [changed](https://github.com/Eldorado234/PAYFormBuilder/commit/b0c297c1ef233cd90965226d6aaf243adc1e7641)
-* All frame calculations were replaced by auto layout, so frames should't be set manually anymore
+* All frame calculations were replaced by auto layout, so frames shouldn't be set manually anymore
 * `initWithFrame:` calls should be removed  
 * Use the all new theming API to style your forms
 

@@ -1,5 +1,6 @@
 before_install:
-  - gem install cocoapods
+  - gem install activesupport -v "4.2.6"
+  - gem install cocoapods -v "0.39.0"
   - brew update
   - if brew outdated | grep -qx xctool; then brew upgrade xctool; fi
 
@@ -10,4 +11,4 @@ xcode_scheme: Example
 xcode_sdk: iphonesimulator
 
 script: 
-    - "xctool -workspace PAYFormBuilder.xcworkspace -scheme Example -sdk iphonesimulator -destination 'OS=9.1,name=iPhone 6s' build test"
+    - "xctool -workspace PAYFormBuilder.xcworkspace -scheme Example -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.1' build test"
