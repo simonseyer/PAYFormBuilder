@@ -571,6 +571,8 @@
 				);
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "ExampleTests/ExampleTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.paij.${PRODUCT_NAME:rfc1034identifier}";
@@ -593,6 +595,8 @@
 				GCC_PREFIX_HEADER = "Example/Example-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "ExampleTests/ExampleTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = "de.paij.${PRODUCT_NAME:rfc1034identifier}";
