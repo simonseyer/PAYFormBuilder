@@ -7,7 +7,7 @@
 //
 
 #import "PAYFormView+PAYFormDefaultErrorHandlerProtected.h"
-#import <libextobjc/extobjc.h>
+@import ObjectiveC;
 
 @implementation PAYFormView (PAYFormDefaultErrorHandlerProtected)
 

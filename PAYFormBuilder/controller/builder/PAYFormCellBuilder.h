@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import <SZTextView/SZTextView.h>
+@import SZTextView;
 #import "PAYFormSingleLineTextField.h"
 #import "PAYFormMultiLineTextField.h"
 #import "PAYFormButton.h"

@@ -7,7 +7,7 @@
 //
 
 #import "PAYTextLabel.h"
-
+@import UIKit;
 
 typedef enum {
     PAYFormTableLabelStyleSimple,
