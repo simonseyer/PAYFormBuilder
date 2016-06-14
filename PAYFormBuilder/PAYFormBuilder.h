@@ -11,6 +11,7 @@
 #import "PAYFormTableBuilder.h"
 #import "PAYFormSectionBuilder.h"
 #import "PAYFormButtonGroupBuilder.h"
+#import "PAYFormCellBuilder.h"
 
 #import "PAYFormTableViewController.h"
 
@@ -21,6 +22,8 @@
 #import "PAYFormButtonGroup.h"
 #import "PAYFormSwitch.h"
 #import "PAYFormHeader.h"
+#import "PAYFormTableView.h"
+#import "PAYSwitch.h"
 
 #import "PAYFormDefaultErrorHandler.h"
 #import "PAYFormErrorMessage.h"
@@ -37,3 +40,6 @@
 #import "PAYSectionTheme.h"
 #import "PAYTableTheme.h"
 #import "PAYLabelTheme.h"
+#import "PAYDefaultLabelThemeContainer.h"
+#import "PAYDefaultSectionTheme.h"
+#import "PAYDefaultTableTheme.h"
