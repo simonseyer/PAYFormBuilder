@@ -10,7 +10,6 @@
 #import "PAYFormField.h"
 #import "PAYFormView_protected.h"
 #import "NSError+PAYComfort.h"
-#import <libextobjc/extobjc.h>
 #import "PAYFormDefaultErrorHandler.h"
 #import "PAYFormDefaultErrorHandler_protected.h"
 
@@ -21,11 +20,11 @@
     self = [super init];
     if (self) {
         self.sections = [NSMutableArray new];
-        @weakify(self);
+        __weak PAYFormTable *weakSelf = self;
         self.completionBlock = ^{
-            @strongify(self);
-            if (self.finishOnLastField) {
-                [self validate];
+            PAYFormTable *strongSelf = weakSelf;
+            if (strongSelf.finishOnLastField) {
+                [strongSelf validate];
             }
         };
         self.formFailBlock = PAYFormDefaultErrorHandler.failBlock;
@@ -67,11 +66,11 @@
         if (sectionWithActiveField) {
             if (!previousSection) {
                 // Let last section execute the table's completion block
-                @weakify(self);
+                __weak PAYFormTable *weakSelf = self;
                 section.completionBlock = ^{
-                    @strongify(self);
-                    if (self.completionBlock) {
-                        self.completionBlock();
+                    PAYFormTable *strongSelf = weakSelf;
+                    if (strongSelf.completionBlock) {
+                        strongSelf.completionBlock();
                     }
                 };
             }

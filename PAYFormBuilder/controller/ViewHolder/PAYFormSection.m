@@ -11,7 +11,6 @@
 #import "PAYFormButton.h"
 #import "PAYFormView_protected.h"
 #import "PAYFormField_protected.h"
-#import <libextobjc/extobjc.h>
 
 
 @implementation PAYFormSection
@@ -34,11 +33,11 @@
             PAYFormField *formField = row;
             if (formField.isEnabled) {
                 if (!previousField) {
-                    @weakify(self);
+                    __weak PAYFormSection *weakSelf = self;
                     formField.completionBlock = ^{
-                        @strongify(self);
-                        if (self.completionBlock) {
-                            self.completionBlock();
+                        PAYFormSection *strongSelf = weakSelf;
+                        if (strongSelf.completionBlock) {
+                            strongSelf.completionBlock();
                         }
                     };
                     
