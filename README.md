@@ -3,6 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/paij/PAYFormBuilder/blob/master/LICENSE)
 [![CocoaPods](https://img.shields.io/cocoapods/v/PAYFormBuilder.svg?style=flat)](https://github.com/paij/PAYFormBuilder)
 [![Travis](http://img.shields.io/travis/Eldorado234/PAYFormBuilder/master.svg?style=flat)](https://travis-ci.org/Eldorado234/PAYFormBuilder)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 The FormBuilder is a library to create generic iOS 7/8 screens the easy way. With it's block based syntax and wide possibilities for customization it's fun to create forms.
 
