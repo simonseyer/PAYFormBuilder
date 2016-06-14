@@ -31,9 +31,6 @@
     "frameworks": "UIKit"
   },
   "dependencies": {
-    "libextobjc": [
-      "~> 0.4"
-    ],
     "SZTextView": [
       "~> 1.1"
     ]
