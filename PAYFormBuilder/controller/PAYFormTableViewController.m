@@ -104,7 +104,8 @@
 - (void)buildFooter {
     if (!self.tableView.tableFooterView) {
         UIView *footerView = [UIView new];
-        footerView.frame = CGRectMake(0, 0, 0, PAYStyle.tableTheme.footerHeight);
+        footerView.translatesAutoresizingMaskIntoConstraints = NO;
+        [footerView.heightAnchor constraintEqualToConstant:PAYStyle.tableTheme.footerHeight].active = YES;
         footerView.backgroundColor = UIColor.clearColor;
         
         self.tableView.tableFooterView = footerView;
@@ -208,15 +209,12 @@
     [view setNeedsLayout];
     [view layoutIfNeeded];
     
-    NSArray *temporaryWidthConstraints = [NSLayoutConstraint constraintsWithVisualFormat:@"[view(width)]"
-                                                                                 options:0
-                                                                                 metrics:@{@"width": @(view.bounds.size.width)}
-                                                                                   views:@{@"view": view}];
-    [view addConstraints:temporaryWidthConstraints];
+    NSLayoutConstraint *widthConstraint = [view.widthAnchor constraintEqualToConstant:view.bounds.size.width];
+    widthConstraint.active = YES;
     
     CGFloat height = [view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
     
-    [view removeConstraints:temporaryWidthConstraints];
+    widthConstraint.active = NO;
     view.translatesAutoresizingMaskIntoConstraints = YES;
     
     view.frame = CGRectMake(0, 0, view.frame.size.width, height);
