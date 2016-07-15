@@ -23,7 +23,10 @@
                                                selectionBlock:nil];
                             [sectionBuilder addButtonWithText:@"Disclosure button"
                                                         style:PAYFormButtonStyleDisclosure
-                                               selectionBlock:nil];
+                                               selectionBlock:^(PAYFormButton *formButton) {
+                                                   PAYControlsViewController *targetViewController = [PAYControlsViewController new];
+                                                   [self.navigationController pushViewController:targetViewController animated:YES];
+                                               }];
                             [sectionBuilder addButtonWithText:@"Disclosure button"
                                                    detailText:@"with details"
                                                         style:PAYFormButtonStyleDisclosure
