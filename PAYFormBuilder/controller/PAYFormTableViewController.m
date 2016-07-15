@@ -104,7 +104,8 @@
 - (void)buildFooter {
     if (!self.tableView.tableFooterView) {
         UIView *footerView = [UIView new];
-        footerView.frame = CGRectMake(0, 0, 0, PAYStyle.tableTheme.footerHeight);
+        footerView.translatesAutoresizingMaskIntoConstraints = NO;
+        [footerView.heightAnchor constraintEqualToConstant:PAYStyle.tableTheme.footerHeight].active = YES;
         footerView.backgroundColor = UIColor.clearColor;
         
         self.tableView.tableFooterView = footerView;
