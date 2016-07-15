@@ -15,11 +15,10 @@
 {
     self = [super init];
     if (self) {
-        @try {
+        if ([UIFont.familyNames containsObject:@"Helvetica Neue"]) {
             self.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
             self.subTitleFont = [UIFont fontWithName:@"HelveticaNeue" size:17];
-        }
-        @catch (NSException *exception) {
+        } else {
             self.font = [UIFont systemFontOfSize:17];
             self.subTitleFont = [UIFont systemFontOfSize:17];
         }
