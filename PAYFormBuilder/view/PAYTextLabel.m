@@ -79,7 +79,6 @@
     }
     
     super.attributedText = attrText;
-    [self invalidateIntrinsicContentSize];
 }
 
 - (void)updateAttributedText {
@@ -97,15 +96,14 @@
 }
 
 - (CGSize) intrinsicContentSize {
-    CGSize superSize = [super intrinsicContentSize] ;
-    superSize.height += self.textInsets.top + self.textInsets.bottom;
-    superSize.width += self.textInsets.left + self.textInsets.right;
-    return superSize;
-}
-
-- (void)layoutSubviews {
-    self.preferredMaxLayoutWidth = self.frame.size.width;
-    [super layoutSubviews];
+    CGFloat textWidth = self.preferredMaxLayoutWidth - self.textInsets.left - self.textInsets.right;
+    CGRect textRect = [self.attributedText boundingRectWithSize:CGSizeMake(textWidth, CGFLOAT_MAX)
+                                                        options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                                        context:nil];
+    CGFloat height = ceil(textRect.size.height + self.textInsets.top + self.textInsets.bottom);
+    CGFloat width = ceil(textRect.size.width + self.textInsets.left + self.textInsets.right);
+    
+    return CGSizeMake(width, height);
 }
 
 @end
