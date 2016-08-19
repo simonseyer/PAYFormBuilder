@@ -9,8 +9,6 @@
 #import "PAYFormView.h"
 #import "PAYValidatableFormCell.h"
 
-@class PAYFormSwitch;
-
 typedef void (^PAYFormSwitchChangeBlock)(BOOL);
 
 /**
