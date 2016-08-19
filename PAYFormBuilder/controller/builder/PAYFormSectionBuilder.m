@@ -176,6 +176,15 @@
     return formView;
 }
 
+- (PAYFormSwitch *)addSwitchWithName:(NSString *)name configureBlock:(void(^)(PAYFormSwitch *))configureBlock changeBlock:(PAYFormSwitchChangeBlock)changeBlock
+{
+    PAYFormSwitch *formView = [self addSwitchWithName:name configureBlock:configureBlock];
+        
+    formView.changeBlock = changeBlock;
+    
+    return formView;
+}
+
 - (void)addView:(void(^)(PAYFormView *))configureBlock {
     PAYFormView *formView = [PAYFormView new];
     formView.cell         = [PAYFormCellBuilder defaultCell];

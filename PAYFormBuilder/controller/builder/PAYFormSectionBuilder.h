@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "PAYFormButton.h"
 #import "PAYFormButtonGroupBuilder.h"
+#import "PAYFormSwitch.h"
 
 @class PAYFormSingleLineTextField;
 @class PAYFormMultiLineTextField;
 @class PAYFormButton;
-@class PAYFormSwitch;
 @class SZTextView;
 @class PAYFormButtonGroup;
 
@@ -241,6 +241,8 @@
  *  @return the model object of the switch. It's for example used to get the value the used selected.
  */
 - (PAYFormSwitch *)addSwitchWithName:(NSString *)name configureBlock:(void(^)(PAYFormSwitch *))configureBlock;
+
+- (PAYFormSwitch *)addSwitchWithName:(NSString *)name configureBlock:(void(^)(PAYFormSwitch *))configureBlock changeBlock:(PAYFormSwitchChangeBlock)changeBlock;
 
 #pragma mark - Add generic views
 

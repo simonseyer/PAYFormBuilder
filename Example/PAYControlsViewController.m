@@ -93,6 +93,21 @@
                             [sectionBuilder addSwitchWithName:@"Switch with label"];
                         }];
 
+    [tableBuilder addSectionWithName:@"Switch with block"
+                          labelStyle:PAYFormTableLabelStyleSimple
+                        contentBlock:^(PAYFormSectionBuilder * sectionBuilder) {
+                            [sectionBuilder addSwitchWithName:@"Switch with label" configureBlock:nil changeBlock:^(BOOL on) {
+                                UIAlertController * alert = [UIAlertController
+                                                             alertControllerWithTitle:@"Status"
+                                                             message: on? @"On" : @"Off"
+                                                              preferredStyle:UIAlertControllerStyleAlert];
+                                UIAlertAction *dismiss = [UIAlertAction actionWithTitle:@"Dismiss"
+                                                                                  style:UIAlertActionStyleDefault
+                                                                           handler:nil];
+                                [alert addAction:dismiss];
+                                [self presentViewController:alert animated:YES completion:nil];
+                            }];
+                        }];
     tableBuilder.formSuccessBlock = ^{
         // NSLog(@"%@", self.countryButtonGroup.values);
         // NSLog(@"%@", self.formSwitch.value ? @"YES" : @"NO");
