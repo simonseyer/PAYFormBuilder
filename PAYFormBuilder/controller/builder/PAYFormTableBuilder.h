@@ -107,6 +107,7 @@
  *                      A SectionBuilder is passed to accomplish this.
  */
 - (void)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock;
+
 /**
  *  Add a new section to the table with a section header label and a custom label style.
  *

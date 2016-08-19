@@ -179,9 +179,7 @@
 - (PAYFormSwitch *)addSwitchWithName:(NSString *)name configureBlock:(void(^)(PAYFormSwitch *))configureBlock changeBlock:(PAYFormSwitchChangeBlock)changeBlock
 {
     PAYFormSwitch *formView = [self addSwitchWithName:name configureBlock:configureBlock];
-        
-    formView.changeBlock = changeBlock;
-    
+    formView.changeBlock = changeBlock;    
     return formView;
 }
 
