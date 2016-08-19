@@ -107,18 +107,6 @@
  *                      A SectionBuilder is passed to accomplish this.
  */
 - (void)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock;
-
-/**
- *  Add a new section to the table with a section header label and a custom label style.
- *
- *  @param name         the text that should be visible above the section
- *  @param style        the style of the label that is displayed above the section
- *  @param contentBlock the block to configure the content of the section.
- *                      A SectionBuilder is passed to accomplish this.
- *  @param changeBlock  the block gets called when switch status changes (on/off)
- */
-- (void)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock changeBlock:(PAYFormSwitchChangeBlock)changeBlock;
-
 /**
  *  Add a new section to the table with a section header label and a custom label style.
  *

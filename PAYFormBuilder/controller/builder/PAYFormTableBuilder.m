@@ -87,12 +87,6 @@
                 contentBlock:contentBlock];
 }
 
-- (void)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock changeBlock:(PAYFormSwitchChangeBlock)changeBlock
-{
-    
-}
-
-
 - (void)addSectionWithName:(NSString *)name
                 labelStyle:(PAYFormTableLabelStyle)style
               contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock
