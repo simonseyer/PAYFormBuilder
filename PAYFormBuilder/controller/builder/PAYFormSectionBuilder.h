@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "PAYFormButton.h"
 #import "PAYFormButtonGroupBuilder.h"
+#import "PAYFormSwitch.h"
 
 @class PAYFormSingleLineTextField;
 @class PAYFormMultiLineTextField;
 @class PAYFormButton;
-@class PAYFormSwitch;
 @class SZTextView;
 @class PAYFormButtonGroup;
 
@@ -241,6 +241,17 @@
  *  @return the model object of the switch. It's for example used to get the value the used selected.
  */
 - (PAYFormSwitch *)addSwitchWithName:(NSString *)name configureBlock:(void(^)(PAYFormSwitch *))configureBlock;
+/**
+ *  Add a toggle switch with a label and a customization block.
+ *
+ *  @param name           the text of the label that is displayed in front of the switch
+ *  @param configureBlock a block that gets the preconfigurred PAYFormSwitch and
+ *                        could modify it's parameters
+ *  @param changeBlock    the block that is called when the user changes the switch status (on/off).
+ *
+ *  @return the model object of the switch. It's for example used to get the value the used selected.
+ */
+- (PAYFormSwitch *)addSwitchWithName:(NSString *)name configureBlock:(void(^)(PAYFormSwitch *))configureBlock changeBlock:(PAYFormSwitchChangeBlock)changeBlock;
 
 #pragma mark - Add generic views
 

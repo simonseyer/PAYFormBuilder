@@ -9,6 +9,8 @@
 #import "PAYFormView.h"
 #import "PAYValidatableFormCell.h"
 
+typedef void (^PAYFormSwitchChangeBlock)(BOOL);
+
 /**
  *  A form view with a switch control
  */
@@ -43,5 +45,10 @@
  * Helps to constrain the vertical position of the switch. Added to the view.
  */
 @property (nonatomic, retain) NSLayoutConstraint *viewSwitchCenterVerticalHelperConstraint;
+
+/**
+ *  A block that is called when the user changes the on the switch status
+ */
+@property (nonatomic, copy) PAYFormSwitchChangeBlock changeBlock;
 
 @end

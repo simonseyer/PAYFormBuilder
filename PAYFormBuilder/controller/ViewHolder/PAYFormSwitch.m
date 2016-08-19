@@ -46,8 +46,21 @@
     self.switchControl.enabled = enabled;
 }
 
+- (void)setChangeBlock:(PAYFormSwitchChangeBlock)changeBlock {
+    [self.switchControl addTarget:self
+                           action:@selector(switchControlChanged:)
+                 forControlEvents:UIControlEventValueChanged];
+    _changeBlock = changeBlock;
+}
+
 - (BOOL)isEnabled {
     return self.switchControl.enabled;
+}
+
+- (void)switchControlChanged:(UISwitch *)switchControl {
+    if (self.changeBlock) {
+        self.changeBlock(switchControl.on);
+    }
 }
 
 @end
