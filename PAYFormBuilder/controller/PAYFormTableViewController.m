@@ -50,10 +50,6 @@
     [self.tableView enableTapToEndEditing];
     
     [self buildFooter];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     [self updateViewConstraints];
 }
 
