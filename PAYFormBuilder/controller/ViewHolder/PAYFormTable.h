@@ -11,9 +11,9 @@
 #import "PAYValidation.h"
 
 
-typedef NSError *(^PAYFormValidationBlock)();
-typedef void(^PAYFormTableCompletionBlock)();
-typedef void (^PAYFormTableSuccessBlock)();
+typedef NSError *(^PAYFormValidationBlock)(void);
+typedef void(^PAYFormTableCompletionBlock)(void);
+typedef void (^PAYFormTableSuccessBlock)(void);
 typedef BOOL (^PAYFormTableFailBlock)(NSError *error);
 
 

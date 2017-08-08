@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "PAYFormButton.h"
 
-typedef UIView *(^PAYViewProviderBlock)();
+typedef UIView *(^PAYViewProviderBlock)(void);
 
 /*
  * The section theme definition, that is used in the SectionBuilder

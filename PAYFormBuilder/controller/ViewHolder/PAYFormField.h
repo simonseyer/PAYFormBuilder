@@ -11,7 +11,7 @@
 #import "PAYValidatableFormCell.h"
 
 
-typedef void(^PAYFormFieldCompletionBlock)();
+typedef void(^PAYFormFieldCompletionBlock)(void);
 typedef id(^PAYFormFieldFormatBlock)(PAYFormField *, id);
 typedef id(^PAYFormFieldCleanBlock)(PAYFormField *, id);
 typedef NSError *(^PAYFormFieldValidationBlock)(PAYFormField *);
