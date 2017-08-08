@@ -26,6 +26,7 @@
 - (CGFloat)headerIconTopMargin;
 - (CGFloat)headerTitleTopMargin;
 - (CGFloat)headerSubTitleTopMargin;
+- (CGFloat)headerBottomMargin;
 - (UIColor *)headerTintColor;
 
 @end

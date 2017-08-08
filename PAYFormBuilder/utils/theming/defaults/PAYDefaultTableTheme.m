@@ -31,6 +31,7 @@
         self.headerIconTopMargin     = 32;
         self.headerTitleTopMargin    = 21;
         self.headerSubTitleTopMargin = 14;
+        self.headerBottomMargin      = 14;
         self.headerTintColor         = [UIColor colorFromHex:0xFF008D79];
     }
     return self;

@@ -22,6 +22,7 @@
 @property (nonatomic, assign) CGFloat headerIconTopMargin;
 @property (nonatomic, assign) CGFloat headerTitleTopMargin;
 @property (nonatomic, assign) CGFloat headerSubTitleTopMargin;
+@property (nonatomic, assign) CGFloat headerBottomMargin;
 @property (nonatomic, retain) UIColor *headerTintColor;
 
 @end

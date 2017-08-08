@@ -70,9 +70,9 @@
                                                                  metrics:nil
                                                                    views:@{@"self" : self, @"subTitleLabel" : self.subTitleLabel}]];
     
-    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[titleLabel]-margin@200-[subTitleLabel]"
+    [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[titleLabel]-margin@200-[subTitleLabel]-bottomMargin-|"
                                                                  options:0
-                                                                 metrics:@{@"margin" : @(PAYStyle.tableTheme.headerSubTitleTopMargin)}
+                                                                 metrics:@{@"margin" : @(PAYStyle.tableTheme.headerSubTitleTopMargin), @"bottomMargin": @(PAYStyle.tableTheme.headerBottomMargin)}
                                                                    views:@{@"titleLabel" : self.titleLabel, @"subTitleLabel" : self.subTitleLabel}]];
 }
 
