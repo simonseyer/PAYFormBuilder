@@ -144,12 +144,12 @@
         } else {
             headerHeight = PAYStyle.tableTheme.labelStyleEmptyHeight;
         }
-        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[header(height@100)]"
+        NSArray *constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[header(height@300)]"
                                                                        options:0
                                                                        metrics:@{@"height" : @(headerHeight)}
-                                                                         views:@{@"header" : formHeader.view}];
+                                                                         views:@{@"header" : formHeader.header}];
         formHeader.viewHeightConstraint = constraints[0];
-        [formHeader.view addConstraint:formHeader.viewHeightConstraint];
+        [formHeader.header addConstraint:formHeader.viewHeightConstraint];
     } else {
         formHeader.label = [[PAYTextLabel alloc] initWithStyle:style];
         formHeader.label.text  = name;
