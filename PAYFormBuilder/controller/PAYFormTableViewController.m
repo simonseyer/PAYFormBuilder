@@ -37,6 +37,8 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedSectionHeaderHeight = 36.0;
     self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedSectionFooterHeight = 0;
+    self.tableView.sectionFooterHeight = UITableViewAutomaticDimension;
 }
 
 - (void)viewDidLoad {
@@ -52,9 +54,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self updateViewConstraints];
-    });
+    [self updateViewConstraints];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -152,12 +152,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *fieldView = [self formRowForIndexPath:indexPath].cell;
-    CGSize size = [fieldView.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    return size.height + 0.5f;
-}
-
 #pragma mark - View management
 
 - (id<PAYFormRow>)formRowForIndexPath:(NSIndexPath *)indexPath {
@@ -199,26 +193,24 @@
     if (self.tableView.tableFooterView) {
         self.tableView.tableFooterView = [self updateFixedHeightOfView:self.tableView.tableFooterView];
     }
-    
     [super updateViewConstraints];
 }
 
 - (UIView *)updateFixedHeightOfView:(UIView *)view {
     view.translatesAutoresizingMaskIntoConstraints = NO;
-    
+
+    NSLayoutConstraint *widthConstraint = [view.widthAnchor constraintEqualToConstant:self.tableView.bounds.size.width];
+    [view addConstraint:widthConstraint];
+
     [view setNeedsLayout];
     [view layoutIfNeeded];
-    
-    NSLayoutConstraint *widthConstraint = [view.widthAnchor constraintEqualToConstant:view.bounds.size.width];
-    widthConstraint.active = YES;
-    
-    CGFloat height = [view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-    
-    widthConstraint.active = NO;
+
+    CGSize height = [view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    view.frame = CGRectMake(0, 0, height.width, height.height);
+
+    [view removeConstraint:widthConstraint];
     view.translatesAutoresizingMaskIntoConstraints = YES;
-    
-    view.frame = CGRectMake(0, 0, view.frame.size.width, height);
-    
+
     return view;
 }
 
