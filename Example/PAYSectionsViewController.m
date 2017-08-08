@@ -65,12 +65,12 @@
         [formHeader.view addSubview:customLabel];
         
         UIView *formView = formHeader.view;
-        [formHeader.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"[formView]-(<=1@200)-[customLabel]"
-                                                                                options:NSLayoutFormatAlignAllCenterY
+        [formHeader.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-30-[customLabel]"
+                                                                                options:0
                                                                                 metrics:nil
                                                                                   views:NSDictionaryOfVariableBindings(customLabel, formView)]];
-        [formHeader.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|-50-[customLabel]"
-                                                                                options:NSLayoutFormatAlignAllCenterY
+        [formHeader.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-50-[customLabel]-10@500-|"
+                                                                                options:0
                                                                                 metrics:nil
                                                                                   views:NSDictionaryOfVariableBindings(customLabel, formView)]];
     } contentBlock:^(PAYFormSectionBuilder *sectionBuilder) {
@@ -82,11 +82,20 @@
     header.title = @"The header title";
     header.subTitle = @"This is the subTitleLabel";
     self.tableView.tableHeaderView = header;
-    
-    
-    PAYTextLabel *bottomView = [[PAYTextLabel alloc] initWithStyle:PAYFormTableLabelStyleDescription];
-    bottomView.text = @"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. \n\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonum";
-    self.tableView.tableFooterView = bottomView;
+        
+    PAYTextLabel *footerLabel = [[PAYTextLabel alloc] initWithStyle:PAYFormTableLabelStyleDescription];
+    footerLabel.text = @"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. \n\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonum";
+
+    UIView *footerView = [UIView new];
+    [footerView addSubview:footerLabel];
+
+    footerLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    [footerLabel.leadingAnchor constraintEqualToAnchor:footerView.leadingAnchor].active = YES;
+    [footerLabel.trailingAnchor constraintEqualToAnchor:footerView.trailingAnchor].active = YES;
+    [footerLabel.topAnchor constraintEqualToAnchor:footerView.topAnchor].active = YES;
+    [footerLabel.bottomAnchor constraintEqualToAnchor:footerView.bottomAnchor].active = YES;
+
+    self.tableView.tableFooterView = footerView;
 }
 
 @end
