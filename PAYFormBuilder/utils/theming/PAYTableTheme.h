@@ -15,9 +15,9 @@
  */
 @protocol PAYTableTheme <NSObject>
 
-- (UIFont *)font;
-- (UIFont *)subTitleFont;
-- (UIColor *)backgroundColor;
+- (nullable UIFont *)font;
+- (nullable UIFont *)subTitleFont;
+- (nullable UIColor *)backgroundColor;
 - (CGFloat)rowHeight;
 - (CGFloat)footerHeight;
 - (CGFloat)labelStyleNoneHeight;
@@ -27,6 +27,6 @@
 - (CGFloat)headerTitleTopMargin;
 - (CGFloat)headerSubTitleTopMargin;
 - (CGFloat)headerBottomMargin;
-- (UIColor *)headerTintColor;
+- (nullable UIColor *)headerTintColor;
 
 @end

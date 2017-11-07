@@ -10,8 +10,8 @@
 
 @protocol PAYValidatableFormCell <NSObject>
 
-- (NSError *)validate;
-- (void)styleForError:(NSError *)error;
-- (NSString *)name;
+- (nullable NSError *)validate;
+- (void)styleForError:(nullable NSError *)error;
+- (nullable NSString *)name;
 
 @end

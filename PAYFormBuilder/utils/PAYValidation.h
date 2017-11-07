@@ -19,6 +19,6 @@
  *
  *  @return the validation block
  */
-+ (PAYFormFieldValidationBlock)integerValidationBlock;
++ (nullable PAYFormFieldValidationBlock)integerValidationBlock;
 
 @end

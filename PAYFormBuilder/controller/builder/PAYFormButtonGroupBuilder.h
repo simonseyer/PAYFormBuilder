@@ -19,7 +19,7 @@
  *
  *  @param value the value, that was associated with the option
  */
-- (void)select:(id)value;
+- (void)select:(nonnull id)value;
 
 /**
  *  Activates the validation for a required option
@@ -36,7 +36,7 @@
  *
  *  @return the button, that was added to the group
  */
-- (PAYFormButton *)addOption:(id)value withText:(NSString *)text;
+- (nonnull PAYFormButton *)addOption:(nonnull id)value withText:(nullable NSString *)text;
 
 /**
  *  Add an option with a value, a label and an icon. For each option
@@ -49,7 +49,7 @@
  *
  *  @return the button, that was added to the group
  */
-- (PAYFormButton *)addOption:(id)value withText:(NSString *)text icon:(UIImage *)icon;
+- (nonnull PAYFormButton *)addOption:(nonnull id)value withText:(nullable NSString *)text icon:(nullable UIImage *)icon;
 
 /**
  *  Add an option with a value, a label, an icon and a selection block. 
@@ -63,6 +63,9 @@
  *
  *  @return the button, that was added to the group
  */
-- (PAYFormButton *)addOption:(id)value withText:(NSString *)text icon:(UIImage *)icon selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock;
+- (nonnull PAYFormButton *)addOption:(nonnull id)value
+                            withText:(nullable NSString *)text
+                                icon:(nullable UIImage *)icon
+                      selectionBlock:(nullable PAYFormButtonSelectionBlock)selectionBlock;
 
 @end

@@ -33,19 +33,19 @@
  *  Should return an error, when there is something wrong in the form or nil, if everything
  *  is fine.
  */
-@property (nonatomic, copy) PAYFormValidationBlock validationBlock;
+@property (nonatomic, copy, nullable) PAYFormValidationBlock validationBlock;
 
 /**
  *  Is called, when the form is submitted and all validations, including the
  *  validationBlock of the whole table, are succeeded.
  */
-@property (nonatomic, copy) PAYFormTableSuccessBlock formSuccessBlock;
+@property (nonatomic, copy, nullable) PAYFormTableSuccessBlock formSuccessBlock;
 
 /**
  *  Is called, when a validation blocks returns an error. It should present
  *  the error to the user so he could fix it.
  */
-@property (nonatomic, copy) PAYFormTableFailBlock formFailBlock;
+@property (nonatomic, copy, nullable) PAYFormTableFailBlock formFailBlock;
 
 #pragma mark - Add sections
 
@@ -56,7 +56,7 @@
  *  @param contentBlock the block to configure the content of the section.
  *                      A SectionBuilder is passed to accomplish this.
  */
-- (void)addSectionWithContentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock;
+- (void)addSectionWithContentBlock:(nullable void(^)(PAYFormSectionBuilder * _Nonnull))contentBlock;
 
 /**
  *  Add a new section to the table without a section header label but with a custom section label style.
@@ -66,7 +66,8 @@
  *  @param contentBlock the block to configure the content of the section.
  *                      A SectionBuilder is passed to accomplish this.
  */
-- (void)addSectionWithLabelStyle:(PAYFormTableLabelStyle)style contentBlock:(void(^)( PAYFormSectionBuilder *))contentBlock;
+- (void)addSectionWithLabelStyle:(PAYFormTableLabelStyle)style
+                    contentBlock:(nullable void(^)( PAYFormSectionBuilder * _Nonnull))contentBlock;
 
 /**
  *  Add a new section to the table with a custom header.
@@ -76,7 +77,8 @@
  *  @param contentBlock the block to configure the content of the section.
  *                      A SectionBuilder is passed to accomplish this.
  */
-- (void)addSectionWithHeaderBlock:(void(^)(PAYFormHeader *))headerBlock contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock;
+- (void)addSectionWithHeaderBlock:(nullable void(^)(PAYFormHeader * _Nonnull))headerBlock
+                     contentBlock:(nullable void(^)(PAYFormSectionBuilder * _Nonnull))contentBlock;
 
 /**
  *  Add a new section to the table with a section header label and the default label style PAYFormTableLabelStyleSimple.
@@ -85,7 +87,8 @@
  *  @param contentBlock the block to configure the content of the section.
  *                      A SectionBuilder is passed to accomplish this.
  */
-- (void)addSectionWithName:(NSString *)name contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock;
+- (void)addSectionWithName:(nullable NSString *)name
+              contentBlock:(nullable void(^)(PAYFormSectionBuilder * _Nonnull))contentBlock;
 
 /**
  *  Add a new section to the table with a section header label and the default label style PAYFormTableLabelStyleSimple.
@@ -96,7 +99,9 @@
  *  @param infoBlock    the block that is called when the user pushes the info icon of the section.
  *                      The info icon is only shown, if this block is set.
  */
-- (void)addSectionWithName:(NSString *)name contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock infoBlock:(void(^)(UIButton *))infoBlock;
+- (void)addSectionWithName:(nullable NSString *)name
+              contentBlock:(nullable void(^)(PAYFormSectionBuilder * _Nonnull))contentBlock
+                 infoBlock:(nullable void(^)(UIButton * _Nonnull))infoBlock;
 
 /**
  *  Add a new section to the table with a section header label and a custom label style.
@@ -106,7 +111,9 @@
  *  @param contentBlock the block to configure the content of the section.
  *                      A SectionBuilder is passed to accomplish this.
  */
-- (void)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock;
+- (void)addSectionWithName:(nullable NSString *)name
+                labelStyle:(PAYFormTableLabelStyle)style
+              contentBlock:(nullable void(^)(PAYFormSectionBuilder * _Nonnull))contentBlock;
 
 /**
  *  Add a new section to the table with a section header label and a custom label style.
@@ -118,7 +125,10 @@
  *  @param infoBlock    the block that is called when the user pushes the info icon of the section.
  *                      The info icon is only shown, if this block is set.
  */
-- (void)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock infoBlock:(void(^)(UIButton *))infoBlock;
+- (void)addSectionWithName:(nullable NSString *)name
+                labelStyle:(PAYFormTableLabelStyle)style
+              contentBlock:(nullable void(^)(PAYFormSectionBuilder * _Nonnull))contentBlock
+                 infoBlock:(nullable void(^)(UIButton * _Nonnull))infoBlock;
 
 /**
  *  Add a new section to the table with a section header label, a custom label style as default and a custom header.
@@ -131,7 +141,10 @@
  *  @param contentBlock the block to configure the content of the section.
  *                      A SectionBuilder is passed to accomplish this.
  */
-- (void)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style headerBlock:(void(^)(PAYFormHeader *))headerBlock contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock;
+- (void)addSectionWithName:(nullable NSString *)name
+                labelStyle:(PAYFormTableLabelStyle)style
+               headerBlock:(nullable void(^)(PAYFormHeader * _Nonnull))headerBlock
+              contentBlock:(nullable void(^)(PAYFormSectionBuilder * _Nonnull))contentBlock;
 
 /**
  *  Add a new section to the table with a section header label, a custom label style as default and a custom header.
@@ -146,7 +159,11 @@
  *  @param infoBlock    the block that is called when the user pushes the info icon of the section.
  *                      The info icon is only shown, if this block is set.
  */
-- (void)addSectionWithName:(NSString *)name labelStyle:(PAYFormTableLabelStyle)style headerBlock:(void(^)(PAYFormHeader *))headerBlock contentBlock:(void(^)(PAYFormSectionBuilder *))contentBlock infoBlock:(void(^)(UIButton *))infoBlock;
+- (void)addSectionWithName:(nullable NSString *)name
+                labelStyle:(PAYFormTableLabelStyle)style
+               headerBlock:(nullable void(^)(PAYFormHeader * _Nonnull))headerBlock
+              contentBlock:(nullable void(^)(PAYFormSectionBuilder * _Nonnull))contentBlock
+                 infoBlock:(nullable void(^)(UIButton * _Nonnull))infoBlock;
 
 /**
  *  Create a form header with a name, a style and an info block
@@ -157,6 +174,8 @@
  *  @param infoBlock    the block that is called when the user pushes the info icon of the section.
  *                      The info icon is only shown, if this block is set.
  */
-+ (PAYFormHeader *)headerViewWithStyle:(PAYFormTableLabelStyle)style name:(NSString *)name infoBlock:(void (^)(UIButton *))infoBlock;
++ (nonnull PAYFormHeader *)headerViewWithStyle:(PAYFormTableLabelStyle)style
+                                          name:(nullable NSString *)name
+                                     infoBlock:(nullable void (^)(UIButton * _Nonnull))infoBlock;
 
 @end

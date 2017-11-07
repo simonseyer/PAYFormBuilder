@@ -11,11 +11,11 @@
 
 @interface PAYFormView (PAYFormDefaultErrorHandlerProtected)
 
-+ (NSMutableDictionary *)classErrorMessages;
-+ (void)setClassErrorMessages:(NSMutableDictionary *)errorMessages;
++ (nullable NSMutableDictionary *)classErrorMessages;
++ (void)setClassErrorMessages:(nonnull NSMutableDictionary *)errorMessages;
 
-- (NSMutableDictionary *)fieldErrorMessages;
-- (void)setFieldErrorMessages:(NSMutableDictionary *)errorMessages;
+- (nullable NSMutableDictionary *)fieldErrorMessages;
+- (void)setFieldErrorMessages:(nonnull NSMutableDictionary *)errorMessages;
 
 /**
  *  Get an error message for a code. Error messages on the object are preferred
@@ -27,6 +27,6 @@
  *  @return the error message corresponding to the code or nil,
  *          if there was no error message found
  */
-- (PAYFormErrorMessage *)errorMessageForErrorCode:(NSUInteger)code;
+- (nullable PAYFormErrorMessage *)errorMessageForErrorCode:(NSUInteger)code;
 
 @end

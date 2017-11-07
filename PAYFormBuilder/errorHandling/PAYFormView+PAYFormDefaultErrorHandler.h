@@ -19,7 +19,7 @@
  *  @param errorMessage the error message to display
  *  @param code         the error code, that should trigger the error message
  */
-+ (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code;
++ (void)setErrorMessage:(nullable PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code;
 
 /**
  *  Set an error message that is displayed for the error code. This method
@@ -28,6 +28,6 @@
  *  @param errorMessage the error message to display
  *  @param code         the error code, that should trigger the error message
  */
-- (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code;
+- (void)setErrorMessage:(nullable PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code;
 
 @end

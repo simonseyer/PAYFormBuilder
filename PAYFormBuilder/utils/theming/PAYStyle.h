@@ -29,14 +29,14 @@
  *
  * @return the section theme
  */
-+ (id<PAYSectionTheme>)sectionTheme;
++ (nonnull id<PAYSectionTheme>)sectionTheme;
 
 /*
  * Set a new section theme
  *
  * @param theme the new theme
  */
-+ (void)setSectionTheme:(id<PAYSectionTheme>)theme;
++ (void)setSectionTheme:(nonnull id<PAYSectionTheme>)theme;
 
 /*
  * Get the table theme. By default, the PAYDefaultTableTheme
@@ -44,14 +44,14 @@
  *
  * @return the table theme
  */
-+ (id<PAYTableTheme>)tableTheme;
++ (nonnull id<PAYTableTheme>)tableTheme;
 
 /*
  * Set a new table theme
  *
  * @param theme the new theme
  */
-+ (void)setTableTheme:(id<PAYTableTheme>)theme;
++ (void)setTableTheme:(nonnull id<PAYTableTheme>)theme;
 
 /*
  * Get the label theme. By default, the PAYDefaultLabelThemeContainer
@@ -63,13 +63,13 @@
  *
  * @return the label theme container
  */
-+ (id<PAYLabelThemeContainer>)labelTheme;
++ (nonnull id<PAYLabelThemeContainer>)labelTheme;
 
 /*
  * Set a new label theme container
  *
  * @param theme the new theme container
  */
-+ (void)setLabelTheme:(id<PAYLabelThemeContainer>)theme;
++ (void)setLabelTheme:(nonnull id<PAYLabelThemeContainer>)theme;
 
 @end

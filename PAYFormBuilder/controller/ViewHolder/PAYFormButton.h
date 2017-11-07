@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PAYFormView.h"
 
-typedef void(^PAYFormButtonSelectionBlock)(PAYFormButton *);
+typedef void(^PAYFormButtonSelectionBlock)(PAYFormButton * _Nonnull);
 typedef enum {
     PAYFormButtonStyleDefault,
     PAYFormButtonStyleCentered,
@@ -28,22 +28,22 @@ typedef enum {
 /**
  *  The title label
  */
-@property (nonatomic, retain, readonly) UILabel *label;
+@property (nonatomic, retain, readonly, nonnull) UILabel *label;
 
 /**
  *  The detail label
  */
-@property (nonatomic, retain, readonly) UILabel *detailLabel;
+@property (nonatomic, retain, readonly, nullable) UILabel *detailLabel;
 
 /**
  *  The icon
  */
-@property (nonatomic, retain, readonly) UIImageView *iconView;
+@property (nonatomic, retain, readonly, nullable) UIImageView *iconView;
 
 /**
  *  A block that is called when the user tapped on the button
  */
-@property (nonatomic, copy) PAYFormButtonSelectionBlock selectionBlock;
+@property (nonatomic, copy, nullable) PAYFormButtonSelectionBlock selectionBlock;
 
 /**
  *  True, if the button is in selected state, false otherwise
@@ -53,57 +53,57 @@ typedef enum {
 /**
  * Constrains the icon width. Added to the iconView.
  */
-@property (nonatomic, retain) NSLayoutConstraint *iconWidthConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *iconWidthConstraint;
 
 /**
  * Constrains the icon height. Added to the iconView.
  */
-@property (nonatomic, retain) NSLayoutConstraint *iconHeightConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *iconHeightConstraint;
 
 /**
  * Constrains the leading spacing between the icon and the superview. Added to the view.
  */
-@property (nonatomic, retain) NSLayoutConstraint *viewIconLeftConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *viewIconLeftConstraint;
 
 /**
  * Constrains the vertical position of the icon. Added to the view.
  */
-@property (nonatomic, retain) NSLayoutConstraint *viewIconCenterVerticalConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *viewIconCenterVerticalConstraint;
 
 /**
  * Helps to constrain the vertical position of the icon. Added to the view.
  */
-@property (nonatomic, retain) NSLayoutConstraint *viewIconCenterVerticalHelperConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *viewIconCenterVerticalHelperConstraint;
 
 /**
  * Constrains the spacing between the icon and the label. Added to the view.
  */
-@property (nonatomic, retain) NSLayoutConstraint *viewIconLabelConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *viewIconLabelConstraint;
 
 /**
  * Constrains the spacing between the label and the detailLabel. Added to the view.
  */
-@property (nonatomic, retain) NSLayoutConstraint *viewLabelDetailLabelConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *viewLabelDetailLabelConstraint;
 
 /**
  * Constrains the top spacing between the icon and the superview. Added to the view.
  */
-@property (nonatomic, retain) NSLayoutConstraint *viewDetailLabelTopConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *viewDetailLabelTopConstraint;
 
 /**
  * Constrains the trailing spacing between the icon and the superview. Added to the view.
  */
-@property (nonatomic, retain) NSLayoutConstraint *viewDetailLabelRightConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *viewDetailLabelRightConstraint;
 
 /**
  * Constrains the bottom spacing between the icon and the superview. Added to the view.
  */
-@property (nonatomic, retain) NSLayoutConstraint *viewDetailLabelBottomConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *viewDetailLabelBottomConstraint;
 
 /**
  * Constrains the height of the detailLabel. Added to the detailLabel.
  */
-@property (nonatomic, retain) NSLayoutConstraint *detailLabelHeightConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *detailLabelHeightConstraint;
 
 
 @end

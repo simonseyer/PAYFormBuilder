@@ -13,24 +13,24 @@
 /**
  *  The control that is embedded in this view
  */
-@property (nonatomic, retain) UIView<PAYFormControl> *control;
+@property (nonatomic, retain, nonnull) UIView<PAYFormControl> *control;
 
 /**
  *  The following form field in the tab chain
  */
-@property (nonatomic, retain) PAYFormField *nextFormField;
+@property (nonatomic, retain, nullable) PAYFormField *nextFormField;
 
 /**
  *  A completion block that is used internally to trigger the jumping between the fields.
  */
-@property (nonatomic, copy) PAYFormFieldCompletionBlock completionBlock;
+@property (nonatomic, copy, nullable) PAYFormFieldCompletionBlock completionBlock;
 
 /**
  *  Style component appropriate for the errror.
  *
  *  @param error the error the control should by styled for
  */
-- (void)styleForError:(NSError *)error;
+- (void)styleForError:(nullable NSError *)error;
 
 /**
  *  Uses the integrated validators (for example required) to check
@@ -38,7 +38,7 @@
  *
  *  @return an error, when the field is not valid, nil otherwise
  */
-- (NSError *)prevalidate;
+- (nullable NSError *)prevalidate;
 
 /**
  *  Triggers the jumping to the next control. If the next control is not

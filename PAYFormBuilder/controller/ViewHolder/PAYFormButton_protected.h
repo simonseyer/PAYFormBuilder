@@ -13,17 +13,17 @@
 /**
  *  The title label
  */
-@property (nonatomic, retain) UILabel *label;
+@property (nonatomic, retain, nonnull) UILabel *label;
 
 /**
  *  The detail label
  */
-@property (nonatomic, retain) UILabel *detailLabel;
+@property (nonatomic, retain, nullable) UILabel *detailLabel;
 
 /**
  *  The icon
  */
-@property (nonatomic, retain) UIImageView *iconView;
+@property (nonatomic, retain, nullable) UIImageView *iconView;
 
 /**
  *  The style

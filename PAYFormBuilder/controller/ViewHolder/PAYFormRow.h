@@ -18,14 +18,14 @@
  *
  *  @return the content view
  */
-- (UIView *)view;
+- (nonnull UIView *)view;
 
 /**
  *  Get the UITableViewCell.
  *
  *  @return the cell view
  */
-- (UITableViewCell *)cell;
+- (nonnull UITableViewCell *)cell;
 
 /**
  *  Handles the selection of a row. Do NOT call this method by

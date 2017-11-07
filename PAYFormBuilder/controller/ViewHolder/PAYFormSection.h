@@ -20,17 +20,17 @@ typedef void(^PAYFormSectionCompletionBlock)(void);
 
 @interface PAYFormSection : NSObject
 
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) PAYFormHeader *header;
-@property (nonatomic, retain) NSMutableArray *views;
-@property (nonatomic, retain) NSMutableArray *attachedObjects;
+@property (nonatomic, retain, nullable) NSString *name;
+@property (nonatomic, retain, nonnull) PAYFormHeader *header;
+@property (nonatomic, retain, nonnull) NSMutableArray *views;
+@property (nonatomic, retain, nonnull) NSMutableArray *attachedObjects;
 
-@property (nonatomic, weak) PAYFormField *firstFormField;
-@property (nonatomic, copy) PAYFormSectionCompletionBlock completionBlock;
+@property (nonatomic, weak, nullable) PAYFormField *firstFormField;
+@property (nonatomic, copy, nullable) PAYFormSectionCompletionBlock completionBlock;
 
-- (BOOL)initFieldJumpOrderWithNextSection:(PAYFormSection *)section;
-- (PAYFormField *)firstFormField;
+- (BOOL)initFieldJumpOrderWithNextSection:(nonnull PAYFormSection *)section;
+- (nullable PAYFormField *)firstFormField;
 
-- (NSError *)validate;
+- (nullable NSError *)validate;
 
 @end

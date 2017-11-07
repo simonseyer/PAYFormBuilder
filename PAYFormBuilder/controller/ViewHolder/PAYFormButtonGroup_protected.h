@@ -21,7 +21,7 @@
  *  @param button the button to add
  *  @param value  the value that corresponds to the button
  */
-- (void)addButton:(PAYFormButton *)button forValue:(id)value;
+- (void)addButton:(nonnull PAYFormButton *)button forValue:(nonnull id)value;
 
 /**
  *  This method is called by the different buttons of the group,
@@ -29,6 +29,6 @@
  *
  *  @param value the value of the button
  */
-- (void)optionStateChanged:(id)value;
+- (void)optionStateChanged:(nonnull id)value;
 
 @end

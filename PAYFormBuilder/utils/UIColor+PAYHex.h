@@ -21,6 +21,6 @@
  *
  *  @return the corresponding color
  */
-+ (UIColor *)colorFromHex:(int)rgbValue;
++ (nullable UIColor *)colorFromHex:(int)rgbValue;
 
 @end

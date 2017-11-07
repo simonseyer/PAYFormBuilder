@@ -23,7 +23,9 @@
  *
  *  @return an error object
  */
-+ (NSError *)validationErrorWithTitle:(NSString *)title message:(NSString *)message control:(id)control;
++ (nonnull NSError *)validationErrorWithTitle:(nonnull NSString *)title
+                                      message:(nonnull NSString *)message
+                                      control:(nonnull id)control;
 
 /**
  *  Create an error with an error code and a view control
@@ -33,27 +35,28 @@
  *
  *  @return an error object
  */
-+ (NSError *)validationErrorWithCode:(NSUInteger)code control:(id)control;
++ (nonnull NSError *)validationErrorWithCode:(NSUInteger)code
+                                     control:(nonnull id)control;
 
 /**
  *  Get the title of the error
  *
  *  @return the title or nil, if the error has no title
  */
-- (NSString *)title;
+- (nonnull NSString *)title;
 
 /**
  *  Get the message of the error
  *
  *  @return the message or nil, if the error has no message
  */
-- (NSString *)message;
+- (nonnull NSString *)message;
 
 /**
  *  The related control view
  *
  *  @return the control view or nil, if there is no related control view
  */
-- (id<PAYValidatableFormCell>)field;
+- (nullable id<PAYValidatableFormCell>)field;
 
 @end

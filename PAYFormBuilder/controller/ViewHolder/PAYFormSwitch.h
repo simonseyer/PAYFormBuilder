@@ -19,12 +19,12 @@ typedef void (^PAYFormSwitchChangeBlock)(BOOL);
 /**
  *  The label, that is displayed in front of the switch
  */
-@property (nonatomic, retain, readonly) UILabel *label;
+@property (nonatomic, retain, readonly, nonnull) UILabel *label;
 
 /**
  *  The switch control
  */
-@property (nonatomic, retain, readonly) UISwitch *switchControl;
+@property (nonatomic, retain, readonly, nonnull) UISwitch *switchControl;
 
 /**
  *  Validates, that the control is selected
@@ -39,16 +39,16 @@ typedef void (^PAYFormSwitchChangeBlock)(BOOL);
 /**
  * Constrains the vertical position of the switch. Added to the view.
  */
-@property (nonatomic, retain) NSLayoutConstraint *viewSwitchCenterVerticalConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *viewSwitchCenterVerticalConstraint;
 
 /**
  * Helps to constrain the vertical position of the switch. Added to the view.
  */
-@property (nonatomic, retain) NSLayoutConstraint *viewSwitchCenterVerticalHelperConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *viewSwitchCenterVerticalHelperConstraint;
 
 /**
  *  A block that is called when the user changes the on the switch status
  */
-@property (nonatomic, copy) PAYFormSwitchChangeBlock changeBlock;
+@property (nonatomic, copy, nullable) PAYFormSwitchChangeBlock changeBlock;
 
 @end

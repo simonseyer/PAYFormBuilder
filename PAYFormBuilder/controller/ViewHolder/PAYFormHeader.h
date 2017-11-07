@@ -17,61 +17,61 @@
 /**
  *  The header view
  */
-@property (nonatomic, retain, readonly) UITableViewHeaderFooterView *header;
+@property (nonatomic, retain, readonly, nonnull) UITableViewHeaderFooterView *header;
 
 /**
  *  The view, that is visible in the header
  */
-@property (nonatomic, retain, readonly) UIView *view;
+@property (nonatomic, retain, readonly, nonnull) UIView *view;
 
 /**
  *  The label, that contains the name of the section
  */
-@property (nonatomic, retain, readonly) UILabel *label;
+@property (nonatomic, retain, readonly, nonnull) UILabel *label;
 
 /**
  *  An optional button, which provides additional help
  */
-@property (nonatomic, retain, readonly) UIButton *infoButton;
+@property (nonatomic, retain, readonly, nullable) UIButton *infoButton;
 
 /**
  *  The block that is called when the info button is pressed
  */
-@property (nonatomic, copy) void (^infoBlock)(UIButton *);
+@property (nonatomic, copy, nullable) void (^infoBlock)(UIButton * _Nonnull);
 
 /**
  * Constrains the height of the header view. Added to the view.
  */
-@property (nonatomic, retain) NSLayoutConstraint *viewHeightConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *viewHeightConstraint;
 
 /**
  * Constrains the top spacing between the label and the superview. Added to the view.
  */
-@property (nonatomic, retain) NSLayoutConstraint *viewLabelTopConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *viewLabelTopConstraint;
 
 /**
  * Constrains the trailing spacing between the label and the superview. Added to the view.
  */
-@property (nonatomic, retain) NSLayoutConstraint *viewLabelRightConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *viewLabelRightConstraint;
 
 /**
  * Constrains the bottom spacing between the label and the superview. Added to the view.
  */
-@property (nonatomic, retain) NSLayoutConstraint *viewLabelBottomConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *viewLabelBottomConstraint;
 
 /**
  * Constrains the leading spacing between the label and the superview. Added to the view.
  */
-@property (nonatomic, retain) NSLayoutConstraint *viewLabelLeftConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *viewLabelLeftConstraint;
 
 /**
  * Constrains the trailing spacing between the icon and the superview. Added to the view.
  */
-@property (nonatomic, retain) NSLayoutConstraint *viewInfoIconRightConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *viewInfoIconRightConstraint;
 
 /**
  * Constrains the bottom spacing between the icon and the superview. Added to the view.
  */
-@property (nonatomic, retain) NSLayoutConstraint *viewInfoIconBottomConstraint;
+@property (nonatomic, retain, nonnull) NSLayoutConstraint *viewInfoIconBottomConstraint;
 
 @end

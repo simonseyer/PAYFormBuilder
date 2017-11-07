@@ -31,7 +31,7 @@
  *
  *  @return the model object of the textfield. It could be for example used to get the input, the user entered in the textfield.
  */
-- (PAYFormSingleLineTextField *)addFieldWithPlaceholder:(NSString *)placeholder;
+- (nonnull PAYFormSingleLineTextField *)addFieldWithPlaceholder:(nullable NSString *)placeholder;
 
 /**
  *  Add a singleline textfield with a placeholder and a block for customization.
@@ -50,7 +50,8 @@
  *
  *  @return the model object of the textfield. It could be for example used to get the input, the user entered in the textfield.
  */
-- (PAYFormSingleLineTextField *)addFieldWithPlaceholder:(NSString *)placeholder configureBlock:(void(^)(PAYFormSingleLineTextField *))configureBlock;
+- (nonnull PAYFormSingleLineTextField *)addFieldWithPlaceholder:(nullable NSString *)placeholder
+                                                 configureBlock:(nullable void(^)(PAYFormSingleLineTextField * _Nonnull))configureBlock;
 
 /**
  *  Add a singleline textfield with a placeholder and a label that is displayed in front of the textfield.
@@ -60,7 +61,8 @@
  *
  *  @return the model object of the textfield. It could be for example used to get the input, the user entered in the textfield.
  */
-- (PAYFormSingleLineTextField *)addFieldWithName:(NSString *)name placeholder:(NSString *)placeholder;
+- (nonnull PAYFormSingleLineTextField *)addFieldWithName:(nullable NSString *)name
+                                             placeholder:(nullable NSString *)placeholder;
 
 /**
  *  Add a singleline textfield with a placeholder, a label that is displayed in front of the textfield
@@ -73,7 +75,9 @@
  *
  *  @return the model object of the textfield. It could be for example used to get the input, the user entered in the textfield.
  */
-- (PAYFormSingleLineTextField *)addFieldWithName:(NSString *)name placeholder:(NSString *)placeholder configureBlock:(void(^)(PAYFormSingleLineTextField *))configureBlock;
+- (nonnull PAYFormSingleLineTextField *)addFieldWithName:(nullable NSString *)name
+                                             placeholder:(nullable NSString *)placeholder
+                                          configureBlock:(nullable void(^)(PAYFormSingleLineTextField * _Nonnull))configureBlock;
 
 #pragma mark - Add multiline textfields
 
@@ -85,7 +89,7 @@
  *
  *  @return the model object of the textfield. It could be for example used to get the input, the user entered in the textfield.
  */
-- (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder;
+- (nonnull PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(nullable NSString *)placeholder;
 
 /**
  *  Add a multiline textfield with a placeholder and a block for customization. It is normally used as the only element of a section where
@@ -97,7 +101,8 @@
  *
  *  @return the model object of the textfield. It could be for example used to get the input, the user entered in the textfield.
  */
-- (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock;
+- (nonnull PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(nullable NSString *)placeholder
+                                                   configureBlock:(nullable void(^)(PAYFormMultiLineTextField * _Nonnull))configureBlock;
 
 /**
  *  Add a multiline textfield with a placeholder and option for an adjustable height.
@@ -108,7 +113,8 @@
  *
  *  @return the model object of the textfield. It could be for example used to get the input, the user entered in the textfield.
 */
-- (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder adjustable:(BOOL)isAdjustable;
+- (nonnull PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(nullable NSString *)placeholder
+                                                       adjustable:(BOOL)isAdjustable;
 
 /**
  *  Add a multiline textfield with a placeholder and option for an adjustable height and a block for customization.
@@ -121,7 +127,9 @@
  *
  *  @return the model object of the textfield. It could be for example used to get the input, the user entered in the textfield.
  */
-- (PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(NSString *)placeholder adjustable:(BOOL)isAdjustable configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock;
+- (nonnull PAYFormMultiLineTextField *)addTextViewWithPlaceholder:(nullable NSString *)placeholder
+                                                       adjustable:(BOOL)isAdjustable
+                                                   configureBlock:(nullable void(^)(PAYFormMultiLineTextField * _Nonnull))configureBlock;
 
 #pragma mark - Add buttons
 
@@ -135,7 +143,9 @@
  *
  *  @return the model object of the button
  */
-- (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock;
+- (nonnull PAYFormButton *)addButtonWithText:(nullable NSString *)text
+                                       style:(PAYFormButtonStyle)style
+                              selectionBlock:(nullable PAYFormButtonSelectionBlock)selectionBlock;
 
 /**
  *  Add a configured button
@@ -148,7 +158,10 @@
  *
  *  @return the model object of the button
  */
-- (PAYFormButton *)addButtonWithText:(NSString *)text detailText:(NSString *)detailText style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock;
+- (nonnull PAYFormButton *)addButtonWithText:(nullable NSString *)text
+                                  detailText:(nullable NSString *)detailText
+                                       style:(PAYFormButtonStyle)style
+                              selectionBlock:(nullable PAYFormButtonSelectionBlock)selectionBlock;
 
 /**
  *  Add a configured button
@@ -161,7 +174,10 @@
  *
  *  @return the model object of the button
  */
-- (PAYFormButton *)addButtonWithText:(NSString *)text icon:(UIImage *)icon style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock;
+- (nonnull PAYFormButton *)addButtonWithText:(nullable NSString *)text
+                                        icon:(nullable UIImage *)icon
+                                       style:(PAYFormButtonStyle)style
+                              selectionBlock:(nullable PAYFormButtonSelectionBlock)selectionBlock;
 
 /**
  *  Add a configured button
@@ -175,7 +191,11 @@
  *
  *  @return the model object of the button
  */
-- (PAYFormButton *)addButtonWithText:(NSString *)text detailText:detailText icon:(UIImage *)icon style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock;
+- (nonnull PAYFormButton *)addButtonWithText:(nullable NSString *)text
+                                  detailText:(nullable NSString *)detailText
+                                        icon:(nullable UIImage *)icon
+                                       style:(PAYFormButtonStyle)style
+                              selectionBlock:(nullable PAYFormButtonSelectionBlock)selectionBlock;
 
 /**
  *  Add a configured button
@@ -189,7 +209,10 @@
  *
  *  @return the model object of the button
  */
-- (PAYFormButton *)addButtonWithText:(NSString *)text style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock configureBlock:(void(^)(PAYFormButton *))configureBlock;
+- (nonnull PAYFormButton *)addButtonWithText:(nullable NSString *)text
+                                       style:(PAYFormButtonStyle)style
+                              selectionBlock:(nullable PAYFormButtonSelectionBlock)selectionBlock
+                              configureBlock:(nullable void(^)(PAYFormButton * _Nonnull))configureBlock;
 
 /**
  *  Add a configured button
@@ -205,7 +228,12 @@
  *
  *  @return the model object of the button
  */
-- (PAYFormButton *)addButtonWithText:(NSString *)text detailText:(NSString *)detailText icon:(UIImage *)icon style:(PAYFormButtonStyle)style selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock configureBlock:(void(^)(PAYFormButton *))configureBlock;
+- (nonnull PAYFormButton *)addButtonWithText:(nullable NSString *)text
+                                  detailText:(nullable NSString *)detailText
+                                        icon:(nullable UIImage *)icon
+                                       style:(PAYFormButtonStyle)style
+                              selectionBlock:(nullable PAYFormButtonSelectionBlock)selectionBlock
+                              configureBlock:(nullable void(^)(PAYFormButton * _Nonnull))configureBlock;
 
 /**
  *  Add button-group that could be used as single- or multi-selection list. 
@@ -217,7 +245,8 @@
  *
  *  @return the model object of the button group. I's for example used to get the values the user selected
  */
-- (PAYFormButtonGroup *)addButtonGroupWithMultiSelection:(BOOL)multiSelection contentBlock:(void(^)(PAYFormButtonGroupBuilder *))contentBlock;
+- (nonnull PAYFormButtonGroup *)addButtonGroupWithMultiSelection:(BOOL)multiSelection
+                                                    contentBlock:(nullable void(^)(PAYFormButtonGroupBuilder * _Nonnull))contentBlock;
 
 #pragma mark - Add switches
 
@@ -228,7 +257,7 @@
  *
  *  @return the model object of the switch. It's for example used to get the value the used selected.
  */
-- (PAYFormSwitch *)addSwitchWithName:(NSString *)name;
+- (nonnull PAYFormSwitch *)addSwitchWithName:(nullable NSString *)name;
 
 /**
  *  Add a toggle switch with a label and a customization block.
@@ -240,7 +269,8 @@
  *
  *  @return the model object of the switch. It's for example used to get the value the used selected.
  */
-- (PAYFormSwitch *)addSwitchWithName:(NSString *)name configureBlock:(void(^)(PAYFormSwitch *))configureBlock;
+- (nonnull PAYFormSwitch *)addSwitchWithName:(nullable NSString *)name
+                              configureBlock:(nullable void(^)(PAYFormSwitch * _Nonnull))configureBlock;
 /**
  *  Add a toggle switch with a label and a customization block.
  *
@@ -251,7 +281,9 @@
  *
  *  @return the model object of the switch. It's for example used to get the value the used selected.
  */
-- (PAYFormSwitch *)addSwitchWithName:(NSString *)name configureBlock:(void(^)(PAYFormSwitch *))configureBlock changeBlock:(PAYFormSwitchChangeBlock)changeBlock;
+- (nonnull PAYFormSwitch *)addSwitchWithName:(nullable NSString *)name
+                              configureBlock:(nullable void(^)(PAYFormSwitch * _Nonnull))configureBlock
+                                 changeBlock:(nullable PAYFormSwitchChangeBlock)changeBlock;
 
 #pragma mark - Add generic views
 
@@ -261,6 +293,6 @@
  *  @param configureBlock a block that gets the preconfigurred PAYFormView and
  *                        could modify it's parameters. The custom content has to be added to the view property.
  */
-- (void)addView:(void(^)(PAYFormView *))configureBlock;
+- (void)addView:(nullable void(^)(PAYFormView * _Nonnull))configureBlock;
 
 @end

@@ -11,9 +11,9 @@
 
 @interface PAYDefaultTableTheme : NSObject <PAYTableTheme>
 
-@property (nonatomic, retain) UIFont *font;
-@property (nonatomic, retain) UIFont *subTitleFont;
-@property (nonatomic, retain) UIColor *backgroundColor;
+@property (nonatomic, retain, nullable) UIFont *font;
+@property (nonatomic, retain, nullable) UIFont *subTitleFont;
+@property (nonatomic, retain, nullable) UIColor *backgroundColor;
 @property (nonatomic, assign) CGFloat rowHeight;
 @property (nonatomic, assign) CGFloat footerHeight;
 @property (nonatomic, assign) CGFloat labelStyleNoneHeight;
@@ -23,6 +23,6 @@
 @property (nonatomic, assign) CGFloat headerTitleTopMargin;
 @property (nonatomic, assign) CGFloat headerSubTitleTopMargin;
 @property (nonatomic, assign) CGFloat headerBottomMargin;
-@property (nonatomic, retain) UIColor *headerTintColor;
+@property (nonatomic, retain, nullable) UIColor *headerTintColor;
 
 @end

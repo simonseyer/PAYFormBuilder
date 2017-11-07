@@ -14,7 +14,7 @@
 
 @interface PAYFormButtonGroupBuilder ()
 
-@property (nonatomic, retain) PAYFormButtonGroup *buttonGroup;
-@property (nonatomic, retain) PAYFormSectionBuilder *sectionBuilder;
+@property (nonatomic, retain, nonnull) PAYFormButtonGroup *buttonGroup;
+@property (nonatomic, retain, nonnull) PAYFormSectionBuilder *sectionBuilder;
 
 @end

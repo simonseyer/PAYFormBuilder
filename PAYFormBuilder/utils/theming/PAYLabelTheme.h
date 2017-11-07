@@ -17,10 +17,10 @@
 @protocol PAYLabelTheme <NSObject>
 
 - (UIEdgeInsets)insets;
-- (UIFont *)font;
+- (nullable UIFont *)font;
 - (CGFloat)kerning;
 - (CGFloat)lineSpacing;
-- (UIColor *)textColor;
+- (nullable UIColor *)textColor;
 - (BOOL)capitalize;
 - (NSTextAlignment)textAlignment;
 
@@ -41,7 +41,7 @@
  *
  * @return the label theme
  */
-- (id<PAYLabelTheme>)forStyle:(PAYFormTableLabelStyle)style;
+- (nullable id<PAYLabelTheme>)forStyle:(PAYFormTableLabelStyle)style;
 
 /*
  * Set the theme for the given label style.
@@ -52,7 +52,7 @@
  *
  * @return the label theme
  */
-- (void)setTheme:(id<PAYLabelTheme>) theme forStyle:(PAYFormTableLabelStyle)style;
+- (void)setTheme:(nonnull id<PAYLabelTheme>) theme forStyle:(PAYFormTableLabelStyle)style;
 
 @end
 

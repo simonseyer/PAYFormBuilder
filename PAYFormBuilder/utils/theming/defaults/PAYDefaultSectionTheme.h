@@ -25,13 +25,14 @@
 @property (nonatomic, assign) CGFloat           iconMarginLeft;
 @property (nonatomic, assign) NSUInteger        textViewLineCount;
 @property (nonatomic, assign) NSUInteger        textViewMaxLineCount;
-@property (nonatomic, copy)   PAYViewProviderBlock detailAccessoryViewProviderBlock;
-@property (nonatomic, copy)   PAYViewProviderBlock checkmarkAccessoryViewProviderBlock;
-@property (nonatomic, retain) UIColor          *textColor;
-@property (nonatomic, retain) UIColor          *errorTextColor;
-@property (nonatomic, retain) UIColor          *disabledTextColor;
-@property (nonatomic, retain) UIColor          *placeholderColor;
-@property (nonatomic, retain) NSMutableDictionary *buttonTextColors;
-@property (nonatomic, retain) UIColor          *buttonDetailTextColor;
+
+@property (nonatomic, copy, nullable)   PAYViewProviderBlock detailAccessoryViewProviderBlock;
+@property (nonatomic, copy, nullable)   PAYViewProviderBlock checkmarkAccessoryViewProviderBlock;
+@property (nonatomic, retain, nullable) UIColor          *textColor;
+@property (nonatomic, retain, nullable) UIColor          *errorTextColor;
+@property (nonatomic, retain, nullable) UIColor          *disabledTextColor;
+@property (nonatomic, retain, nullable) UIColor          *placeholderColor;
+@property (nonatomic, retain, nullable) NSMutableDictionary *buttonTextColors;
+@property (nonatomic, retain, nullable) UIColor          *buttonDetailTextColor;
 
 @end

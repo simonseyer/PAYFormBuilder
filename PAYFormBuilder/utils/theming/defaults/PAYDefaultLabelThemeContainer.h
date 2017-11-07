@@ -12,18 +12,18 @@
 @interface PAYDefaultLabelTheme : NSObject <PAYLabelTheme>
 
 @property (nonatomic, assign) UIEdgeInsets      insets;
-@property (nonatomic, strong) UIFont           *font;
+@property (nonatomic, strong, nullable) UIFont  *font;
 @property (nonatomic, assign) CGFloat           kerning;
 @property (nonatomic, assign) CGFloat           lineSpacing;
-@property (nonatomic, retain) UIColor           *textColor;
+@property (nonatomic, retain, nullable) UIColor *textColor;
 @property (nonatomic, assign) BOOL              capitalize;
 @property (nonatomic, assign) NSTextAlignment   textAlignment;
 
-+ (PAYDefaultLabelTheme *)simpleTheme;
-+ (PAYDefaultLabelTheme *)descriptionTheme;
-+ (PAYDefaultLabelTheme *)descriptionWideTheme;
-+ (PAYDefaultLabelTheme *)headerTitleTheme;
-+ (PAYDefaultLabelTheme *)headerSubTitleTheme;
++ (nonnull PAYDefaultLabelTheme *)simpleTheme;
++ (nonnull PAYDefaultLabelTheme *)descriptionTheme;
++ (nonnull PAYDefaultLabelTheme *)descriptionWideTheme;
++ (nonnull PAYDefaultLabelTheme *)headerTitleTheme;
++ (nonnull PAYDefaultLabelTheme *)headerSubTitleTheme;
 
 @end
 

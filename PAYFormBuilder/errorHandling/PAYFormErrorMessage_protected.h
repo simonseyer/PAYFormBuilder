@@ -12,7 +12,7 @@
 
 @interface PAYFormErrorMessage ()
 
-- (NSString *)titleForField:(id<PAYValidatableFormCell>)field;
-- (NSString *)messageForField:(id<PAYValidatableFormCell>)field;
+- (nonnull NSString *)titleForField:(nonnull id<PAYValidatableFormCell>)field;
+- (nonnull NSString *)messageForField:(nonnull id<PAYValidatableFormCell>)field;
 
 @end

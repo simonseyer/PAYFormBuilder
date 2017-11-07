@@ -12,8 +12,8 @@
 
 @interface PAYFormSectionBuilder ()
 
-@property (nonatomic, retain) PAYFormSection *section;
+@property (nonatomic, retain, nonnull) PAYFormSection *section;
 
-- (id)initWithFormSection:(PAYFormSection *)section;
+- (nonnull instancetype)initWithFormSection:(nonnull PAYFormSection *)section;
 
 @end

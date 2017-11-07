@@ -20,19 +20,19 @@
 /**
  Middle man is the instance which should intercept calls on receiver.
  */
-@property (nonatomic, weak) id middleMan;
+@property (nonatomic, weak, nullable) id middleMan;
 
 /**
  Receiver is the instance which should receive all calls, which are not intercepted or which should be forwared manually
  after interception by the middleMan.
  */
-@property (nonatomic, weak) id receiver;
+@property (nonatomic, weak, nullable) id receiver;
 
 /**
  Init a new instance with given middle man.
  
  @param middleMan Favored forward target for all received selectors.
  */
-- (id)initWithMiddleMan:(id)middleMan;
+- (nonnull id)initWithMiddleMan:(nonnull id)middleMan;
 
 @end

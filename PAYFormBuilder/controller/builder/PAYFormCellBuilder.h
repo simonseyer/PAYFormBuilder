@@ -30,9 +30,9 @@
  *
  *  @return a container for the textfield
  */
-+ (PAYFormSingleLineTextField *)fieldWithName:(NSString *)name
-                                  placeholder:(NSString *)placeholder
-                               configureBlock:(void(^)(PAYFormSingleLineTextField *))configureBlock;
++ (nonnull PAYFormSingleLineTextField *)fieldWithName:(nullable NSString *)name
+                                          placeholder:(nullable NSString *)placeholder
+                                       configureBlock:(nullable void(^)(PAYFormSingleLineTextField  * _Nonnull))configureBlock;
 
 /**
  *  Crate a multiline textfield with a placeholder and option for an adjustable height and a block for customization.
@@ -45,10 +45,10 @@
  *
  *  @return a container for the textview
  */
-+ (PAYFormMultiLineTextField *)textViewWithName:(NSString *)name
-                                    placeholder:(NSString *)placeholder
-                                     adjustable:(BOOL)isAdjustable
-                                 configureBlock:(void(^)(PAYFormMultiLineTextField *))configureBlock;
++ (nonnull PAYFormMultiLineTextField *)textViewWithName:(nullable NSString *)name
+                                            placeholder:(nullable NSString *)placeholder
+                                             adjustable:(BOOL)isAdjustable
+                                         configureBlock:(nullable void(^)(PAYFormMultiLineTextField * _Nonnull))configureBlock;
 
 /**
  *  Create a button with a text, a customization block and a block that is called, when the user pressed the button.
@@ -64,12 +64,12 @@
  *
  *  @return a container for the button
  */
-+ (PAYFormButton *)buttonWithText:(NSString *)text
-                       detailText:(NSString *)detailText
-                             icon:(UIImage *)icon
-                            style:(PAYFormButtonStyle)style
-                   selectionBlock:(PAYFormButtonSelectionBlock)selectionBlock
-                   configureBlock:(void(^)(PAYFormButton *))configureBlock;
++ (nonnull PAYFormButton *)buttonWithText:(nullable NSString *)text
+                               detailText:(nullable NSString *)detailText
+                                     icon:(nullable UIImage *)icon
+                                    style:(PAYFormButtonStyle)style
+                           selectionBlock:(nullable PAYFormButtonSelectionBlock)selectionBlock
+                           configureBlock:(nullable void(^)(PAYFormButton * _Nonnull))configureBlock;
 
 /**
  *  Create a toggle switch with a label and a customization block.
@@ -81,36 +81,36 @@
  *
  *  @return a container for the switch
  */
-+ (PAYFormSwitch *)switchWithName:(NSString *)name
-                   configureBlock:(void(^)(PAYFormSwitch *))configureBlock;
++ (nonnull PAYFormSwitch *)switchWithName:(nullable NSString *)name
+                           configureBlock:(nullable void(^)(PAYFormSwitch * _Nonnull))configureBlock;
 
 /**
  *  Get a cell that is configured with the default parameters of the section.
  *
  *  @return the preconfigured cell
  */
-+ (UITableViewCell *)defaultCell;
++ (nonnull UITableViewCell *)defaultCell;
 
 /**
  *  Get a label that is configured with the default parameters of the section.
  *
  *  @return the preconfigured label
  */
-+ (UILabel *)defaultLabel;
++ (nonnull UILabel *)defaultLabel;
 
 /**
  *  Get a configured textfield
  *
  *  @return the preconfigured textfield
  */
-+ (UITextField *)defaultTextField;
++ (nonnull UITextField *)defaultTextField;
 
 /**
  *  Get a configured textview
  *
  *  @return the preconfigured textview
  */
-+ (SZTextView *)defaultTextView;
++ (nonnull SZTextView *)defaultTextView;
 
 
 @end

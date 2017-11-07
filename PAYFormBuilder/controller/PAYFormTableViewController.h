@@ -31,7 +31,7 @@
  *
  *  @param tableBuilder the builder class to create the form
  */
-- (void)loadStructure:(PAYFormTableBuilder *)tableBuilder;
+- (void)loadStructure:(nonnull PAYFormTableBuilder *)tableBuilder;
 
 /**
  *  Clears the complete form and calls loadStructure again.
@@ -43,6 +43,6 @@
  *
  *  @param sender the component that sended the action
  */
-- (IBAction)onDone:(id)sender;
+- (IBAction)onDone:(nonnull id)sender;
 
 @end

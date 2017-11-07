@@ -22,20 +22,20 @@
  *  @param errorMessage the error message
  *  @param code         the code of the errro
  */
-+ (void)setErrorMessage:(PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code;
++ (void)setErrorMessage:(nonnull PAYFormErrorMessage *)errorMessage forErrorCode:(NSUInteger)code;
 
 /**
  *  Set the text of the button that is used to hide the dialog
  *
  *  @param text the text
  */
-+ (void)setButtonText:(NSString *)text;
++ (void)setButtonText:(nullable NSString *)text;
 
 /**
  *  The ViewController the alert is displayed in
  *
  *  @param viewController the view controller
  */
-+ (void)setParentViewController:(UIViewController *)viewController;
++ (void)setParentViewController:(nullable UIViewController *)viewController;
 
 @end

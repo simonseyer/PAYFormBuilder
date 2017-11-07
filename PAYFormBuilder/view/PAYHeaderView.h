@@ -17,31 +17,31 @@
 /**
  *  The icon image
  */
-@property (nonatomic, retain) UIImage  *iconImage;
+@property (nonatomic, retain, nullable) UIImage  *iconImage;
 
 /**
  *  The title
  */
-@property (nonatomic, retain) NSString *title;
+@property (nonatomic, retain, nullable) NSString *title;
 
 /**
  *  The sub title
  */
-@property (nonatomic, retain) NSString *subTitle;
+@property (nonatomic, retain, nullable) NSString *subTitle;
 
 /**
  *  The icon view
  */
-@property (nonatomic, retain) UIImageView *iconView;
+@property (nonatomic, retain, nullable) UIImageView *iconView;
 
 /**
  *  The title label
  */
-@property (nonatomic, retain) PAYTextLabel *titleLabel;
+@property (nonatomic, retain, nullable) PAYTextLabel *titleLabel;
 
 /**
  *  The subtitle label
  */
-@property (nonatomic, retain) PAYTextLabel *subTitleLabel;
+@property (nonatomic, retain, nullable) PAYTextLabel *subTitleLabel;
 
 @end

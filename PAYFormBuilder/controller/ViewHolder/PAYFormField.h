@@ -12,9 +12,9 @@
 
 
 typedef void(^PAYFormFieldCompletionBlock)(void);
-typedef id(^PAYFormFieldFormatBlock)(PAYFormField *, id);
-typedef id(^PAYFormFieldCleanBlock)(PAYFormField *, id);
-typedef NSError *(^PAYFormFieldValidationBlock)(PAYFormField *);
+typedef id _Nonnull (^PAYFormFieldFormatBlock)(PAYFormField * _Nonnull, id _Nonnull);
+typedef id _Nonnull (^PAYFormFieldCleanBlock)(PAYFormField * _Nonnull, id _Nonnull);
+typedef NSError * _Nullable (^PAYFormFieldValidationBlock)(PAYFormField * _Nonnull);
 
 
 @protocol PAYFormControl;
@@ -28,25 +28,25 @@ typedef NSError *(^PAYFormFieldValidationBlock)(PAYFormField *);
 /**
  *  The control that is embedded in this view
  */
-@property (nonatomic, retain, readonly) UIView<PAYFormControl> *control;
+@property (nonatomic, retain, readonly, nonnull) UIView<PAYFormControl> *control;
 
 /**
  *  An optional format block that is used to format the value the user entered
  */
-@property (nonatomic, copy) PAYFormFieldFormatBlock formatBlock;
+@property (nonatomic, copy, nullable) PAYFormFieldFormatBlock formatBlock;
 
 /**
  *  An optional clean block to clean the value the user entered before processing it.
  *  Access this value with the cleanedValue method.
  */
-@property (nonatomic, copy) PAYFormFieldCleanBlock cleanBlock;
+@property (nonatomic, copy, nullable) PAYFormFieldCleanBlock cleanBlock;
 
 /**
  *  A custom validation block for this field. Should return an error, when the field
  *  is not valid. Use the validationErrorWithTitle:message: or validationErrorWithCode:
  *  to create validation warnings for this field.
  */
-@property (nonatomic, copy) PAYFormFieldValidationBlock validationBlock;
+@property (nonatomic, copy, nullable) PAYFormFieldValidationBlock validationBlock;
 
 /**
  *  Validates, that the control has a value
@@ -63,14 +63,14 @@ typedef NSError *(^PAYFormFieldValidationBlock)(PAYFormField *);
  *
  *  @return the entered value
  */
-- (id)value;
+- (nonnull id)value;
 
 /**
  *  Get the value the user entered cleaned with the clean block
  *
  *  @return the cleaned value
  */
-- (id)cleanedValue;
+- (nonnull id)cleanedValue;
 
 /**
  *  If the control has NO value
@@ -87,7 +87,8 @@ typedef NSError *(^PAYFormFieldValidationBlock)(PAYFormField *);
  *
  *  @return an error that for example could be returned in a validation block
  */
-- (NSError *)validationErrorWithTitle:(NSString *)title message:(NSString *)message;
+- (nonnull NSError *)validationErrorWithTitle:(nonnull NSString *)title
+                                      message:(nonnull NSString *)message;
 
 /**
  *  Create a validation error for this field with a an error code.
@@ -96,6 +97,6 @@ typedef NSError *(^PAYFormFieldValidationBlock)(PAYFormField *);
  *
  *  @return an error that for example could be returned in a validation block
  */
-- (NSError *)validationErrorWithCode:(NSUInteger)code;
+- (nonnull NSError *)validationErrorWithCode:(NSUInteger)code;
 
 @end

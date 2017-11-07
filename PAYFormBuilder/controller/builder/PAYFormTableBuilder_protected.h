@@ -11,8 +11,8 @@
 
 @interface PAYFormTableBuilder ()
 
-@property (nonatomic, retain) PAYFormTable *table;
+@property (nonatomic, retain, nonnull) PAYFormTable *table;
 
-- (id)initWithFormTable:(PAYFormTable *)table;
+- (nonnull instancetype)initWithFormTable:(nonnull PAYFormTable *)table;
 
 @end

@@ -20,7 +20,7 @@
 /**
  *  The name of the group
  */
-@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong, nullable) NSString *name;
 
 /**
  *  True, if multiple buttons could be selected at once
@@ -35,13 +35,13 @@
 /**
  *  The list of selected values
  */
-@property (nonatomic, retain, readonly) NSArray *values;
+@property (nonatomic, retain, readonly, nonnull) NSArray *values;
 
 /**
  *  One selected value. If multiSelection is enabled, any
  *  of the selected values is returned.
  */
-@property (nonatomic, retain) id value;
+@property (nonatomic, retain, nonnull) id value;
 
 /**
  *  Selects or unselectes a value
@@ -49,13 +49,13 @@
  *  @param select true, if the value/button should be selected, false otherwise
  *  @param value  the corresponding value
  */
-- (void)select:(BOOL)select value:(id)value;
+- (void)select:(BOOL)select value:(nonnull id)value;
 
 /**
  *  Select a value, if it is not already selected
  *
  *  @param value the value, that should be selected
  */
-- (void)select:(id)value;
+- (void)select:(nonnull id)value;
 
 @end

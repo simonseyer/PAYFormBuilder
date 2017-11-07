@@ -16,17 +16,17 @@
 /**
  *  The label that is display in front of the textfield
  */
-@property (nonatomic, retain, readonly) UILabel *label;
+@property (nonatomic, retain, readonly, nonnull) UILabel *label;
 
 /**
  *  The textfield component
  */
-@property (nonatomic, retain, readonly) UITextField *textField;
+@property (nonatomic, retain, readonly, nonnull) UITextField *textField;
 
 /**
  *  A text field delegate that is attached to the textfield
  */
-@property (nonatomic, weak) id<UITextFieldDelegate> delegate;
+@property (nonatomic, weak, nullable) id<UITextFieldDelegate> delegate;
 
 /**
  *  When true, the textfield is expanded to the whole width

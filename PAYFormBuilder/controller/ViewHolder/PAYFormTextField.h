@@ -47,7 +47,7 @@
  *
  *  @param groupSizes an array of group sizes
  */
-- (void)setFormatTextWithGroupSizes:(NSArray *)groupSizes;
+- (void)setFormatTextWithGroupSizes:(nonnull NSArray *)groupSizes;
 
 /**
  *  Sets a format that is defined by groups of characters.
@@ -57,6 +57,7 @@
  *  @param groupSizes an array of group sizes
  *  @param separator  an string to seperate the groups
  */
-- (void)setFormatTextWithGroupSizes:(NSArray *)groupSizes separator:(NSString *)separator;
+- (void)setFormatTextWithGroupSizes:(nonnull NSArray *)groupSizes
+                          separator:(nullable NSString *)separator;
 
 @end

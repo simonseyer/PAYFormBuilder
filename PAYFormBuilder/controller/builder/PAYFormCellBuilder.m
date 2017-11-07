@@ -95,6 +95,7 @@
     
     SZTextView *textView            = self.defaultTextView;
     textView.font                   = PAYStyle.tableTheme.font;
+    textView.textColor              = PAYStyle.sectionTheme.textColor;
     textView.placeholderTextColor   = PAYStyle.sectionTheme.placeholderColor;
     if (placeholder) {
         textView.placeholder = placeholder;

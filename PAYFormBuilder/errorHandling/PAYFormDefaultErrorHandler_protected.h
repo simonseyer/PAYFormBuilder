@@ -10,6 +10,6 @@
 
 @interface PAYFormDefaultErrorHandler ()
 
-+ (PAYFormTableFailBlock)failBlock;
++ (nonnull PAYFormTableFailBlock)failBlock;
 
 @end

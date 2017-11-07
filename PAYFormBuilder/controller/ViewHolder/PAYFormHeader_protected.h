@@ -13,28 +13,28 @@
 /**
  *  The header view
  */
-@property (nonatomic, retain) UITableViewHeaderFooterView *header;
+@property (nonatomic, retain, nonnull) UITableViewHeaderFooterView *header;
 
 /**
  *  The view, that is visible in the header
  */
-@property (nonatomic, retain) UIView *view;
+@property (nonatomic, retain, nonnull) UIView *view;
 
 /**
  *  The label, that contains the name of the section
  */
-@property (nonatomic, retain) UILabel *label;
+@property (nonatomic, retain, nonnull) UILabel *label;
 
 /**
  *  An optional button, which provides additional help
  */
-@property (nonatomic, retain) UIButton *infoButton;
+@property (nonatomic, retain, nullable) UIButton *infoButton;
 
 /**
  *  Handles button presses of the info button
  *
  *  @param button the info button
  */
-- (void)handleInfoButtonPress:(UIButton *)button;
+- (void)handleInfoButtonPress:(nonnull UIButton *)button;
 
 @end

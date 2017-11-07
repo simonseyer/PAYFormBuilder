@@ -13,11 +13,11 @@
 /**
  *  The label that is display in front of the textfield
  */
-@property (nonatomic, retain) UILabel *label;
+@property (nonatomic, retain, nonnull) UILabel *label;
 
 /**
  *  The textfield component
  */
-@property (nonatomic, retain) UITextField *textField;
+@property (nonatomic, retain, nonnull) UITextField *textField;
 
 @end

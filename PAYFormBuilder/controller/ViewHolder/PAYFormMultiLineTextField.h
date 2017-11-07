@@ -16,12 +16,12 @@
 /**
  *  The text view component
  */
-@property (nonatomic, retain, readonly) UITextView *textView;
+@property (nonatomic, retain, readonly, nonnull) UITextView *textView;
 
 /**
  *  A text view delegate that is attached to the textview
  */
-@property (nonatomic, weak) id<UITextViewDelegate> delegate;
+@property (nonatomic, weak, nullable) id<UITextViewDelegate> delegate;
 
 /**
  *  A property to set for dynamic height adjustable field

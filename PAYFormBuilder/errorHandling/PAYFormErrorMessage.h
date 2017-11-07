@@ -10,7 +10,7 @@
 
 @protocol PAYValidatableFormCell;
 
-typedef NSString *(^PAYFormErrorMessageBlock)(id formView);
+typedef NSString * _Nonnull (^PAYFormErrorMessageBlock)(id _Nonnull formView);
 
 /**
  *  An error message
@@ -25,7 +25,8 @@ typedef NSString *(^PAYFormErrorMessageBlock)(id formView);
  *
  *  @return an error message
  */
-+ (instancetype)errorMessageWithTitle:(NSString *)title message:(NSString *)message;
++ (nonnull instancetype)errorMessageWithTitle:(nonnull NSString *)title
+                                      message:(nonnull NSString *)message;
 
 /**
  *  Create an error message with an error object
@@ -34,7 +35,7 @@ typedef NSString *(^PAYFormErrorMessageBlock)(id formView);
  *
  *  @return an error message
  */
-+ (instancetype)errorMessageWithError:(NSError *)error;
++ (nonnull instancetype)errorMessageWithError:(nonnull NSError *)error;
 
 /**
  *  Create an dynamic error message. The blocks for the title and the message
@@ -47,6 +48,7 @@ typedef NSString *(^PAYFormErrorMessageBlock)(id formView);
  *
  *  @return an error message
  */
-+ (instancetype)errorMessageWithTitleBlock:(PAYFormErrorMessageBlock)titleBlock messageBlock:(PAYFormErrorMessageBlock)messageBlock;
++ (nonnull instancetype)errorMessageWithTitleBlock:(nonnull PAYFormErrorMessageBlock)titleBlock
+                                      messageBlock:(nonnull PAYFormErrorMessageBlock)messageBlock;
 
 @end

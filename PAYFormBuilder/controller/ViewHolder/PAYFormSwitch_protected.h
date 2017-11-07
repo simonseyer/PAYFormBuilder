@@ -13,11 +13,11 @@
 /**
  *  The label, that is displayed in front of the switch
  */
-@property (nonatomic, retain) UILabel *label;
+@property (nonatomic, retain, nonnull) UILabel *label;
 
 /**
  *  The switch control
  */
-@property (nonatomic, retain) UISwitch *switchControl;
+@property (nonatomic, retain, nonnull) UISwitch *switchControl;
 
 @end
