@@ -50,7 +50,12 @@
     [self.tableView enableTapToEndEditing];
     
     [self buildFooter];
-    [self updateViewConstraints];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self fixHeaderFooterView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -182,7 +187,7 @@
 
 #pragma mark - Layout header view
 
-- (void)updateViewConstraints {
+- (void)fixHeaderFooterView {
     if (self.tableView.tableHeaderView) {
         self.tableView.tableHeaderView = [self updateFixedHeightOfView:self.tableView.tableHeaderView];
     }
