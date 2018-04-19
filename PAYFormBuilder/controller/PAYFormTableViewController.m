@@ -55,7 +55,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self fixHeaderFooterView];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self fixHeaderFooterView];
+    });
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -194,7 +197,6 @@
     if (self.tableView.tableFooterView) {
         self.tableView.tableFooterView = [self updateFixedHeightOfView:self.tableView.tableFooterView];
     }
-    [super updateViewConstraints];
 }
 
 - (UIView *)updateFixedHeightOfView:(UIView *)view {
