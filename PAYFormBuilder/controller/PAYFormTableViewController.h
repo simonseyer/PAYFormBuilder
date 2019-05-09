@@ -18,6 +18,13 @@
 @interface PAYFormTableViewController : UITableViewController
 
 /**
+ * If tapping on the background of the form (i.e. outside of a cell) should dismiss the keyboard/end editing.
+ *
+ * Enabled by default. Must be updated in the `initForm` method to be applied.
+ */
+@property (nonatomic, assign) BOOL tapToEndEditing;
+
+/**
  *  This method could be overriden by the subclass to configure the form table view controller. 
  *  For example a custom footer could be set. This is method is only called once after the view 
  *  controller is set up and before loadStructure is called.

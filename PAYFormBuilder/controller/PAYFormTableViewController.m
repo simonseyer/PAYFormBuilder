@@ -26,6 +26,15 @@
 
 @implementation PAYFormTableViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _tapToEndEditing = YES;
+    }
+    return self;
+}
+
 - (void)loadView {
     self.tableView = [[PAYFormTableView alloc] initWithFrame:CGRectZero
                                                        style:UITableViewStyleGrouped];
@@ -46,8 +55,11 @@
     [self loadStructure];
     
     [super viewDidLoad];
-    
-    [self.tableView enableTapToEndEditing];
+
+    if (self.tapToEndEditing)
+    {
+        [self.tableView enableTapToEndEditing];
+    }
     
     [self buildFooter];
 }
